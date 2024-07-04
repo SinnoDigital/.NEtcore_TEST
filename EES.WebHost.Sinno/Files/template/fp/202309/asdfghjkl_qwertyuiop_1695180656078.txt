@@ -1,0 +1,58 @@
+﻿
+
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('配方管理', 1, 70, '配方管理', '', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('新增', 2, 91, '新增配方', 'pms_techrcp_create', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('删除', 2, 91, '删除配方', 'pms_techrcp_delete', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('修改', 2, 91, '修改配方信息', 'pms_techrcp_modify', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('复制', 2, 91, '复制配方', 'pms_techrcp_copy', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('工艺内容查看', 2, 91, '工艺内容查看', 'pms_techrcp_detail_get', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('工艺内容编辑', 2, 91, '工艺内容编辑', 'pms_techrcp_detail_modify', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('配方图表查看', 2, 91, '配方图表查看', 'pms_techrcp_chart_get', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('锁定', 2, 91, '锁定', 'pms_techrcp_lock', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('解锁', 2, 91, '解锁', 'pms_techrcp_unlock', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('提交', 2, 91, '提交', 'pms_techrcp_submit', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('审核', 2, 91, '审核', 'pms_techrcp_approve', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('反审', 2, 91, '反审', 'pms_techrcp_cancel', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('驳回', 2, 91, '驳回', 'pms_techrcp_reject', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('释放', 2, 91, '释放', 'pms_techrcp_release', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('反释放', 2, 91, '凡释放', 'pms_techrcp_unrelease', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('绑定产线', 2, 91, '绑定产线', 'pms_techrcp_bindline', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('解绑产线', 2, 91, '解绑产线', 'pms_techrcp_unbindline', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('禁用', 2, 91, '禁用', 'pms_techrcp_disable', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('启用', 2, 91, '启用', 'pms_techrcp_enable', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('导入', 2, 91, '导入', 'pms_techrcp_Import', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+
+INSERT INTO `ees_master`.`ums_function` (`name`, `type`, `parent_id`, `description`, `identifier`, `create_user_id`, `create_user_name`, `create_time`, `update_user_id`, `update_user_name`, `update_time`) VALUES ('导出', 2, 91, '导出', 'pms_techrcp_export', 1, '管理员', '2023-09-16 15:34:49', 0, '', '0001-01-01 00:00:00');
+
+

@@ -1,0 +1,1 @@
+﻿{"panels":[{"index":0,"name":1,"height":50,"width":75,"paperHeader":0,"paperFooter":141.73228346456693,"printElements":[],"paperNumberLeft":182,"paperNumberTop":119,"watermarkOptions":{}}]}

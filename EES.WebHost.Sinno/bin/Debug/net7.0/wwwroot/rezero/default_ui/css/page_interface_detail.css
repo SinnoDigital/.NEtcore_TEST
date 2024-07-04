@@ -1,0 +1,18 @@
+﻿#app {  
+    background:#fff;
+    padding:35px;
+} 
+.url 
+{
+    font-size:20px;
+    padding:30px;
+    padding-left:0;
+}  
+.readonly 
+{
+    background:#ccc
+}
+.ace_editor {
+ z-index:99999999
+}
+ 

@@ -1,0 +1,4 @@
+{
+  "MasterConnection": "Data Source =172.29.162.132,1434;Initial Catalog = ees_master_Sinno_ZS_240110;User Id = EES_Sinno;Password = Enrich@Sinno;TrustServerCertificate=True;Timeout=30",
+  "DbType": "SqlServer"
+}

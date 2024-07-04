@@ -1,0 +1,4967 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EES.Modules.Bis</name>
+    </assembly>
+    <members>
+        <member name="T:EES.Modules.Bis.CommandHandlers.CancelCommandHadler">
+            <summary>
+            作废
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.CancelCommandHadler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.BarCodeCancel},Microsoft.Extensions.Logging.ILogger{EES.Modules.Bis.CommandHandlers.CancelCommandHadler},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="cancelRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.CancelCommandHadler.Handle(EES.Modules.Share.Commands.Bis.CreateCancelForeignCmd,System.Threading.CancellationToken)">
+            <summary>
+            条码作废
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.CancelCommandHadler.Handle(EES.Modules.Share.Commands.Bis.DeteleCancelForeignCmd,System.Threading.CancellationToken)">
+            <summary>
+            取消作废
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.CancelCommandHadler.CheckCancelRepeatedsync(System.String)">
+            <summary>
+            检查条码是否已作废
+            </summary>
+            <param name="barCode">条码</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.CommandHandlers.IssueCommandHadler">
+            <summary>
+            发行
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.IssueCommandHadler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.BarCodeIssue},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.BarCodeContent},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.IssueRecords},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.BarCodeRule},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.BarCodeType},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.BarCodeCancel},Microsoft.Extensions.Logging.ILogger{EES.Modules.Bis.CommandHandlers.IssueCommandHadler},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="issueRepository"></param>
+            <param name="contentRepository"></param>
+            <param name="recordsRepository"></param>
+            <param name="ruleRepository"></param>
+            <param name="typeRepository"></param>
+            <param name="cancelRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+            <param name="handler"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.IssueCommandHadler.Handle(EES.Modules.Bis.Commands.BarCodeIssue.CreateIssueCmd,System.Threading.CancellationToken)">
+            <summary>
+            添加发行
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.IssueCommandHadler.AssemblyString(System.Collections.Generic.List{EES.Modules.Bis.Dto.PrintContentDto},System.Collections.Generic.List{EES.Modules.Bis.Entities.RuleContent})">
+            <summary>
+            获取检索内容
+            </summary>
+            <param name="printContents"></param>
+            <param name="ruleContents"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.IssueCommandHadler.Handle(EES.Modules.Bis.Commands.BarCodeIssue.AddIssueCmd,System.Threading.CancellationToken)">
+            <summary>
+            追加发行
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.IssueCommandHadler.Handle(EES.Modules.Bis.Commands.BarCodeRule.CreateBarCodeContentCmd,System.Threading.CancellationToken)">
+            <summary>
+            添加发行数据信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.IssueCommandHadler.CheckContentIdentifyRepeatedsync(System.Collections.Generic.IEnumerable{EES.Modules.Bis.Entities.BarCodeContent})">
+            <summary>
+            检查发行内容是否重复
+            </summary>
+            <param name="barCodeContents">发行详情数据信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.IssueCommandHadler.Handle(EES.Modules.Share.Commands.Bis.IssueBarcodeCmd,System.Threading.CancellationToken)">
+            <summary>
+            添加发行(外部调用)
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.IssueCommandHadler.Handle(EES.Modules.Share.Commands.Bis.GetIssueBarCodeCmd,System.Threading.CancellationToken)">
+            <summary>
+            获取发行 信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:EES.Modules.Bis.CommandHandlers.PrintCommandHadler">
+            <summary>
+            打印
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.PrintCommandHadler.Handle(EES.Modules.Bis.Commands.PrintTransferCmd,System.Threading.CancellationToken)">
+            <summary>
+            打印条码
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.PrintCommandHadler.Handle(EES.Modules.Share.Commands.Bis.MakeUpBarCodeCmd,System.Threading.CancellationToken)">
+            <summary>
+            组成条码(外部调用)
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.PrintCommandHadler.Handle(EES.Modules.Share.Commands.Bis.PrintTransferForeignCmd,System.Threading.CancellationToken)">
+            <summary>
+            打印(外部调用)
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.PrintCommandHadler.Handle(EES.Modules.Share.Commands.Bis.ModifyPrintStateCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改打印状态
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.PrintCommandHadler.Handle(EES.Modules.Bis.Commands.PrintFromRecordCmd,System.Threading.CancellationToken)">
+            <summary>
+            根据打印记录打印
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.PrintCommandHadler.Handle(EES.Modules.Share.Commands.Bis.BarcodeRecognitionForeignCmd,System.Threading.CancellationToken)">
+            <summary>
+            条码识别（共用）
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.PrintCommandHadler.CheckPrintExistAsync(System.Int64)">
+            <summary>
+            检查打印记录是否存在
+            </summary>
+            <param name="PrintRecordId">打印记录id</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.CommandHandlers.PrinterCommandHadler">
+            <summary>
+            打印机命令处理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.PrinterCommandHadler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.Printer},Microsoft.Extensions.Logging.ILogger{EES.Modules.Bis.CommandHandlers.PrinterCommandHadler},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="printerRepository"></param>
+            <param name="logger"></param>
+            <param name="handler"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.PrinterCommandHadler.Handle(EES.Modules.Bis.Commands.Printer.CreatePrinterCmd,System.Threading.CancellationToken)">
+            <summary>
+            创建打印机
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.PrinterCommandHadler.Handle(EES.Modules.Bis.Commands.Printer.ModifyPrinterCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改打印机信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.PrinterCommandHadler.Handle(EES.Modules.Bis.Commands.Printer.DetelePrinterCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除打印机
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.PrinterCommandHadler.CheckPrinterRepeatedsync(System.String,System.String,System.Int64)">
+            <summary>
+            检查打印机是否重复
+            </summary>
+            <param name="PrinterName">规则名称</param>
+            <param name="IpAddress">规则名称</param>
+            <param name="PrinterId">规则id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.PrinterCommandHadler.CheckPrinterExistAsync(System.Int64)">
+            <summary>
+            检查打印机是否存在
+            </summary>
+            <param name="PrinterId">打印机id</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.CommandHandlers.RuleCommandHadler">
+            <summary>
+            条码规则命令处理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.RuleCommandHadler.#ctor(EES.Infrastructure.Service.ISystemParamsService,EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.BarCodeRule},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.RuleContent},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.TemplateData},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.BarCodeTypeConfig},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.BarCodeType},Microsoft.Extensions.Logging.ILogger{EES.Modules.Bis.CommandHandlers.RuleCommandHadler},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="ruleRepository"></param>
+            <param name="typeRepository"></param>
+            <param name="ruleContentRepository"></param>
+            <param name="typeConfigRepository"></param>
+            <param name="templateDataRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+            <param name="systemParams"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.RuleCommandHadler.Handle(EES.Modules.Bis.Commands.BarCodeRule.CreateRuleCmd,System.Threading.CancellationToken)">
+            <summary>
+            创建条码规则
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.RuleCommandHadler.Handle(EES.Modules.Bis.Commands.BarCodeRule.ReallyDeteleRuleCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除条码规则
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.RuleCommandHadler.Handle(EES.Modules.Bis.Commands.BarCodeRule.DeteleRuleCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除规则
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.RuleCommandHadler.Handle(EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改规则
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.RuleCommandHadler.Handle(EES.Modules.Bis.Commands.BarCodeRule.EnableRuleCmd,System.Threading.CancellationToken)">
+            <summary>
+            启用
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.RuleCommandHadler.Handle(EES.Modules.Bis.Commands.BarCodeRule.ForbiddenRuleCmd,System.Threading.CancellationToken)">
+            <summary>
+            禁用
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.RuleCommandHadler.CheckRuleExistAsync(System.Int64)">
+            <summary>
+            检查规则是否存在
+            </summary>
+            <param name="RuleId">规则id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.RuleCommandHadler.CheckRuleRepeatedsync(System.String,System.Int64)">
+            <summary>
+            检查规则名称是否重复
+            </summary>
+            <param name="RuleName">规则名称</param>
+            <param name="RuleId">规则id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.RuleCommandHadler.CheckContentNumRepeatedsync(System.Collections.Generic.IEnumerable{EES.Modules.Bis.Dto.RuleContentDto},System.String,System.Int64)">
+            <summary>
+            检查规则内容序号是否重复
+            </summary>
+            <param name="ruleContents">规则详情信息</param>
+            <param name="separator">分隔符</param>
+            <param name="RuleId">条码id</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.CommandHandlers.RuleContentCommandHadler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.RuleContentCommandHadler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.RuleContent},Microsoft.Extensions.Logging.ILogger{EES.Modules.Bis.CommandHandlers.RuleContentCommandHadler},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="ruleContentRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.RuleContentCommandHadler.Handle(EES.Modules.Bis.Commands.BarCodeRule.CreateRuleContentCmd,System.Threading.CancellationToken)">
+            <summary>
+            新增子表集合
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.RuleContentCommandHadler.Handle(EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleContentCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改集合
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.RuleContentCommandHadler.CheckContentNumRepeatedsync(System.Collections.Generic.IEnumerable{EES.Modules.Bis.Entities.RuleContent})">
+            <summary>
+            检查规则内容序号是否重复
+            </summary>
+            <param name="ruleContents">规则详情信息</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.CommandHandlers.TemplateCommandHadler">
+            <summary>
+            模板管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TemplateCommandHadler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.Template},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.TemplateData},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.BarCodeRule},Microsoft.Extensions.Logging.ILogger{EES.Modules.Bis.CommandHandlers.TemplateCommandHadler},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="templateRepository"></param>
+            <param name="ruleRepository"></param>
+            <param name="templateDataRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TemplateCommandHadler.Handle(EES.Modules.Bis.Commands.Template.CreateTemplateCmd,System.Threading.CancellationToken)">
+            <summary>
+            创建模板
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TemplateCommandHadler.Handle(EES.Modules.Bis.Commands.Template.DeteleTemplateCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除模板（假）
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TemplateCommandHadler.Handle(EES.Modules.Bis.Commands.Template.ReallyDeteleTemplateCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除模板（真）
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TemplateCommandHadler.Handle(EES.Modules.Bis.Commands.Template.ModifyTemplateCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改模板
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TemplateCommandHadler.CheckTemplateExistAsync(System.Int64)">
+            <summary>
+            检查模板是否存在
+            </summary>
+            <param name="TemplateId">模板id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TemplateCommandHadler.CheckTemplateRepeatedsync(System.String,System.Int64)">
+            <summary>
+            检查模板名称是否重复
+            </summary>
+            <param name="TemplateName">模板名称</param>
+            <param name="TemplateId">模板id</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.CommandHandlers.TemplateDateCommandHadler">
+            <summary>
+            模板管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TemplateDateCommandHadler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.TemplateData},Microsoft.Extensions.Logging.ILogger{EES.Modules.Bis.CommandHandlers.TemplateDateCommandHadler},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="templateDataRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TemplateDateCommandHadler.Handle(EES.Modules.Bis.Commands.Template.CreateTemplateDataCmd,System.Threading.CancellationToken)">
+            <summary>
+            新增
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TemplateDateCommandHadler.Handle(EES.Modules.Bis.Commands.Template.ModifyTemplateDataCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TemplateDateCommandHadler.CheckDataIdentifierRepeatedsync(System.Collections.Generic.IEnumerable{EES.Modules.Bis.Entities.TemplateData})">
+            <summary>
+            检查模板详情内标识是否重复
+            </summary>
+            <param name="templateDatas">模板详情信息</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.CommandHandlers.TypeCommandHadler">
+            <summary>
+            条码类型
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TypeCommandHadler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.BarCodeType},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.BarCodeTypeConfig},Microsoft.Extensions.Logging.ILogger{EES.Modules.Bis.CommandHandlers.TypeCommandHadler},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="typeRepository"></param>
+            <param name="typeConfigRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TypeCommandHadler.Handle(EES.Modules.Bis.Commands.BarCodeType.CreateTypeCmd,System.Threading.CancellationToken)">
+            <summary>
+            新增
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TypeCommandHadler.Handle(EES.Modules.Bis.Commands.BarCodeType.DeteleTypeCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除一个条码类型（假）
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TypeCommandHadler.Handle(EES.Modules.Bis.Commands.BarCodeType.ModifyTypeCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改条码类型
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TypeCommandHadler.Handle(EES.Modules.Bis.Commands.BarCodeType.ReallyDeteleTypeCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除条码类型（真）
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TypeCommandHadler.CheckTypeExistAsync(System.Int64)">
+            <summary>
+            检查类型是否存在
+            </summary>
+            <param name="TypeId">模板id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TypeCommandHadler.CheckInternalCodeRepeatedsync(System.String,System.Int64)">
+            <summary>
+            检查类型内码是否重复
+            </summary>
+            <param name="InternalCode">内码</param>
+            <param name="TypeId">类型id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TypeCommandHadler.Handle(EES.Modules.Bis.Commands.BarCodeType.EnableTypeCmd,System.Threading.CancellationToken)">
+            <summary>
+            启用
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TypeCommandHadler.Handle(EES.Modules.Bis.Commands.BarCodeType.ForbiddenTypeCmd,System.Threading.CancellationToken)">
+            <summary>
+            禁用
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TypeConfigCommandHadler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.BarCodeTypeConfig},Microsoft.Extensions.Logging.ILogger{EES.Modules.Bis.CommandHandlers.TemplateDateCommandHadler},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="typeConfigRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TypeConfigCommandHadler.Handle(EES.Modules.Bis.Commands.BarCodeType.CreateTypeConfigCmd,System.Threading.CancellationToken)">
+            <summary>
+            新增
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TypeConfigCommandHadler.Handle(EES.Modules.Bis.Commands.BarCodeType.ModifyTypeConfigCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改类型子表
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TypeConfigCommandHadler.CheckRecognizeAsync(System.Collections.Generic.IEnumerable{EES.Modules.Bis.Entities.BarCodeTypeConfig})">
+            <summary>
+            检查是否配置了多个生成规则
+            </summary>
+            <param name="barCodeTypeConfigs">模板详情信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.CommandHandlers.TypeConfigCommandHadler.CheckInfrastructureRepeatedAsync(System.Collections.Generic.IEnumerable{EES.Modules.Bis.Entities.BarCodeTypeConfig})">
+            <summary>
+            检查是否配置了多个生成规则
+            </summary>
+            <param name="barCodeTypeConfigs">模板详情信息</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeCancel.CreateCancelCmd">
+            <summary>
+            条码作废
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeCancel.CreateCancelCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeCancel.CreateCancelCmd.CancelBarCode">
+            <summary>
+            作废条码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeCancel.CreateCancelCmd.CancelReason">
+            <summary>
+            作废原因
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeCancel.DeteleCancelCmd">
+            <summary>
+            条码取消作废
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeCancel.DeteleCancelCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeCancel.DeteleCancelCmd.Id">
+            <summary>
+            规则ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeIssue.AddIssueCmd">
+            <summary>
+            追加发行
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeIssue.AddIssueCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeIssue.AddIssueCmd.IssueId">
+            <summary>
+            条码发行id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeIssue.AddIssueCmd.IssueQuantity">
+            <summary>
+            发行数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeIssue.AddIssueCmd.StartValue">
+            <summary>
+            起始值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeIssue.AddIssueCmd.EndValue">
+            <summary>
+            结束值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeIssue.AddIssueCmd.Source">
+            <summary>
+            数据来源（与打印来源一致，由自定义类型配置）
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeIssue.CreateIssueCmd">
+            <summary>
+            添加发行
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeIssue.CreateIssueCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeIssue.CreateIssueCmd.TypeId">
+            <summary>
+            条码类型表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeIssue.CreateIssueCmd.RuleId">
+            <summary>
+            条码规则表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeIssue.CreateIssueCmd.IssueQuantity">
+            <summary>
+            发行数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeIssue.CreateIssueCmd.Source">
+            <summary>
+            数据来源（与打印来源一致，由自定义类型配置）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeIssue.CreateIssueCmd.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeIssue.CreateIssueCmd.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeIssue.CreateIssueCmd.FactoryId">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeIssue.CreateIssueCmd.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeIssue.CreateIssueCmd.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeIssue.CreateIssueCmd.Batch">
+            <summary>
+            批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeIssue.CreateIssueCmd.BarCodeContents">
+            <summary>
+            发行的条码详情集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeRule.CreateBarCodeContentCmd">
+            <summary>
+            创建发行数据
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeRule.CreateBarCodeContentCmd.#ctor(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Bis.Dto.BarCodeContentDto})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="issueId"></param>
+            <param name="barCodeContents"></param>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.CreateBarCodeContentCmd.IssueId">
+            <summary>
+            条码发行id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.CreateBarCodeContentCmd.BarCodeContents">
+            <summary>
+            条码规则详情集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeRule.CreateRuleCmd">
+            <summary>
+            创建规则主表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeRule.CreateRuleCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.CreateRuleCmd.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.CreateRuleCmd.Name">
+            <summary>
+            规则名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.CreateRuleCmd.TotalLength">
+            <summary>
+            总长度（根据条码规则内容表自动计算）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.CreateRuleCmd.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.CreateRuleCmd.IsContainBarCode">
+            <summary>
+            是否包含条码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.CreateRuleCmd.TemplateId">
+            <summary>
+            打印模板ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.CreateRuleCmd.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.CreateRuleCmd.IdentificationMark">
+            <summary>
+            识别标识（按照长度识别，分隔符识别）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.CreateRuleCmd.Separator">
+            <summary>
+            分隔符
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.CreateRuleCmd.AddSeparatorPosition">
+            <summary>
+            添加分隔符的位置（首，尾，首尾）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.CreateRuleCmd.BarCodeType">
+            <summary>
+            条码类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.CreateRuleCmd.RuleContents">
+            <summary>
+            条码规则详情集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeRule.CreateRuleContentCmd">
+            <summary>
+            创建规则子表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeRule.CreateRuleContentCmd.#ctor(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Bis.Dto.RuleContentDto})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="ruleId"></param>
+            <param name="ruleContents"></param>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.CreateRuleContentCmd.RuleId">
+            <summary>
+            条码规则表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.CreateRuleContentCmd.RuleContents">
+            <summary>
+            条码规则详情集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeRule.DeteleRuleCmd">
+            <summary>
+            删除规则主表（假）
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeRule.DeteleRuleCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.DeteleRuleCmd.Id">
+            <summary>
+            规则ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeRule.EnableRuleCmd">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeRule.EnableRuleCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.EnableRuleCmd.Id">
+            <summary>
+            规则ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeRule.ForbiddenRuleCmd">
+            <summary>
+            禁用
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeRule.ForbiddenRuleCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.ForbiddenRuleCmd.Id">
+            <summary>
+            规则ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleCmd">
+            <summary>
+            修改规则主表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleCmd.Id">
+            <summary>
+            规则ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleCmd.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleCmd.Name">
+            <summary>
+            规则名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleCmd.TotalLength">
+            <summary>
+            总长度（根据条码规则内容表自动计算）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleCmd.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleCmd.IsContainBarCode">
+            <summary>
+            是否包含条码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleCmd.TemplateId">
+            <summary>
+            打印模板ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleCmd.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleCmd.IdentificationMark">
+            <summary>
+            识别标识（按照长度识别，分隔符识别）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleCmd.Separator">
+            <summary>
+            分隔符
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleCmd.AddSeparatorPosition">
+            <summary>
+            添加分隔符的位置（首，尾，首尾）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleCmd.BarCodeType">
+            <summary>
+            条码类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleCmd.RuleContents">
+            <summary>
+            条码规则详情集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleContentCmd">
+            <summary>
+            创建规则子表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleContentCmd.#ctor(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Bis.Dto.RuleContentDto},System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="ruleId"></param>
+            <param name="ruleContents"></param>
+            <param name="oldRuleContentIds"></param>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleContentCmd.RuleId">
+            <summary>
+            条码规则表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleContentCmd.RuleContents">
+            <summary>
+            条码规则详情集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleContentCmd.OldRuleContentIds">
+            <summary>
+            条码规则详情集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeRule.ReallyDeteleRuleCmd">
+            <summary>
+            真删除规则主表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeRule.ReallyDeteleRuleCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeRule.ReallyDeteleRuleCmd.Id">
+            <summary>
+            规则ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarcodeRecognitionCmd">
+            <summary>
+            条码识别
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarcodeRecognitionCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarcodeRecognitionCmd.InternalCode">
+            <summary>
+            内码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarcodeRecognitionCmd.BarCode">
+            <summary>
+            条码
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeType.CreateTypeCmd">
+            <summary>
+            创建条码类型
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeType.CreateTypeCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.CreateTypeCmd.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.CreateTypeCmd.Name">
+            <summary>
+            类型名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.CreateTypeCmd.InternalCode">
+            <summary>
+            内码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.CreateTypeCmd.IsSystemDefault">
+            <summary>
+            是否系统内定
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.CreateTypeCmd.IsDeletereplenishChar">
+            <summary>
+            是否去掉补全字符(识别时使用)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.CreateTypeCmd.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.CreateTypeCmd.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.CreateTypeCmd.PageOrder">
+            <summary>
+            打印顺序：1-&gt;正向打印，2-&gt;反向打印
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.CreateTypeCmd.PrinterId">
+            <summary>
+            打印机ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.CreateTypeCmd.BarCodeTypeConfigs">
+            <summary>
+            条码类型详情集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeType.CreateTypeConfigCmd">
+            <summary>
+            创建类型子表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeType.CreateTypeConfigCmd.#ctor(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Bis.Dto.BarCodeTypeConfigDto})">
+            <summary>
+            
+            </summary>
+            <param name="typeId"></param>
+            <param name="barCodeTypeConfigs"></param>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.CreateTypeConfigCmd.TypeId">
+            <summary>
+            条码类型表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.CreateTypeConfigCmd.barCodeTypeConfigs">
+            <summary>
+            条码类型详情集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeType.DeteleTypeCmd">
+            <summary>
+            删除类型主表（假）
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeType.DeteleTypeCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.DeteleTypeCmd.Id">
+            <summary>
+            规则ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeType.EnableTypeCmd">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeType.EnableTypeCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.EnableTypeCmd.Id">
+            <summary>
+            规则ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeType.ForbiddenTypeCmd">
+            <summary>
+            禁用
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeType.ForbiddenTypeCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.ForbiddenTypeCmd.Id">
+            <summary>
+            规则ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeType.ModifyTypeCmd">
+            <summary>
+            修改类型主表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeType.ModifyTypeCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.ModifyTypeCmd.Id">
+            <summary>
+            规则ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.ModifyTypeCmd.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.ModifyTypeCmd.Name">
+            <summary>
+            类型名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.ModifyTypeCmd.InternalCode">
+            <summary>
+            内码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.ModifyTypeCmd.IsSystemDefault">
+            <summary>
+            是否系统内定
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.ModifyTypeCmd.IsDeletereplenishChar">
+            <summary>
+            是否去掉补全字符(识别时使用)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.ModifyTypeCmd.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.ModifyTypeCmd.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.ModifyTypeCmd.PageOrder">
+            <summary>
+            打印顺序：1-&gt;正向打印，2-&gt;反向打印
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.ModifyTypeCmd.PrinterId">
+            <summary>
+            打印机ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.ModifyTypeCmd.BarCodeTypeConfigs">
+            <summary>
+            条码类型详情集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeType.ModifyTypeConfigCmd">
+            <summary>
+            修改类型子表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeType.ModifyTypeConfigCmd.#ctor(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Bis.Dto.BarCodeTypeConfigDto},System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            
+            </summary>
+            <param name="typeId"></param>
+            <param name="barCodeTypeConfigs"></param>
+            <param name="oldBarCodeTypeConfigIds"></param>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.ModifyTypeConfigCmd.TypeId">
+            <summary>
+            条码类型表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.ModifyTypeConfigCmd.BarCodeTypeConfigs">
+            <summary>
+            条码类型详情集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.ModifyTypeConfigCmd.OldBarCodeTypeConfigIds">
+            <summary>
+            条码类型详情集合（旧）
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.BarCodeType.ReallyDeteleTypeCmd">
+            <summary>
+            真删除类型主表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.BarCodeType.ReallyDeteleTypeCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.BarCodeType.ReallyDeteleTypeCmd.Id">
+            <summary>
+            规则ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.Printer.CreatePrinterCmd">
+            <summary>
+            创建打印机信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.Printer.CreatePrinterCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.CreatePrinterCmd.Name">
+            <summary>
+            打印机名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.CreatePrinterCmd.MacAddress">
+            <summary>
+            Mac地址
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.CreatePrinterCmd.IpAddress">
+            <summary>
+            IP地址
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.CreatePrinterCmd.PrintSizeWidth">
+            <summary>
+            打印尺寸-宽
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.CreatePrinterCmd.PrintSizeHeight">
+            <summary>
+            打印尺寸-高
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.CreatePrinterCmd.OrientationX">
+            <summary>
+            定位-X
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.CreatePrinterCmd.OrientationY">
+            <summary>
+            定位-Y
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.CreatePrinterCmd.OffsetX">
+            <summary>
+            偏移-X
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.CreatePrinterCmd.OffsetY">
+            <summary>
+            偏移-Y
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.CreatePrinterCmd.Type">
+            <summary>
+            类型(1-&gt;网络打印，2-&gt;本地打印)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.CreatePrinterCmd.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.CreatePrinterCmd.Model">
+            <summary>
+            打印机型号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.CreatePrinterCmd.Photograph">
+            <summary>
+            打印机照片
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.Printer.DetelePrinterCmd">
+            <summary>
+            删除规则主表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.Printer.DetelePrinterCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.DetelePrinterCmd.Id">
+            <summary>
+            规则ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.Printer.ModifyPrinterCmd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.ModifyPrinterCmd.Id">
+            <summary>
+            规则ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.ModifyPrinterCmd.Name">
+            <summary>
+            打印机名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.ModifyPrinterCmd.MacAddress">
+            <summary>
+            Mac地址
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.ModifyPrinterCmd.IpAddress">
+            <summary>
+            IP地址
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.ModifyPrinterCmd.PrintSizeWidth">
+            <summary>
+            打印尺寸-宽
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.ModifyPrinterCmd.PrintSizeHeight">
+            <summary>
+            打印尺寸-高
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.ModifyPrinterCmd.OrientationX">
+            <summary>
+            定位-X
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.ModifyPrinterCmd.OrientationY">
+            <summary>
+            定位-Y
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.ModifyPrinterCmd.OffsetX">
+            <summary>
+            偏移-X
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.ModifyPrinterCmd.OffsetY">
+            <summary>
+            偏移-Y
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.ModifyPrinterCmd.Type">
+            <summary>
+            类型(1-&gt;网络打印，2-&gt;本地打印)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.ModifyPrinterCmd.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.ModifyPrinterCmd.Model">
+            <summary>
+            打印机型号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Printer.ModifyPrinterCmd.Photograph">
+            <summary>
+            打印机照片
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.PrintFromRecordCmd">
+            <summary>
+            从打印机记录处打印
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.PrintFromRecordCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintFromRecordCmd.PrintRecordId">
+            <summary>
+            打印记录表id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintFromRecordCmd.StartVal">
+            <summary>
+            起始值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintFromRecordCmd.EndVal">
+            <summary>
+            结束值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintFromRecordCmd.PrintTimes">
+            <summary>
+            打印次数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintFromRecordCmd.PrinterName">
+            <summary>
+            打印机名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintFromRecordCmd.MacAddress">
+            <summary>
+            Mac地址
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintFromRecordCmd.IpAddress">
+            <summary>
+            IP地址
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.PrintTransferCmd">
+            <summary>
+            打印传值
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.PrintTransferCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintTransferCmd.printContentDtos">
+            <summary>
+            打印数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintTransferCmd.Internalcode">
+            <summary>
+            内码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintTransferCmd.StartVal">
+            <summary>
+            起始值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintTransferCmd.EndVal">
+            <summary>
+            结束值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintTransferCmd.Source">
+            <summary>
+            发起打印源（具体内容自定义配置）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintTransferCmd.ReprintReason">
+            <summary>
+            补打原因
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintTransferCmd.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintTransferCmd.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintTransferCmd.FactoryId">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintTransferCmd.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintTransferCmd.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintTransferCmd.Batch">
+            <summary>
+            批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.PrintTransferCmd.PrintTimes">
+            <summary>
+            打印次数
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.Template.CreateTemplateCmd">
+            <summary>
+            创建模板主表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.Template.CreateTemplateCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Template.CreateTemplateCmd.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Template.CreateTemplateCmd.Name">
+            <summary>
+            模板名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Template.CreateTemplateCmd.HtmlId">
+            <summary>
+            关联表单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Template.CreateTemplateCmd.HtmlName">
+            <summary>
+            关联表单名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Template.CreateTemplateCmd.TemplateDatas">
+            <summary>
+            模板数据字段配置集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.Template.CreateTemplateDataCmd">
+            <summary>
+            创建模板子表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.Template.CreateTemplateDataCmd.#ctor(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Bis.Dto.TemplateDataDto})">
+            <summary>
+            
+            </summary>
+            <param name="templateId"></param>
+            <param name="templateDatas"></param>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Template.CreateTemplateDataCmd.TemplateId">
+            <summary>
+            模板表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Template.CreateTemplateDataCmd.templateDatas">
+            <summary>
+            模板详情集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.Template.DeteleTemplateCmd">
+            <summary>
+            删除模板主表（假）
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.Template.DeteleTemplateCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Template.DeteleTemplateCmd.Id">
+            <summary>
+            模板ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.Template.ModifyTemplateCmd">
+            <summary>
+            修改模板主表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.Template.ModifyTemplateCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Template.ModifyTemplateCmd.Id">
+            <summary>
+            模板ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Template.ModifyTemplateCmd.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Template.ModifyTemplateCmd.Name">
+            <summary>
+            模板名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Template.ModifyTemplateCmd.HtmlId">
+            <summary>
+            关联表单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Template.ModifyTemplateCmd.HtmlName">
+            <summary>
+            关联表单名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Template.ModifyTemplateCmd.TemplateDatas">
+            <summary>
+            模板数据字段配置集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.Template.ModifyTemplateDataCmd">
+            <summary>
+            创建模板子表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.Template.ModifyTemplateDataCmd.#ctor(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Bis.Dto.TemplateDataDto},System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            
+            </summary>
+            <param name="templateId"></param>
+            <param name="templateDatas"></param>
+            <param name="oldTemplateDataIds"></param>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Template.ModifyTemplateDataCmd.TemplateId">
+            <summary>
+            模板表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Template.ModifyTemplateDataCmd.TemplateDatas">
+            <summary>
+            模板详情集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Template.ModifyTemplateDataCmd.OldTemplateDataIds">
+            <summary>
+            模板详情集合（旧）
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Commands.Template.ReallyDeteleTemplateCmd">
+            <summary>
+            真删除模板主表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Commands.Template.ReallyDeteleTemplateCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Commands.Template.ReallyDeteleTemplateCmd.Id">
+            <summary>
+            模板ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Controllers.CancelController">
+            <summary>
+            条码作废
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.CancelController.GetIdToCancelAsync(System.Int64)">
+            <summary>
+            根据id获取作废条码
+            </summary>
+            <param name="cancelId">规则id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.CancelController.GetRulesAsync(System.Int32,System.Int32,System.String,System.Boolean)">
+            <summary>
+            获取作废条码信息列表
+            </summary>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">每页数据量</param>
+            <param name="barCode">作废条码</param>
+            <param name="isGetTotalCount">是否返回总数量的信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.CancelController.CreateCancelAsync(EES.Modules.Bis.Commands.BarCodeCancel.CreateCancelCmd)">
+            <summary>
+            条码作废
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.CancelController.DeleteCancelAsync(EES.Modules.Bis.Commands.BarCodeCancel.DeteleCancelCmd)">
+            <summary>
+            取消作废
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.Controllers.IssueController">
+            <summary>
+            条码发行管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.IssueController.GetIdToIssuesAsync(System.Int64)">
+            <summary>
+            获取条码规则信息
+            </summary>
+            <param name="issuesId">发行id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.IssueController.GetIssuesAsync(EES.Modules.Bis.Dto.SelectIssueDto)">
+            <summary>
+            获取条码发行信息列表
+            </summary>
+            <param name="selectIssueDto">查询条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.IssueController.CreateIssueAsync(EES.Modules.Bis.Commands.BarCodeIssue.CreateIssueCmd)">
+            <summary>
+            创建条码发行
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.IssueController.IssueBarcodeAsync(EES.Modules.Share.Commands.Bis.IssueBarcodeCmd)">
+            <summary>
+            添加发行
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.IssueController.AddIssueAsync(EES.Modules.Bis.Commands.BarCodeIssue.AddIssueCmd)">
+            <summary>
+            追加发行
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.Controllers.PrintController">
+            <summary>
+            条码打印管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.PrintController.GetRuleAsync(System.Int64)">
+            <summary>
+            根据id获取标签打印记录
+            </summary>
+            <param name="printRecordId">打印记录id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.PrintController.GetPrintRecordsAsync(EES.Modules.Bis.Dto.SelectPrintRecordDto)">
+            <summary>
+            获取标签历史打印记录列表
+            </summary>
+            <param name="selectPrintRecordDto">查询条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.PrintController.PrintBarcodeAsync(EES.Modules.Bis.Commands.PrintFromRecordCmd)">
+            <summary>
+            打印记录处打印条码
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.PrintController.PrintBarcodeForeignAsync(EES.Modules.Share.Commands.Bis.PrintTransferForeignCmd)">
+            <summary>
+            打印
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.PrintController.ModifyPrintStateAsync(EES.Modules.Share.Commands.Bis.ModifyPrintStateCmd)">
+            <summary>
+            修改打印状态
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.PrintController.BarcodeRecognitionAsync(EES.Modules.Share.Commands.Bis.BarcodeRecognitionForeignCmd)">
+            <summary>
+            条码识别
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.Controllers.PrinterController">
+            <summary>
+            打印机管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.PrinterController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Bis.Controllers.PrinterController},MediatR.IMediator,EES.Modules.Bis.Services.IPrinterServices)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+            <param name="printerServices"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.PrinterController.GetPrinterAsync(System.Int64)">
+            <summary>
+            获取打印机信息
+            </summary>
+            <param name="printerId">打印机id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.PrinterController.GetPrintersAsync(System.Int32,System.Int32,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            获取打印机信息列表
+            </summary>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">每页数据量</param>
+            <param name="printerName">打印机名称</param>
+            <param name="ipAddress">打印IP地址</param>
+            <param name="isGetTotalCount">是否返回总数量的信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.PrinterController.CreatePrinterAsync(EES.Modules.Bis.Commands.Printer.CreatePrinterCmd)">
+            <summary>
+            创建打印机
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.PrinterController.ModifyPrinterAsync(EES.Modules.Bis.Commands.Printer.ModifyPrinterCmd)">
+            <summary>
+            修改打印机
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.PrinterController.DetelePrinterAsync(EES.Modules.Bis.Commands.Printer.DetelePrinterCmd)">
+            <summary>
+            删除打印机
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.Controllers.RuleController">
+            <summary>
+            条码规则管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.RuleController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Bis.Controllers.RuleController},MediatR.IMediator,EES.Modules.Bis.Services.IRuleServices)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+            <param name="ruleServices"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.RuleController.GetRuleAsync(System.Int64)">
+            <summary>
+            获取条码规则信息
+            </summary>
+            <param name="ruleId">规则id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.RuleController.GetRulesAsync(System.Int32,System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            获取条码规则信息列表
+            </summary>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">每页数据量</param>
+            <param name="ruleName">条码规则名称</param>
+            <param name="otalLength">条码总长度</param>
+            <param name="isGetTotalCount">是否返回总数量的信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.RuleController.CreateRuleAsync(EES.Modules.Bis.Commands.BarCodeRule.CreateRuleCmd)">
+            <summary>
+            创建条码规则
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.RuleController.ModifyRuleAsync(EES.Modules.Bis.Commands.BarCodeRule.ModifyRuleCmd)">
+            <summary>
+            修改条码规则
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.RuleController.EnableRuleAsync(EES.Modules.Bis.Commands.BarCodeRule.EnableRuleCmd)">
+            <summary>
+            规则启用
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.RuleController.ForbiddenRuleAsync(EES.Modules.Bis.Commands.BarCodeRule.ForbiddenRuleCmd)">
+            <summary>
+            规则禁用
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.RuleController.DeleteRuleAsync(EES.Modules.Bis.Commands.BarCodeRule.DeteleRuleCmd)">
+            <summary>
+            删除条码规则（假）
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.RuleController.ReallyDeleteRuleAsync(EES.Modules.Bis.Commands.BarCodeRule.ReallyDeteleRuleCmd)">
+            <summary>
+            删除条码规则(真)
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.Controllers.TemplateController">
+            <summary>
+            模板管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.TemplateController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Bis.Controllers.TemplateController},EES.Modules.Bis.Services.ITemplateServices,MediatR.IMediator)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="templateServices"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.TemplateController.GetTemplateAsync(System.Int64)">
+            <summary>
+            获取模板信息
+            </summary>
+            <param name="templateId">模板id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.TemplateController.GetTemplatesAsync(System.Int32,System.Int32,System.String,System.String,System.Boolean)">
+            <summary>
+            获取模板信息列表
+            </summary>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">每页数据量</param>
+            <param name="templateName">模板名称</param>
+            <param name="htmlName">关联标签名称</param>
+            <param name="isGetTotalCount">是否返回总数量的信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.TemplateController.CreateTemplateAsync(EES.Modules.Bis.Commands.Template.CreateTemplateCmd)">
+            <summary>
+            创建模板
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.TemplateController.ModifyTemplateAsync(EES.Modules.Bis.Commands.Template.ModifyTemplateCmd)">
+            <summary>
+            修改模板
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.TemplateController.DeleteTemplateAsync(EES.Modules.Bis.Commands.Template.DeteleTemplateCmd)">
+            <summary>
+            删除模板（假）
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.TemplateController.ReallyDeleteTemplateAsync(EES.Modules.Bis.Commands.Template.ReallyDeteleTemplateCmd)">
+            <summary>
+            删除模板信息(真)
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.Controllers.TypeController">
+            <summary>
+            条码类型管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.TypeController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Bis.Controllers.TypeController},EES.Modules.Bis.Services.ITypeServices,MediatR.IMediator)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="typeServices"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.TypeController.GetTypeAsync(System.Int64)">
+            <summary>
+            获取条码类型信息
+            </summary>
+            <param name="typeId">规则id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.TypeController.EnableTypeAsync(EES.Modules.Bis.Commands.BarCodeType.EnableTypeCmd)">
+            <summary>
+            类型启用
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.TypeController.ForbiddenTypeAsync(EES.Modules.Bis.Commands.BarCodeType.ForbiddenTypeCmd)">
+            <summary>
+            类型禁用
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.TypeController.GetTypesAsync(System.Int32,System.Int32,System.String,System.String,System.Boolean)">
+            <summary>
+            获取条码类型信息列表
+            </summary>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">每页数据量</param>
+            <param name="typeName">条码类型名称</param>
+            <param name="internalCode">条码内码</param>
+            <param name="isGetTotalCount">是否返回总数量的信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.TypeController.CreateTypeAsync(EES.Modules.Bis.Commands.BarCodeType.CreateTypeCmd)">
+            <summary>
+            创建条码类型
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.TypeController.ModifyTypeAsync(EES.Modules.Bis.Commands.BarCodeType.ModifyTypeCmd)">
+            <summary>
+            修改条码类型
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.TypeController.DeleteTypeAsync(EES.Modules.Bis.Commands.BarCodeType.DeteleTypeCmd)">
+            <summary>
+            删除条码类型（假）
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.TypeController.ReallyDeleteTypeAsync(EES.Modules.Bis.Commands.BarCodeType.ReallyDeteleTypeCmd)">
+            <summary>
+            删除条码类型信息(真)
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.Controllers.UpdateLogControllers">
+            <summary>
+            更新日志
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Controllers.UpdateLogControllers.GetBisUpdateLogAsync(EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto.PagedataAppoint)">
+            <summary>
+            查询Bis（条码管理更新日志）
+            </summary>
+            <param name="PageData">分页查询数据</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.Data.AutoMapperConfig">
+            <summary>
+            automapper配置
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Data.AutoMapperConfig.#ctor">
+            <summary>
+            配置
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Data.BisModelBuilder">
+            <summary>
+            BIS模块的模型构建
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Data.BisModelBuilder.Build(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            模型绑定
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+        <member name="T:EES.Modules.Bis.Data.ModuleInitializer">
+            <summary>
+            模块初始化
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Data.ModuleInitializer.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            配置
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.Data.ModuleInitializer.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置服务
+            </summary>
+            <param name="serviceCollection"></param>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.BarCodeCancelDto">
+            <summary>
+            条码作废表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeCancelDto.Id">
+            <summary>
+            数据的唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeCancelDto.CancelBarCode">
+            <summary>
+            作废条码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeCancelDto.CancelUser">
+            <summary>
+            作废人
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeCancelDto.CancelUserId">
+            <summary>
+            作废人id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeCancelDto.CancelTime">
+            <summary>
+            作废时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeCancelDto.CancelReason">
+            <summary>
+            作废原因
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.BarCodeContentDto">
+            <summary>
+            条码发行详情数据存储表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeContentDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeContentDto.IssueId">
+            <summary>
+            条码发行id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeContentDto.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeContentDto.Identify">
+            <summary>
+            标识符
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeContentDto.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.BarCodeIssueDto">
+            <summary>
+            条码发行表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeIssueDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeIssueDto.TypeId">
+            <summary>
+            条码类型表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeIssueDto.TypeName">
+            <summary>
+            条码类型名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeIssueDto.RuleId">
+            <summary>
+            条码规则表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeIssueDto.RuleName">
+            <summary>
+            条码规则名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeIssueDto.TotalIssueQuantity">
+            <summary>
+            发行总数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeIssueDto.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeIssueDto.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeIssueDto.Batch">
+            <summary>
+            批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeIssueDto.QueryContent">
+            <summary>
+            检索内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeIssueDto.IncompleteBarCode">
+            <summary>
+            条码（除开流水和验证码的条码）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeIssueDto.IssueState">
+            <summary>
+            发行状态（1--&gt;待发行，--&gt;已发行）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeIssueDto.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeIssueDto.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeIssueDto.FactoryId">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeIssueDto.BarCodeContents">
+            <summary>
+            发行的条码详情集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeIssueDto.IssueRecords">
+            <summary>
+            发行的条码详情集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.BarCodeRuleDto">
+            <summary>
+            条码规则表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeRuleDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeRuleDto.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeRuleDto.Name">
+            <summary>
+            规则名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeRuleDto.TotalLength">
+            <summary>
+            总长度（根据条码规则内容表自动计算）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeRuleDto.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeRuleDto.TemplateId">
+            <summary>
+            打印模板ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeRuleDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeRuleDto.IdentificationMark">
+            <summary>
+            识别标识（按照长度识别，分隔符识别）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeRuleDto.Separator">
+            <summary>
+            分隔符
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeRuleDto.AddSeparatorPosition">
+            <summary>
+            添加分隔符的位置（开头，结尾，开头和结尾）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeRuleDto.BarCodeType">
+            <summary>
+            条码类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeRuleDto.RuleContents">
+            <summary>
+            条码规则详情集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.BarCodeTypeConfigDto">
+            <summary>
+            条码规则内容表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeTypeConfigDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeTypeConfigDto.TypeId">
+            <summary>
+            条码类型表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeTypeConfigDto.RuleId">
+            <summary>
+            条码规则表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeTypeConfigDto.RuleName">
+            <summary>
+            条码规则名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeTypeConfigDto.Type">
+            <summary>
+            类型(1-&gt;生成类型，2-&gt;识别类型)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeTypeConfigDto.IsIssue">
+            <summary>
+            是否直接发行
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.BarCodeTypeDto">
+            <summary>
+            条码类型表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeTypeDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeTypeDto.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeTypeDto.Name">
+            <summary>
+            类型名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeTypeDto.InternalCode">
+            <summary>
+            内码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeTypeDto.IsSystemDefault">
+            <summary>
+            是否系统内定
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeTypeDto.IsDeletereplenishChar">
+            <summary>
+            是否去掉补全字符(识别时使用)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeTypeDto.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeTypeDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeTypeDto.PageOrder">
+            <summary>
+            打印顺序：1-&gt;正向打印，2-&gt;反向打印
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeTypeDto.PrinterId">
+            <summary>
+            打印机ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.BarCodeTypeDto.BarCodeTypeConfigs">
+            <summary>
+            条码类型详情集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.IssueRecordsDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.IssueRecordsDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.IssueRecordsDto.IssueId">
+            <summary>
+            条码发行id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.IssueRecordsDto.IssueQuantity">
+            <summary>
+            发行数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.IssueRecordsDto.StartValue">
+            <summary>
+            起始值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.IssueRecordsDto.EndValue">
+            <summary>
+            结束值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.IssueRecordsDto.Source">
+            <summary>
+            数据来源（与打印来源一致，由自定义类型配置）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.IssueRecordsDto.IssueType">
+            <summary>
+            发行类型(1-&gt;正常发行，2--&gt;追加发行，4--&gt;复制发行)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.IssueRecordsDto.BeCopiedBarCode">
+            <summary>
+            被复制的条码（发行类型为复制发行时使用）
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.PrintContentDto">
+            <summary>
+            打印内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintContentDto.Identify">
+            <summary>
+            标识符
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintContentDto.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.PrinterDto">
+            <summary>
+            条码发行表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrinterDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrinterDto.Name">
+            <summary>
+            打印机名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrinterDto.MacAddress">
+            <summary>
+            Mac地址
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrinterDto.IpAddress">
+            <summary>
+            IP地址
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrinterDto.PrintSizeWidth">
+            <summary>
+            打印尺寸-宽
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrinterDto.PrintSizeHeight">
+            <summary>
+            打印尺寸-高
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrinterDto.OrientationX">
+            <summary>
+            定位-X
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrinterDto.OrientationY">
+            <summary>
+            定位-Y
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrinterDto.OffsetX">
+            <summary>
+            偏移-X
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrinterDto.OffsetY">
+            <summary>
+            偏移-Y
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrinterDto.Type">
+            <summary>
+            类型(1-&gt;网络打印，2-&gt;本地打印)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrinterDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrinterDto.Model">
+            <summary>
+            打印机型号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrinterDto.Photograph">
+            <summary>
+            打印机照片
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.PrintRecordDetailsDto">
+            <summary>
+            打印记录数据存储表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDetailsDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDetailsDto.PrintRecordId">
+            <summary>
+            打印记录表id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDetailsDto.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDetailsDto.Identify">
+            <summary>
+            标识符
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDetailsDto.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDetailsDto.IsBelongRule">
+            <summary>
+            是否规则内容
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.PrintRecordDto">
+            <summary>
+            外部打印记录详情表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.TypeId">
+            <summary>
+            条码类型表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.TypeName">
+            <summary>
+            条码类型名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.RuleId">
+            <summary>
+            条码规则表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.RuleName">
+            <summary>
+            条码规则名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.Type">
+            <summary>
+            打印类型：1-&gt;条码打印，2-&gt;组成条码，4-&gt;条码复制，8-&gt;区间补打
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.StartValue">
+            <summary>
+            起始值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.EndValue">
+            <summary>
+            结束值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.IncompleteBarCode">
+            <summary>
+            条码（除开流水和验证码的条码）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.BeCopiedBarCode">
+            <summary>
+            被复制的条码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.Source">
+            <summary>
+            发起打印源（具体内容自定义配置）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.ReprintReason">
+            <summary>
+            补打原因
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.FactoryId">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.Batch">
+            <summary>
+            批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.Name">
+            <summary>
+            打印机名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.MacAddress">
+            <summary>
+            Mac地址
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.IpAddress">
+            <summary>
+            IP地址
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.IsPrinted">
+            <summary>
+            是否已打印
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.PrintType">
+            <summary>
+            类型(1-&gt;网络打印，2-&gt;本地打印)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.PrinterName">
+            <summary>
+            打印机名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintRecordDto.PrintRecordDetails">
+            <summary>
+            条码打印记录详情集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.PrintTransferDto">
+            <summary>
+            打印传值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintTransferDto.printContentDtos">
+            <summary>
+            打印数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintTransferDto.Internalcode">
+            <summary>
+            内码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintTransferDto.StartVal">
+            <summary>
+            起始值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.PrintTransferDto.EndVal">
+            <summary>
+            结束值
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.ReturnBarcodeDetailsDto">
+            <summary>
+            返回解析后条码详情
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Dto.ReturnBarcodeDetailsDto.#ctor(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <param name="identifier"></param>
+            <param name="identifierExplain"></param>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.ReturnBarcodeDetailsDto.Value">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.ReturnBarcodeDetailsDto.Identifier">
+            <summary>
+            标识符
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.ReturnBarcodeDetailsDto.IdentifierExplain">
+            <summary>
+            标识符说明
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.ReturnBarcodeDetailsListDto">
+            <summary>
+            识别返回数据集
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Dto.ReturnBarcodeDetailsListDto.#ctor(System.Collections.Generic.List{EES.Modules.Bis.Dto.ReturnBarcodeDetailsDto},System.String)">
+            <summary>
+            
+            </summary>
+            <param name="returnBarcodeDetailsDtos"></param>
+            <param name="ruleName"></param>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.ReturnBarcodeDetailsListDto.returnBarcodeDetailsDtos">
+            <summary>
+            条码详情
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.ReturnBarcodeDetailsListDto.ruleName">
+            <summary>
+            规则名称
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.ReturnBarCodeDto">
+            <summary>
+            返回条码信息
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.ReturnBarCodeDto.BarCode">
+            <summary>
+            条码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.ReturnBarCodeDto.IsCancel">
+            <summary>
+            是否作废
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.ReturnPrintDataDto">
+            <summary>
+            返回打印数据
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Dto.ReturnPrintDataDto.#ctor(System.String,System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="jsonContent"></param>
+            <param name="htmlId"></param>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.ReturnPrintDataDto.JsonContent">
+            <summary>
+            json内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.ReturnPrintDataDto.HtmlId">
+            <summary>
+            关联表单ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.ReturnPrintDataListDto">
+            <summary>
+            返回打印数据
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Dto.ReturnPrintDataListDto.#ctor(System.Collections.Generic.List{EES.Modules.Bis.Dto.ReturnPrintDataDto},System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="returnPrintDatas"></param>
+            <param name="printRecordId"></param>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.ReturnPrintDataListDto.ReturnPrintDatas">
+            <summary>
+            json内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.ReturnPrintDataListDto.PrintRecordId">
+            <summary>
+            打印记录ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.RuleContentDto">
+            <summary>
+            条码规则内容表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.RuleContentDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.RuleContentDto.RuleId">
+            <summary>
+            条码规则表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.RuleContentDto.Number">
+            <summary>
+            序号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.RuleContentDto.Name">
+            <summary>
+            内容名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.RuleContentDto.Length">
+            <summary>
+            长度
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.RuleContentDto.ValueType">
+            <summary>
+            类型(1--&gt;指定值，2--&gt;流水号，4---&gt;验证码，8---&gt;其他数据源)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.RuleContentDto.Identifier">
+            <summary>
+            标识
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.RuleContentDto.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.RuleContentDto.IsQueryCondition">
+            <summary>
+            是否作为查询条件
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.RuleContentDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.SelectIssueDto">
+            <summary>
+            条码发行表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectIssueDto.InternalCode">
+            <summary>
+            内码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectIssueDto.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectIssueDto.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectIssueDto.Batch">
+            <summary>
+            批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectIssueDto.BarCode">
+            <summary>
+            条码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectIssueDto.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectIssueDto.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectIssueDto.FactoryId">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectIssueDto.PageIndex">
+            <summary>
+            页码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectIssueDto.PageSize">
+            <summary>
+            每页数据量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectIssueDto.isGetTotalCount">
+            <summary>
+            是否返回总数量的信息
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.SelectPrintRecordDto">
+            <summary>
+            打印记录查询条件
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectPrintRecordDto.InternalCode">
+            <summary>
+            内码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectPrintRecordDto.IncompleteBarCode">
+            <summary>
+            条码（除开流水和验证码的条码）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectPrintRecordDto.BeCopiedBarCode">
+            <summary>
+            被复制的条码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectPrintRecordDto.PrinterName">
+            <summary>
+            打印机名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectPrintRecordDto.MacAddress">
+            <summary>
+            Mac地址
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectPrintRecordDto.IpAddress">
+            <summary>
+            IP地址
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectPrintRecordDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectPrintRecordDto.StartTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectPrintRecordDto.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectPrintRecordDto.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectPrintRecordDto.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectPrintRecordDto.FactoryId">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectPrintRecordDto.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectPrintRecordDto.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectPrintRecordDto.Batch">
+            <summary>
+            批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectPrintRecordDto.IsPrinted">
+            <summary>
+            是否已打印
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectPrintRecordDto.PageIndex">
+            <summary>
+            页码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectPrintRecordDto.PageSize">
+            <summary>
+            每页数据量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.SelectPrintRecordDto.isGetTotalCount">
+            <summary>
+            是否返回总数量的信息
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.TemplateDataDto">
+            <summary>
+            数据源配置表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.TemplateDataDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.TemplateDataDto.TemplateId">
+            <summary>
+            打印模板ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.TemplateDataDto.Identifier">
+            <summary>
+            标识符
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.TemplateDataDto.IdentifierExplain">
+            <summary>
+            标识符说明
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.TemplateDto">
+            <summary>
+            打印模板表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.TemplateDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.TemplateDto.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.TemplateDto.Name">
+            <summary>
+            模板名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.TemplateDto.HtmlId">
+            <summary>
+            关联表单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.TemplateDto.HtmlName">
+            <summary>
+            关联表单名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.TemplateDto.TemplateDatas">
+            <summary>
+            模板数据字段配置集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto">
+            <summary>
+            Bis条码管理模块更新日志
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto.UpdateLog">
+            <summary>
+            Bis模块更新日志
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto.UpdateLog.dUpDateDateTime">
+            <summary>
+            更新日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto.UpdateLog.UpdateContents">
+            <summary>
+            更新内容
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto.UpdateContent">
+            <summary>
+            更新内容详细
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto.UpdateContent.iNumber">
+            <summary>
+            序号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto.UpdateContent.cContent">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto.UpdateContent.cUserName">
+            <summary>
+            更新人
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto.UpdateLogList">
+            <summary>
+            PSM模块更新日志数据集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto.ReturnUpdateLogList">
+            <summary>
+            PMS模块返回更新日志数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto.ReturnUpdateLogList.iNumber">
+            <summary>
+            总条数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto.ReturnUpdateLogList.LogList">
+            <summary>
+            日志数据
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto.PagedataAppoint">
+            <summary>
+            分页数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.PageState">
+            <summary>
+            是否启用分页(默认不启用)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.SetPage">
+            <summary>
+            查询第几页数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.Number">
+            <summary>
+            每页显示条数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.dStarTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.dEndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.cUserName">
+            <summary>
+            更新人
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Entities.BarCodeCancel">
+            <summary>
+            条码作废表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeCancel.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeCancel.#ctor(System.String,System.String,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="cancelBarCode">作废条码</param>
+            <param name="cancelReason">作废原因</param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeCancel.Modify(System.String,System.String,System.Int64,System.String)">
+            <summary>
+            修改
+            </summary>
+            <param name="cancelBarCode">作废条码</param>
+            <param name="cancelReason">作废原因</param>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeCancel.CancelBarCode">
+            <summary>
+            作废条码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeCancel.CancelUser">
+            <summary>
+            作废人
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeCancel.CancelUserId">
+            <summary>
+            作废人id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeCancel.CancelTime">
+            <summary>
+            作废时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeCancel.CancelReason">
+            <summary>
+            作废原因
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Entities.BarCodeContent">
+            <summary>
+            条码发行详情数据存储表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeContent.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeContent.#ctor(System.Int64,System.String,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="issueId">条码发行id</param>
+            <param name="name">名称</param>
+            <param name="identify">标识符</param>
+            <param name="value">值</param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeContent.ManyBarCodeContent(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Bis.Entities.BarCodeContent},System.Int64,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="issueId">条码发行id</param>
+            <param name="barCodeContents">条码发行详情数据</param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeContent.Modify(System.Int64,System.String,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            修改
+            </summary>
+            <param name="issueId">条码发行id</param>
+            <param name="name">名称</param>
+            <param name="identify">标识符</param>
+            <param name="value">值</param>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeContent.IssueId">
+            <summary>
+            条码发行id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeContent.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeContent.Identify">
+            <summary>
+            标识符
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeContent.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeContent.BarCodeIssue">
+            <summary>
+            所属的发行记录
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Entities.BarCodeIssue">
+            <summary>
+            条码发行表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeIssue.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:EES.Modules.Bis.Entities.BarCodeIssue.#ctor(System.Int64,System.Int64,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String,System.String,EES.Infrastructure.Enums.BisIssueState,System.String,System.String,System.Int64,System.Int64,System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:EES.Modules.Bis.Entities.BarCodeIssue.Modify(System.Int64,System.Int64,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String,System.String,EES.Infrastructure.Enums.BisIssueState,System.String,System.String,System.Int64,System.Int64,System.String)" -->
+        <member name="M:EES.Modules.Bis.Entities.BarCodeIssue.ModifytotalIssueQuantity(System.Int32,System.Int64,System.String)">
+            <summary>
+            修改
+            </summary>
+            <param name="totalIssueQuantity">发行总数量</param>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeIssue.TypeId">
+            <summary>
+            条码类型表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeIssue.TypeName">
+            <summary>
+            条码类型名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeIssue.RuleId">
+            <summary>
+            条码规则表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeIssue.RuleName">
+            <summary>
+            条码规则名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeIssue.TotalIssueQuantity">
+            <summary>
+            发行总数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeIssue.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeIssue.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeIssue.Batch">
+            <summary>
+            批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeIssue.QueryContent">
+            <summary>
+            检索内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeIssue.IncompleteBarCode">
+            <summary>
+            条码（除开流水和验证码的条码）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeIssue.IssueState">
+            <summary>
+            发行状态（1--&gt;待发行，--&gt;已发行）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeIssue.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeIssue.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeIssue.FactoryId">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeIssue.IssueRecords">
+            <summary>
+            发行的条码记录集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeIssue.BarCodeContents">
+            <summary>
+            发行的条码详情集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Entities.BarCodeRule">
+            <summary>
+            条码规则表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeRule.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeRule.#ctor(System.Boolean,System.String,System.Int32,System.Boolean,System.Boolean,System.Int64,System.String,EES.Infrastructure.Enums.IdentificationMark,System.String,EES.Infrastructure.Enums.AddSeparatorPositionType,EES.Infrastructure.Enums.BisBarCodeType,System.Int64,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="isDelete">是否删除</param>
+            <param name="name">规则名称</param>
+            <param name="totalLength">总长度（根据条码规则内容表自动计算）</param>
+            <param name="isEnable">是否启用</param>
+            <param name="isContainBarCode">是否包含条码</param>
+            <param name="templateId">打印模板ID</param>
+            <param name="description">描述</param>
+            <param name="identificationMark">识别标识（按照长度识别，分隔符识别）</param>
+            <param name="separator">分隔符</param>
+            <param name="addSeparatorPosition">添加分隔符的位置（首，尾，首尾）</param>
+            <param name="barCodeType">条码类型</param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeRule.ModifyDelete(System.Boolean,System.Int64,System.String)">
+            <summary>
+            修改删除状态
+            </summary>
+            <param name="isDelete">是否删除</param>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeRule.Modify(System.Boolean,System.String,System.Int32,System.Boolean,System.Boolean,System.Int64,System.String,EES.Infrastructure.Enums.IdentificationMark,System.String,EES.Infrastructure.Enums.AddSeparatorPositionType,EES.Infrastructure.Enums.BisBarCodeType,System.Int64,System.String)">
+            <summary>
+            修改规则
+            </summary>
+            <param name="isDelete">是否删除</param>
+            <param name="name">规则名称</param>
+            <param name="totalLength">总长度（根据条码规则内容表自动计算）</param>
+            <param name="isEnable">是否启用</param>
+            <param name="isContainBarCode">是否包含条码</param>
+            <param name="templateId">打印模板ID</param>
+            <param name="description">描述</param>
+            <param name="identificationMark">识别标识（按照长度识别，分隔符识别）</param>
+            <param name="separator">分隔符</param>
+            <param name="addSeparatorPosition">添加分隔符的位置（首，尾，首尾）</param>
+            <param name="barCodeType">条码类型</param>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeRule.Forbidden(System.Int64,System.String)">
+            <summary>
+            禁用
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeRule.Enable(System.Int64,System.String)">
+            <summary>
+            启用
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeRule.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeRule.Name">
+            <summary>
+            规则名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeRule.TotalLength">
+            <summary>
+            总长度（根据条码规则内容表自动计算）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeRule.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeRule.IsContainBarCode">
+            <summary>
+            是否包含条码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeRule.TemplateId">
+            <summary>
+            打印模板ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeRule.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeRule.IdentificationMark">
+            <summary>
+            识别标识（按照长度识别，分隔符识别）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeRule.Separator">
+            <summary>
+            分隔符
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeRule.AddSeparatorPosition">
+            <summary>
+            添加分隔符的位置（开头，结尾，开头和结尾）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeRule.BarCodeType">
+            <summary>
+            条码类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeRule.RuleContents">
+            <summary>
+            条码规则详情集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Entities.BarCodeType">
+            <summary>
+            条码类型表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeType.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeType.#ctor(System.Boolean,System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.String,EES.Infrastructure.Enums.BisPageOrder,System.Int64,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="isDelete">是否删除</param>
+            <param name="name">类型名称</param>
+            <param name="internalCode">内码</param>
+            <param name="isSystemDefault">是否系统内定</param>
+            <param name="isDeletereplenishChar">是否去掉补全字符(识别时使用)</param>
+            <param name="isEnable">是否启用</param>
+            <param name="description">描述</param>
+            <param name="pageOrder">打印顺序：1-&gt;正向打印，2-&gt;反向打印</param>
+            <param name="printerId">打印机ID</param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeType.Modify(System.Boolean,System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.String,EES.Infrastructure.Enums.BisPageOrder,System.Int64,System.Int64,System.String)">
+            <summary>
+            修改
+            </summary>
+            <param name="isDelete">是否删除</param>
+            <param name="name">类型名称</param>
+            <param name="internalCode">内码</param>
+            <param name="isSystemDefault">是否系统内定</param>
+            <param name="isDeletereplenishChar">是否去掉补全字符(识别时使用)</param>
+            <param name="isEnable">是否启用</param>
+            <param name="description">描述</param>
+            <param name="pageOrder">打印顺序：1-&gt;正向打印，2-&gt;反向打印</param>
+            <param name="printerId">打印机ID</param>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeType.ModifyDelete(System.Boolean,System.Int64,System.String)">
+            <summary>
+            修改删除状态
+            </summary>
+            <param name="isDelete">是否删除</param>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeType.Forbidden(System.Int64,System.String)">
+            <summary>
+            禁用
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeType.Enable(System.Int64,System.String)">
+            <summary>
+            启用
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeType.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeType.Name">
+            <summary>
+            类型名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeType.InternalCode">
+            <summary>
+            内码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeType.IsSystemDefault">
+            <summary>
+            是否系统内定
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeType.IsDeletereplenishChar">
+            <summary>
+            是否去掉补全字符(识别时使用)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeType.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeType.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeType.PageOrder">
+            <summary>
+            打印顺序：1-&gt;正向打印，2-&gt;反向打印
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeType.PrinterId">
+            <summary>
+            打印机ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeType.BarCodeTypeConfigs">
+            <summary>
+            条码类型详情集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Entities.BarCodeTypeConfig">
+            <summary>
+            条码类型内容表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeTypeConfig.#ctor(System.Int64,System.Int64,System.String,EES.Infrastructure.Enums.BarCodeUseType,System.Boolean,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="typeId">条码类型表ID</param>
+            <param name="ruleId">条码规则表ID</param>
+            <param name="ruleName">条码规则名称</param>
+            <param name="type">类型(1-&gt;生成类型，2-&gt;识别类型)</param>
+            <param name="isIssue">是否直接发行</param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeTypeConfig.Modify(System.Int64,System.Int64,System.String,EES.Infrastructure.Enums.BarCodeUseType,System.Boolean,System.Int64,System.String)">
+            <summary>
+            修改
+            </summary>
+            <param name="typeId">条码类型表ID</param>
+            <param name="ruleId">条码规则表ID</param>
+            <param name="ruleName">条码规则名称</param>
+            <param name="type">类型(1-&gt;生成类型，2-&gt;识别类型)</param>
+            <param name="isIssue">是否直接发行</param>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeTypeConfig.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.BarCodeTypeConfig.ManyBarCodeTypeConfig(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Bis.Entities.BarCodeTypeConfig},System.Int64,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="typeId">条码类型id</param>
+            <param name="barCodeTypeConfigs">条码类型详情信息</param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeTypeConfig.TypeId">
+            <summary>
+            条码类型表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeTypeConfig.RuleId">
+            <summary>
+            条码规则表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeTypeConfig.RuleName">
+            <summary>
+            条码规则名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeTypeConfig.Type">
+            <summary>
+            类型(1-&gt;生成类型，2-&gt;识别类型)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeTypeConfig.IsIssue">
+            <summary>
+            是否直接发行
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.BarCodeTypeConfig.BarCodeType">
+            <summary>
+            所属的条码类型
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Entities.IssueRecords">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.IssueRecords.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.IssueRecords.#ctor(System.Int64,System.Int32,System.Int32,System.Int32,System.String,EES.Infrastructure.Enums.BisIssueType,System.String,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="issueId">条码发行id</param>
+            <param name="issueQuantity">发行数量</param>
+            <param name="startValue">起始值</param>
+            <param name="endValue">结束值</param>
+            <param name="source">数据来源（与打印来源一致，由自定义类型配置）</param>
+            <param name="issueType">发行类型(1-&gt;正常发行，2--&gt;追加发行，4--&gt;复制发行)</param>
+            <param name="beCopiedBarCode">被复制的条码（发行类型为复制发行时使用）</param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.IssueRecords.Modify(System.Int64,System.Int32,System.Int32,System.Int32,System.String,EES.Infrastructure.Enums.BisIssueType,System.String,System.Int64,System.String)">
+            <summary>
+            修改
+            </summary>
+            <param name="issueId">条码发行id</param>
+            <param name="issueQuantity">发行数量</param>
+            <param name="startValue">起始值</param>
+            <param name="endValue">结束值</param>
+            <param name="source">数据来源（与打印来源一致，由自定义类型配置）</param>
+            <param name="issueType">发行类型(1-&gt;正常发行，2--&gt;追加发行，4--&gt;复制发行)</param>
+            <param name="beCopiedBarCode">被复制的条码（发行类型为复制发行时使用）</param>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.IssueRecords.IssueId">
+            <summary>
+            条码发行id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.IssueRecords.IssueQuantity">
+            <summary>
+            发行数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.IssueRecords.StartValue">
+            <summary>
+            起始值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.IssueRecords.EndValue">
+            <summary>
+            结束值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.IssueRecords.Source">
+            <summary>
+            数据来源（与打印来源一致，由自定义类型配置）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.IssueRecords.IssueType">
+            <summary>
+            发行类型(1-&gt;正常发行，2--&gt;追加发行，4--&gt;复制发行)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.IssueRecords.BeCopiedBarCode">
+            <summary>
+            被复制的条码（发行类型为复制发行时使用）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.IssueRecords.BarCodeIssue">
+            <summary>
+            所属的发行记录
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Entities.Printer">
+            <summary>
+            条码发行表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.Printer.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.Printer.Modify(System.String,System.String,System.String,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.String,System.String,System.String,System.Int64,System.String,EES.Infrastructure.Enums.PrintType)">
+            <summary>
+            修改
+            </summary>
+            <param name="name">打印机名称</param>
+            <param name="macAddress">Mac地址</param>
+            <param name="ipAddress">IP地址</param>
+            <param name="printSizeWidth">打印尺寸-宽</param>
+            <param name="printSizeHeight">打印尺寸-高</param>
+            <param name="orientationX">定位-X</param>
+            <param name="orientationY">定位-Y</param>
+            <param name="offsetX">偏移-X</param>
+            <param name="offsetY">偏移-Y</param>
+            <param name="type">类型(1-&gt;网络打印，2-&gt;本地打印)</param>
+            <param name="description">描述</param>
+            <param name="model">打印机型号</param>
+            <param name="photograph">打印机照片</param>
+            <param name="updateUserId">创建者id</param>
+            <param name="updateusername">创建者名称</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.Printer.#ctor(System.String,System.String,System.String,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.String,System.String,System.String,System.Int64,System.String,EES.Infrastructure.Enums.PrintType)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="name">打印机名称</param>
+            <param name="macAddress">Mac地址</param>
+            <param name="ipAddress">IP地址</param>
+            <param name="printSizeWidth">打印尺寸-宽</param>
+            <param name="printSizeHeight">打印尺寸-高</param>
+            <param name="orientationX">定位-X</param>
+            <param name="orientationY">定位-Y</param>
+            <param name="offsetX">偏移-X</param>
+            <param name="offsetY">偏移-Y</param>
+            <param name="type">类型(1-&gt;网络打印，2-&gt;本地打印)</param>
+            <param name="description">描述</param>
+            <param name="model">打印机型号</param>
+            <param name="photograph">打印机照片</param>
+            <param name="createUserId">创建者id</param>
+            <param name="createUserName">创建者名称</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.Printer.Name">
+            <summary>
+            打印机名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.Printer.MacAddress">
+            <summary>
+            Mac地址
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.Printer.IpAddress">
+            <summary>
+            IP地址
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.Printer.PrintSizeWidth">
+            <summary>
+            打印尺寸-宽
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.Printer.PrintSizeHeight">
+            <summary>
+            打印尺寸-高
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.Printer.OrientationX">
+            <summary>
+            定位-X
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.Printer.OrientationY">
+            <summary>
+            定位-Y
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.Printer.OffsetX">
+            <summary>
+            偏移-X
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.Printer.OffsetY">
+            <summary>
+            偏移-Y
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.Printer.Type">
+            <summary>
+            类型(1-&gt;网络打印，2-&gt;本地打印)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.Printer.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.Printer.Model">
+            <summary>
+            打印机型号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.Printer.Photograph">
+            <summary>
+            打印机照片
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Entities.PrintRecord">
+            <summary>
+            外部打印记录详情表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.PrintRecord.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.PrintRecord.ModifyPrintState(EES.Infrastructure.Enums.BisPrintState,System.Int64,System.String)">
+            <summary>
+            修改打印状态
+            </summary>
+            <param name="isPrinted">是否已打印</param>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.PrintRecord.Modify(System.Int64,System.Int64,System.String,System.String,EES.Infrastructure.Enums.BisPrintType,System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.Int64,System.String,System.String,System.String,EES.Infrastructure.Enums.BisPrintState,EES.Infrastructure.Enums.PrintType,System.String,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            修改
+            </summary>
+            <param name="ruleId">条码规则表ID</param>
+            <param name="typeId">条码类型表ID</param>
+            <param name="ruleName">条码规则名称</param>
+            <param name="typeName">条码类型名称</param>
+            <param name="type">打印类型：1->条码打印，2->组成条码，4->条码复制，8->区间补打</param>
+            <param name="startValue">起始值</param>
+            <param name="endValue">结束值</param>
+            <param name="incompleteBarCode">条码（除开流水和验证码的条码）</param>
+            <param name="beCopiedBarCode">被复制的条码</param>
+            <param name="source">发起打印源（具体内容自定义配置）</param>
+            <param name="reprintReason">补打原因</param>
+            <param name="factoryCode">工厂编码</param>
+            <param name="factoryName">工厂名称</param>
+            <param name="factoryId">工厂id</param>
+            <param name="materialName">物料名称</param>
+            <param name="materialCode">物料编码</param>
+            <param name="batch">物料批次</param>
+            <param name="isPrinted">是否已打印</param>
+            <param name="printType">打印类型</param>
+            <param name="printerName">打印机名称</param>
+            <param name="macAddress">Mac地址</param>
+            <param name="ipAddress">IP地址</param>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.PrintRecord.#ctor(System.Int64,System.Int64,System.String,System.String,EES.Infrastructure.Enums.BisPrintType,System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.Int64,System.String,System.String,System.String,EES.Infrastructure.Enums.BisPrintState,EES.Infrastructure.Enums.PrintType,System.String,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="ruleId">条码规则表ID</param>
+            <param name="typeId">条码类型表ID</param>
+            <param name="ruleName">条码规则名称</param>
+            <param name="typeName">条码类型名称</param>
+            <param name="type">打印类型：1->条码打印，2->组成条码，4->条码复制，8->区间补打</param>
+            <param name="startValue">起始值</param>
+            <param name="endValue">结束值</param>
+            <param name="incompleteBarCode">条码（除开流水和验证码的条码）</param>
+            <param name="beCopiedBarCode">被复制的条码</param>
+            <param name="source">发起打印源（具体内容自定义配置）</param>
+            <param name="reprintReason">补打原因</param>
+            <param name="factoryCode">工厂编码</param>
+            <param name="factoryName">工厂名称</param>
+            <param name="factoryId">工厂id</param>
+            <param name="materialName">物料名称</param>
+            <param name="materialCode">物料编码</param>
+            <param name="batch">物料批次</param>
+            <param name="isPrinted">是否已打印</param>
+            <param name="printType">打印类型</param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+            <param name="printerName">打印机名称</param>
+            <param name="macAddress">Mac地址</param>
+            <param name="ipAddress">IP地址</param>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.TypeId">
+            <summary>
+            条码类型表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.TypeName">
+            <summary>
+            条码类型名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.RuleId">
+            <summary>
+            条码规则表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.RuleName">
+            <summary>
+            条码规则名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.Type">
+            <summary>
+            打印类型：1-&gt;条码打印，2-&gt;组成条码，4-&gt;条码复制，8-&gt;区间补打
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.StartValue">
+            <summary>
+            起始值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.EndValue">
+            <summary>
+            结束值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.IncompleteBarCode">
+            <summary>
+            条码（除开流水和验证码的条码）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.BeCopiedBarCode">
+            <summary>
+            被复制的条码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.Source">
+            <summary>
+            发起打印源（具体内容自定义配置）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.ReprintReason">
+            <summary>
+            补打原因
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.FactoryId">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.Batch">
+            <summary>
+            批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.IsPrinted">
+            <summary>
+            是否已打印
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.PrintType">
+            <summary>
+            类型(1-&gt;网络打印，2-&gt;本地打印)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.PrinterName">
+            <summary>
+            打印机名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.MacAddress">
+            <summary>
+            Mac地址
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.IpAddress">
+            <summary>
+            IP地址
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.AlreadyPrintNum">
+            <summary>
+            已经打印流水
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecord.PrintRecordDetails">
+            <summary>
+            条码打印记录详情集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Entities.PrintRecordDetails">
+            <summary>
+            打印记录数据存储表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.PrintRecordDetails.#ctor(System.Int64,System.String,System.String,System.String,System.Boolean,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="printRecordId">打印记录表id</param>
+            <param name="name">名称</param>
+            <param name="identify">标识符</param>
+            <param name="value">值</param>
+            <param name="isBelongRule">是否规则内容</param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.PrintRecordDetails.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.PrintRecordDetails.ManyRecordDetails(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Bis.Entities.PrintRecordDetails},System.Int64,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="printRecordId">打印记录表id</param>
+            <param name="printRecordDetails">打印详情信息</param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.PrintRecordDetails.Modify(System.Int64,System.String,System.String,System.String,System.Boolean,System.Int64,System.String)">
+            <summary>
+            修改
+            </summary>
+            <param name="printRecordId">打印记录表id</param>
+            <param name="name">名称</param>
+            <param name="identify">标识符</param>
+            <param name="value">值</param>
+            <param name="isBelongRule">是否规则内容</param>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecordDetails.PrintRecordId">
+            <summary>
+            打印记录表id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecordDetails.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecordDetails.Identify">
+            <summary>
+            标识符
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecordDetails.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecordDetails.IsBelongRule">
+            <summary>
+            是否规则内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.PrintRecordDetails.PrintRecord">
+            <summary>
+            所属的条码打印记录
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Entities.RuleContent">
+            <summary>
+            条码规则内容表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.RuleContent.#ctor(System.Int64,System.Int32,System.String,System.Int32,EES.Infrastructure.Enums.BisRuleValueType,System.String,System.String,System.Boolean,System.String,System.Int64,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="ruleId">条码规则表ID</param>
+            <param name="number">序号</param>
+            <param name="name">内容名称</param>
+            <param name="length">长度</param>
+            <param name="valueType">类型(1--&gt;指定值，2--&gt;流水号，4---&gt;验证码，8---&gt;其他数据源)</param>
+            <param name="identifier">标识</param>
+            <param name="value">值</param>
+            <param name="isQueryCondition">是否作为查询条件</param>
+            <param name="description">描述</param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.RuleContent.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.RuleContent.ManyRuleContent(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Bis.Entities.RuleContent},System.Int64,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="ruleId">条码规则id</param>
+            <param name="ruleContents">条码规则详情信息</param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.RuleContent.Modify(System.Int64,System.Int32,System.String,System.Int32,EES.Infrastructure.Enums.BisRuleValueType,System.String,System.String,System.Boolean,System.String,System.Int64,System.String)">
+            <summary>
+            修改
+            </summary>
+            <param name="ruleId">条码规则表ID</param>
+            <param name="number">序号</param>
+            <param name="name">内容名称</param>
+            <param name="length">长度</param>
+            <param name="valueType">类型(1--&gt;指定值，2--&gt;流水号，4---&gt;验证码，8---&gt;其他数据源)</param>
+            <param name="identifier">标识</param>
+            <param name="value">值</param>
+            <param name="isQueryCondition">是否作为查询条件</param>
+            <param name="description">描述</param>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.RuleContent.RuleId">
+            <summary>
+            条码规则表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.RuleContent.Number">
+            <summary>
+            序号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.RuleContent.Name">
+            <summary>
+            内容名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.RuleContent.Length">
+            <summary>
+            长度
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.RuleContent.ValueType">
+            <summary>
+            类型(1--&gt;指定值，2--&gt;流水号，4---&gt;验证码，8---&gt;其他数据源)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.RuleContent.Identifier">
+            <summary>
+            标识
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.RuleContent.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.RuleContent.IsQueryCondition">
+            <summary>
+            是否作为查询条件
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.RuleContent.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.RuleContent.BarCodeRule">
+            <summary>
+            所属的条码规则
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Entities.Template">
+            <summary>
+            打印模板表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.Template.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.Template.#ctor(System.Boolean,System.String,System.Int64,System.String,System.Int64,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="isDelete">是否删除</param>
+            <param name="name">模板名称</param>
+            <param name="htmlId">关联模板id</param>
+            <param name="htmlName">关联模板名称</param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.Template.Modify(System.Boolean,System.String,System.Int64,System.String,System.Int64,System.String)">
+            <summary>
+            修改
+            </summary>
+            <param name="isDelete">是否删除</param>
+            <param name="name">模板名称</param>
+            <param name="htmlId">关联模板id</param>
+            <param name="htmlName">关联模板名称</param>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.Template.ModifyDelete(System.Boolean,System.Int64,System.String)">
+            <summary>
+            修改删除状态
+            </summary>
+            <param name="isDelete">是否删除</param>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.Template.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.Template.Name">
+            <summary>
+            模板名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.Template.HtmlId">
+            <summary>
+            关联表单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.Template.HtmlName">
+            <summary>
+            关联表单名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.Template.TemplateDatas">
+            <summary>
+            模板数据字段配置集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Entities.TemplateData">
+            <summary>
+            数据源配置表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.TemplateData.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.TemplateData.#ctor(System.Int64,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="templateId">打印模板ID</param>
+            <param name="identifier">标识符</param>
+            <param name="identifierExplain">标识符说明</param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.TemplateData.ManyTemplateData(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Bis.Entities.TemplateData},System.Int64,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="TemplateId">模板id</param>
+            <param name="templateDatas">模板详情信息</param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.Entities.TemplateData.Modify(System.Int64,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            修改
+            </summary>
+            <param name="templateId">打印模板ID</param>
+            <param name="identifier">标识符</param>
+            <param name="identifierExplain">标识符说明</param>
+            <param name="updateUserId"></param>
+            <param name="updateusername"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.TemplateData.TemplateId">
+            <summary>
+            打印模板ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.TemplateData.Identifier">
+            <summary>
+            标识符
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.TemplateData.IdentifierExplain">
+            <summary>
+            标识符说明
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.TemplateData.Template">
+            <summary>
+            所属的模板
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Entities.TemplateFile">
+            <summary>
+            模板附件表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.TemplateFile.TemplateId">
+            <summary>
+            打印模板ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.TemplateFile.Type">
+            <summary>
+            文件类型(1-&gt;文件，2-&gt;图片)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.TemplateFile.Name">
+            <summary>
+            文件名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.TemplateFile.Path">
+            <summary>
+            文件路径
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.TemplateFile.Uploader">
+            <summary>
+            上传人
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.TemplateFile.UploadTime">
+            <summary>
+            上传时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Bis.Entities.TemplateFile.Template">
+            <summary>
+            所属的模板
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Bis.Services.AboutBarCodeServices">
+            <summary>
+            关于条码的查询
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.AboutBarCodeServices.GetCancelAsync(System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            获取作废条码
+            </summary>
+            <param name="barCode">作废条码</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">每页数据量</param>
+            <param name="isGetTotalCount">是否返回总数量的信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.AboutBarCodeServices.GetIdToCancelAsync(System.Int64)">
+            <summary>
+            根据id获取作废记录
+            </summary>
+            <param name="cancelId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.AboutBarCodeServices.GetIdToIssuesAsync(System.Int64)">
+            <summary>
+            根据id获取条码发行信息
+            </summary>
+            <param name="issuesId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.AboutBarCodeServices.GetIdToPrintRecordsAsync(System.Int64)">
+            <summary>
+            根据id获取条码打印信息
+            </summary>
+            <param name="printId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.AboutBarCodeServices.GetIssuesAsync(EES.Modules.Bis.Dto.SelectIssueDto)">
+            <summary>
+            查询条码发行列表
+            </summary>
+            <param name="selectIssueDto"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.AboutBarCodeServices.GetPrintRecordsAsync(EES.Modules.Bis.Dto.SelectPrintRecordDto)">
+            <summary>
+            打印记录查询
+            </summary>
+            <param name="selectPrintRecordDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.AboutBarCodeServices.MakeUpBarCodeAsync(EES.Modules.Bis.Dto.PrintTransferDto)">
+            <summary>
+            组成条码
+            </summary>
+            <param name="printTransfer"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:EES.Modules.Bis.Services.IAboutBarCodeServices">
+            <summary>
+            条码相关
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.IAboutBarCodeServices.MakeUpBarCodeAsync(EES.Modules.Bis.Dto.PrintTransferDto)">
+            <summary>
+            组成条码
+            </summary>
+            <param name="printTransferDto">做成条码的信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.IAboutBarCodeServices.GetIdToIssuesAsync(System.Int64)">
+            <summary>
+            根据id获取发行信息
+            </summary>
+            <param name="issuesId">发行id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.IAboutBarCodeServices.GetIdToCancelAsync(System.Int64)">
+            <summary>
+            根据id获取作废条码
+            </summary>
+            <param name="cancelId">作废id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.IAboutBarCodeServices.GetCancelAsync(System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            获取作废条码
+            </summary>
+            <param name="barCode">作废条码</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">每页数据量</param>
+            <param name="isGetTotalCount">是否返回总数量的信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.IAboutBarCodeServices.GetIssuesAsync(EES.Modules.Bis.Dto.SelectIssueDto)">
+            <summary>
+            条码发行表查询
+            </summary>
+            <param name="selectIssueDto">查询条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.IAboutBarCodeServices.GetIdToPrintRecordsAsync(System.Int64)">
+            <summary>
+            根据id获取打印信息
+            </summary>
+            <param name="printId">打印id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.IAboutBarCodeServices.GetPrintRecordsAsync(EES.Modules.Bis.Dto.SelectPrintRecordDto)">
+            <summary>
+            条码打印查询
+            </summary>
+            <param name="selectPrintRecordDto">查询条件</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.Services.IPrinterServices">
+            <summary>
+            打印机
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.IPrinterServices.GetPrinterAsync(System.Int64)">
+            <summary>
+            获取打印机信息
+            </summary>
+            <param name="printerId">打印机id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.IPrinterServices.GetPrintersAsync(System.Int32,System.Int32,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            打印机列表查询
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="printerName">打印机名称</param>
+            <param name="description">打印机名称</param>
+            <param name="ipAddress">打印IP地址</param>
+            <param name="isGetTotalCount">是否返回总数量的信息</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.Services.IRuleServices">
+            <summary>
+            条码规则
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.IRuleServices.GetRuleAsync(System.Int64)">
+            <summary>
+            获取条码规则信息
+            </summary>
+            <param name="ruleId">规则id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.IRuleServices.GetRulesAsync(System.Int32,System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            条码规则列表查询
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="ruleName">条码规则名称</param>
+            <param name="totalLength">条码总长度</param>
+            <param name="isGetTotalCount">是否返回总数量的信息</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.Services.ITemplateServices">
+            <summary>
+            模板
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.ITemplateServices.GetTemplateAsync(System.Int64)">
+            <summary>
+            获取模板信息
+            </summary>
+            <param name="templated">模板id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.ITemplateServices.GetTemplatesAsync(System.Int32,System.Int32,System.String,System.String,System.Boolean)">
+            <summary>
+            模板列表查询
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="templateName">模板名称</param>
+            <param name="htmlName">关联标签名称</param>
+            <param name="isGetTotalCount">是否返回总数量的信息</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.Services.ITypeServices">
+            <summary>
+            条码类型
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.ITypeServices.GetTypeAsync(System.Int64)">
+            <summary>
+            根据id获取条码类型信息
+            </summary>
+            <param name="TypeId">类型id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.ITypeServices.GetTypesAsync(System.Int32,System.Int32,System.String,System.String,System.Boolean)">
+            <summary>
+            条码类型列表查询
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="typeName">条码类型名称</param>
+            <param name="internalCode">条码内码</param>
+            <param name="isGetTotalCount">是否返回总数量的信息</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.Services.PrinterServices">
+            <summary>
+            打印机
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.PrinterServices.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.Printer},Microsoft.Extensions.Logging.ILogger{EES.Modules.Bis.Services.PrinterServices},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="printerRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+            <param name="handler"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.PrinterServices.GetPrinterAsync(System.Int64)">
+            <summary>
+            根据id获取打印机
+            </summary>
+            <param name="printerId">打印机id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.PrinterServices.GetPrintersAsync(System.Int32,System.Int32,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            获取打印机信息
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="description"></param>
+            <param name="printerName">打印机名称</param>
+            <param name="ipAddress">打印IP地址</param>
+            <param name="isGetTotalCount">是否返回总数量的信息</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Bis.Services.RuleServices">
+            <summary>
+            条码规则
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.RuleServices.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.BarCodeRule},Microsoft.Extensions.Logging.ILogger{EES.Modules.Bis.Services.RuleServices},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="ruleRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+            <param name="handler"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.RuleServices.GetRuleAsync(System.Int64)">
+            <summary>
+            根据id获取条码规则信息
+            </summary>
+            <param name="ruleId">条码id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.RuleServices.GetRulesAsync(System.Int32,System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            获取条码规则列表
+            </summary>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">每页数据量</param>
+            <param name="ruleName">条码规则名称</param>
+            <param name="totalLength">条码总长度</param>
+            <param name="isGetTotalCount">是否返回总数量的信息</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:EES.Modules.Bis.Services.TemplateServices">
+            <summary>
+            条码规则
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.TemplateServices.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.Template},Microsoft.Extensions.Logging.ILogger{EES.Modules.Bis.Services.TemplateServices},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="templateRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+            <param name="handler"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.TemplateServices.GetTemplateAsync(System.Int64)">
+            <summary>
+            根据id获取条码规则信息
+            </summary>
+            <param name="templateId">条码id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.TemplateServices.GetTemplatesAsync(System.Int32,System.Int32,System.String,System.String,System.Boolean)">
+            <summary>
+            获取类型列表
+            </summary>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">每页数据量</param>
+            <param name="templateName">模板名称</param>
+            <param name="htmlName">关联标签名称</param>
+            <param name="isGetTotalCount">是否返回总数量的信息</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:EES.Modules.Bis.Services.TypeServices">
+            <summary>
+            条码类型
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.TypeServices.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.BarCodeRule},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Bis.Entities.BarCodeType},Microsoft.Extensions.Logging.ILogger{EES.Modules.Bis.Services.TypeServices},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="typeRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+            <param name="handler"></param>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.TypeServices.GetTypeAsync(System.Int64)">
+            <summary>
+            根据id获取条码类型信息
+            </summary>
+            <param name="typeId">条码id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.Services.TypeServices.GetTypesAsync(System.Int32,System.Int32,System.String,System.String,System.Boolean)">
+            <summary>
+            获取条码类型列表
+            </summary>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">每页数据量</param>
+            <param name="typeName">条码类型名称</param>
+            <param name="internalCode">条码内码</param>
+            <param name="isGetTotalCount">是否返回总数量的信息</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:EES.Modules.Bis.StaticMethod.BarCode">
+             <summary>
+            条码相关静态方法
+             </summary>
+        </member>
+        <member name="M:EES.Modules.Bis.StaticMethod.BarCode.Asc(System.String)">
+            <summary>
+            单个字符转换为ASCII码
+            </summary>
+            <param name="character"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.StaticMethod.BarCode.ReturnBarCodes(EES.Modules.Bis.Entities.BarCodeRule,System.Collections.Generic.List{EES.Modules.Bis.Dto.PrintContentDto},System.Boolean)">
+            <summary>
+            组成条码
+            </summary>
+            <param name="barCodeRule"></param>
+            <param name="printContentDtos"></param>
+            <param name="isHadSerialNumItem">是否包含流水</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.StaticMethod.BarCode.ObtainVerificationCode(System.String)">
+            <summary>
+            得到验证码
+            </summary>
+            <param name="barCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.StaticMethod.BarCode.GetFullBarCode(System.String,EES.Infrastructure.Enums.IdentificationMark,System.Boolean,System.Int32,System.String,System.Boolean,System.String,EES.Infrastructure.Enums.AddSeparatorPositionType)">
+            <summary>
+            获取完整的条码
+            </summary>
+            <param name="barCode">条码（除开流水和验证码的条码）</param>
+            <param name="identificationMark">规则类型</param>
+            <param name="isHadSerialNum">是否包含流水号</param>
+            <param name="SerialNum">流水长度</param>
+            <param name="SerialValue">流水值</param>
+            <param name="isHadVerificationCode">是否包含验证码</param>
+            <param name="Separator">分隔符</param>
+            <param name="addSeparatorPositionType">添加分隔符的位置</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.StaticMethod.BarCode.getDateTime(System.DateTime,System.Boolean)">
+            <summary>
+            时间补充
+            </summary>
+            <param name="date">补充时间参数</param>
+            <param name="amMode">true:时间为00:00:00.000,false:时间为23:59:59.999</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Bis.StaticMethod.BarCode.ObtainJson(System.Collections.Generic.List{EES.Modules.Bis.Entities.TemplateData},System.Collections.Generic.List{EES.Modules.Share.Dto.PrintContentForeignDto},System.Collections.Generic.List{EES.Modules.Bis.Entities.RuleContent},System.Collections.Generic.List{EES.Modules.Bis.Entities.PrintRecordDetails}@)">
+            <summary>
+            得到Json
+            </summary>
+            <param name="templateDatas">标签模板详情</param>
+            <param name="printContentForeignDtos">打印传值数据详情</param>
+            <param name="ruleContents">条码详情</param>
+            <param name="printRecordDetails">打印记录详情</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

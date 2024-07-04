@@ -1,0 +1,1825 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EES.Modules.Sinno</name>
+    </assembly>
+    <members>
+        <member name="T:EES.Modules.Sinno.CommandHandlers.PSM.Weigh.WeighReportCommandHandler">
+            <summary>
+            称量报工处理程序
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Sinno.CommandHandlers.PSM.Weigh.WeighReportCommandHandler._WorkOrderRepository">
+            <summary>
+            称量工单表
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Sinno.CommandHandlers.PSM.Weigh.WeighReportCommandHandler._WeighingRepository">
+            <summary>
+            CPI表-称量任务
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Sinno.CommandHandlers.PSM.Weigh.WeighReportCommandHandler._WeighingExecuteRepository">
+            <summary>
+            Dtl表-称量执行记录
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Sinno.CommandHandlers.PSM.Weigh.WeighReportCommandHandler._WeighingWorkOrderExecuteRepository">
+            <summary>
+            称量工单执行信息
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Sinno.CommandHandlers.PSM.Weigh.WeighReportCommandHandler._WeighReportService">
+            <summary>
+            称量报工查询服务
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Sinno.CommandHandlers.PSM.Weigh.WeighReportCommandHandler._WeighingDirectRecordRepository">
+            <summary>
+            称量报工分摊记录信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.CommandHandlers.PSM.Weigh.WeighReportCommandHandler.#ctor(EES.Infrastructure.Bus.IMediatorHandler,EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Entities.WorkOrder},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Weigh.Entities.Weighing},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Weigh.Entities.WeighingExecute},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Weigh.Entities.WeighingWorkOrderExecute},EES.Modules.Sinno.Services.PSM.Weigh.IWeighReportService,EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Weigh.Entities.WeighingDirectRecord})">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.CommandHandlers.PSM.Weigh.WeighReportCommandHandler.Handle(EES.Modules.Sinno.Commands.PSM.Weigh.DirectlaborAllocationCmd,System.Threading.CancellationToken)">
+            <summary>
+            直接人工分摊
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.CommandHandlers.PSM.Weigh.WeighReportCommandHandler.Handle(EES.Modules.Sinno.Commands.PSM.Weigh.IndirectlaborAllocationCmd,System.Threading.CancellationToken)">
+            <summary>
+            间接人工分摊
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sinno.CommandHandlers.PSM_Bulk.BulkReportCommandHandler">
+            <summary>
+            制作报工程序处理器
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.CommandHandlers.PSM_Bulk.BulkReportCommandHandler.#ctor(EES.Infrastructure.Bus.IMediatorHandler,EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Bulk.Entities.BulkNewspaperman},EES.Infrastructure.Service.ISystemParamsService,EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Entities.WorkOrder})">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.CommandHandlers.PSM_Bulk.BulkReportCommandHandler.Handle(EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd,System.Threading.CancellationToken)">
+            <summary>
+            创建报工数据
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.CommandHandlers.PSM_Bulk.BulkReportCommandHandler.Handle(EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改报工数据
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.CommandHandlers.PSM_Bulk.BulkReportCommandHandler.Handle(EES.Modules.Sinno.Commands.PSM_Bulk.SubmitBulkReporCmd,System.Threading.CancellationToken)">
+            <summary>
+            将报工提交
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.CommandHandlers.PSM_Bulk.BulkReportCommandHandler.Handle(EES.Modules.Sinno.Commands.PSM_Bulk.RejectBulkReporCmd,System.Threading.CancellationToken)">
+            <summary>
+            将报工驳回
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.CommandHandlers.PSM_Bulk.BulkReportCommandHandler.Handle(EES.Modules.Sinno.Commands.PSM_Bulk.AuditBulkReporCmd,System.Threading.CancellationToken)">
+            <summary>
+            将报工审核
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sinno.CommandHandlers.PSM_Bulk.WorkOrderSinnoCommandHandler">
+            <summary>
+            中研乳化工单实现
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.CommandHandlers.PSM_Bulk.WorkOrderSinnoCommandHandler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Bulk.Entities.BulkExecuteWorkOrder},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Entities.WorkOrder},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="repository"></param>
+            <param name="repository1"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Sinno.CommandHandlers.PSM_Bulk.WorkOrderSinnoCommandHandler.Handle(EES.Modules.Sinno.Commands.PSM_Bulk.SaveAndRunWorkOrderBatchNoCmd,System.Threading.CancellationToken)">
+            <summary>
+            将用户确认的批次写回,并启动工单
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:EES.Modules.Sinno.CommandHandlers.PSM_Bulk.GenerateSampleBarCodeHandler">
+            <summary>
+            中研乳化工单实现
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.CommandHandlers.PSM_Bulk.GenerateSampleBarCodeHandler.Handle(EES.Modules.Sinno.Commands.QCS.GenerateSampleBarCodeCmd,System.Threading.CancellationToken)">
+            <summary>
+            生成取样条码
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:EES.Modules.Sinno.Commands.PSM.Weigh.DirectlaborAllocationCmd">
+            <summary>
+            直接人工分摊
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.Commands.PSM.Weigh.DirectlaborAllocationCmd.#ctor(System.String,System.String,System.Decimal,System.Decimal)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="startTime">开始时间</param>
+            <param name="endTime">结束时间</param>
+            <param name="laborHour">工时</param>
+            <param name="population">人数</param>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM.Weigh.DirectlaborAllocationCmd.StartTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM.Weigh.DirectlaborAllocationCmd.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM.Weigh.DirectlaborAllocationCmd.LaborHour">
+            <summary>
+            工时
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM.Weigh.DirectlaborAllocationCmd.Population">
+            <summary>
+            人数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM.Weigh.DirectlaborAllocationCmd.FactoryId">
+            <summary>
+            工厂Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM.Weigh.DirectlaborAllocationCmd.WorkshopId">
+            <summary>
+            车间Id
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Commands.PSM.Weigh.IndirectlaborAllocationCmd">
+            <summary>
+            间接人工分摊
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.Commands.PSM.Weigh.IndirectlaborAllocationCmd.#ctor(System.String,System.String,System.Decimal,System.Decimal)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="startTime">开始时间</param>
+            <param name="endTime">结束时间</param>
+            <param name="laborHour">工时</param>
+            <param name="population">人数</param>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM.Weigh.IndirectlaborAllocationCmd.StartTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM.Weigh.IndirectlaborAllocationCmd.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM.Weigh.IndirectlaborAllocationCmd.LaborHour">
+            <summary>
+            工时
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM.Weigh.IndirectlaborAllocationCmd.Population">
+            <summary>
+            人数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM.Weigh.IndirectlaborAllocationCmd.FactoryId">
+            <summary>
+            工厂Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM.Weigh.IndirectlaborAllocationCmd.WorkshopId">
+            <summary>
+            车间Id
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Commands.PSM_Bulk.AuditBulkReporCmd">
+            <summary>
+            将报工审核
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.AuditBulkReporCmd.Id">
+            <summary>
+            报工数据唯一id
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd">
+            <summary>
+            创建报工数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.WorkOrderId">
+            <summary>
+            工单唯一id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.WorkOrderNum">
+            <summary>
+            工单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.ProductionStartTime">
+            <summary>
+            生产开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.ProductionEndTime">
+            <summary>
+            生产结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.DisinfectStartTime">
+            <summary>
+            清洗消毒开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.DisinfectEndTime">
+            <summary>
+            清洗消毒结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.ContinuousShiftDuration">
+            <summary>
+            连班时长(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.FailureDuration">
+            <summary>
+            故障时长(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.WorkersNumber">
+            <summary>
+            生产人数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.MachineHour">
+            <summary>
+            机器工时(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.DirectLabour">
+            <summary>
+            直接人工(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.IndirectLabor">
+            <summary>
+            间接人工(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.QuantityInStorage">
+            <summary>
+            入库数量(kg)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.SampleNumber">
+            <summary>
+            取样数量(kg)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.ActualProduction">
+            <summary>
+            实际产量(kg)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.AttritionRate">
+            <summary>
+            损耗率(整体)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.CauseOfLoss">
+            <summary>
+            损耗原因
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.FactoryId">
+            <summary>
+            工厂Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.WorkshopId">
+            <summary>
+            车间Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd.WorkshopName">
+            <summary>
+            车间名称
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd">
+            <summary>
+            修改报工数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.Id">
+            <summary>
+            报工数据唯一id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.WorkOrderId">
+            <summary>
+            工单唯一id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.WorkOrderNum">
+            <summary>
+            工单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.ProductionStartTime">
+            <summary>
+            生产开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.ProductionEndTime">
+            <summary>
+            生产结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.DisinfectStartTime">
+            <summary>
+            清洗消毒开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.DisinfectEndTime">
+            <summary>
+            清洗消毒结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.ContinuousShiftDuration">
+            <summary>
+            连班时长(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.FailureDuration">
+            <summary>
+            故障时长(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.WorkersNumber">
+            <summary>
+            生产人数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.MachineHour">
+            <summary>
+            机器工时(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.DirectLabour">
+            <summary>
+            直接人工(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.IndirectLabor">
+            <summary>
+            间接人工(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.QuantityInStorage">
+            <summary>
+            入库数量(kg)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.SampleNumber">
+            <summary>
+            取样数量(kg)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.ActualProduction">
+            <summary>
+            实际产量(kg)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.AttritionRate">
+            <summary>
+            损耗率(整体)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.CauseOfLoss">
+            <summary>
+            损耗原因
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.FactoryId">
+            <summary>
+            工厂Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.WorkshopId">
+            <summary>
+            车间Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd.WorkshopName">
+            <summary>
+            车间名称
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Commands.PSM_Bulk.RejectBulkReporCmd">
+            <summary>
+            将报工驳回
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.RejectBulkReporCmd.Ids">
+            <summary>
+            报工数据唯一id集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Commands.PSM_Bulk.SaveAndRunWorkOrderBatchNoCmd">
+            <summary>
+            将用户确认的批次写回,并启动工单
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.Commands.PSM_Bulk.SaveAndRunWorkOrderBatchNoCmd.#ctor(System.Int64,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="id"></param>
+            <param name="batchNo"></param>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.SaveAndRunWorkOrderBatchNoCmd.ID">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.SaveAndRunWorkOrderBatchNoCmd.BatchNo">
+            <summary>
+            批次编号
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Commands.PSM_Bulk.SubmitBulkReporCmd">
+            <summary>
+            将报工提交
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Commands.PSM_Bulk.SubmitBulkReporCmd.Ids">
+            <summary>
+            报工数据唯一id集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Controllers.PSM.Weigh.WeighReportController">
+            <summary>
+            称量报工
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.Controllers.PSM.Weigh.WeighReportController.#ctor(MediatR.IMediator,EES.Modules.Sinno.Services.PSM.Weigh.IWeighReportService)">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.Controllers.PSM.Weigh.WeighReportController.GetApportionListAsync(System.String,System.String,System.Int64,System.Int64,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            获取分摊列表
+            </summary>
+            <param name="startTime">开始时间</param>
+            <param name="endTime">结束时间</param>
+            <param name="factoryId">工厂Id</param>
+            <param name="workshopId">车间Id</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">条数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.Controllers.PSM.Weigh.WeighReportController.DirectLaborAllocationAsync(EES.Modules.Sinno.Commands.PSM.Weigh.DirectlaborAllocationCmd)">
+            <summary>
+            直接人工分摊
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.Controllers.PSM.Weigh.WeighReportController.IndirectLaborAllocationAsync(EES.Modules.Sinno.Commands.PSM.Weigh.IndirectlaborAllocationCmd)">
+            <summary>
+            间接人工分摊
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.Controllers.PSM.Weigh.WeighReportController.GetApportionRecordAsync(System.String,System.String,System.Int64,System.Int64,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            获取分摊记录
+            </summary>
+            <param name="startTime">开始时间</param>
+            <param name="endTime">结束时间</param>
+            <param name="factoryId">工厂Id</param>
+            <param name="workshopId">车间Id</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">条数</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sinno.Controllers.PSM_Bulk.BulkReportController">
+            <summary>
+            制作报工
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.Controllers.PSM_Bulk.BulkReportController.#ctor(MediatR.IMediator,EES.Modules.Sinno.Services.PSM_Bulk.IBulkReportService)">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.Controllers.PSM_Bulk.BulkReportController.CreateBulkReporAsync(EES.Modules.Sinno.Commands.PSM_Bulk.CreateBulkReporCmd)">
+            <summary>
+            创建报工数据
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.Controllers.PSM_Bulk.BulkReportController.GetBulkReporListAsync(System.String,System.Int64,System.Int64,EES.Modules.Psm.Bulk.Entities.ReportingStatus,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            报工列表查询
+            </summary>
+            <param name="productionStartTime">工单出锅开始日期</param>
+            <param name="factoryId">工厂Id</param>
+            <param name="workshopId">车间Id</param>
+            <param name="reportingStatus">报工状态</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">条数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.Controllers.PSM_Bulk.BulkReportController.GetBulkReporByOrderAsync(System.String,System.Nullable{System.Int64},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            根据工单查询
+            </summary>
+            <param name="work_order_num">工单号</param>
+            <param name="work_order_id">工单id</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">条数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.Controllers.PSM_Bulk.BulkReportController.ModifyBulkReporAsync(EES.Modules.Sinno.Commands.PSM_Bulk.ModifyBulkReporCmd)">
+            <summary>
+            修改报工数据
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.Controllers.PSM_Bulk.BulkReportController.SubmitBulkReporAsync(EES.Modules.Sinno.Commands.PSM_Bulk.SubmitBulkReporCmd)">
+            <summary>
+            将报工提交
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.Controllers.PSM_Bulk.BulkReportController.RejectBulkReporAsync(EES.Modules.Sinno.Commands.PSM_Bulk.RejectBulkReporCmd)">
+            <summary>
+            将报工驳回
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.Controllers.PSM_Bulk.BulkReportController.AuditBulkReporAsync(EES.Modules.Sinno.Commands.PSM_Bulk.AuditBulkReporCmd)">
+            <summary>
+            将报工审核
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sinno.Controllers.PSM_Bulk.BulkReportRecordController">
+            <summary>
+            制作报工记录
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.Controllers.PSM_Bulk.BulkReportRecordController.#ctor(MediatR.IMediator,EES.Modules.Sinno.Services.PSM_Bulk.IBulkReportRecordService)">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.Controllers.PSM_Bulk.BulkReportRecordController.GetBulkReporRecordAsync(System.Nullable{System.Int64},System.Nullable{EES.Modules.Psm.Bulk.Entities.ChangeEvent},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            报工记录查询
+            </summary>
+            <param name="workOrderId">工单Id</param>
+            <param name="event">变更事件 1=出锅创建; 2=保存修改; 4=提交; 驳回=8; 审核=16; 回传=32; 辅助工时分摊=64;</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">条数</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sinno.Controllers.UpdateLogControllers">
+            <summary>
+            更新日志
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.Controllers.UpdateLogControllers.GetSinnoUpdateLogAsync(EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto.PagedataAppoint)">
+            <summary>
+            查询Sinno（Sinno对接更新日志）
+            </summary>
+            <param name="PageData">分页查询数据</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionListDto">
+            <summary>
+            分摊列表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionListDto.Id">
+            <summary>
+            称量记录Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionListDto.WorkOrderNumber">
+            <summary>
+            工单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionListDto.IsCanceled">
+            <summary>
+            是否有作废
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionListDto.PrintingBarCode">
+            <summary>
+            打印条码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionListDto.OperationStartTime">
+            <summary>
+            操作开始时间（称量扫码时间）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionListDto.DirectLabour">
+            <summary>
+            直接人工（小时）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionListDto.IndirectLabor">
+            <summary>
+            间接人工（小时）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionListDto.FactoryId">
+            <summary>
+            工厂Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionListDto.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionListDto.WorkshopId">
+            <summary>
+            车间Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionListDto.WorkshopName">
+            <summary>
+            车间名称
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionRecordDto">
+            <summary>
+            分摊记录
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionRecordDto.Id">
+            <summary>
+            数据的唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionRecordDto.Type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionRecordDto.TotalHours">
+            <summary>
+            总工时
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionRecordDto.TotalApportionment">
+            <summary>
+            分摊总包数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionRecordDto.LaborHour">
+            <summary>
+            工时
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionRecordDto.Population">
+            <summary>
+            人数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionRecordDto.FactoryId">
+            <summary>
+            工厂Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionRecordDto.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionRecordDto.WorkshopId">
+            <summary>
+            车间Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionRecordDto.WorkshopName">
+            <summary>
+            车间名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionRecordDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionRecordDto.CreateUserId">
+            <summary>
+            创建者ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionRecordDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionRecordDto.UpdateTime">
+            <summary>
+            最后一次修改时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionRecordDto.UpdateUserId">
+            <summary>
+            最后一次修改者ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM.Weigh.ApportionRecordDto.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.Id">
+            <summary>
+            数据的唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.WorkOrderId">
+            <summary>
+            工单唯一id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.WorkOrderNum">
+            <summary>
+            工单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.ReportingStatus">
+            <summary>
+            报工状态	
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.ProductionStartTime">
+            <summary>
+            生产开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.ProductionEndTime">
+            <summary>
+            生产结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.DisinfectStartTime">
+            <summary>
+            清洗消毒开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.DisinfectEndTime">
+            <summary>
+            清洗消毒结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.ContinuousShiftDuration">
+            <summary>
+            连班时长(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.FailureDuration">
+            <summary>
+            故障时长(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.WorkersNumber">
+            <summary>
+            生产人数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.MachineHour">
+            <summary>
+            机器工时(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.DirectLabour">
+            <summary>
+            直接人工(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.IndirectLabor">
+            <summary>
+            间接人工(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.QuantityInStorage">
+            <summary>
+            入库数量(kg)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.SampleNumber">
+            <summary>
+            取样数量(kg)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.ActualProduction">
+            <summary>
+            实际产量(kg)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.AttritionRate">
+            <summary>
+            损耗率(整体)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.CauseOfLoss">
+            <summary>
+            损耗原因
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.FactoryId">
+            <summary>
+            工厂Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.WorkshopId">
+            <summary>
+            车间Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.WorkshopName">
+            <summary>
+            车间名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporByOrderDto.UpdateTime">
+            <summary>
+            最后一次修时间
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto">
+            <summary>
+            报工列表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.Id">
+            <summary>
+            数据的唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.WorkOrderId">
+            <summary>
+            工单唯一id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.WorkOrderNum">
+            <summary>
+            工单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.ReportingStatus">
+            <summary>
+            报工状态	
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.ProductionStartTime">
+            <summary>
+            生产开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.ProductionEndTime">
+            <summary>
+            生产结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.DisinfectStartTime">
+            <summary>
+            清洗消毒开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.DisinfectEndTime">
+            <summary>
+            清洗消毒结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.ContinuousShiftDuration">
+            <summary>
+            连班时长(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.FailureDuration">
+            <summary>
+            故障时长(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.WorkersNumber">
+            <summary>
+            生产人数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.MachineHour">
+            <summary>
+            机器工时(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.DirectLabour">
+            <summary>
+            直接人工(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.IndirectLabor">
+            <summary>
+            间接人工(小时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.QuantityInStorage">
+            <summary>
+            入库数量(kg)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.SampleNumber">
+            <summary>
+            取样数量(kg)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.ActualProduction">
+            <summary>
+            实际产量(kg)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.AttritionRate">
+            <summary>
+            损耗率(整体)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.CauseOfLoss">
+            <summary>
+            损耗原因
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.FactoryId">
+            <summary>
+            工厂Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.WorkshopId">
+            <summary>
+            车间Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.WorkshopName">
+            <summary>
+            车间名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporListDto.UpdateTime">
+            <summary>
+            最后一次修时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporRecordDto.Id">
+            <summary>
+            数据的唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporRecordDto.WorkOrderId">
+            <summary>
+            工单唯一id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporRecordDto.WorkOrderNum">
+            <summary>
+            工单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporRecordDto.Event">
+            <summary>
+            事件
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporRecordDto.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporRecordDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporRecordDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporRecordDto.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporRecordDto.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporRecordDto.UpdateTime">
+            <summary>
+            最后一次修时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporRecordDto.ResultsAndTips">
+            <summary>
+            结果及提示
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporRecordDto.PreChangeContent">
+            <summary>
+            变更前内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporRecordDto.ChangedContent">
+            <summary>
+            变更后内容
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporReturnEdiDto">
+            <summary>
+            制作报工回传ERP
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporReturnEdiDto.fBillNo">
+            <summary>
+            单据编号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporReturnEdiDto.fDocumentStatus">
+            <summary>
+            单据状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporReturnEdiDto.fBillType">
+            <summary>
+            单据类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporReturnEdiDto.fPrdOrgId">
+            <summary>
+            生产组织
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporReturnEdiDto.fWorkshipIdH">
+            <summary>
+            生产车间	
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporReturnEdiDto.fDate">
+            <summary>
+            单据日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.BulkReporReturnEdiDto.fEntity">
+            <summary>
+            明细子表
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity">
+            <summary>
+            明细子表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fMoBillNo">
+            <summary>
+            生产订单
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fReportType">
+            <summary>
+            生产汇报类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fMaterialId">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fTimeUnitId">
+            <summary>
+            时间单位：枚举：时“1”，秒“3600”，分“60”
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fQuaQty">
+            <summary>
+            合格数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fFinishQty">
+            <summary>
+            完成数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fBomId">
+            <summary>
+            BOM版本
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fMoEntrySeq">
+            <summary>
+            生产订单行号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fWorkshipId">
+            <summary>
+            生产车间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fSrcBillType">
+            <summary>
+            源单类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fSrcBillNo">
+            <summary>
+            源单编号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fSrcInterId">
+            <summary>
+            源单内码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fSrcEntryId">
+            <summary>
+            源单分录内码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fSrcEntrySeq">
+            <summary>
+            源单行号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fMoId">
+            <summary>
+            生产订单内码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fMoEntryId">
+            <summary>
+            生产订单分录号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fDescriptionE">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fStartTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fEndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fHrPrepareTime">
+            <summary>
+            包装人员工时(配置人员工时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fMacPrepareTime">
+            <summary>
+            灌装人员工时
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fHrWorkTime">
+            <summary>
+            包装机器工时(配置机器工时)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fMacWorkTime">
+            <summary>
+            灌装机器工时
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fStdManHour">
+            <summary>
+            单位标准工时
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fStandHourUnitId">
+            <summary>
+            单位标准工时单位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fEntity_Link_FRuleId">
+            <summary>
+            转换规则
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fEntity_Link_FSTableName">
+            <summary>
+            源单表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fEntity_Link_FSBillId">
+            <summary>
+            源单内码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.PSM_Bulk.Fentity.fEntity_Link_FSId">
+            <summary>
+            源单分录内码
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto">
+            <summary>
+            Sinno模块更新日志
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto.UpdateLog">
+            <summary>
+            Sinno模块更新日志
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto.UpdateLog.dUpDateDateTime">
+            <summary>
+            更新日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto.UpdateLog.UpdateContents">
+            <summary>
+            更新内容
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto.UpdateContent">
+            <summary>
+            更新内容详细
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto.UpdateContent.iNumber">
+            <summary>
+            序号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto.UpdateContent.cContent">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto.UpdateContent.cUserName">
+            <summary>
+            更新人
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto.UpdateLogList">
+            <summary>
+            Sinno模块更新日志数据集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto.ReturnUpdateLogList">
+            <summary>
+            Sinno模块返回更新日志数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto.ReturnUpdateLogList.iNumber">
+            <summary>
+            总条数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto.ReturnUpdateLogList.LogList">
+            <summary>
+            日志数据
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto.PagedataAppoint">
+            <summary>
+            分页数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.PageState">
+            <summary>
+            是否启用分页(默认不启用)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.SetPage">
+            <summary>
+            查询第几页数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.Number">
+            <summary>
+            每页显示条数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.dStarTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.dEndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.cUserName">
+            <summary>
+            更新人
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Dto.WeighingPPD.WeighingWorkOrderListDto">
+            <summary>
+            称料计划列表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Dto.WeighingPPD.WeighingWorkOrderListDto.PlanTime">
+            <summary>
+            计划日期
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.EventHandlers.BulkReportLogEventHandler">
+            <summary>
+            制作报工记录事件处理者
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.EventHandlers.BulkReportLogEventHandler.#ctor(EES.Infrastructure.Bus.IMediatorHandler,System.IServiceProvider)">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.EventHandlers.BulkReportLogEventHandler.Handle(EES.Modules.Sinno.Events.CreateBulkReportLogEvent,System.Threading.CancellationToken)">
+            <summary>
+            创建制作报工记录事件
+            </summary>
+            <param name="notification"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sinno.Events.CreateBulkReportLogEvent">
+            <summary>
+            创建制作报工记录事件
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.Events.CreateBulkReportLogEvent.#ctor">
+            <summary>
+            无参构造函数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.Events.CreateBulkReportLogEvent.#ctor(System.Nullable{System.Int64},System.String,EES.Modules.Psm.Bulk.Entities.ChangeEvent,System.String,System.String,System.String)">
+            <summary>
+            创建制作报工记录
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Events.CreateBulkReportLogEvent.WorkOrderId">
+            <summary>
+            工单唯一id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Events.CreateBulkReportLogEvent.WorkOrderNum">
+            <summary>
+            工单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Events.CreateBulkReportLogEvent.Event">
+            <summary>
+            变更事件
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Events.CreateBulkReportLogEvent.ResultsAndTips">
+            <summary>
+            结果及提示
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Events.CreateBulkReportLogEvent.PreChangeContent">
+            <summary>
+            变更前内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sinno.Events.CreateBulkReportLogEvent.ChangedContent">
+            <summary>
+            变更后内容
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Services.PPD.WeighingPPDService">
+            <summary>
+            称量看板查询服务
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sinno.Services.PSM.Weigh.IWeighReportService">
+            <summary>
+            称量报工服务接口
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.Services.PSM.Weigh.IWeighReportService.GetApportionListAsync(System.String,System.String,System.Int64,System.Int64,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            获取分摊列表
+            </summary>
+            <param name="startTime">开始时间</param>
+            <param name="endTime">结束时间</param>
+            <param name="factoryId">工厂Id</param>
+            <param name="workshopId">车间Id</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">条数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.Services.PSM.Weigh.IWeighReportService.GetApportionRecordAsync(System.String,System.String,System.Int64,System.Int64,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            获取分摊记录
+            </summary>
+            <param name="startTime">开始时间</param>
+            <param name="endTime">结束时间</param>
+            <param name="factoryId">工厂Id</param>
+            <param name="workshopId">车间Id</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">条数</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sinno.Services.PSM.Weigh.WeighReportService">
+            <summary>
+            称量报工服务实现
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Sinno.Services.PSM.Weigh.WeighReportService._WorkOrderRepository">
+            <summary>
+            称量工单表
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Sinno.Services.PSM.Weigh.WeighReportService._WeighingRepository">
+            <summary>
+            CPI表-称量任务
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Sinno.Services.PSM.Weigh.WeighReportService._WeighingExecuteRepository">
+            <summary>
+            Dtl表-称量执行记录
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Sinno.Services.PSM.Weigh.WeighReportService._WeighingDirectRecordRepository">
+            <summary>
+            称量报工分摊记录信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.Services.PSM.Weigh.WeighReportService.#ctor(EES.Infrastructure.Bus.IMediatorHandler,EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Entities.WorkOrder},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Weigh.Entities.Weighing},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Weigh.Entities.WeighingExecute},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Weigh.Entities.WeighingDirectRecord})">
+            <summary>
+            构造函数，DI注入
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.Services.PSM.Weigh.WeighReportService.GetApportionListAsync(System.String,System.String,System.Int64,System.Int64,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            获取分摊列表
+            </summary>
+            <param name="startTime">开始时间</param>
+            <param name="endTime">结束时间</param>
+            <param name="factoryId">工厂Id</param>
+            <param name="workshopId">车间Id</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">条数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.Services.PSM.Weigh.WeighReportService.GetApportionRecordAsync(System.String,System.String,System.Int64,System.Int64,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            获取分摊记录
+            </summary>
+            <param name="startTime">开始时间</param>
+            <param name="endTime">结束时间</param>
+            <param name="factoryId">工厂Id</param>
+            <param name="workshopId">车间Id</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">条数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.Services.PSM_Bulk.BulkReportRecordService.GetBulkReporRecordAsync(System.Nullable{System.Int64},System.Nullable{EES.Modules.Psm.Bulk.Entities.ChangeEvent},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            报工记录查询
+            </summary>
+            <param name="workOrderId">工单Id</param>
+            <param name="event">变更事件 1=出锅创建; 2=保存修改; 4=提交; 驳回=8; 审核=16; 回传=32; 辅助工时分摊=64;</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">条数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.Services.PSM_Bulk.BulkReportService.GetBulkReporListAsync(System.String,System.Int64,System.Int64,EES.Modules.Psm.Bulk.Entities.ReportingStatus,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            报工列表查询
+            </summary>
+            <param name="productionStartTime">工单出锅开始日期</param>
+            <param name="factoryId">工厂Id</param>
+            <param name="workshopId">车间Id</param>
+            <param name="reportingStatus">报工状态</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">条数</param>
+        </member>
+        <member name="M:EES.Modules.Sinno.Services.PSM_Bulk.BulkReportService.GetBulkReporByOrderAsync(System.String,System.Nullable{System.Int64},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            根据工单查询
+            </summary>
+            <param name="work_order_num">工单号</param>
+            <param name="work_order_id">工单id</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">条数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.Services.PSM_Bulk.IBulkReportService.GetBulkReporListAsync(System.String,System.Int64,System.Int64,EES.Modules.Psm.Bulk.Entities.ReportingStatus,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            报工列表查询
+            </summary>
+            <param name="productionStartTime">工单出锅开始日期</param>
+            <param name="factoryId">工厂Id</param>
+            <param name="workshopId">车间Id</param>
+            <param name="reportingStatus">报工状态</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">条数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.Services.PSM_Bulk.IBulkReportService.GetBulkReporByOrderAsync(System.String,System.Nullable{System.Int64},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            根据工单查询
+            </summary>
+            <param name="work_order_num">工单号</param>
+            <param name="work_order_id">工单id</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">条数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sinno.Services.PSM_Bulk.IBulkReportRecordService.GetBulkReporRecordAsync(System.Nullable{System.Int64},System.Nullable{EES.Modules.Psm.Bulk.Entities.ChangeEvent},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            报工记录查询
+            </summary>
+            <param name="workOrderId">工单Id</param>
+            <param name="event">变更事件 1=出锅创建; 2=保存修改; 4=提交; 驳回=8; 审核=16; 回传=32; 辅助工时分摊=64;</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">条数</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sinno.Services.PSM_Bulk.IWorkOrderSinnoService">
+            <summary>
+            中研乳化工单查询接口
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.Services.PSM_Bulk.IWorkOrderSinnoService.GetWorkOrderBatchNoAsync(System.Int64)">
+            <summary>
+            获取工单批次信息
+            </summary>
+            <param name="ID">工单ID</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sinno.Services.PSM_Bulk.WorkOrderSinnoService">
+            <summary>
+            中研乳化工单查询服务实现
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.Services.PSM_Bulk.WorkOrderSinnoService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Bulk.Entities.BulkExecuteWorkOrder},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Entities.WorkOrder},Microsoft.Extensions.Logging.ILogger{EES.Modules.Sinno.Services.PSM_Bulk.WorkOrderSinnoService},EES.Infrastructure.Bus.IMediatorHandler,AutoMapper.IMapper,MediatR.IMediator)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="repository"></param>
+            <param name="logger"></param>
+            <param name="mediatorHandler"></param>
+            <param name="mapper"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:EES.Modules.Sinno.Services.PSM_Bulk.WorkOrderSinnoService.GetWorkOrderBatchNoAsync(System.Int64)">
+            <summary>
+            获取工单的批次信息
+            </summary>
+            <param name="ID">工单ID</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sinno.Services.PSM_Bulk.AboutQcsService">
+            <summary>
+            中研质检相关定制功能实现
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.Services.PSM_Bulk.AboutQcsService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Entities.WorkOrder},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Bulk.Entities.BulkOutOfPotInformation},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Qcs.Entities.SamplingRecords},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Qcs.Entities.PleaseCheck},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Qcs.Entities.SamplingTasks},Microsoft.Extensions.Logging.ILogger{EES.Modules.Sinno.Services.PSM_Bulk.AboutQcsService},EES.Infrastructure.Bus.IMediatorHandler,AutoMapper.IMapper,MediatR.IMediator)">
+            <summary>
+            
+            </summary>
+            <param name="outOfPot"></param>
+            <param name="samplingRecordsRepository"></param>
+            <param name="pleaseCheckRepository"></param>
+            <param name="samplingTasksRepository"></param>
+            <param name="logger"></param>
+            <param name="mediatorHandler"></param>
+            <param name="mapper"></param>
+            <param name="mediator"></param>
+            <param name="workOrderRepository"></param>
+        </member>
+        <member name="M:EES.Modules.Sinno.Services.PSM_Bulk.AboutQcsService.GetSampeLabelInformationAsync(System.Int64)">
+            <summary>
+            获取取样标签信息
+            </summary>
+            <param name="samplingRecordsId">取样记录ID</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:EES.Modules.Sinno.Services.PSM_Bulk.IAboutQcsService">
+            <summary>
+            关于质检
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sinno.Services.PSM_Bulk.IAboutQcsService.GetSampeLabelInformationAsync(System.Int64)">
+            <summary>
+            获取取样标签信息
+            </summary>
+            <param name="samplingRecordsId">取样记录ID</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Proya.Controllers.PSM_Bulk.WorkOrderSinnoController">
+            <summary>
+            乳化工单执行（中研）
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Proya.Controllers.PSM_Bulk.WorkOrderSinnoController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Proya.Controllers.PSM_Bulk.WorkOrderSinnoController},MediatR.IMediator,EES.Modules.Sinno.Services.PSM_Bulk.IWorkOrderSinnoService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+             <param name="workOrderSinnoService"></param>
+        </member>
+        <member name="M:EES.Modules.Proya.Controllers.PSM_Bulk.WorkOrderSinnoController.GetWorkOrderBatchNoAsync(System.Int64)">
+            <summary>
+            获取当前乳化工单批号
+            </summary>
+            <param name="ID">工单ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Proya.Controllers.PSM_Bulk.WorkOrderSinnoController.SaveAndRunWorkOrderBatchNoAsync(System.Int64,System.String)">
+             <summary>
+             将用户确认的批次写回,并启动工单
+             </summary>
+             <param name="ID">工单ID</param>
+            <param name="BatchNo">批次编号</param>
+             <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Proya.Controllers.QCS.AboutQcsController">
+            <summary>
+            质检相关（中研）
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Proya.Controllers.QCS.AboutQcsController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Proya.Controllers.QCS.AboutQcsController},MediatR.IMediator,EES.Modules.Sinno.Services.PSM_Bulk.IAboutQcsService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+             <param name="aboutQcsService"></param>
+        </member>
+        <member name="M:EES.Modules.Proya.Controllers.QCS.AboutQcsController.GetSampeLabelInformationAsync(System.Int64)">
+            <summary>
+            获取取样标签信息
+            </summary>
+            <param name="samplingRecordsId">取样记录id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Proya.Controllers.QCS.AboutQcsController.GenerateSampleBarCodeAsync(EES.Modules.Sinno.Commands.QCS.GenerateSampleBarCodeCmd)">
+            <summary>
+            生成取样条码
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

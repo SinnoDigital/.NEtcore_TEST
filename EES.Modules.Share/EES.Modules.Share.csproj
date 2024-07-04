@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;8618</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;8618</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Commands\Wms\ExecuteSendBackCmd.cs~RF2e26626.TMP" />
+    <None Remove="Commands\Wms\GetTasksCmd.cs~RF2844d19.TMP" />
+    <None Remove="Commands\Wms\NonProductionMaterialRequisitionCmd.cs~RF47de9e.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EES.Infrastructure\EES.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

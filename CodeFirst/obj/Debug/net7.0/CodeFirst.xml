@@ -1,0 +1,1035 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CodeFirst</name>
+    </assembly>
+    <members>
+        <member name="M:CodeFirst.Configuration.GetConfiguration(System.String)">
+            <summary>
+            获取配置文件的配置节点
+            </summary>
+            <param name="configKey">多个节点可以用英文.号隔开</param>
+            <returns></returns>
+        </member>
+        <member name="T:LinCms.Core.Entities.UmsAdministrativeArea">
+            <summary>
+            行政区域
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsAdministrativeArea.Id">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsAdministrativeArea.Code">
+            <summary>
+            行政区域编号
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsAdministrativeArea.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsAdministrativeArea.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsAdministrativeArea.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsAdministrativeArea.FactoryCode">
+            <summary>
+            所属工厂编号
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsAdministrativeArea.FactoryId">
+            <summary>
+            所属工厂id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsAdministrativeArea.FactoryName">
+            <summary>
+            所属工厂名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsAdministrativeArea.Headcount">
+            <summary>
+            当前行政区域编制人数
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsAdministrativeArea.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsAdministrativeArea.Name">
+            <summary>
+            行政区域名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsAdministrativeArea.Number">
+            <summary>
+            序号
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsAdministrativeArea.RealNumber">
+            <summary>
+            当前行政区域已启用人数
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsAdministrativeArea.UpdateTime">
+            <summary>
+            最后一次修改时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsAdministrativeArea.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsAdministrativeArea.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="T:LinCms.Core.Entities.UmsData">
+            <summary>
+            数据权限资源表- 数据来自pem模块
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsData.Category">
+            <summary>
+            1 工厂车间  2：仓库  3：物料类型   4:车间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsData.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsData.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsData.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsData.ObjectCode">
+            <summary>
+            对应数据的编码
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsData.ObjectId">
+            <summary>
+            对应的数据id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsData.ObjectName">
+            <summary>
+            数据显示名字
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsData.ParentId">
+            <summary>
+            所属上级的id。 对应到object_id。工厂的上级id为0，车间，仓库的上级id填写所属工厂的id。
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsData.UpdateTime">
+            <summary>
+            最后一次更新时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsData.UpdateUserId">
+            <summary>
+            最后一次更新数据的用户Id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsData.UpdateUserName">
+            <summary>
+            最后一次更新用户的名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsData.ObjectType">
+            <summary>
+            对应车间的类型
+            </summary>
+        </member>
+        <member name="T:LinCms.Core.Entities.UmsDepartment">
+            <summary>
+            部门信息
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsDepartment.Id">
+            <summary>
+            数据的唯一ID
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsDepartment.Code">
+            <summary>
+            代码
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsDepartment.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsDepartment.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsDepartment.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsDepartment.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsDepartment.ImageUrl">
+            <summary>
+            图标的url
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsDepartment.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsDepartment.ParentId">
+            <summary>
+            数据的父级ID
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsDepartment.SortNumber">
+            <summary>
+            序号
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsDepartment.UpdateTime">
+            <summary>
+            最后一次修改时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsDepartment.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsDepartment.UpdateUserName">
+            <summary>
+            最后一次修者名称
+            </summary>
+        </member>
+        <member name="T:LinCms.Core.Entities.UmsFunction">
+            <summary>
+            功能资源表
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsFunction.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsFunction.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsFunction.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsFunction.Description">
+            <summary>
+            功能说明
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsFunction.Identifier">
+            <summary>
+            功能权限标识符
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsFunction.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsFunction.ParentId">
+            <summary>
+            父级id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsFunction.Type">
+            <summary>
+            标识 1: 分类标识   2：功能
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsFunction.UpdateTime">
+            <summary>
+            最后一次修时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsFunction.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsFunction.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="T:LinCms.Core.Entities.UmsMenu">
+            <summary>
+            系统菜单资源表
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsMenu.Category">
+            <summary>
+            菜单的类别：1 导航分类 2：页面
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsMenu.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsMenu.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsMenu.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsMenu.Description">
+            <summary>
+            备注说明
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsMenu.EnglishName">
+            <summary>
+            菜单的英文名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsMenu.Icon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsMenu.Name">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsMenu.ParentId">
+            <summary>
+            上级菜单
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsMenu.Route">
+            <summary>
+            菜单路由
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsMenu.SortNumber">
+            <summary>
+            同级别下显示排序
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsMenu.Type">
+            <summary>
+            菜单类型: 1 PC菜单， 2：PDA菜单 
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsMenu.UpdateTime">
+            <summary>
+            最后一次修时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsMenu.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsMenu.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="T:LinCms.Core.Entities.UmsRole">
+            <summary>
+            角色的对象集合
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRole.Id">
+            <summary>
+            数据的唯一ID
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRole.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRole.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRole.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRole.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRole.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRole.UpdateTime">
+            <summary>
+            最后一次修改时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRole.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRole.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="T:LinCms.Core.Entities.UmsRoleDatas">
+            <summary>
+            角色数据权限
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleDatas.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleDatas.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleDatas.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleDatas.DataId">
+            <summary>
+            数据权限id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleDatas.RoleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleDatas.UpdateTime">
+            <summary>
+            最后一次修时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleDatas.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleDatas.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="T:LinCms.Core.Entities.UmsRoleFunctions">
+            <summary>
+            角色功能权限表
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleFunctions.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleFunctions.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleFunctions.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleFunctions.FunctionId">
+            <summary>
+            功能id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleFunctions.RoleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleFunctions.UpdateTime">
+            <summary>
+            最后一次修时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleFunctions.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleFunctions.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="T:LinCms.Core.Entities.UmsRoleMenus">
+            <summary>
+            角色菜单权限表
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleMenus.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleMenus.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleMenus.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleMenus.MenuId">
+            <summary>
+            菜单id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleMenus.MenuType">
+            <summary>
+            菜单类型: 1 PC菜单， 2：PDA菜单 
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleMenus.RoleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleMenus.UpdateTime">
+            <summary>
+            最后一次修时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleMenus.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsRoleMenus.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="T:LinCms.Core.Entities.UmsSystemParam">
+            <summary>
+            系统参数信息
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsSystemParam.Id">
+            <summary>
+            主键id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsSystemParam.BeforeValue">
+            <summary>
+            修改前的值
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsSystemParam.Code">
+            <summary>
+            参数编码
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsSystemParam.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsSystemParam.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsSystemParam.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsSystemParam.DefalutValue">
+            <summary>
+            默认值
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsSystemParam.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsSystemParam.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsSystemParam.Module">
+            <summary>
+            所属模块
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsSystemParam.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsSystemParam.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsSystemParam.SetValue">
+            <summary>
+            设定值
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsSystemParam.UpdateTime">
+            <summary>
+            最后一次修时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsSystemParam.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsSystemParam.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="T:LinCms.Core.Entities.UmsTeam">
+            <summary>
+            工作组信息
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeam.Id">
+            <summary>
+            数据的唯一ID
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeam.AreaCode">
+            <summary>
+            工作区域编码
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeam.AreaId">
+            <summary>
+            工作区域id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeam.AreaName">
+            <summary>
+            工作区域名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeam.Code">
+            <summary>
+            工作组编码
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeam.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeam.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeam.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeam.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeam.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeam.FactoryId">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeam.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeam.Name">
+            <summary>
+            工作组名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeam.Type">
+            <summary>
+            班组类型:  1车间  2仓库  3质量  4其他
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeam.UpdateTime">
+            <summary>
+            最后一次修改时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeam.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeam.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="T:LinCms.Core.Entities.UmsTeamMembers">
+            <summary>
+            组员
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeamMembers.Id">
+            <summary>
+            数据的唯一ID
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeamMembers.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeamMembers.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeamMembers.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeamMembers.TeamId">
+            <summary>
+            所属班组id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeamMembers.UpdateTime">
+            <summary>
+            最后一次修改时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeamMembers.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeamMembers.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsTeamMembers.UserId">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="T:LinCms.Core.Entities.UmsUser">
+            <summary>
+            用户信息
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUser.Id">
+            <summary>
+            数据的唯一ID
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUser.Account">
+            <summary>
+            用户账户
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUser.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUser.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUser.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUser.DepartmenId">
+            <summary>
+            部门ID
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUser.ImageUrl">
+            <summary>
+            用户照片的url
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUser.Language">
+            <summary>
+            用户系统语言标识
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUser.Mail">
+            <summary>
+            用户邮箱
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUser.Name">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUser.Password">
+            <summary>
+            用户密码密文
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUser.Phone">
+            <summary>
+            用户电话
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUser.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUser.Salt">
+            <summary>
+            密码盐
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUser.SignatureUrl">
+            <summary>
+            用户签名的url
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUser.State">
+            <summary>
+            用户状态
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUser.UpdateTime">
+            <summary>
+            最后一次修时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUser.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUser.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="T:LinCms.Core.Entities.UmsUserParam">
+            <summary>
+            用户参数信息
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserParam.Id">
+            <summary>
+            主键id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserParam.BeforeValue">
+            <summary>
+            修改前的值
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserParam.Code">
+            <summary>
+            参数编码
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserParam.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserParam.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserParam.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserParam.DefalutValue">
+            <summary>
+            默认值
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserParam.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserParam.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserParam.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserParam.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserParam.SetValue">
+            <summary>
+            设定值
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserParam.Type">
+            <summary>
+            参数类型
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserParam.Unit">
+            <summary>
+            参数单位
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserParam.UpdateTime">
+            <summary>
+            最后一次修时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserParam.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserParam.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserParam.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserParam.ValueType">
+            <summary>
+            值类型
+            </summary>
+        </member>
+        <member name="T:LinCms.Core.Entities.UmsUserRoles">
+            <summary>
+            用户 - 角色关系表
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserRoles.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserRoles.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserRoles.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserRoles.RoleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserRoles.UpdateTime">
+            <summary>
+            最后一次修时间
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserRoles.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserRoles.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="P:LinCms.Core.Entities.UmsUserRoles.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+    </members>
+</doc>

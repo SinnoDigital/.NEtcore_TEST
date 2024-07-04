@@ -1,0 +1,1402 @@
+﻿@@master_page.html
+<link href="css/page_table_list.css" rel="stylesheet" />
+<link href="css/page_interface_manager.css" rel="stylesheet" />
+<script src="js/ace/src-min/ace.js"></script>
+<script src="js/ace/src-min/ext-language_tools.js"></script> 
+<div id="apibox" class="card">
+    <!--主列表搜索-->
+    <div class="search-bar">
+        <form id="frmSearach" action="lyear_forms_elements.html" method="post" onsubmit="return false;">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-1"><label class="form-control">数据库:</label></div>
+                    <div class="col-md-2"><select @change="changeDatabase" v-model="databaseId" id="selDatabase" class="form-control"><option v-for="item in database" :value="item.Id">{{item.Name}}</option></select></div>
+                    <div class="col-md-2"><input class="form-control" type="text" id="txtName" name="example-text-input" placeholder="接口名 或者 URL"></div>
+                    <div class="col-md-2"><select id="selGroupName" class="form-control"><option value=""> ==分组==</option> <option v-for="item in groupList">{{item.GroupName}}</option></select></div>
+                    <div class="col-md-2"><select id="selInterfaceCategoryId" class="form-control"><option value="">==分类==</option> <option v-for="item in interfaceCategroyList" :value="item.Id">{{item.Name}}</option></select></div>
+                    <div class="col-md-3">
+                        <button @click="onSearch()" class="btn btn-secondary"><i class="mdi mdi-magnify"></i>搜索</button>
+                        <button onclick="frmSearach.reset()" id="btnSearch" class="btn btn-close m-l-15" type="submit">清空</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--主表列表操作按钮-->
+    <div class="card-toolbar clearfix">
+        <div class="toolbar-btn-action">
+            <a class="btn btn-primary m-r-5" @click="openNext()" href="#!"><i class="mdi mdi-plus"></i> 新增</a>
+            <a class="btn btn-success m-r-5" @click="enable()" href="#!"><i class="mdi mdi-check"></i> 启用</a>
+            <a class="btn btn-warning m-r-5" @click="disable()" href="#!"><i class="mdi mdi-block-helper"></i> 禁用</a>
+        </div>
+    </div>
+    <!--主列表-->
+    <div class="card-body">
+
+        <h5> </h5>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr v-if="data && data.Columns && data.Columns.length > 0">
+                        <th class="width30">
+                            <label class="lyear-checkbox checkbox-primary">
+                                <input type="checkbox" @change="selectAll" id="check-all"><span></span>
+                            </label>
+                        </th>
+                        <th v-for="column in data.Columns">{{column.ColumnDescription}}</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody v-if="data &&data.Data">
+                    <tr v-if="data.Columns && data.Columns.length > 0" v-for="item in data.Data">
+                        <td>
+                            <label class="lyear-checkbox checkbox-primary">
+                                <input type="checkbox" name="ids[]" v-model="selectedItems" :alt="item.Id" :value="item.Id"><span></span>
+                            </label>
+                        </td>
+                        <td v-for="column in data.Columns">
+                            {{ item[column.PropertyName] }}
+                        </td>
+
+                        <td class="table_opt">
+                            <button data-toggle="modal" @click="openEdit(item)" class="btn btn-link" type="button">
+                                <i class="mdi mdi-lead-pencil"></i> 修改
+                            </button>
+                            <button data-toggle="modal" @click="deleteAndConfirm(item)" data-target="#divDelBox" class="btn btn-link" type="button">
+                                <i class="mdi mdi-do-not-disturb"></i> 删除
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <!--分页局部视图-->
+    @@page_control.html
+    <!--创建接口第一步：选择接口分类-->
+    <div class="modal fade " tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" id="divBefore" style="display: none;">
+        <button id="btnNext" type="button" class="btn btn-primary hidden" data-toggle="modal" data-target="#divBefore"></button>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">接口类型</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="frmEdit">
+                        <input type="hidden" v-model="formData.Id" name="Id" />
+                        <div class="form-group">
+                            <label class="control-label">数据库</label>
+                            <select v-model="databaseId" readonly="readonly" id="selDataBaseId" class="form-control">
+                                <option v-for="item in  database" v-bind:value="item.Id"> {{item.Name}} </option>
+                            </select>
+                            <label class="control-label">分类</label>
+                            <select v-model="currentActionType" id="selTextGroup" class="form-control">
+                                <option v-for="item in actionList" :value="item">{{item.TextGroup}}</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnNextClose" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" @click="openAdd()" class="btn btn-primary">下一步</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--创建接口主窗体：填写接口详细信息-->
+    <div id="divSave" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: none;">
+        <button id="btnSave" type="button" class="btn btn-primary hidden" data-toggle="modal" data-target="#divSave"></button>
+        <div class="modal-dialog modal-lg  width1200" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="myLargeModalLabel">{{title}} </h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="table-container">
+                        <div class="card">
+                            <ul class="nav nav-tabs page-tabs">
+                                <li v-for="(item,index) in currentActionType.Items" @click="interfaceListTabClick(index,item)" :class="index==tabIndex?'active':''"> <a href="#!">{{item.Text}}</a> </li>
+                            </ul>
+                            <div class="tab-content tabbox">
+                                <div class="tab-pane active">
+
+                                    <form id="frmSave" action="#!" method="post" name="edit-form" class="edit-form">
+                                        <input v-model="editId" type="hidden" value="0" />
+                                        <div v-for="item in currentActionTypeContext.FormElements" class="form-group col-md-12">
+                                            <label v-if="item.ElementType!=5" for="type">{{item.Text}}<span class="red" v-if="item.IsRequired">*</span></label>
+                                            <div class="form-controls">
+                                                <!--text-->
+                                                <template v-if="item.ElementType==0">
+                                                    <input :name="item.Name" :placeholder="item.Placeholder" v-model="item.Value" :validate-data="JSON.stringify(item)" class="form-control" />
+                                                </template>
+                                                <!--table-->
+                                                <template v-if="item.ElementType==1">
+                                                    <div class="input-group">
+                                                        <input :name="item.Name" :placeholder="item.Placeholder" v-model="item.Value" :validate-data="JSON.stringify(item)" type="text" readonly="readonly" class="form-control">
+                                                        <span class="input-group-btn">
+                                                            <button @click="openImportEntity(item)" class="btn btn-default" type="button">选择表</button>
+                                                        </span>
+                                                    </div>
+                                                </template>
+                                                <!--Columns-->
+                                                <template v-if="item.ElementType==3">
+                                                    <span @click="openAddColumn(item)" class="btn   btn-primary m-tb-10">
+                                                        <i class="mdi mdi-settings"></i> 配置主表列
+                                                    </span>
+                                                    <span @click="openAddComplexityColumn(item)" class="btn btn-success m-tb-10">
+                                                        <i class="mdi mdi-plus"></i> 追加复杂列
+                                                    </span>
+                                                    <span @click="openOrderByColumn(item)" class="btn   btn-purple m-tb-10">
+                                                        <i class="mdi mdi-settings"></i> 配置排序
+                                                    </span>
+                                                    <span @click="openWhere(item)" class="btn btn-warning m-tb-10">
+                                                        <i class="mdi mdi-settings"></i> 配置条件
+                                                    </span>
+                                                    <p> <code>排序：{{selectedOrderByString}} {{ selectedOrderBys_EnableSort==false ? "": "["+selectedOrderBys_EnableSort+"]" }} </code> </p>
+                                                    <p v-if="selectedWheres.filter(item => item.PropertyName).length>0"> <code>条件：{{selectedWheres.filter(item => item.PropertyName ).length}} </code></p>
+                                                    <p v-if="selectedWheres.filter(item => item.PropertyName).length==0"> <code>条件：{{selectedWhereString}}</code></p>
+                                                    <table class="table table-bordered m-b-0">
+                                                        <thead>
+                                                            <tr>
+
+                                                                <th>列名</th>
+                                                                <th>显示名称</th>
+                                                                <th>排序号</th>
+                                                                <th>删除</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr v-for="item in selectedColumns">
+
+                                                                <td>{{item.PropertyName}}</td>
+                                                                <td>{{item.DbColumnName}}</td>
+                                                                <td>{{item.SortId}}</td>
+                                                                <td>
+                                                                    <button @click="deleteSelectedColumn(item)" type="button" class="btn btn-link">
+                                                                        <i class="mdi mdi-do-not-disturb"></i> 删除
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                            <tr v-for="item in selectedComplexityColumns">
+
+                                                                <td>{{item.PropertyName}}</td>
+                                                                <td>{{item.DbColumnName}}</td>
+                                                                <td>{{item.SortId}}</td>
+                                                                <td>
+                                                                    <button @click="deleteComplexitySelectedColumn(item)" type="button" class="btn btn-link">
+                                                                        <i class="mdi mdi-do-not-disturb"></i> 删除
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <input :name="item.Name" type="hidden" :placeholder="item.Placeholder" v-model="item.Value" :validate-data="JSON.stringify(item)" class="form-control" />
+                                                </template>
+                                                <!--Select-->
+                                                <template v-if="item.ElementType==4">
+                                                    <select :name="item.Name" v-model="item.Value" :validate-data="JSON.stringify(item)" class="form-control">
+                                                        <option v-if="item.SelectDataSource" v-for="o in item.SelectDataSource" :value="o.Key">{{o.Value}}</option>
+                                                    </select>
+                                                </template>
+                                                <!--Hidden-->
+                                                <template v-if="item.ElementType==5">
+                                                    <input :name="item.Name" v-model="item.Value" type="hidden" :validate-data="JSON.stringify(item)" class="form-control" />
+                                                </template>
+                                                <!--Page-->
+                                                <template v-if="item.ElementType==6">
+                                                    <label class="lyear-checkbox   t_a_l "><input v-model="item.Value" :name="item.Name" value="true" type="checkbox"> <span class="p-l-15">是否分页</span></label>
+                                                </template>
+                                                <!--SqlTest-->
+                                                <template v-if="item.ElementType==7">
+                                                    <p><code>接口参数：{string:name} 等于 @name=string类型的参数 ，C#类型有string、int、DateTime等</code></p>
+                                                    <p><code>授权参数：{ClaimKey:OrgId} 等于 你授权的Claim[OrgId]</code></p>
+                                                    <textarea rows="10" style="display:none" :placeholder="item.Placeholder" :name="item.Name" v-model="item.Value" class="form-control"></textarea>
+                                                    <div id="divAceEditor" style="width:100%;height:300px;"></div>
+                                                </template>
+                                                <!--DefaultValueColumns-->
+                                                <template v-if="item.ElementType==8">
+                                                    <span class="btn btn-primary m-b-10" @click="openDefaultValue"><i class="mdi-account-settings-variant mdi"></i> 配置 </span>
+                                                    <textarea rows="5" class="form-control" readonly="readonly">{{saveDefaultValueColumns}}</textarea> 
+                                                </template>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnAddOrUpdateColse" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" @click="addOrUpdateInterfaceList()" class="btn btn-primary">点击保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--创建接口子窗体：选择表-->
+    <div id="divImportEntity" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: none;">
+        <button id="btnImportEntity" type="button" class="btn btn-primary hidden" data-toggle="modal" data-target="#divImportEntity"></button>
+        <div class="modal-dialog modal-lg border3CCC" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="myLargeModalLabel">选择表</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group width250  m-b-10">
+                        <input id="txtTableName" type="text" class="form-control"> <span class="input-group-btn">
+                            <button type="button" @click="bindImportTables()" class="btn btn-default"><i class="mdi mdi-magnify"></i>搜索</button>
+                            <button type="button" onclick="txtTableName.value=''" class="btn btn-default"><i class="mdi  mdi-refresh"></i>清空</button>
+                        </span>
+                    </div>
+                    <div class="table-container2">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="width30">
+                                        <label class="lyear-checkbox checkbox-primary">
+                                            <input type="checkbox" @change="selectAllTables" id="check-all2"><span></span>
+                                        </label>
+                                    </th>
+                                    <th>
+                                        表名
+                                    </th>
+                                    <th>描述</th>
+                                </tr>
+                            </thead>
+                            <tbody v-if="tables">
+                                <tr v-for="item in tables">
+                                    <td>
+                                        <input type="checkbox" name="ids[]" v-model="selectedTables" :alt="item.Name" :value="item">
+                                    </td>
+                                    <td>
+                                        {{ item.Name }}
+                                    </td>
+                                    <td>
+                                        {{ item.Description  }}
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnImportEntityClose" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" @click="importEntitySubmit()" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--创建接口子窗体：添加简单列-->
+    <div class="modal fade " tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" id="divAddColumns" style="display: none;">
+        <button id="btnDivAddColumns" type="button" class="btn btn-primary hidden" data-toggle="modal" data-target="#divAddColumns"></button>
+        <div class="modal-dialog width800 border3CCC" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">选择列</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th><input @change="selectAllColumns" type="checkbox" /></th>
+                                <th>列名</th>
+                                <th>显示名称</th>
+                                <th>排序号</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="item in columns">
+                                <th scope="row"><input name="columnIds[]" v-model="selectColumns" :alt="item.Id" :value="item.Id" type="checkbox" /></th>
+                                <td>{{item.PropertyName}}</td>
+                                <td><input v-model="item.DbColumnName" class="form-control" /></td>
+                                <td><input v-model="item.SortId" onchange="tools.ensureNumeric(this)" class="form-control" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnCloseAddColumns" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" @click="saveColumns()" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--创建接口子窗体：追加复杂列-->
+    <div class="modal fade  bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" id="divAddComplexityColumns" style="display: none;">
+        <button id="btnAddComplexityColumns" type="button" class="btn btn-primary hidden" data-toggle="modal" data-target="#divAddComplexityColumns"></button>
+        <div class="modal-dialog  width800  border3CCC" role="document">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">追加列</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="card p-b-0 m-b-0">
+                        <ul class="nav nav-tabs page-tabs">
+                            <li id="liComplexityColumns" class="active" @click="tabClickComplexityColumns(1)"><a href="#!">联表字段</a></li>
+                            <li><a href="#!" @click="tabClickComplexityColumns(2)">函数字段</a></li>
+                            <li> <a href="#!" @click="tabClickComplexityColumns(3)">导航对象</a></li>
+                            <li><a href="#!" @click="tabClickComplexityColumns(4)">更多开发中</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content tabbox">
+                        <div class="tab-pane active">
+                            <div class="form-group">
+                                <label for="example-nf-email">主表关联字段 （一般是外键） <span class="red">*</span></label>
+                                <select v-model="copcol_MasterField" name="MasterField" class="form-control">
+                                    <option v-if="columns&&columns.length>0" v-for="item in columns">{{item.PropertyName}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="example-nf-email">关联的表 <span class="red">*</span></label>
+                                <input v-model="copcol_JoinTable" @change="changeJoinTable" class="form-control" list="browsers" name="joinTable">
+                                <datalist id="browsers">
+                                    <option v-if="tables&&tables.length>0" v-for="item in tables" :value="item.Name">{{item.Name}}</option>
+                                </datalist>
+                                <button class="btn btn-xs btn-primary removedatalist" @click="clearJoinTable"><i class="mdi mdi-do-not-disturb"></i>删除选定项</button>
+                            </div>
+                            <div class="form-group">
+                                <label for="example-nf-email">关联方式<span class="red">*</span></label>
+                                <select v-model="copcol_joinType" name="joinType" class="form-control">
+                                    <option value="LeftJoin">左链接 [存在相同关联会重复]</option>
+                                    <option value="InnerJoin">内链接 [存在相同关联会重复+子表不存在主表也不显示]</option>
+                                    <option value="SubqueryJoin">子查询 [不会重复]</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="example-nf-email">关联字段（一般主键） <span class="red">*</span></label>
+                                <select v-model="copcol_joinField" name="joinField" class="form-control">
+                                    <option v-if="joinColumns&&joinColumns.length>0" v-for="item in joinColumns">{{item.PropertyName}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="example-nf-email">关联显示字段 （一般是Name） <span class="red">*</span></label>
+                                <select v-model="copcol_ShowFields" multiple @change="changeShowField" name="joinField" class="form-control">
+                                    <option v-if="joinColumns&&joinColumns.length>0" v-for="item in joinColumns">{{item.PropertyName}}</option>
+                                </select>
+                                <input class="form-control" readonly="readonly" v-model="copcol_ShowField" />
+                            </div>
+                            <div class="form-group">
+                                <label for="example-nf-email">关联显示字段别名（AS 名称）</label>
+                                <input v-model="copcol_Name" name="Name" placeholder="默认：关联显示字段" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="example-nf-email">排序号</label>
+                                <input v-model="copcol_SortId" onchange="tools.ensureNumeric(this)" name="Sort" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="tab-pane">
+                            <div class="form-group">
+                                开发中
+                            </div>
+                        </div>
+                        <div class="tab-pane">
+                            <div class="form-group">
+                                开发中..
+                            </div>
+                        </div>
+                        <div class="tab-pane">
+                            <div class="form-group">
+                                开发中..
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnCloseAddComplexityColumns" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" @click="saveComplexityColumns" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--创建接口子窗体：添加排序-->
+    <div class="modal fade  bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" id="divAddOrderBy" style="display: none;">
+        <button id="btnAddOrderBy" type="button" class="btn btn-primary hidden" data-toggle="modal" data-target="#divAddOrderBy"></button>
+        <div class="modal-dialog  width800 border3CCC" role="document">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">添加排序</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body tabbox">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>列名</th>
+                                    <th>排序方式</th>
+                                    <th>排序号</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="item in selectedOrderBys">
+                                    <td>{{item.Name}}<input type="hidden" v-model="item.Name" /> </td>
+                                    <td>
+                                        <select v-model="item.OrderByType" class="form-control">
+                                            <option> </option>
+                                            <option value="ASC">正序</option>
+                                            <option value="DESC">倒序</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input v-model="item.SortId" onchange="tools.ensureNumeric(this)" class="form-control" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <div>
+                                <p class="example-box">
+                                    <label class="lyear-checkbox">
+                                        <input v-model="selectedOrderBys_EnableSort" type="checkbox" /> <span class="p-l-15">允许URL覆盖上面排序</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <code>参数OrderByName生效：值为上面列名或者为空</code>
+                                </p>
+                                <p>
+                                    <code>参数OrderByType生效：值为ASC或者DESC</code>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnCloseAddOrderBy" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" @click="saveBtnOrderBy" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--创建接口子窗体：添加条件-->
+    <div class="modal fade  bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" id="divAddWhere" style="display: none;">
+        <button id="btnAddWhere" type="button" class="btn btn-primary hidden" data-toggle="modal" data-target="#divAddWhere"></button>
+        <div class="modal-dialog width1000  border3CCC" role="document">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">添加条件</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body tabbox">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="w-15">条件编号</th>
+                                    <th class="w-15">条件列</th>
+                                    <th class="w-15">条件关系</th>
+                                    <th>条件值</th>
+                                    <th class="w-20">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item, index) in selectedWheres" :key="item.Id">
+                                    <td>
+                                        {{item.Id}}
+                                    </td>
+                                    <td>
+                                        <select v-model="item.PropertyName" class="form-control">
+                                            <option></option>
+                                            <option v-for="item in selectedColumns">
+                                                {{item.PropertyName}}
+                                            </option>
+                                            <option v-for="item in selectedComplexityColumns">
+                                                {{item.DbColumnName}}
+                                            </option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select v-model="item.WhereType" class="form-control">
+                                            <option></option>
+                                            <option v-for="item in whereTypeList">
+                                                {{item.Key}}
+                                            </option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <select v-model="item.ValueType" id="selectOption" class="form-control">
+                                                    <option value="0">固定值</option>
+                                                    <option value="1">参数名</option>
+                                                    <option class="2">ClaimKey</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input v-model="item.Value" id="inputValue" class="form-control" type="text">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="pointer m-r-10" @click="addWhereItem(selectedWheres[selectedWheres.length - 1].Id)"><i class="mdi mdi-plus"></i> 添加</span>
+                                        <span class="pointer" @click="deleteWhereItem(item.Id)"><i class="mdi  mdi-window-close"></i> 删除</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="form-group">
+                            <p><code>条件关系：</code></p>
+                            <select v-model="selectedWheresConditionalRelation" @change="showWherePreview" class="form-control">
+                                <option value="And">And：并且-带OR参数NULL</option>
+                                <option value="AndAll">AndAll：并且  </option>
+                                <option value="Or">Or：或者-带OR参数NULL </option>
+                                <option value="OrAll">OrAll： 或者  </option>
+                                <option value="Custom">Custom ：自定义-带OR参数NULL </option>
+                                <option value="CustomAll">CustomAll：自定义 </option>
+                            </select>
+                        </div>
+                        <div v-if="selectedWheresConditionalRelation=='Custom'||selectedWheresConditionalRelation=='CustomAll'" class="form-group">
+                            <textarea rows="5" v-model="selectedWhereRelationTemplate" class="form-control">
+
+                            </textarea>
+                            <p>
+                                <code>{1}表示编号为1的条件，{2}表示编号为2的条件 </code>
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <p><code>预览：</code></p>
+                            <p style="white-space: pre-line;">{{selectdWherePreviewString}}</p>
+                            <button @click="showWherePreview" class="btn btn-info">
+                                <i class="mdi mdi-refresh"></i> 刷新结果
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnCloseAddWhere" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" @click="saveBtnWhere" class="btn btn-primary">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--创建接口子窗体：默认值-->
+    <div class="modal fade  bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" id="divDefaultValue" style="display: none;">
+        <button id="btnDafeultValue" type="button" class="btn btn-primary hidden" data-toggle="modal" data-target="#divDefaultValue"></button>
+        <div class="modal-dialog  width800 border3CCC" role="document">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">配置列默认值</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body tabbox">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>列名</th>
+                                    <th width="300">默认值类型</th>
+                                    <th width="200">值</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-if="selectDefaultValueColumns&&selectDefaultValueColumns.length>0"  v-for="x in  selectDefaultValueColumns" >
+                                    <td> {{x.PropertyName}} </td>
+                                    <td>
+                                        <select v-model="x.Type" class="form-control">
+                                            <option value="0">无</option>
+                                            <option value="1">固定值</option>
+                                            <option value="2">默认值(int等于0，空字符串等于空等)</option>
+                                            <option value="3">当前时间</option>
+                                            <option value="4">ClaimKey</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input  v-model="x.Value"  :class="[x.Type != 1&&x.Type != 4 ? 'hidden' : '', 'form-control'].join(' ')" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table> 
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnDafeultValueClose" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" @click="saveDefaultValue" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var vueObj = new Vue({
+        el: '#apibox',
+        data: {
+            data: null,
+            error: null,
+            addTitle: "添加接口",
+            editTitle: "修改接口",
+            title: "",
+            tabIndex: 0,
+            formData: {},
+            selectedItems: [],
+            groupList: [],
+            whereTypeList: [],
+            interfaceCategroyList: [],
+            actionList: [],
+            currentActionType: [],
+            currentActionTypeContext: [],
+            tables: [],
+            selectedTables: [],
+            databaseId: 0,
+            database: [],
+            editId:0,
+            columns: [],
+            joinColumns: [],
+            selectColumns: [],
+            selectColumnsTabIndex: 1,
+            selectedColumns: [],
+            selectedOrderBys: [],
+            selectedOrderByString: "-",
+            selectedOrderBys_EnableSort: false,
+            selectedComplexityColumns: [],
+            selectedWhereString: "-",
+            selectedWheres: [],
+            selectedWhereRelationTemplate: "( {1} and {2} ) ",
+            selectedWheresConditionalRelation: "AND",
+            selectdWherePreviewString: null,
+            selectDefaultValueColumns: [],
+            saveDefaultValueColumns:[],
+            //ComplexityColumn
+            copcol_JoinTable: null,
+            copcol_MasterField: null,
+            copcol_joinType: null,
+            copcol_joinField: null,
+            copcol_SortId: null,
+            copcol_Name: null,
+            copcol_ShowField: null,
+            copcol_ShowFields:[]
+        },
+        mounted() {
+            this.fetchData("");
+            this.bindGroupListSelect();
+            this.bindInterfaceCategroySelect();
+            this.bindActionLists();
+            this.bindDatabaseSelect();
+            this.bindWhereType();
+        },
+        methods: {
+
+            /*
+               主列表逻辑
+            */
+            fetchData(append) {
+                var url = "/PrivateReZeroRoute/100003/GetDynamicInterfacePageList" + append;
+                axios.get(url, jwHeader)
+                    .then(response => {
+                        this.data = response.data;
+                        this.error = null;
+                    })
+                    .catch(error => {
+                        this.error = error.message;
+                        this.data = null;
+                    });
+            },
+            onSearch: function (page) {
+
+                var urlParameters = "?" + tools.objectToQueryString({
+                    PageNumber: page,
+                    Name: txtName.value,
+                    GroupName: selGroupName.value,
+                    DataBaseId: selDatabase.value,
+                    InterfaceCategoryId: selInterfaceCategoryId.value,
+                });
+                this.fetchData(urlParameters);
+            },
+            changeDatabase: function ()
+            {
+                this.onSearch(1);
+            },
+            selectAll(event) {
+                if (event.target.checked) {
+                    // 全选
+                    this.selectedItems = this.data.Data.map(item => item.Id);
+                } else {
+                    // 全不选
+                    this.selectedItems = [];
+                }
+            },
+            deleteAndConfirm: function (item) {
+                if (item == null) {
+                    var url = "/PrivateReZeroRoute/100003/DeleteDynamicInterface?IsDeleted=true&Id=" + localStorage.delId;
+                    axios.get(url, jwHeader)
+                        .then(response => {
+                            this.data = response.data;
+                            this.error = null;
+                            this.onSearch();
+                            btnDelClose.click();
+                        })
+                        .catch(error => {
+                            this.error = error.message;
+                            this.data = null;
+                        });
+                } else {
+                    localStorage.delId = item.Id;
+                }
+            },
+            enable: function () {
+                alert("开发中");
+            },
+            disable: function () {
+                alert("开发中");
+            },
+
+
+            /*
+               编辑接口
+            */
+            openEdit: function (item)
+            {
+                var th = this;
+                var title = th.editTitle;
+                var urlById = "/PrivateReZeroRoute/100003/GetInternalDetail?id=" + item.Id;
+                if (item.Id) { 
+                    axios.get(urlById, jwHeader)
+                        .then(response => {
+                            var oldData = JSON.parse(JSON.stringify(th.$data));
+                            var data = JSON.parse(response.data.DataModel.CurrentDataString);
+                            tools.assignValuesToObject(data, th); 
+                            th.title = title;  
+                            th.editId = response.data.Id; 
+                            th.data = oldData.data;
+                            th.interfaceCategroyList = oldData.interfaceCategroyList;
+                            th.actionList = oldData.actionList;
+                            if (th.currentActionTypeContext) {
+                                if (th.currentActionTypeContext.FormElements)
+                                {
+                                    if (th.currentActionTypeContext.FormElements[1].SelectDataSource) {
+                                        th.currentActionTypeContext.FormElements[1].SelectDataSource
+                                            = oldData.actionList[0].Items[1].FormElements[1].SelectDataSource;
+                                    }
+                                   
+                                }
+                            }
+                            btnSave.click();
+                            this.showEditSql()
+                        })
+                        .catch(error => {
+                            this.error = error.message;
+                            this.data = null;
+                        });
+                }  
+            },
+
+
+            /*
+                添加接口
+            */
+            //1.打开和保存-添加接口
+            openNext: function () {
+                this.title = this.addTitle;
+                btnNext.click();
+                this.currentActionTypeContext = [];
+                this.selectDefaultValueColumns = [];
+                this.saveDefaultValueColumns = [];
+                this.editId = 0;
+            },
+            openAdd: function (item) {
+                if (this.currentActionType.length == 0) {
+                    tools.alert("请选择类型");
+                    return;
+                }
+                btnNextClose.click();
+                btnSave.click();
+                this.currentActionTypeContext = this.currentActionType.Items[0];
+                this.currentActionTypeContext.FormElements[0].Value = this.currentActionTypeContext.Text;
+                this.showEditSql();
+            },
+            addOrUpdateInterfaceList: function () {
+
+                var elementsWithValidateData = document.querySelectorAll('[validate-data]');
+                var isSuccess = true;
+                var th = this;
+                elementsWithValidateData.forEach(function (element) {
+                    var attributeName = 'validate-data';
+                    var attributeValue = JSON.parse(element.getAttribute(attributeName));
+
+                    if (isSuccess) {
+                        isSuccess = th.validateElement(element, attributeValue);
+                    }
+                });
+
+                if (isSuccess) { 
+                    this.setValueEditSql();
+                    var formData = tools.formToJson("frmSave");
+                    formData.DatabaseId = this.DatabaseId; 
+                    formData.Json = {
+                        Id: this.editId,
+                        Columns:this.selectedColumns,
+                        ComplexityColumns: this.selectedComplexityColumns,
+                        Where: this.selectedWheres,
+                        WhereRelation: this.selectedWheresConditionalRelation,
+                        WhereRelationTemplate: this.selectedWhereRelationTemplate,
+                        OrderBys: this.selectedOrderBys,
+                        OrderBysEnableSort: this.selectedOrderBys_EnableSort,
+                        CurrentDataString: JSON.stringify(this.$data),
+                        DataBaseId: this.databaseId,
+                        DefaultValueColumns: this.saveDefaultValueColumns
+                    };
+                    var url = "/PrivateReZeroRoute/100003/SaveInterfaceList";
+                    axios.post(url, formData, jwHeader)
+                        .then(response => {
+                            if (response.data == true) {
+                                tools.alert("保存成功");
+                                btnAddOrUpdateColse.click();
+                                this.error = null;
+                                th.onSearch();
+                            }
+                            else {
+                                tools.alert(response.data.message);
+                            }
+                        })
+                        .catch(error => {
+                            this.error = error.message;
+                        });
+                }
+            },
+            interfaceListTabClick: function (index, item) {
+                this.tabIndex = index;
+                this.currentActionTypeContext = this.currentActionType.Items[index];
+                if (this.currentActionTypeContext.FormElements.length>0)
+                    this.currentActionTypeContext.FormElements[0].Value = item.Text;
+                this.showEditSql();
+            },
+            //2.选择表逻辑-添加接口
+            openImportEntity: function () {
+                btnImportEntity.click();
+                this.bindImportTables();
+            },
+            importEntitySubmit: function () {
+                var th = this;
+                this.currentActionType.Items.forEach((item) => {
+                    item.FormElements.forEach((element) => {
+                        element.Value = (element.ElementType == "1")
+                            ? this.selectedTables[0].Name : element.Value;
+                    });
+                });
+                this.columns = [];
+                btnImportEntityClose.click();
+            },
+            bindImportTables: function () {
+                var url = "/PrivateReZeroRoute/100004/GetAllTables?databaseId=" + this.databaseId + "&tableName=" + txtTableName.value;
+                axios.get(url, jwHeader)
+                    .then(response => {
+                        this.tables = response.data;
+                        this.error = null;
+                    })
+                    .catch(error => {
+                        this.error = error.message;
+                    });
+            },
+            selectAllTables(event) {
+                if (event.target.checked) {
+                    // 全选
+                    this.selectedTables = this.tables.map(item => item);
+                } else {
+                    // 全不选
+                    this.selectedTables = [];
+                }
+            },
+            //3.添加简单列逻辑-添加接口
+            openAddColumn: function (item) {
+                var tableValue = document.querySelectorAll('[name=TableId]')[0].value;
+                if (!tableValue) {
+                    tools.alert("请先选择主表");
+                    return;
+                }
+                var th = this;
+                btnDivAddColumns.click();
+                this.setColumns();
+            },
+            saveColumns: function () {
+
+                var th = this;
+                this.selectedColumns = this.columns.filter(it => th.selectColumns.includes(it.Id));
+                btnCloseAddColumns.click();
+                this.clearOrderBy();
+            },
+            selectAllColumns(event) {
+                if (event.target.checked) {
+                    // 全选
+                    this.selectColumns = this.columns.map(item => item.Id);
+                } else {
+                    // 全不选
+                    this.selectColumns = [];
+                }
+            },
+            //4.追加复杂列逻辑-添加接口
+            openAddComplexityColumn: function (item) {
+                var tableValue = document.querySelectorAll('[name=TableId]')[0].value;
+                if (!tableValue) {
+                    tools.alert("请先选择主表");
+                    return;
+                }
+                var th = this;
+                this.setColumns();
+                btnAddComplexityColumns.click();
+                this.clearComplexityColumns();
+            },
+            changeJoinTable: function () {
+                this.setJoinColumns();
+            },
+            clearJoinTable: function () {
+                this.copcol_JoinTable = null;
+                this.joinColumns = [];
+            },
+            saveComplexityColumns: function () {
+                // 封装以 this.copcol_ 开头的属性到 json 对象中  
+                var json = {
+                    ShowField: this.copcol_ShowField,
+                    Name: this.copcol_Name,
+                    joinType: this.copcol_joinType,
+                    JoinTable: this.copcol_JoinTable,
+                    MasterField: this.copcol_MasterField,
+                    joinField: this.copcol_joinField,
+                    SortId: this.copcol_SortId
+                }; 
+                if (json.ShowField) {
+                    if (!this.checkCommas(json.ShowField, json.Name)) {
+                        return;
+                    }
+                }
+                else
+                {
+                    tools.alert("带*的请填写完整");
+                    return;
+                }
+                if (!json.Name)
+                {
+                    json.Name = json.ShowField;
+                }
+                var newJsons = this.splitJsonByTwoKeys(json, "ShowField", "Name");
+                var isOk = true;
+                newJsons.forEach(copcolJson => {
+                    if (!isOk)
+                    {
+                        return;
+                    }
+                    if (this.selectColumnsTabIndex != 1) {
+                        tools.alert("开发中..");
+                        isOk = false;
+                        return;
+                    }
+
+                    if (!this.validateComplexityColumns(copcolJson)) {
+                        tools.alert("带*的请填写完整");
+                        isOk = false;
+                        return;
+                    } 
+
+                    var asName = copcolJson.Name || copcolJson.ShowField;
+
+                    var addItem = {
+                        PropertyName:
+                            document.querySelectorAll('[name=TableId]')[0].value + " " +
+                            copcolJson.joinType + " " +
+                            copcolJson.JoinTable + " ON " +
+                            document.querySelectorAll('[name=TableId]')[0].value + "." + copcolJson.MasterField + "=" +
+                            copcolJson.JoinTable + "." +
+                            copcolJson.joinField,
+                        DbColumnName: copcolJson.JoinTable + "." + copcolJson.ShowField + " AS " + asName,
+                        SortId: 1,
+                        Json: {
+                            JoinInfo: {
+                                MasterField: copcolJson.MasterField,
+                                JoinTable: copcolJson.JoinTable,
+                                JoinType: copcolJson.joinType,
+                                JoinField: copcolJson.joinField,
+                                ShowField: copcolJson.ShowField,
+                                Name: copcolJson.Name,
+                                SortId: copcolJson.SortId
+                            }
+                        }
+                    };
+
+                    if (this.selectedColumns.some(column => column.DbColumnName == asName)) {
+                        tools.alert("【关联显示字段】与主表重复，可以设置【关联显示字段别名】来定义显示名");
+                        isOk = false;
+                        return;
+                    }
+
+                    this.selectedComplexityColumns.push(addItem);
+                    btnCloseAddComplexityColumns.click();
+                    this.clearOrderBy();
+                });
+            },
+            deleteSelectedColumn: function (item) {
+                this.selectedColumns.removeArrayItem(item)
+            },
+            deleteComplexitySelectedColumn: function (item) {
+                this.selectedComplexityColumns.removeArrayItem(item)
+            },
+            tabClickComplexityColumns: function (index) {
+                if (index != 1) liComplexityColumns.className = "";
+                var $tabs = $("#divAddComplexityColumns  .tab-pane");
+                $tabs.hide();
+                $tabs.eq(index - 1).show();
+                this.selectColumnsTabIndex = index;
+            },
+            //5.添加排序逻辑-添加接口
+            openOrderByColumn: function () {
+                if (!this.validateColumsAny()) {
+                    tools.alert("请选择列后在选择排序");
+                    return;
+                }
+                if (this.selectedOrderBys.length == 0) {
+                    this.selectedOrderBys = this.selectedColumns.map(it => ({
+                        Name: it.DbColumnName
+                    }));
+                    var selectComplexityColumnOrderBys = this.selectedComplexityColumns.map(it => ({
+                        Name: it.DbColumnName
+                  }));
+                    this.selectedOrderBys = this.selectedOrderBys.concat(selectComplexityColumnOrderBys);
+                }
+                btnAddOrderBy.click();
+            },
+            saveBtnOrderBy: function () {
+                btnCloseAddOrderBy.click();
+                this.selectedOrderByString = this
+                    .selectedOrderBys
+                    .filter(it => it.OrderByType == "ASC" || it.OrderByType == "DESC")
+                    .sort(function (a, b) {
+                        return a.SortId - b.SortId;
+                    })
+                    .map(it => it.Name + " " + it.OrderByType)
+                    .join(",");
+            },
+            //6.添加条件逻辑-添加接口
+            openWhere: function () {
+                if (!this.validateColumsAny()) {
+                    tools.alert("请选择列后在选择条件");
+                    return;
+                }
+                if (this.selectedWheres.length == 0) {
+                    this.selectedWheres.push(this.getWhereModel());
+                }
+                btnAddWhere.click();
+            },
+            saveBtnWhere: function () {
+                btnCloseAddWhere.click();
+            },
+            addWhereItem: function (id) {
+                var model = this.getWhereModel();
+                model.Id = id + 1
+                this.selectedWheres.push(model);
+            },
+            deleteWhereItem: function (id) {
+                if (this.selectedWheres.length == 1) {
+                    this.selectedWheres = [];
+                    btnCloseAddWhere.click();
+                }
+                else {
+                    this.selectedWheres.removeArrayItem(this.selectedWheres.find(it => it.Id == id));
+                }
+            },
+            showWherePreview: function () {
+                var cr = this.selectedWheresConditionalRelation;
+                var isAndAll = cr == "AndAll";
+                var isOrAll = cr == "OrAll";
+                var isAnd = cr == "And";
+                var isOr = cr == "Or";
+                var isCustom = cr == "Custom";
+                var isCustomAll = cr == "CustomAll";
+                var andStr = "AND";
+                var orStr = "Or";
+                var empStr = "";
+                if (isCustom || isCustomAll) {
+                    var template = this.selectedWhereRelationTemplate + "";
+                    this.selectedWheres.forEach(function (it) {
+                        var value = ` (${it.PropertyName} ${it.WhereType} ${it.ValueType == 0 ? it.Value : `@${it.Value} OR (@${it.Value} IS NULL)`}) `;
+                        if (isCustomAll) {
+                            value = `(${it.PropertyName} ${it.WhereType} ${it.ValueType == 0 ? it.Value : `@${it.Value}`}) `;
+                        }
+                        var regex = new RegExp("\\{" + it.Id + "\\}", "g");
+                        template = template.replace(regex, value);
+                    });
+                    this.selectdWherePreviewString = template;
+                }
+                if (isAnd || isOr) {
+                    var type = isAnd ? andStr : orStr;
+                    var wheres = this.selectedWheres.map(it =>
+                        `${type} (${it.PropertyName} ${it.WhereType} ${it.ValueType == 0 ? it.Value : `@${it.Value} OR (@${it.Value} IS NULL)`})\r\n`
+                    ).join(empStr);
+                    this.selectdWherePreviewString = wheres;
+                } else if (isAndAll || isOrAll) {
+                    var type = isAndAll ? andStr : orStr;
+                    var wheres = this.selectedWheres.map(it =>
+                        `${type} (${it.PropertyName} ${it.WhereType} ${it.ValueType == 0 ? it.Value : `@${it.Value}`})\r\n `
+                    ).join(empStr);
+                    this.selectdWherePreviewString = wheres;
+                } 
+            },
+            //7.配置插入或者更新默认值
+            saveDefaultValue: function () {
+                var th = this;
+                th.saveDefaultValueColumns = [];
+                th.selectDefaultValueColumns.forEach(function (item) {
+                    th.saveDefaultValueColumns.push({ PropertyName: item.PropertyName, Type: item.Type, Value: item.Value });
+                });
+                btnDafeultValueClose.click();
+            },
+            openDefaultValue: function () {
+                var tableValue = document.querySelectorAll('[name=TableId]')[0].value;
+                if (!tableValue) {
+                    tools.alert("请先选择主表");
+                    return;
+                }
+                var th = this;
+                var url = "/PrivateReZeroRoute/100003/GetEntityColuminsByEntityId?TableId=" + this.selectedTables[0].Id;
+                axios.get(url, jwHeader)
+                    .then(response => {
+                        th.selectDefaultValueColumns = [];
+                        response.data.filter(it => !it.IsPrimarykey).forEach(function (item) {
+                            if (th.saveDefaultValueColumns.some(it => it.PropertyName == item.PropertyName)) { 
+                                var match = th.saveDefaultValueColumns.find(it => it.PropertyName == item.PropertyName);
+                                th.selectDefaultValueColumns.push({ PropertyName: match.PropertyName, Value: match.Value, Type: match.Type });  
+                            } else{
+                                th.selectDefaultValueColumns.push({ PropertyName: item.PropertyName, Type: 0, Value: null });
+                            }
+                        });
+                        btnDafeultValue.click();
+                    })
+                    .catch(error => {
+                        this.error = error.message;
+                    });
+            },
+
+            /*
+                  次要方法
+            */
+            bindGroupListSelect: function () {
+                axios.get("/PrivateReZeroRoute/100004/GetDynamicGroupNameList", jwHeader)
+                    .then(response => {
+                        this.groupList = response.data;
+                    })
+                    .catch(error => {
+                        this.error = error.message;
+                        this.data = null;
+                    });
+            },
+            bindInterfaceCategroySelect: function () {
+                axios.get("/PrivateReZeroRoute/100004/GetDynamicInterfaceCategoryList", jwHeader)
+                    .then(response => {
+                        this.interfaceCategroyList = response.data;
+                    })
+                    .catch(error => {
+                        this.error = error.message;
+                        this.data = null;
+                    });
+            },
+            bindActionLists: function () {
+                axios.get("/PrivateReZeroRoute/100004/GetActionType", jwHeader)
+                    .then(response => {
+                        this.actionList = response.data;
+                    })
+                    .catch(error => {
+                        this.error = error.message;
+                    });
+            },
+            bindDatabaseSelect: function () {
+                axios.get("/PrivateReZeroRoute/100004/GetDatabaseInfoAllList", jwHeader)
+                    .then(response => {
+                        this.database = response.data;
+                        this.databaseId = this.database[0].Id;
+                        var th = this;
+                        setTimeout(function () {
+                            th.onSearch();
+                        }, 50);
+                    })
+                    .catch(error => {
+                        this.error = error.message;
+                        this.data = null;
+                    });
+            },
+            bindWhereType: function () {
+                axios.get("/PrivateReZeroRoute/100004/GetWhereTypeList", jwHeader)
+                    .then(response => {
+                        this.whereTypeList = response.data;
+                    })
+                    .catch(error => {
+                        this.error = error.message;
+                    });
+            },
+            setColumns: function () {
+                var th = this;
+                if (this.selectedTables.length > 0) {
+                    var url = "/PrivateReZeroRoute/100003/GetEntityColuminsByEntityId?TableId=" + this.selectedTables[0].Id;
+                    axios.get(url, jwHeader)
+                        .then(response => {
+                            th.columns = response.data;
+                        })
+                        .catch(error => {
+                            this.error = error.message;
+                        });
+                }
+            }, 
+            setJoinColumns: function () {
+                var th = this;
+                var tableId = this.copcol_JoinTable;
+                tableId = this.tables.find(function (item) {
+                    return item.Name === tableId;
+                }).Id;
+                if (this.selectedTables.length > 0) {
+                    var url = "/PrivateReZeroRoute/100003/GetEntityColuminsByEntityId?TableId=" + tableId;
+                    axios.get(url, jwHeader)
+                        .then(response => {
+                            th.joinColumns = response.data;
+                        })
+                        .catch(error => {
+                            this.error = error.message;
+                        });
+                }
+            },
+            validateElement: function (element, attributeValue) {
+                if (attributeValue.IsRequired && !element.value) {
+                    tools.alert(attributeValue.Text + "不能为空");
+                    return false;
+                }
+                if (attributeValue.Name === "Url" && element.value && !tools.isValidURLPattern(element.value)) {
+                    tools.alert("Url格式不正确，应该是/xxx/yyy 或者 /xx.xx");
+                    return false;
+                }
+                return true;
+            },
+            validateColumsAny: function () {
+                return (this.selectedColumns.length + this.selectedComplexityColumns.length) > 0;
+            },
+            clearOrderBy: function () {
+                this.selectedOrderBys = [];
+                this.selectedOrderBys_EnableSort = false;
+            },
+            clearComplexityColumns: function () {
+                this.copcol_joinField = null;
+                this.copcol_Name = null;
+                this.copcol_SortId = null;
+                this.copcol_ShowField = null;
+                this.copcol_MasterField = null;
+                this.copcol_JoinTable = null;
+                this.copcol_joinType = null;
+                this.copcol_ShowFields = [];
+            },
+            validateComplexityColumns: function () {
+                if (this.copcol_joinField == null ||
+                    this.copcol_ShowField == null ||
+                    this.copcol_joinType == null ||
+                    this.copcol_MasterField == null ||
+                    this.copcol_JoinTable == null) {
+                    return false;
+                } 
+                return true;
+            },
+            getWhereModel: function () {
+                return { Id: 1, PropertyName: null, WhereType: "Equal", ValueType: 0, Value: null };
+            },
+            checkCommas: function (str1, str2) {
+
+                if (!str2)
+                {
+                    return true;
+                }
+
+                // 计算两个字符串中的逗号数量
+                var commasInStr1 = (str1.match(/,/g) || []).length;
+                if (commasInStr1 == 0)
+                {
+                    return true;
+                }
+                var commasInStr2 = (str2.match(/,/g) || []).length;
+
+                // 比较两个字符串中的逗号数量是否相等
+                if (commasInStr1 === commasInStr2) { 
+                    return true;
+                } else {
+                    tools.alert("【关联显示字段别名】存在多个要用 “,” 分割开，数量要一样。");
+                    return false;
+                }
+            },
+            changeShowField: function ()
+            {
+                this.copcol_ShowField=this.copcol_ShowFields.join(",");
+            },
+            splitJsonByTwoKeys: function (jsonObj, key1, key2) {
+                // 验证输入对象是否有效  
+                if (typeof jsonObj !== 'object' || jsonObj === null) {
+                    throw new Error('Invalid input: jsonObj must be an object.');
+                }
+
+                // 验证key1和key2是否存在于jsonObj中且为字符串类型  
+                if (!(key1 in jsonObj) || typeof jsonObj[key1] !== 'string') {
+                    throw new Error(`Invalid input: ${key1} must be a string property of jsonObj.`);
+                }
+                if (!(key2 in jsonObj) || typeof jsonObj[key2] !== 'string') {
+                    throw new Error(`Invalid input: ${key2} must be a string property of jsonObj.`);
+                }
+
+                // 分割key1和key2对应的值  
+                const values1 = jsonObj[key1].split(',');
+                const values2 = jsonObj[key2].split(',');
+
+                // 验证两个键的值分割后长度是否一致  
+                if (values1.length !== values2.length) {
+                    throw new Error(`The number of elements in ${key1} and ${key2} must be the same.`);
+                }
+
+                // 创建结果数组  
+                const result = [];
+
+                // 遍历分割后的值，构建新的对象并添加到结果数组中  
+                for (let i = 0; i < values1.length; i++) {
+                    const newObj = Object.assign({}, jsonObj); // 复制原始对象  
+                    newObj[key1] = values1[i].trim(); // 替换key1的值  
+                    newObj[key2] = values2[i].trim(); // 替换key2的值  
+                    result.push(newObj);
+                }
+
+                return result;
+            },
+            showEditSql: function () { 
+
+                setTimeout(function () {
+                     
+                    var $sql = $("[name='Sql']");
+                    if ($sql.size() > 0) {
+                        var editor = ace.edit("divAceEditor");
+                        editor.setOption("showPrintMargin", false);
+                        editor.setTheme("ace/theme/twilight"); // 设置主题
+                        editor.getSession().setMode("ace/mode/sql"); // 设置语言模式为SQL
+                        editor.setOption("enableBasicAutocompletion", true);
+                        editor.setOption("enableSnippets", true);
+                        editor.setOption("enableLiveAutocompletion", true)
+                        editor.setValue($sql.val());
+                        editor.selection.clearSelection();
+                    }
+
+                }, 100);
+            },
+            setValueEditSql: function ()
+            {
+                var $sql = $("[name='Sql']");
+                if ($sql.size() > 0) {
+                    var editor = ace.edit("divAceEditor");
+                    this.currentActionTypeContext.FormElements[3].Value = editor.getValue();
+                    $sql.val(editor.getValue());
+                }
+            },
+            closeEditSql: function () {
+
+                var editor = ace.edit("divAceEditor");
+                editor.destroy();
+            },
+
+
+        }
+    });
+</script>

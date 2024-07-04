@@ -1,0 +1,2973 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EES.Infrastructure</name>
+    </assembly>
+    <members>
+        <member name="T:EES.Infrastructure.Attributes.AuthorizationRequiredAttribute">
+            <summary>
+            权限特性
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Attributes.IdempotentAttribute">
+            <summary>
+            幂等性保证
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Attributes.IdempotentAttribute.#ctor(System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="flag">幂等性接口标识符</param>
+            <param name="intervalSeconds">幂等性间隔时间，默认为5秒。不建议超过10秒</param>
+        </member>
+        <member name="P:EES.Infrastructure.Attributes.IdempotentAttribute.Flag">
+            <summary>
+            接口的幂等标记(不能重复)
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Attributes.IdempotentAttribute.IntervalSeconds">
+            <summary>
+            幂等性间隔时间，默认为5秒。不建议超过10秒
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Attributes.RateLimitAttribute">
+            <summary>
+            请求频率限制特性。 标记该特性的接口，会对用户的访问频率做出限制
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Attributes.RateLimitAttribute.RequestIntervalSeconds">
+            <summary>
+            请求频率间隔时间，默认为2秒。不建议超过5秒
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Auth.Accessor">
+            <summary>
+            当前请求的用户信息
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.Accessor.Id">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.Accessor.Name">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.Accessor.DepartmentName">
+            <summary>
+            部门名称
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.Accessor.DepartmentId">
+            <summary>
+            部门ID
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.Accessor.AuthFunctions">
+            <summary>
+            当前用户的功能权限
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.Accessor.AuthData">
+            <summary>
+            当前用户的数据权限信息
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthDataItem.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthDataItem.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthDataItem.Code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthDataItem.ParentId">
+            <summary>
+            父级id (若是车间，则该字段的值为所属的工厂的id, 以此类推)
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthDataModel.Factories">
+            <summary>
+            拥有权限的工厂集合
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthDataModel.Workshops">
+            <summary>
+            拥有权限的车间集合
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthDataModel.Stories">
+            <summary>
+            拥有权限的仓库集合
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthDataModel.Materials">
+            <summary>
+            拥有权限的物料类型集合
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthFunctionItem.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthFunctionItem.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthFunctionItem.Type">
+            <summary>
+            标识 1: 分类标识   2：功能
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthFunctionItem.Description">
+            <summary>
+            功能说明
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthFunctionItem.Identifier">
+            <summary>
+            功能权限标识符
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Auth.AuthInfo">
+            <summary>
+            用户的权限信息
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthInfo.User">
+            <summary>
+            当前用户的基本信息
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthInfo.AuthPcMenus">
+            <summary>
+            PC菜单权限
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthInfo.AuthPdaMenus">
+            <summary>
+            Pda菜单权限
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthInfo.AuthMfsMenus">
+            <summary>
+            Mfs菜单权限
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthInfo.AuthFunctions">
+            <summary>
+            当前用户的功能权限
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthInfo.AuthData">
+            <summary>
+            当前用户的数据权限信息
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthMenuItem.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthMenuItem.Name">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthMenuItem.ParentId">
+            <summary>
+            上级菜单
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthMenuItem.SortNumber">
+            <summary>
+            同级别下显示排序
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthMenuItem.Route">
+            <summary>
+            菜单路由
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthMenuItem.Type">
+            <summary>
+            菜单类型
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthMenuItem.Description">
+            <summary>
+            备注说明
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthMenuItem.Icon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.AuthMenuItem.EnglishName">
+            <summary>
+            菜单的英文名称
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.LoginUser.Id">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.LoginUser.Account">
+            <summary>
+            用户账户
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.LoginUser.Name">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.LoginUser.DepartmenId">
+            <summary>
+            部门ID
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.LoginUser.DepartmentName">
+            <summary>
+            部门名称
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.LoginUser.DepartmentCode">
+            <summary>
+            部门编码
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.LoginUser.State">
+            <summary>
+            用户状态
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.LoginUser.RoleNames">
+            <summary>
+            角色名(角色1,角色2,角色3)
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.LoginUser.Mail">
+            <summary>
+            用户邮箱
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.LoginUser.Phone">
+            <summary>
+            用户电话
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.LoginUser.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.LoginUser.ImageUrl">
+            <summary>
+            用户照片的url
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.LoginUser.SignatureUrl">
+            <summary>
+            签名url
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Auth.LoginUser.Language">
+            <summary>
+            用户系统语言标识
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Bus.CommandBase">
+            <summary>
+            Command基类
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Bus.CommandBase.Timestamp">
+            <summary>
+            时间戳
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Bus.CommandBase.SerializeCommand">
+            <summary>
+            序列化
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Bus.CommandBase.GetCommandName">
+            <summary>
+            获取命令名称
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Bus.CommandBase.GetCommandId">
+            <summary>
+            获取命令id
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Infrastructure.Bus.EventBase">
+            <summary>
+            事件基类
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Bus.EventBase.Timestamp">
+            <summary>
+            时间戳
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Bus.EventBase.SerializeEvent">
+            <summary>
+            序列化
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Bus.EventBase.GetEventName">
+            <summary>
+            获取事件名称
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Bus.EventBase.GetEventId">
+            <summary>
+            获取事件id
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Infrastructure.Bus.IMediatorHandler">
+            <summary>
+            Mediator接口
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Bus.IMediatorHandler.SendCommandAsync``1(``0)">
+            <summary>
+            发送命令，将命令模型发布到中介者模块
+            </summary>
+            <typeparam name="TCommand"> 泛型 </typeparam>
+            <param name="command"> 命令模型</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Bus.IMediatorHandler.PublishEventAsync``1(``0)">
+            <summary>
+            引发事件，通过总线，发布事件
+            </summary>
+            <typeparam name="TEvent"> 泛型</typeparam>
+            <param name="event"> 事件模型</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Bus.MediatorHandler.PublishEventAsync``1(``0)">
+            <summary>
+            发布事件
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="event"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Bus.MediatorHandler.SendCommandAsync``1(``0)">
+            <summary>
+            发送命令
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Bus.TransactionBehavior`2.GetAllDomianEvents">
+            <summary>
+            获取所有的领域事件
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Bus.TransactionBehavior`2.ClearDomianEvents">
+            <summary>
+            清空领域事件
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Bus.TransactionBehavior`2.PublishDomianEventsAsync(System.Collections.Generic.IEnumerable{EES.Infrastructure.Bus.EventBase})">
+            <summary>
+            发布领域事件
+            </summary>
+            <param name="events"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Cache.CacheKeyProvider.GetTokenCacheKey(System.String,System.String)">
+            <summary>
+            获取token的缓存key
+            </summary>
+            <param name="platform">平台</param>
+            <param name="userId">用户id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Cache.CacheKeyProvider.GetRequestRateLimitKey(System.String,System.String)">
+            <summary>
+            获取请求时间缓存
+            </summary>
+            <param name="platform"></param>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Cache.CacheKeyProvider.GetAuthCacheKey(System.String)">
+            <summary>
+            获取用户权限数据的缓存key
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Cache.CacheKeyProvider.GetIdempotentKey(System.String,System.String)">
+            <summary>
+            获取幂等性key
+            </summary>
+            <param name="userId"></param>
+            <param name="flag"></param>
+            <returns></returns>
+        </member>
+        <member name="F:EES.Infrastructure.Cache.LuaScript.GetOrSet">
+            <summary>
+            若key存在，则获取值,否则添加key，并写入值，然后返回"success"字符串
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Commons.ApiResponseBase">
+            <summary>
+            Api响应基类
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Commons.ApiResponseBase.Code">
+            <summary>
+            请求响应码，0 为正常
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Commons.ApiResponseBase.Status">
+            <summary>
+            是否成功
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Commons.ApiResponseBase.Message">
+            <summary>
+            响应信息
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Commons.ApiResponseBase.Data">
+            <summary>
+            数据，派生类自行重写
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Commons.ApiResponseBase.Success(System.String,System.Object)">
+            <summary>
+            成功
+            </summary>
+            <param name="message">返回信息</param>
+            <param name="data">业务数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Commons.ApiResponseBase.Fail(System.Int32,System.String,System.Object)">
+            <summary>
+            失败
+            </summary>
+            <param name="code">错误码</param>
+            <param name="message">返回信息</param>
+            <param name="data">业务数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Commons.ApiResponseBase.Instance``1(``0,System.Object)">
+            <summary>
+            实例一个响应结果
+            </summary>
+            <typeparam name="T">业务枚举</typeparam>
+            <param name="info">业务操作提示</param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Infrastructure.Commons.ApiResponseBase`1">
+            <summary>
+            Api响应基类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:EES.Infrastructure.Commons.ApiResponseBase`1.Data">
+            <summary>
+            业务数据
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Commons.ApiResponseBase`1.Success(`0,System.String)">
+            <summary>
+            操作成功
+            </summary>
+            <param name="message"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Commons.ApiResponseBase`1.Fail(System.Int32,System.String,`0)">
+            <summary>
+            操作失败
+            </summary>
+            <param name="code"></param>
+            <param name="message"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Commons.ApiResponseBase`1.Instance``1(``0,`0)">
+            <summary>
+            实例一个响应结果
+            </summary>
+            <typeparam name="TEnum"></typeparam>
+            <param name="info"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Infrastructure.Commons.CommandResponse">
+            <summary>
+            Command操作响应类
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Commons.CommandResponse.Code">
+            <summary>
+            错误码
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Commons.CommandResponse.Message">
+            <summary>
+            具体的错误信息
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Commons.CommandResponse.Status">
+            <summary>
+            当前操作的执行结果 成功 or 失败
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Commons.CommandResponse.Data">
+            <summary>
+            某些操作需要返回的数据
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Commons.CommandResponse.Fail(System.String,System.Int32)">
+            <summary>
+            操作失败
+            </summary>
+            <param name="errorMessage">错误信息</param>
+            <param name="errode">错误码</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Commons.CommandResponse.Fail(EES.Infrastructure.Enums.BusinessError)">
+            <summary>
+            操作失败
+            </summary>
+            <param name="error">错误信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Commons.CommandResponse.Success(System.Object,System.String)">
+            <summary>
+             操作成功
+            </summary>
+            <param name="data">返回的数据</param>
+            <param name="message">提示</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Commons.CommandResponse.Success">
+            <summary>
+             操作成功
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Infrastructure.Commons.QueryResponse`1">
+            <summary>
+            查询操作返回值对象
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:EES.Infrastructure.Commons.QueryResponse`1.Code">
+            <summary>
+            请求响应码，0 为正常
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Commons.QueryResponse`1.Status">
+            <summary>
+            是否成功
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Commons.QueryResponse`1.Message">
+            <summary>
+            响应信息
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Commons.QueryResponse`1.Data">
+            <summary>
+            业务数据
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Commons.QueryResponse`1.Success(`0,System.String)">
+            <summary>
+            操作成功
+            </summary>
+            <param name="message"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Commons.QueryResponse`1.Fail(System.Int32,System.String,`0)">
+            <summary>
+            操作失败
+            </summary>
+            <param name="code"></param>
+            <param name="message"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Commons.QueryResponse`1.Fail(EES.Infrastructure.Enums.BusinessError,`0)">
+            <summary>
+            操作失败
+            </summary>
+            <param name="error">错误信息</param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Commons.QueryResponse`1.Instance``1(``0,`0)">
+            <summary>
+            实例一个响应结果
+            </summary>
+            <typeparam name="TEnum"></typeparam>
+            <param name="info"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Infrastructure.DataBase.ICustomModelBuilder">
+            <summary>
+            模块的模型构建
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.DataBase.MasterDbContext">
+            <summary>
+            业务数据库上下文
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.DataBase.MasterDbContext._currentTransaction">
+            <summary>
+            当前事务
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.MasterDbContext.GetCurrentTransaction">
+            <summary>
+            获取当前事务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:EES.Infrastructure.DataBase.MasterDbContext.HasActiveTransaction">
+            <summary>
+            当前DbContext是否开启了事务
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.MasterDbContext.RegisterEntities(Microsoft.EntityFrameworkCore.ModelBuilder,System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            注册各个模块的实体
+            </summary>
+            <param name="modelBuilder"></param>
+            <param name="typeToRegisters"></param>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.MasterDbContext.RegisterCustomMappings(Microsoft.EntityFrameworkCore.ModelBuilder,System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            反射执行模块里面的ModelBuilder
+            </summary>
+            <param name="modelBuilder"></param>
+            <param name="typeToRegisters"></param>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.MasterDbContext.BeginTransactionAsync(System.Data.IsolationLevel)">
+            <summary>
+            开启事务
+            </summary>
+            <param name="isolation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.MasterDbContext.CommitTransactionAsync(Microsoft.EntityFrameworkCore.Storage.IDbContextTransaction)">
+            <summary>
+            提交事务
+            </summary>
+            <param name="transaction"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.MasterDbContext.RollbackTransaction">
+            <summary>
+            事务回滚
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.DataBase.Repository.IRepository`1">
+            <summary>
+            业务仓储
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:EES.Infrastructure.DataBase.Repository.IRepositoryBase`1">
+            <summary>
+            仓储基类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.Repository.IRepositoryBase`1.Query">
+            <summary>
+            返回DbSet
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.Repository.IRepositoryBase`1.NoTrackingQuery">
+            <summary>
+            返回无追踪实体的DbSet
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.Repository.IRepositoryBase`1.Add(`0)">
+            <summary>
+            添加一个实体
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.Repository.IRepositoryBase`1.AddAsync(`0)">
+            <summary>
+            添加一个实体
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.Repository.IRepositoryBase`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            批量添加实体
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.Repository.IRepositoryBase`1.AddRangeAsync(`0[])">
+            <summary>
+            批量添加实体
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.Repository.IRepositoryBase`1.AddRangeAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            批量添加实体
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.Repository.IRepositoryBase`1.SaveChanges">
+            <summary>
+            保存操作
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.Repository.IRepositoryBase`1.SaveChangesAsync">
+            <summary>
+            保存操作
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.Repository.IRepositoryBase`1.Delete(`0)">
+            <summary>
+            删除一条记录
+            </summary>
+            <param name="entity">实体</param>
+            <returns>代理中的实体</returns>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.Repository.IRepositoryBase`1.Delete(`0[])">
+            <summary>
+            删除多条记录
+            </summary>
+            <param name="entities">多个实体</param>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.Repository.IRepositoryBase`1.Delete(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            删除多条记录
+            </summary>
+            <param name="entities">多个实体</param>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.Repository.IRepositoryBase`1.DeleteAsync(`0)">
+            <summary>
+            删除一条记录
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.Repository.IRepositoryBase`1.DeleteAsync(`0[])">
+            <summary>
+            删除多条记录
+            </summary>
+            <param name="entities">多个实体</param>
+            <returns>Task</returns>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.Repository.IRepositoryBase`1.DeleteAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            删除多条记录
+            </summary>
+            <param name="entities">多个实体</param>
+            <returns>Task</returns>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.Repository.IRepositoryBase`1.BeginTransactionAsync(System.Data.IsolationLevel)">
+            <summary>
+            开启事务
+            </summary>
+            <param name="isolation"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Infrastructure.DataBase.Repository.Repository`1">
+            <summary>
+            业务仓储
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:EES.Infrastructure.DataBase.Repository.RepositoryBase`1.Context">
+            <summary>
+            数据库上下文
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.DataBase.Repository.RepositoryBase`1.DbSet">
+            <summary>
+            DbSet
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.DataBase.Repository.RepositoryBase`1.BeginTransactionAsync(System.Data.IsolationLevel)">
+            <summary>
+            手动开启事务
+            </summary>
+            <param name="isolation"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Infrastructure.Data.EDIConnection">
+            <summary>
+            EDI连接配置
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.EDIConnection.EDIAddress">
+            <summary>
+            IP地址
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.EDIConnection.Project">
+            <summary>
+            项目名称
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.EDIConnection.Account">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.EDIConnection.PassWord">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Data.GlobalConfiguration">
+            <summary>
+            全局配置信息
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.GlobalConfiguration.Modules">
+            <summary>
+            模块信息
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.GlobalConfiguration.DefaultCulture">
+            <summary>
+            语言信息，预留
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.GlobalConfiguration.WebRootPath">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.GlobalConfiguration.ContentRootPath">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Data.PaginationModel`1">
+            <summary>
+            分页模型
+            </summary>
+            <typeparam name="TEntity">数据对象</typeparam>
+        </member>
+        <member name="P:EES.Infrastructure.Data.PaginationModel`1.PageIndex">
+            <summary>
+            页码，从1开始
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.PaginationModel`1.PageSize">
+            <summary>
+            每页数据量
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.PaginationModel`1.TotalCount">
+            <summary>
+            查询结果集总数量 。如果该值为负数，则标识查询时无需返回总数量
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.PaginationModel`1.Data">
+            <summary>
+            当前页数据集合
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Data.ServerTime">
+            <summary>
+            服务器时间
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.ServerTime.Time">
+            <summary>
+            时间
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Data.SystemParamModel">
+            <summary>
+            系统参数模型
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.SystemParamModel.Type">
+            <summary>
+            参数类型
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.SystemParamModel.SortNumber">
+            <summary>
+            序号
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.SystemParamModel.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.SystemParamModel.Code">
+            <summary>
+            参数编码
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.SystemParamModel.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.SystemParamModel.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.SystemParamModel.Unit">
+            <summary>
+            参数单位
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.SystemParamModel.ValueType">
+            <summary>
+            值类型
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.SystemParamModel.DefalutValue">
+            <summary>
+            默认值
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.SystemParamModel.SetValue">
+            <summary>
+            设定值
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.SystemParamModel.BeforeValue">
+            <summary>
+            修改前的值
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.SystemParamModel.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Data.TreeItem`1">
+            <summary>
+            树形结构模型
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:EES.Infrastructure.Data.TreeItem`1.Item">
+            <summary>
+            当前节点
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.TreeItem`1.Children">
+            <summary>
+            子节点
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Data.UploadResult">
+            <summary>
+            上传结果
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Data.UploadResult.Name">
+            <summary>
+            文件的完整名字 123.jpg 
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Entities.EntityBase">
+            <summary>
+            业务实体基类
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Entities.EntityBase.#ctor(System.Int64,System.String,System.Boolean)">
+            <summary>
+            CreateTime
+            </summary>
+            <param name="createUserName">创建者名称</param>
+            <param name="createUserId">创建者id</param>
+            <param name="timeAlignment">时间对齐 CreateTime和UpdateTime是否保持一致</param>
+        </member>
+        <member name="P:EES.Infrastructure.Entities.EntityBase.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Entities.EntityBase.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Entities.EntityBase.CreateUserId">
+            <summary>
+            创建者Id
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Entities.EntityBase.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Entities.EntityBase.UpdateTime">
+            <summary>
+            最后一次更新时间
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Entities.EntityBase.UpdateUserId">
+            <summary>
+            最后一次更新数据的用户Id
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Entities.EntityBase.UpdateUserName">
+            <summary>
+            最后一次更新用户的名称
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Entities.EntityBase._domainEvents">
+            <summary>
+            领域事件
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Entities.EntityBase.GetDomainEvents">
+            <summary>
+            获取领域事件
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Entities.EntityBase.AddDomainEvent(EES.Infrastructure.Bus.EventBase)">
+            <summary>
+            添加领域事件
+            </summary>
+            <param name="eventItem"></param>
+        </member>
+        <member name="M:EES.Infrastructure.Entities.EntityBase.RemoveDomainEvent(EES.Infrastructure.Bus.EventBase)">
+            <summary>
+            移除领域事件
+            </summary>
+            <param name="eventItem"></param>
+        </member>
+        <member name="M:EES.Infrastructure.Entities.EntityBase.ClearDomainEvents">
+            <summary>
+            清空领域事件
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Entities.EntityBase.UpdateRecord(System.Int64,System.String)">
+            <summary>
+            更改数据后记录更改信息
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="M:EES.Infrastructure.Entities.EntityBase.GetDefaultDateTime">
+            <summary>
+            获取一个系统的时间默认值
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Infrastructure.Entities.LogEntityBase">
+            <summary>
+            日志模块实体基类
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Entities.LogEntityBase.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Entities.LogEntityBase.CreateTime">
+            <summary>
+            数据记录时间
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.AddSeparatorPositionType">
+            <summary>
+            添加分隔符的位置
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.ApplicationLevel">
+            <summary>
+            适用级别
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.AuditState">
+            <summary>
+            审核状态
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.BackhaulState">
+            <summary>
+            回传状态流程
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.BarCodeUseType">
+            <summary>
+            条码类型的使用类型
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.BaseMaterialEnums">
+            <summary>
+            基础物料枚举
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.BaseMaterialEnums.StorageMode">
+            <summary>
+            储存方式
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.BaseMaterialEnums.StorageMode.默认">
+            <summary>
+            默认
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.BaseMaterialEnums.StorageMode.常温">
+            <summary>
+            常温
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.BaseMaterialEnums.StorageMode.冷藏">
+            <summary>
+            冷藏
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.BaseMaterialEnums.StorageMode.冷冻">
+            <summary>
+            冷冻
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.BaseMaterialEnums.DataSources">
+            <summary>
+            数据来源
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.BaseMaterialEnums.DataSources.CreateManually">
+            <summary>
+            手动创建
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.BaseMaterialEnums.DataSources.ThirdPartySync">
+            <summary>
+            第三方同步
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.BaseMaterialEnums.DataSources.ExcelInport">
+            <summary>
+            Excel导入
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.BisBarCodeType">
+            <summary>
+            条码类型
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.BisHaveGuardedState">
+            <summary>
+            标记状态
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.BisIssueState">
+            <summary>
+            发行状态
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.BisPageOrder">
+            <summary>
+            打印顺序
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.BisPrintState">
+            <summary>
+            打印状态
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.BisPrintType">
+            <summary>
+            条码打印类型
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.BisRuleValueType">
+            <summary>
+            配置规则内容类型
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.BusinessError">
+            <summary>
+            业务类错误提示枚举
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.CheckResult">
+            <summary>
+            质检结果
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.FunctionType">
+            <summary>
+            功能权限数据类型
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.FunctionType.分类标识">
+            <summary>
+            分类标识
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.FunctionType.功能权限">
+            <summary>
+            功能权限
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.IdentificationMark">
+            <summary>
+            规则类型
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.Language">
+            <summary>
+            语言
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.MaterialType">
+            <summary>
+            物料类型
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.MenuCategory">
+            <summary>
+            菜单的类别
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.MenuCategory.None">
+            <summary>
+            未知
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.MenuCategory.Navigation">
+            <summary>
+            导航分类
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.MenuCategory.Page">
+            <summary>
+            具体的页面
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.MenuType">
+            <summary>
+            菜单类型
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.MenuType.PC">
+            <summary>
+            Web页面菜单
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.MenuType.PDA">
+            <summary>
+            PDA菜单
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.MenuType.MFS">
+            <summary>
+            MFS菜单
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.Sex">
+            <summary>
+            性别
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.Source">
+            <summary>
+            来源
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.SystemModule">
+            <summary>
+            系统模块
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.SystemModule.SYSTEM">
+            <summary>
+            系统框架
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.SystemModule.UMS">
+            <summary>
+            用户管理
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.SystemModule.PEM">
+            <summary>
+            车间设备管理
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.SystemModule.PMS">
+            <summary>
+            配方管理
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.SystemModule.PSM">
+            <summary>
+            工单管理
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.SystemModule.PSM_WEIGHING">
+            <summary>
+            称量
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.SystemModule.PSM_BULK">
+            <summary>
+            乳化
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.SystemModule.PSM_FP">
+            <summary>
+            灌包
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.SystemModule.BIS">
+            <summary>
+            条码管理
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.SystemModule.QCS">
+            <summary>
+            质检管理
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.SystemModule.WMS">
+            <summary>
+            仓储管理
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.SystemModule.BTR">
+            <summary>
+            批次追溯
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.SystemModule.ATF">
+            <summary>
+            审计
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.SystemModule.OEE">
+            <summary>
+            绩效
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.SystemModule.EAM">
+            <summary>
+            设备管理
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Enums.SystemModule.EDI">
+            <summary>
+            扩展数据接口
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.TrType">
+            <summary>
+            工艺类型
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.UserState">
+            <summary>
+            员工状态
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Enums.YieldResult">
+            <summary>
+            平衡结论
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Filters.GlobalAuthorizationFilter">
+            <summary>
+            全局的权限过滤
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Filters.IdempotentAsyncFilter">
+            <summary>
+            幂等性保证过滤器
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Filters.IdempotentAsyncFilter.DeepCopyActionArguments(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+             <summary>
+            对请求参数进行深拷贝
+             </summary>
+            <remarks>部分请求参数的数据结构体较为复杂，且具体执行代码会对该请求参数进行修改，为了保证验证的准确性，需要将原始请求值进行深拷贝备份</remarks>
+             <param name="context"></param>
+        </member>
+        <member name="T:EES.Infrastructure.Filters.RequestRateLimitFilter">
+            <summary>
+            请求频率限制过滤器
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Jwt.ClaimsModel">
+            <summary>
+            Claims模型
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Jwt.ClaimsModel.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Jwt.ClaimsModel.Platform">
+            <summary>
+            平台
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Jwt.CurrentUser.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Jwt.CurrentUser.Platform">
+            <summary>
+            登录平台
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Jwt.JwtOption">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Jwt.JwtOption.Audience">
+            <summary>
+            受众
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Jwt.JwtOption.SecurityKey">
+            <summary>
+            安全密钥
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Jwt.JwtOption.Issuer">
+            <summary>
+            签发方
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Jwt.JwtOption.GetDefaultOptions">
+            <summary>
+            获取默认的Options
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Jwt.JwtTokenProvider.Generate(EES.Infrastructure.Jwt.CurrentUser,System.Int32)">
+            <summary>
+            生成Token
+            </summary>
+            <param name="user"></param>
+            <param name="expMins"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Jwt.JwtTokenProvider.TryGetClaim(System.String,System.String@,System.Nullable{System.Int64}@)">
+            <summary>
+            获取jwt的Claim信息
+            </summary>
+            <param name="jwtToken"></param>
+            <param name="platform"></param>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Infrastructure.Jwt.ResponseAuthenticationHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Jwt.ResponseAuthenticationHandler.#ctor(Microsoft.Extensions.Options.IOptionsMonitor{Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions},Microsoft.Extensions.Logging.ILoggerFactory,System.Text.Encodings.Web.UrlEncoder,Microsoft.AspNetCore.Authentication.ISystemClock)">
+            <summary>
+            
+            </summary>
+            <param name="options"></param>
+            <param name="logger"></param>
+            <param name="encoder"></param>
+            <param name="clock"></param>
+        </member>
+        <member name="M:EES.Infrastructure.Jwt.ResponseAuthenticationHandler.HandleAuthenticateAsync">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Jwt.ResponseAuthenticationHandler.HandleChallengeAsync(Microsoft.AspNetCore.Authentication.AuthenticationProperties)">
+            <summary>
+            未登录
+            </summary>
+            <param name="properties"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Jwt.ResponseAuthenticationHandler.HandleForbiddenAsync(Microsoft.AspNetCore.Authentication.AuthenticationProperties)">
+            <summary>
+            权限错误
+            </summary>
+            <param name="properties"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Infrastructure.Log.ApiLog">
+            <summary>
+            接口请求记录表
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.ApiLog.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.ApiLog.Platform">
+            <summary>
+            平台
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.ApiLog.RequestType">
+            <summary>
+            接口请求类型   post  或者get
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.ApiLog.ApiRoute">
+            <summary>
+            接口名
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.ApiLog.RequestUrl">
+            <summary>
+            请求url
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.ApiLog.RequestHeader">
+            <summary>
+            请求的header数据
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.ApiLog.RequestQuery">
+            <summary>
+            请求参数的querystring
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.ApiLog.RequestBody">
+            <summary>
+            请求参数的body
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.ApiLog.RequestTime">
+            <summary>
+            请求时间
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.ApiLog.Response">
+            <summary>
+            响应参数
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.ApiLog.TimeConsumption">
+            <summary>
+            总计耗时（毫秒）
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Log.AuditLog">
+            <summary>
+            数据审计表- 仅记录修改和删除
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.AuditLog.DbName">
+            <summary>
+            数据库名
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.AuditLog.TableName">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.AuditLog.EntityName">
+            <summary>
+            业务实体名
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.AuditLog.ObjectId">
+            <summary>
+            对象主键id
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.AuditLog.OperateType">
+            <summary>
+            操作类型： 1 修改    -1 删除
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.AuditLog.OriginalValue">
+            <summary>
+            修改之前的值，json
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.AuditLog.SetValue">
+            <summary>
+            修改之后的值 , json
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.AuditLog.OperatorId">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.AuditLog.OperatorName">
+            <summary>
+            操作人名称
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.AuditLog.OperateTime">
+            <summary>
+            操作时间
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Log.ExceptionLog">
+            <summary>
+            异常信息记录表
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.ExceptionLog.Flag">
+            <summary>
+            异常标识
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.ExceptionLog.TraceId">
+            <summary>
+            trace_id
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.ExceptionLog.Message">
+            <summary>
+            异常提示信息
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.ExceptionLog.ExceptionType">
+            <summary>
+            异常类型
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.ExceptionLog.Text">
+            <summary>
+            异常的完整错误信息
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.ExceptionLog.StackTrace">
+            <summary>
+            堆栈信息
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.ExceptionLog.OccurredTime">
+            <summary>
+            异常发生的时间
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Log.LoginLog">
+            <summary>
+            用户登录记录表
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.LoginLog.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.LoginLog.UserAccount">
+            <summary>
+            登录用户名
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.LoginLog.UserName">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.LoginLog.LoginPlatform">
+            <summary>
+            登录平台
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.LoginLog.Token">
+            <summary>
+            授权token
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.LoginLog.IpV4">
+            <summary>
+            ip
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.LoginLog.IpV6">
+            <summary>
+            v6ip  暂时预留
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.LoginLog.UserAgent">
+            <summary>
+            header里的UA标识
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.LoginLog.LoginTime">
+            <summary>
+            登陆时间
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Log.OperationLog">
+            <summary>
+            用户操作记录表
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.OperationLog.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.OperationLog.UserName">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.OperationLog.BatchId">
+            <summary>
+            批次号
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.OperationLog.OperateType">
+            <summary>
+            操作类型 新增，修改，删除，审批，等，具体再定义
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.OperationLog.OperateTypeDesc">
+            <summary>
+            操作类型的文字说明
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.OperationLog.ObjectId">
+            <summary>
+            操作对象的id
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.OperationLog.ObjectKeywords">
+            <summary>
+            关键字信息，比如 工单号， 仓库编号等
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.OperationLog.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.OperationLog.OperateTime">
+            <summary>
+            操作时间
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.OperationLog.ModuleName">
+            <summary>
+            模块名字
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.OperationLog.ModuleFlag">
+            <summary>
+            模块标识
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.OperationLog.SubModuleName">
+            <summary>
+            子模块名字
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Log.OperationLog.SubModuleFlag">
+            <summary>
+            子模块标识
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Middleware.AccessorMiddleWare">
+            <summary>
+            缓存当前请求的用户信息中间件
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Middleware.AccessorMiddleWare.Response(Microsoft.AspNetCore.Http.HttpContext,EES.Infrastructure.Enums.BusinessError,System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+            <param name="error"></param>
+            <param name="httpCode"></param>
+            <param name="contentType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Infrastructure.Middleware.LogMiddleWare">
+            <summary>
+            日志中间件，记录所有的请求的 request 和 response
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Middleware.LogMiddleWare.GetRequest(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:EES.Infrastructure.Middleware.LogMiddleWare.GetRequestUser(Microsoft.AspNetCore.Http.HttpContext,EES.Infrastructure.Log.ApiLog@)">
+            <summary>
+            获取当前请求用户
+            </summary>
+            <param name="context"></param>
+            <param name="log"></param>
+        </member>
+        <member name="M:EES.Infrastructure.Middleware.LogMiddleWare.GetRequestBodyAsync(System.IO.Pipelines.PipeReader)">
+            <summary>
+            读取request的Body数据
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Infrastructure.Middleware.ValidationMiddleWare">
+            <summary>
+            验证中间件类，用于在.NET请求处理管道中执行自定义验证逻辑
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Middleware.ValidationMiddleWare._next">
+            <summary>
+            请求委托，表示在验证中间件之后的请求处理逻辑
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Middleware.ValidationMiddleWare.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="next">下一个中间件</param>
+        </member>
+        <member name="M:EES.Infrastructure.Middleware.ValidationMiddleWare.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            执行验证中间件逻辑
+            </summary>
+            <param name="context">当前HTTP请求的上下文对象</param>
+            <returns>异步操作的任务</returns>
+        </member>
+        <member name="M:EES.Infrastructure.Middleware.ValidationMiddleWare.ConvertJsonFormat(System.String)">
+            <summary>
+            将输入的JSON字符串解析为特定的错误消息格式
+            </summary>
+            <param name="inputJson">待解析的JSON字符串</param>
+            <returns>解析后的错误消息，如果无法解析则返回"错误无法解析"</returns>
+        </member>
+        <member name="T:EES.Infrastructure.Middleware.ContextResponse">
+            <summary>
+            上下文响应
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Middleware.ContextResponse.ImmediateReturn(Microsoft.AspNetCore.Http.HttpContext,System.Int32,System.String,System.String)">
+            <summary>
+            即刻返回
+            </summary>
+            <param name="context">上下文</param>
+            <param name="code">状态码</param>
+            <param name="message">描述</param>
+            <param name="type">响应类型</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Infrastructure.Modules.IModuleConfigurationManager">
+            <summary>
+            模块配置管理
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Modules.IModuleConfigurationManager.GetModules">
+            <summary>
+            获取所有模块
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Infrastructure.Modules.IModuleInitializer">
+            <summary>
+            模块初始化
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Modules.MissingModuleManifestException">
+            <summary>
+            模块缺失异常
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Modules.ModuleConfigurationManager">
+            <summary>
+            模块配置信息
+            </summary>
+        </member>
+        <member name="F:EES.Infrastructure.Modules.ModuleConfigurationManager.ModulesFileName">
+            <summary>
+            记录模块信息的文件名
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Modules.ModuleConfigurationManager.GetModules">
+            <summary>
+            获取所有模块
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:EES.Infrastructure.Modules.ModuleInfo.Id">
+            <summary>
+            模块ID(程序集名称)
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Modules.ModuleInfo.Name">
+            <summary>
+            模块名称
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Modules.ModuleInfo.Version">
+            <summary>
+            版本
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Modules.ModuleInfo.Assembly">
+            <summary>
+            程序集
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Service.HttpAccessor">
+            <summary>
+            当前Http请求的用户信息
+            <see cref="!:https://www.cnblogs.com/InCerry/p/Why-The-Design-HttpContextAccessor.html"/>
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Service.HttpAccessor.Accessor">
+            <summary>
+            当前请求用户的信息
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Service.HttpAccessor.TraceIdentifier">
+            <summary>
+            当前请求的traceId
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Service.IScopedDependency">
+            <summary>
+            接口生命周期为 Scope的依赖
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Service.ISingletonDependency">
+            <summary>
+            接口生命周期为Singleton的依赖
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Service.ISystemParamsService">
+            <summary>
+            系统参数查询服务
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Service.ISystemParamsService.GetSystemParamModelsAsync(EES.Infrastructure.Enums.SystemModule,System.Boolean)">
+            <summary>
+            获取模块下的全部配置
+            </summary>
+            <param name="module">模块</param>
+            <param name="isIncludeDisabled">是否包含已经被禁用的</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Service.ISystemParamsService.GetSystemParamModelAsync(EES.Infrastructure.Enums.SystemModule,System.String)">
+            <summary>
+            查询模块下特定的配置信息
+            </summary>
+            <param name="module">模块</param>
+            <param name="code">编码</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Infrastructure.Service.ITransientDependency">
+            <summary>
+             接口生命周期为Transient的依赖
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Service.LogChannelProvider">
+            <summary>
+            日志管道，记录程序日志
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Service.LogHandlerService">
+            <summary>
+            后台日志处理服务
+            </summary>
+        </member>
+        <member name="P:EES.Infrastructure.Service.ServerBase.Accessor">
+            <summary>
+            当前请求用户信息
+            </summary>
+        </member>
+        <member name="T:EES.Infrastructure.Tools.ConvertHelper">
+            <summary>
+            转换帮助类
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ConvertHelper.ToInt16(System.Object)">
+            <summary>
+            将对象转换为整数
+            </summary>
+            <param name="obj">要转换为整数的对象</param>
+            <returns>转换后的整数值，如果转换失败则返回 0</returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ConvertHelper.ToInt16(System.Object,System.Int16)">
+            <summary>
+            将对象转换为整数
+            </summary>
+            <param name="obj">要转换为整数的对象</param>
+            <param name="errorResult">转换失败返回的错误值</param>
+            <returns>转换后的整数值，如果转换失败则返回指定的错误值</returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ConvertHelper.ToInt(System.Object)">
+            <summary>
+            将对象转换为整数
+            </summary>
+            <param name="obj">要转换为整数的对象</param>
+            <returns>转换后的整数值，如果转换失败则返回 0</returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ConvertHelper.ToInt(System.Object,System.Int32)">
+            <summary>
+            将对象转换为整数
+            </summary>
+            <param name="obj">要转换为整数的对象</param>
+            <param name="errorResult">转换失败返回的错误值</param>
+            <returns>转换后的整数值，如果转换失败则返回指定的错误值</returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ConvertHelper.ToSingle(System.Object)">
+            <summary>
+            将对象转换为单精度浮点数
+            </summary>
+            <param name="obj">要转换为单精度浮点数的对象</param>
+            <returns>转换后的单精度浮点数值，如果转换失败则返回 0</returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ConvertHelper.ToSingle(System.Object,System.Single)">
+            <summary>
+            将对象转换为单精度浮点数
+            </summary>
+            <param name="obj">要转换为单精度浮点数的对象</param>
+            <param name="errorResult">转换失败返回的错误值</param>
+            <returns>转换后的单精度浮点数值，如果转换失败则返回指定的错误值</returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ConvertHelper.ToDouble(System.Object)">
+            <summary>
+            将对象转换为双精度浮点数
+            </summary>
+            <param name="obj">要转换为双精度浮点数的对象</param>
+            <returns>转换后的双精度浮点数值，如果转换失败则返回 0</returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ConvertHelper.ToDouble(System.Object,System.Double)">
+            <summary>
+            将对象转换为双精度浮点数
+            </summary>
+            <param name="obj">要转换为双精度浮点数的对象</param>
+            <param name="errorResult">转换失败返回的错误值</param>
+            <returns>转换后的双精度浮点数值，如果转换失败则返回指定的错误值</returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ConvertHelper.ToDecimal(System.Object)">
+            <summary>
+            将对象转换为十进制数，如果转换失败则返回0
+            </summary>
+            <param name="obj">要转换为十进制数的对象</param>
+            <returns>转换后的十进制数值，如果转换失败则返回 0</returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ConvertHelper.ToDecimal(System.Object,System.Decimal)">
+            <summary>
+            将对象转换为十进制数
+            </summary>
+            <param name="obj">要转换为十进制数的对象</param>
+            <param name="errorResult">转换失败返回的错误值</param>
+            <returns>转换后的十进制数值，如果转换失败则返回指定的错误值</returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ConvertHelper.ToDate(System.Object)">
+            <summary>
+            将对象转换为日期时间
+            </summary>
+            <param name="obj">要转换为日期时间的对象</param>
+            <returns>转换后的日期时间值，如果转换失败则返回 DateTime.MinValue</returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ConvertHelper.ToDate(System.Object,System.DateTime)">
+            <summary>
+            将对象转换为日期时间
+            </summary>
+            <param name="obj">要转换为日期时间的对象</param>
+            <param name="errorResult">转换失败返回的错误值</param>
+            <returns>转换后的日期时间值，如果转换失败则返回指定的错误值</returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ConvertHelper.ToBool(System.Object)">
+            <summary>
+            将对象转换为布尔值
+            </summary>
+            <param name="obj">要转换为布尔值的对象</param>
+            <returns>转换后的布尔值，如果转换失败则返回 false</returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ConvertHelper.ToJson(System.Object)">
+            <summary>
+            将对象转换为JSON字符串
+            </summary>
+            <param name="obj">要转换为JSON字符串的对象</param>
+            <returns>转换后的JSON字符串</returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ConvertHelper.ToJson(System.Object,Newtonsoft.Json.ReferenceLoopHandling)">
+            <summary>
+            将对象转换为JSON字符串
+            </summary>
+            <param name="obj">要转换为JSON字符串的对象</param>
+            <param name="referenceLoopHandling">循环处理</param>
+            <returns>转换后的JSON字符串</returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ConvertHelper.To``1(System.String)">
+            <summary>
+            将JSON字符串转换为指定类型的对象
+            </summary>
+            <typeparam name="T">要转换的目标类型</typeparam>
+            <param name="json">包含要反序列化的JSON数据的字符串</param>
+            <returns>反序列化后的指定类型的对象，如果转换失败则返回 null</returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ConvertHelper.To``1(System.Object)">
+            <summary>
+            将对象转换为JSON字符串，然后再将JSON字符串转换为指定类型的对象
+            </summary>
+            <typeparam name="T">要转换的目标类型</typeparam>
+            <param name="obj">要序列化为JSON字符串并反序列化的对象</param>
+            <returns>反序列化后的指定类型的对象，如果转换失败则返回 null</returns>
+        </member>
+        <member name="T:EES.Infrastructure.Tools.DateTimeHelper">
+            <summary>
+            帮助类
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.DateTimeHelper.GetDefaultTime">
+            <summary>
+            获取一个系统默认的时间
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.DateTimeHelper.IsDefaultTime(System.Nullable{System.DateTime})">
+            <summary>
+            判断是不是系统默认的时间
+            </summary>
+            <param name="dateTime"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Infrastructure.Tools.DecimalProcessingHelper">
+            <summary>
+            小数处理
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.DecimalProcessingHelper.ProcessStringAndNumber(System.String,System.Int32)">
+            <summary>
+            处理小数位
+            </summary>
+            <param name="inputString"></param>
+            <param name="decimalPlaces"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ExcelHelper.ReadExcelRectangularArea(Microsoft.AspNetCore.Http.IFormFile,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            读取excel指定区域的数据填充到DataTable
+            </summary>
+            <param name="file">文件</param>
+            <param name="sheetIndex">数据所在的sheet</param>
+            <param name="startRowIndex">数据起始行索引</param>
+            <param name="endRowIndex">数据截至行索引,如果该值小于0，则视为动态行，自动检索到最后有数据的一行为止</param>
+            <param name="startColIndex">数据起始列索引</param>
+            <param name="endColIndex">数据截至列索引</param>
+            <param name="includeHeader">是否包含表头(如果包含，默认指定区域的第一行就是表头行)</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">当文件为NULL时触发该异常</exception>
+            <exception cref="T:System.Exception">当文件类型不受支持时触发该异常</exception>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ExcelHelper.ReadExcelRectangularArea(Microsoft.AspNetCore.Http.IFormFile,System.Data.DataTable@,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            读取excel指定区域的数据填充到DataTable
+            </summary>
+            <param name="file">文件</param>
+            <param name="dataTable">接收数据的DataTable</param>
+            <param name="sheetIndex">数据所在的sheet</param>
+            <param name="startRowIndex">数据起始行索引</param>
+            <param name="endRowIndex">数据截至行索引,如果该值小于0，则视为动态行，自动检索到最后有数据的一行为止</param>
+            <param name="startColIndex">数据起始列索引</param>
+            <param name="endColIndex">数据截至列索引</param>
+            <param name="includeHeader">是否包含表头(如果包含，默认指定区域的第一行就是表头行)</param>
+            <exception cref="T:System.ArgumentNullException">当文件为NULL时触发该异常</exception>
+            <exception cref="T:System.Exception">当文件类型不受支持时触发该异常</exception>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ExcelHelper.ReadExcelToDataTable(Microsoft.AspNetCore.Http.IFormFile,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            将excel数据读取到datatable
+            </summary>
+            <param name="file">文件</param>
+            <param name="sheetIndex">数据所在的sheet</param>
+            <param name="headerRowIndex">表头位置</param>
+            <param name="dataStartRowIndex">数据起始位置</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">当文件为NULL时触发该异常</exception>
+            <exception cref="T:System.Exception">当文件类型不受支持时触发该异常</exception>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ExcelHelper.ReadExcelToDataTable(Microsoft.AspNetCore.Http.IFormFile,System.Data.DataTable@,System.Int32,System.Int32)">
+            <summary>
+            将excel数据读取到datatable
+            </summary>
+            <param name="file">文件</param>
+            <param name="dataTable">数据表</param>
+            <param name="sheetIndex">数据所在的sheet</param>
+            <param name="dataStartRowIndex">数据起始位置</param>
+            <exception cref="T:System.ArgumentNullException">当文件为NULL时触发该异常</exception>
+            <exception cref="T:System.Exception">当文件类型不受支持时触发该异常</exception>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ExcelHelper.ReadExcelToDataTable(System.IO.Stream,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            将excel数据读取到datatable
+            </summary>
+            <param name="fileStream">文件流</param>
+            <param name="sheetIndex">数据所在的sheet</param>
+            <param name="headerRowIndex">表头位置</param>
+            <param name="dataStartRowIndex">数据起始位置</param>
+            <remarks>DataTable默认所有字段都是string类型，需要调用者二次处理</remarks>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ExcelHelper.ReadExcelToDataTable(System.IO.Stream,System.Data.DataTable@,System.Int32,System.Int32)">
+            <summary>
+            读取excel数据填充到DataTable中
+            </summary>
+            <param name="fileStream">excel的文件流</param>
+            <param name="dataTable">datatable</param>
+            <param name="sheetIndex">sheet表索引</param>
+            <param name="dataStartRowIndex">数据行的索引</param>
+            <remarks>dataTable 需要指定Column的DataType属性，否则会默认将其设置为string</remarks>
+            <example>
+             DataTableType dataTable = new();
+             dataTable.Columns.Add("column1", typeof(int));
+            </example>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ExcelHelper.ExportExcel``1(System.String,System.Collections.Generic.List{``0},System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Excel数据导出
+            </summary>
+            <typeparam name="T">元数据类型</typeparam>
+            <param name="templateFullPath">模板位置(绝对路径)</param>
+            <param name="data">数据</param>
+            <param name="sheetIndex">sheet表索引</param>
+            <param name="headerRowIndex">表头所在行索引</param>
+            <param name="startDataRowIndex">数据从哪一行开始写</param>
+            <returns></returns>
+            <exception cref="T:System.IO.FileNotFoundException">当指定路径未找到模板文件时抛出该异常</exception>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ExcelHelper.FillExcelTemplate``1(System.IO.Stream,System.Collections.Generic.List{``0},System.Int32,System.Int32,System.Int32)">
+            <summary>
+            将数据写入excel流
+            </summary>
+            <typeparam name="T">元数据类型</typeparam>
+            <param name="templateStream">excel的流</param>
+            <param name="data">数据</param>
+            <param name="sheetIndex">sheet表索引</param>
+            <param name="headerRowIndex">表头所在行索引</param>
+            <param name="startDataRowIndex">数据从哪一行开始写</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ExcelHelper.FillDataIntoSheet``1(NPOI.SS.UserModel.ISheet,System.Collections.Generic.List{``0},System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            将数据写入Sheet
+            </summary>
+            <typeparam name="T">Data类型</typeparam>
+            <param name="sheet">工作簿</param>
+            <param name="dataList">数据集</param>
+            <param name="startColumnIndex">开始列索引</param>
+            <param name="endColumnIndex">结束列索引</param>
+            <param name="startDataRowIndex">数据开始行索引</param>
+            <param name="headerRowIndex">表头所在行索引</param>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ExcelHelper.ReadExcelRectangularArea(System.IO.Stream,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+             读取excel指定区域的数据填充到DataTable
+            </summary>
+            <param name="fileStream">文件流</param>
+            <param name="sheetIndex">数据所在的sheet</param>
+            <param name="startRowIndex">数据起始行索引</param>
+            <param name="endRowIndex">数据截至行索引,如果该值小于0，则视为动态行，自动检索到最后有数据的一行为止</param>
+            <param name="startColIndex">数据起始列索引</param>
+            <param name="endColIndex">数据截至列索引</param>
+            <param name="includeHeader">是否包含表头(如果包含，默认指定区域的第一行就是表头行)</param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ExcelHelper.ReadExcelRectangularArea(System.IO.Stream,System.Data.DataTable@,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+             读取excel指定区域的数据填充到DataTable
+            </summary>
+            <param name="fileStream">文件流</param>
+            <param name="dataTable">接收数据的DataTable</param>
+            <param name="sheetIndex">数据所在的sheet</param>
+            <param name="startRowIndex">数据起始行索引</param>
+            <param name="endRowIndex">数据截至行索引,如果该值小于0，则视为动态行，自动检索到最后有数据的一行为止</param>
+            <param name="startColIndex">数据起始列索引</param>
+            <param name="endColIndex">数据截至列索引</param>
+            <param name="includeHeader">是否包含表头(如果包含，默认指定区域的第一行就是表头行)</param>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ExcelHelper.ReadSheetRectangularArea(NPOI.SS.UserModel.ISheet,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            读取Sheet指定区域的数据填充到DataTable
+            </summary>
+            <param name="sheet">工作簿</param>
+            <param name="startRowIndex">数据起始行索引</param>
+            <param name="endRowIndex">数据截至行索引,如果该值小于0，则视为动态行，自动检索到最后有数据的一行为止</param>
+            <param name="startColIndex">数据起始列索引</param>
+            <param name="endColIndex">数据截至列索引</param>
+            <param name="includeHeader">是否包含表头(如果包含，默认指定区域的第一行就是表头行)</param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ExcelHelper.ReadSheetRectangularArea(NPOI.SS.UserModel.ISheet,System.Data.DataTable@,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            读取Sheet指定区域的数据填充到DataTable
+            </summary>
+            <param name="sheet">工作簿</param>
+            <param name="dataTable">接收数据的DataTable</param>
+            <param name="startRowIndex">数据起始行索引</param>
+            <param name="endRowIndex">数据截至行索引,如果该值小于0，则视为动态行，自动检索到最后有数据的一行为止</param>
+            <param name="startColIndex">数据起始列索引</param>
+            <param name="endColIndex">数据截至列索引</param>
+            <param name="includeHeader">是否包含表头(如果包含，默认指定区域的第一行就是表头行)</param>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ExcelHelper.SetColumnValue(System.Data.DataRow,System.Int32,System.Type,System.String)">
+            <summary>
+            设置DataTable的单元格的值
+            </summary>
+            <param name="row">行</param>
+            <param name="columnIndex">列索引</param>
+            <param name="ColumnDataType">列的数据类型</param>
+            <param name="cellValue">单元格的值</param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ExcelHelper.DealValue(System.Object,System.Reflection.PropertyInfo)">
+            <summary>
+            值处理
+            </summary>
+            <param name="obj"></param>
+            <param name="property"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ExcelHelper.GetCellValueToString(NPOI.SS.UserModel.ICell)">
+            <summary>
+            获取单元格的值，默认全部转string类型
+            </summary>
+            <param name="cell"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.ExcelHelper.EvaluateFormula(NPOI.SS.UserModel.ICell)">
+            <summary>
+            使用 EvaluateInCell() 计算公式
+            </summary>
+            <param name="cell"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.HttpContextHelper.GetJwtTokenWithoutBearer(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取JwtToken,不包含Bearer
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.HttpContextHelper.GetToken(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取token
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Infrastructure.Tools.SignHelper">
+            <summary>
+            签名制作帮助类
+            </summary>
+        </member>
+        <member name="M:EES.Infrastructure.Tools.SignHelper.GetGetIdempotentKeyFlag(System.Collections.Generic.IDictionary{System.String,System.Object},System.String)">
+            <summary>
+             将请求参数和action的幂等性标记按照既定规则进行处理
+            </summary>
+            <param name="actionArguments"></param>
+            <param name="attrFlag"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:EES.Infrastructure.Tools.SignHelper.GetParamsStr(System.Collections.Generic.IDictionary{System.String,System.Object},System.StringComparer,System.Char,System.Char,Newtonsoft.Json.Formatting)" -->
+        <member name="T:Microsoft.Extensions.DependencyInjection.AutoInjectExtensions">
+            <summary>
+            ITransientDependency、IScopedDependency、ISingletonDependency接口约束依赖注入扩展
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.AutoInjectExtensions.AddInterfaceInject(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly[])">
+            <summary>
+            实现ITransientDependency、IScopedDependency、ISingletonDependency接口约束依赖的服务注册
+            </summary>
+            <param name="services"></param>
+            <param name="assemblies">需要注入服务的所在程序集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddModules(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            加载模块信息
+            </summary>
+            <param name="services"></param>
+            <returns>将模块信息绑定至GlobalConfiguration</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddApplicationPart(Microsoft.Extensions.DependencyInjection.IMvcBuilder,System.Reflection.Assembly)">
+            <summary>
+            将未被引用的程序集加载到ApplicationParts
+            </summary>
+            <param name="mvcBuilder"></param>
+            <param name="assembly"></param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.TryLoadModuleAssembly(System.String,EES.Infrastructure.Modules.ModuleInfo,System.String)">
+            <summary>
+            尝试从模块的文件夹里面加载模块的dll
+            </summary>
+            <param name="moduleFolderPath">模块文件夹路径</param>
+            <param name="module">模块信息</param>
+            <param name="binariesFolderName">模块dll文件所在位置</param>
+            <exception cref="T:System.Exception"></exception>
+            <remarks>这个方法是为了防止模块需要被集成进来，但是WebHost没有引用这个模块。即webhost的bin文件夹下面没有这个模块的dll文件。
+            但是在.net 7的项目里面，模块编译后，dll的默认输出文件夹应该是"bin\Debug\net7.0"或者"bin\Release\net7.0"，也跟用户设置的输出位置有关系，需要手动指定</remarks>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.SwaggerExtensions">
+            <summary>
+            Swagger扩展
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.SwaggerExtensions.AddKnife4jSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,System.String)">
+            <summary>
+            注册Swagger
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <param name="section"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.SwaggerExtensions.AddKnife4jSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            根据配置的模块加载Swagger
+            </summary>
+            <param name="services"></param>
+            <param name="configuration">配置</param>
+            <param name="xmlNames">配置的模块的xml文件名称集合</param>
+            <param name="section">配置项</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.SwaggerExtensions.UseKnife4jSwagger(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.Configuration.IConfiguration,System.String)">
+            <summary>
+            使用UseKnife4jUI
+            </summary>
+            <param name="app"></param>
+            <param name="configuration"></param>
+            <param name="section"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.SwaggerExtensions.ActionHidingConvention">
+            <summary>
+            让不在特定程序集的controller在API文档不显示(实际控制器已经加载至程序内)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.SwaggerExtensions.SwaggerOption">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.SwaggerExtensions.SwaggerOption.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.SwaggerExtensions.SwaggerOption.Info">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.DependencyInjection.SwaggerExtensions.SwaggerOption.EndPointUrl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.SwaggerExtensions.EnumSchemaFilter">
+            <summary>
+            Swagger文档枚举字段显示枚举属性和枚举值,以及枚举描述
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.SwaggerExtensions.EnumSchemaFilter.Apply(Microsoft.OpenApi.Models.OpenApiSchema,Swashbuckle.AspNetCore.SwaggerGen.SchemaFilterContext)">
+            <summary>
+            实现接口
+            </summary>
+            <param name="model"></param>
+            <param name="context"></param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.JwtExtensions.AddJwt(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            jwt注入
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.EFCoreExtensions.WhereIf``1(System.Collections.Generic.IEnumerable{``0},System.Boolean,System.Func{``0,System.Boolean})">
+            <summary>
+            根据条件成立再构建 Where 查询
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="sources">集合对象</param>
+            <param name="condition">布尔条件</param>
+            <param name="expression">表达式</param>
+            <returns>新的集合对象</returns>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.EFCoreExtensions.WhereIf``1(System.Collections.Generic.IEnumerable{``0},System.Boolean,System.Func{``0,System.Int32,System.Boolean})">
+            <summary>
+            根据条件成立再构建 Where 查询，支持索引器
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="sources">集合对象</param>
+            <param name="condition">布尔条件</param>
+            <param name="expression">表达式</param>
+            <returns>新的集合对象</returns>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.EFCoreExtensions.WhereIf``1(System.Linq.IQueryable{``0},System.Boolean,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            根据条件成立再构建 Where 查询
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="sources">集合对象</param>
+            <param name="condition">布尔条件</param>
+            <param name="expression">表达式</param>
+            <returns>新的集合对象</returns>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.EFCoreExtensions.WhereIf``1(System.Linq.IQueryable{``0},System.Boolean,System.Linq.Expressions.Expression{System.Func{``0,System.Int32,System.Boolean}})">
+            <summary>
+            根据条件成立再构建 Where 查询，支持索引器
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="sources">集合对象</param>
+            <param name="condition">布尔条件</param>
+            <param name="expression">表达式</param>
+            <returns>新的集合对象</returns>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.EFCoreExtensions.Where``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}}[])">
+            <summary>
+            与操作合并多个表达式
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="sources">集合对象</param>
+            <param name="expressions">表达式数组</param>
+            <returns>新的集合对象</returns>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.EFCoreExtensions.Where``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Int32,System.Boolean}}[])">
+            <summary>
+            与操作合并多个表达式，支持索引器
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="sources">集合对象</param>
+            <param name="expressions">表达式数组</param>
+            <returns>新的集合对象</returns>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.EFCoreExtensions.Where``1(System.Linq.IQueryable{``0},System.ValueTuple{System.Boolean,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}}}[])">
+            <summary>
+            根据条件成立再构建 WhereOr 查询
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="sources">集合对象</param>
+            <param name="conditionExpressions">条件表达式</param>
+            <returns>新的集合对象</returns>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.EFCoreExtensions.Where``1(System.Linq.IQueryable{``0},System.ValueTuple{System.Boolean,System.Linq.Expressions.Expression{System.Func{``0,System.Int32,System.Boolean}}}[])">
+            <summary>
+            根据条件成立再构建 WhereOr 查询，支持索引器
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="sources">集合对象</param>
+            <param name="conditionExpressions">条件表达式</param>
+            <returns>新的集合对象</returns>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.EFCoreExtensions.IncludeIf``2(System.Linq.IQueryable{``0},System.Boolean,System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            根据条件成立再构建 Include 查询
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <typeparam name="TProperty">泛型属性类型</typeparam>
+            <param name="sources">集合对象</param>
+            <param name="condition">布尔条件</param>
+            <param name="expression">新的集合对象表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.EFCoreExtensions.ThenIncludeIf``3(Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{``0,System.Collections.Generic.IEnumerable{``1}},System.Boolean,System.Linq.Expressions.Expression{System.Func{``1,``2}})">
+            <summary>
+            
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TPreviousProperty"></typeparam>
+            <typeparam name="TProperty"></typeparam>
+            <param name="source"></param>
+            <param name="condition"></param>
+            <param name="navigationPropertyPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.EFCoreExtensions.ThenInclude``3(Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{``0,``1},System.Boolean,System.Linq.Expressions.Expression{System.Func{``1,``2}})">
+            <summary>
+            
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <typeparam name="TPreviousProperty"></typeparam>
+            <typeparam name="TProperty"></typeparam>
+            <param name="source"></param>
+            <param name="condition"></param>
+            <param name="navigationPropertyPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.DateTimeExtensions.ToUnixTimestamp(System.DateTime,System.DateTimeExtensions.DateTimestampFormat)">
+            <summary>
+            转换成UNIX时间戳
+            </summary>
+            <param name="date"></param>
+            <param name="format"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.DateTimeExtensions.ToDateTime(System.Int64,System.DateTimeExtensions.DateTimestampFormat)">
+            <summary>
+            时间戳转换成datetime
+            </summary>
+            <param name="timestamp"></param>
+            <param name="format"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.DateTimeExtensions.ToDateTime(System.Int32)">
+            <summary>
+            时间戳转换成datetime
+            </summary>
+            <param name="timestamp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.ExpressionExtensions.Compose``1(System.Linq.Expressions.Expression{``0},System.Linq.Expressions.Expression{``0},System.Func{System.Linq.Expressions.Expression,System.Linq.Expressions.Expression,System.Linq.Expressions.Expression})">
+            <summary>
+            组合两个表达式
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="expression">表达式1</param>
+            <param name="extendExpression">表达式2</param>
+            <param name="mergeWay">组合方式</param>
+            <returns>新的表达式</returns>
+        </member>
+        <member name="M:System.Linq.ExpressionExtensions.And``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            与操作合并两个表达式
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="expression">表达式1</param>
+            <param name="extendExpression">表达式2</param>
+            <returns>新的表达式</returns>
+        </member>
+        <member name="M:System.Linq.ExpressionExtensions.And``1(System.Linq.Expressions.Expression{System.Func{``0,System.Int32,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Int32,System.Boolean}})">
+            <summary>
+            与操作合并两个表达式，支持索引器
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="expression">表达式1</param>
+            <param name="extendExpression">表达式2</param>
+            <returns>新的表达式</returns>
+        </member>
+        <member name="M:System.Linq.ExpressionExtensions.AndIf``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Boolean,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            根据条件成立再与操作合并两个表达式
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="expression">表达式1</param>
+            <param name="condition">布尔条件</param>
+            <param name="extendExpression">表达式2</param>
+            <returns>新的表达式</returns>
+        </member>
+        <member name="M:System.Linq.ExpressionExtensions.AndIf``1(System.Linq.Expressions.Expression{System.Func{``0,System.Int32,System.Boolean}},System.Boolean,System.Linq.Expressions.Expression{System.Func{``0,System.Int32,System.Boolean}})">
+            <summary>
+            根据条件成立再与操作合并两个表达式，支持索引器
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="expression">表达式1</param>
+            <param name="condition">布尔条件</param>
+            <param name="extendExpression">表达式2</param>
+            <returns>新的表达式</returns>
+        </member>
+        <member name="M:System.Linq.ExpressionExtensions.Or``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            或操作合并两个表达式
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="expression">表达式1</param>
+            <param name="extendExpression">表达式2</param>
+            <returns>新的表达式</returns>
+        </member>
+        <member name="M:System.Linq.ExpressionExtensions.Or``1(System.Linq.Expressions.Expression{System.Func{``0,System.Int32,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Int32,System.Boolean}})">
+            <summary>
+            或操作合并两个表达式，支持索引器
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="expression">表达式1</param>
+            <param name="extendExpression">表达式2</param>
+            <returns>新的表达式</returns>
+        </member>
+        <member name="M:System.Linq.ExpressionExtensions.OrIf``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Boolean,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            根据条件成立再或操作合并两个表达式
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="expression">表达式1</param>
+            <param name="condition">布尔条件</param>
+            <param name="extendExpression">表达式2</param>
+            <returns>新的表达式</returns>
+        </member>
+        <member name="M:System.Linq.ExpressionExtensions.OrIf``1(System.Linq.Expressions.Expression{System.Func{``0,System.Int32,System.Boolean}},System.Boolean,System.Linq.Expressions.Expression{System.Func{``0,System.Int32,System.Boolean}})">
+            <summary>
+            根据条件成立再或操作合并两个表达式，支持索引器
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="expression">表达式1</param>
+            <param name="condition">布尔条件</param>
+            <param name="extendExpression">表达式2</param>
+            <returns>新的表达式</returns>
+        </member>
+        <member name="M:System.Linq.ExpressionExtensions.GetExpressionPropertyName``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            获取Lambda表达式属性名，只限 u=>u.Property 表达式
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="expression">表达式</param>
+            <returns>属性名</returns>
+        </member>
+        <member name="M:System.Linq.ExpressionExtensions.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            是否是空集合
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="sources">集合对象</param>
+            <returns>是否为空集合</returns>
+        </member>
+        <member name="F:System.Linq.ParameterReplaceExpressionVisitor.parameterExpressionSetter">
+            <summary>
+            参数表达式映射集合
+            </summary>
+        </member>
+        <member name="M:System.Linq.ParameterReplaceExpressionVisitor.#ctor(System.Collections.Generic.Dictionary{System.Linq.Expressions.ParameterExpression,System.Linq.Expressions.ParameterExpression})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="parameterExpressionSetter">参数表达式映射集合</param>
+        </member>
+        <member name="M:System.Linq.ParameterReplaceExpressionVisitor.ReplaceParameters(System.Collections.Generic.Dictionary{System.Linq.Expressions.ParameterExpression,System.Linq.Expressions.ParameterExpression},System.Linq.Expressions.Expression)">
+            <summary>
+            替换表达式参数
+            </summary>
+            <param name="parameterExpressionSetter">参数表达式映射集合</param>
+            <param name="expression">表达式</param>
+            <returns>新的表达式</returns>
+        </member>
+        <member name="M:System.Linq.ParameterReplaceExpressionVisitor.VisitParameter(System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            重写基类参数访问器
+            </summary>
+            <param name="parameterExpression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.IEnumerableExtensions.GenerateTree``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Func{``0,``1},``1)">
+            <summary>
+            列表生成树形节点
+            </summary>
+            <typeparam name="T">集合对象的类型</typeparam>
+            <typeparam name="K">父节点的类型</typeparam>
+            <param name="collection">集合</param>
+            <param name="idSelector">主键ID</param>
+            <param name="parentIdSelector">父节点</param>
+            <param name="rootId">根节点</param>
+            <returns>列表生成树形节点</returns>
+        </member>
+        <member name="M:System.Linq.LinqExpression.Create``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            创建 Linq/Lambda 表达式
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="expression">表达式</param>
+            <returns>新的表达式</returns>
+        </member>
+        <member name="M:System.Linq.LinqExpression.Create``1(System.Linq.Expressions.Expression{System.Func{``0,System.Int32,System.Boolean}})">
+            <summary>
+            创建 Linq/Lambda 表达式，支持索引器
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <param name="expression">表达式</param>
+            <returns>新的表达式</returns>
+        </member>
+        <member name="M:System.Linq.LinqExpression.And``1">
+            <summary>
+            创建 And 表达式
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <returns>新的表达式</returns>
+        </member>
+        <member name="M:System.Linq.LinqExpression.IndexAnd``1">
+            <summary>
+            创建 And 表达式，支持索引器
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <returns>新的表达式</returns>
+        </member>
+        <member name="M:System.Linq.LinqExpression.Or``1">
+            <summary>
+            创建 Or 表达式
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <returns>新的表达式</returns>
+        </member>
+        <member name="M:System.Linq.LinqExpression.IndexOr``1">
+            <summary>
+            创建 Or 表达式，支持索引器
+            </summary>
+            <typeparam name="TSource">泛型类型</typeparam>
+            <returns>新的表达式</returns>
+        </member>
+        <member name="T:System.Linq.PagingQueryExtensions">
+            <summary>
+            分页查询扩展
+            </summary>
+        </member>
+        <member name="M:System.Linq.PagingQueryExtensions.GetPagingList``1(System.Linq.IOrderedQueryable{``0},System.Int32,System.Int32)">
+            <summary>
+            根据条件执行表达式分页的数据集合(不返回总数量)
+            </summary>
+            <param name="query"></param> 
+            <param name="pageIndex">页码,最小为1</param>
+            <param name="pageSize">每页大小(10-100)</param> 
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.PagingQueryExtensions.GetPagingListAsync``1(System.Linq.IOrderedQueryable{``0},System.Int32,System.Int32)">
+            <summary>
+            根据条件执行表达式分页的数据集合(不返回总数量)
+            </summary>
+            <param name="query"></param> 
+            <param name="pageIndex">页码,最小为1</param>
+            <param name="pageSize">每页大小，最小为10</param> 
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.PagingQueryExtensions.GetPagingAsync``1(System.Linq.IOrderedQueryable{``0},System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            根据条件执行表达式分页
+            </summary>
+            <param name="query"></param> 
+            <param name="pageIndex">页码,最小为1</param>
+            <param name="pageSize">每页大小，最小为10</param> 
+            <param name="isGetTotalCount">是否返回总数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.PagingQueryExtensions.GetPaging``1(System.Linq.IOrderedQueryable{``0},System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            根据条件执行表达式分页
+            </summary>
+            <param name="query"></param> 
+            <param name="pageIndex">页码,最小为1</param>
+            <param name="pageSize">每页大小，最小为10</param> 
+            <param name="isGetTotalCount">是否返回总数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.PagingQueryExtensions.GetPagingInTupleAsync``1(System.Linq.IOrderedQueryable{``0},System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            以元组的形式返回分页查询信息
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="query"></param>
+            <param name="pageIndex">页码,最小为1</param>
+            <param name="pageSize">每页大小，最小为10</param> 
+            <param name="isGetTotalCount">是否返回总数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.PagingQueryExtensions.GetPagingInTuple``1(System.Linq.IOrderedQueryable{``0},System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            以元组的形式返回分页查询信息
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="query"></param>
+            <param name="pageIndex">页码,最小为1</param>
+            <param name="pageSize">每页大小，最小为10</param> 
+            <param name="isGetTotalCount">是否返回总数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.PagingQueryExtensions.ToPageFun``1(System.Linq.IOrderedQueryable{``0},System.Int32,System.Int32)">
+            <summary>
+            分页私有方法
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="query"></param>
+            <param name="pageIndex">页码,最小为1</param>
+            <param name="pageSize">每页大小,最小为10</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.PagingQueryExtensions.VerifyPagingParams(System.Int32@,System.Int32@)">
+            <summary>
+            
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+        </member>
+        <member name="M:System.Linq.PagingQueryExtensions.GetTotalCount``1(System.Linq.IOrderedQueryable{``0},System.Boolean)">
+            <summary>
+            获取数据总数量
+            </summary>
+            <param name="query">查询表达式</param>
+            <param name="isGetTotalCount">是否计算总数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.GenericTypeExtensions.GetGenericTypeName(System.Type)">
+            <summary>
+            获取类型名字
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.GenericTypeExtensions.GetGenericTypeName(System.Object)">
+            <summary>
+            获取类型名字
+            </summary>
+            <param name="object"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Md5Encryption.Md5(System.String,System.Text.Encoding)">
+            <summary>
+            普通md5，默认UFT8编码
+            </summary>
+            <param name="str"></param>
+            <param name="encoding">编码类型，默认未null，则使用UTF-8编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Md5Encryption.Md5By16Binary(System.String,System.Text.Encoding)">
+            <summary>
+            十六进制MD5
+            </summary>
+            <param name="str"></param>
+            <param name="encoding"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

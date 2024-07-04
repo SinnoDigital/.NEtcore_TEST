@@ -1,0 +1,79 @@
+{
+  "time": "2024-06-27 16:41:47.943",
+  "level": "INFO",
+  "message": LogHandlerService Start!
+}
+{
+  "time": "2024-06-27 16:44:10.915",
+  "traceIdentifier": "0HN4MGJTSJOAT:00000001",
+  "ip": "::1",
+  "level": "INFO",
+  "message": Request:【UserId=0】【platform=】【 Method=get】【RequestUrl:http://localhost:5000//api/system/gettime】【RequestHeader:{"accept":["text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"],"connection":["keep-alive"],"host":["localhost:5000"],"user-Agent":["Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"],"accept-Encoding":["gzip, deflate, br, zstd"],"accept-Language":["zh-CN,zh;q=0.9"],"upgrade-Insecure-Requests":["1"],"sec-ch-ua":["\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Google Chrome\";v=\"126\""],"sec-ch-ua-mobile":["?0"],"sec-ch-ua-platform":["\"Windows\""],"sec-Fetch-Site":["none"],"sec-Fetch-Mode":["navigate"],"sec-Fetch-User":["?1"],"sec-Fetch-Dest":["document"]}】【QueryStrings=】【Body=】==== Response:==== TimeCost:649 Milliseconds
+}
+{
+  "time": "2024-06-27 16:44:11.830",
+  "level": "ERROR",
+  "message": 日志入库发生异常! log:{"userId":0,"platform":"","requestType":"get","apiRoute":"//api/system/gettime","requestUrl":"http://localhost:5000//api/system/gettime","requestHeader":"{\"accept\":[\"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7\"],\"connection\":[\"keep-alive\"],\"host\":[\"localhost:5000\"],\"user-Agent\":[\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36\"],\"accept-Encoding\":[\"gzip, deflate, br, zstd\"],\"accept-Language\":[\"zh-CN,zh;q=0.9\"],\"upgrade-Insecure-Requests\":[\"1\"],\"sec-ch-ua\":[\"\\\"Not/A)Brand\\\";v=\\\"8\\\", \\\"Chromium\\\";v=\\\"126\\\", \\\"Google Chrome\\\";v=\\\"126\\\"\"],\"sec-ch-ua-mobile\":[\"?0\"],\"sec-ch-ua-platform\":[\"\\\"Windows\\\"\"],\"sec-Fetch-Site\":[\"none\"],\"sec-Fetch-Mode\":[\"navigate\"],\"sec-Fetch-User\":[\"?1\"],\"sec-Fetch-Dest\":[\"document\"]}","requestQuery":"","requestBody":"","traceId":"0HN4MGJTSJOAT:00000001","requestTime":"2024-06-27 16:44:10","response":"","timeConsumption":649,"id":0,"createTime":"2024-06-27 16:44:11"}
+}
+{
+  "time": "2024-06-27 16:44:29.651",
+  "traceIdentifier": "0HN4MGJTSJOAT:00000002",
+  "ip": "::1",
+  "level": "INFO",
+  "message": AuthenticationScheme: ResponseAuthenticationHandler was challenged.
+}
+{
+  "time": "2024-06-27 16:44:29.651",
+  "traceIdentifier": "0HN4MGJTSJOAT:00000002",
+  "ip": "::1",
+  "level": "INFO",
+  "message": Request:【UserId=0】【platform=】【 Method=get】【RequestUrl:http://localhost:5000/api/system/gettime】【RequestHeader:{"accept":["text/plain"],"connection":["keep-alive"],"host":["localhost:5000"],"user-Agent":["Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"],"accept-Encoding":["gzip, deflate, br, zstd"],"accept-Language":["zh-CN,zh;q=0.9"],"content-Type":["application/x-www-form-urlencoded"],"referer":["http://localhost:5000/index.html"],"sec-ch-ua":["\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Google Chrome\";v=\"126\""],"sec-ch-ua-platform":["\"Windows\""],"sec-ch-ua-mobile":["?0"],"request-Origion":["Knife4j"],"sec-Fetch-Site":["same-origin"],"sec-Fetch-Mode":["cors"],"sec-Fetch-Dest":["empty"]}】【QueryStrings=】【Body=文件，图片或模板类操作，数据过大，不做记录】==== Response:{"code":41,"status":false,"message":"用户未登录或登录状态已过期","data":{}}==== TimeCost:13 Milliseconds
+}
+{
+  "time": "2024-06-27 16:44:29.703",
+  "level": "ERROR",
+  "message": 日志入库发生异常! log:{"userId":0,"platform":"","requestType":"get","apiRoute":"/api/system/gettime","requestUrl":"http://localhost:5000/api/system/gettime","requestHeader":"{\"accept\":[\"text/plain\"],\"connection\":[\"keep-alive\"],\"host\":[\"localhost:5000\"],\"user-Agent\":[\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36\"],\"accept-Encoding\":[\"gzip, deflate, br, zstd\"],\"accept-Language\":[\"zh-CN,zh;q=0.9\"],\"content-Type\":[\"application/x-www-form-urlencoded\"],\"referer\":[\"http://localhost:5000/index.html\"],\"sec-ch-ua\":[\"\\\"Not/A)Brand\\\";v=\\\"8\\\", \\\"Chromium\\\";v=\\\"126\\\", \\\"Google Chrome\\\";v=\\\"126\\\"\"],\"sec-ch-ua-platform\":[\"\\\"Windows\\\"\"],\"sec-ch-ua-mobile\":[\"?0\"],\"request-Origion\":[\"Knife4j\"],\"sec-Fetch-Site\":[\"same-origin\"],\"sec-Fetch-Mode\":[\"cors\"],\"sec-Fetch-Dest\":[\"empty\"]}","requestQuery":"","requestBody":"文件，图片或模板类操作，数据过大，不做记录","traceId":"0HN4MGJTSJOAT:00000002","requestTime":"2024-06-27 16:44:29","response":"{\"code\":41,\"status\":false,\"message\":\"用户未登录或登录状态已过期\",\"data\":{}}","timeConsumption":13,"id":0,"createTime":"2024-06-27 16:44:29"}
+}
+{
+  "time": "2024-06-27 16:49:40.688",
+  "traceIdentifier": "0HN4MGJTSJOAV:00000001",
+  "ip": "::1",
+  "level": "INFO",
+  "message": Request:【UserId=0】【platform=】【 Method=get】【RequestUrl:http://localhost:5000//api/system/gettime】【RequestHeader:{"accept":["text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"],"connection":["keep-alive"],"host":["localhost:5000"],"user-Agent":["Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"],"accept-Encoding":["gzip, deflate, br, zstd"],"accept-Language":["zh-CN,zh;q=0.9"],"cache-Control":["max-age=0"],"upgrade-Insecure-Requests":["1"],"sec-ch-ua":["\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Google Chrome\";v=\"126\""],"sec-ch-ua-mobile":["?0"],"sec-ch-ua-platform":["\"Windows\""],"sec-Fetch-Site":["cross-site"],"sec-Fetch-Mode":["navigate"],"sec-Fetch-User":["?1"],"sec-Fetch-Dest":["document"]}】【QueryStrings=】【Body=】==== Response:==== TimeCost:1 Milliseconds
+}
+{
+  "time": "2024-06-27 16:49:40.705",
+  "level": "ERROR",
+  "message": 日志入库发生异常! log:{"userId":0,"platform":"","requestType":"get","apiRoute":"//api/system/gettime","requestUrl":"http://localhost:5000//api/system/gettime","requestHeader":"{\"accept\":[\"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7\"],\"connection\":[\"keep-alive\"],\"host\":[\"localhost:5000\"],\"user-Agent\":[\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36\"],\"accept-Encoding\":[\"gzip, deflate, br, zstd\"],\"accept-Language\":[\"zh-CN,zh;q=0.9\"],\"cache-Control\":[\"max-age=0\"],\"upgrade-Insecure-Requests\":[\"1\"],\"sec-ch-ua\":[\"\\\"Not/A)Brand\\\";v=\\\"8\\\", \\\"Chromium\\\";v=\\\"126\\\", \\\"Google Chrome\\\";v=\\\"126\\\"\"],\"sec-ch-ua-mobile\":[\"?0\"],\"sec-ch-ua-platform\":[\"\\\"Windows\\\"\"],\"sec-Fetch-Site\":[\"cross-site\"],\"sec-Fetch-Mode\":[\"navigate\"],\"sec-Fetch-User\":[\"?1\"],\"sec-Fetch-Dest\":[\"document\"]}","requestQuery":"","requestBody":"","traceId":"0HN4MGJTSJOAV:00000001","requestTime":"2024-06-27 16:49:40","response":"","timeConsumption":1,"id":0,"createTime":"2024-06-27 16:49:40"}
+}
+{
+  "time": "2024-06-27 16:50:21.033",
+  "traceIdentifier": "0HN4MGJTSJOAV:00000002",
+  "ip": "::1",
+  "level": "INFO",
+  "message": Request:【UserId=0】【platform=】【 Method=get】【RequestUrl:http://localhost:5000//api/system/gettime】【RequestHeader:{"accept":["text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"],"connection":["keep-alive"],"host":["localhost:5000"],"user-Agent":["Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"],"accept-Encoding":["gzip, deflate, br, zstd"],"accept-Language":["zh-CN,zh;q=0.9"],"cache-Control":["max-age=0"],"upgrade-Insecure-Requests":["1"],"sec-ch-ua":["\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Google Chrome\";v=\"126\""],"sec-ch-ua-mobile":["?0"],"sec-ch-ua-platform":["\"Windows\""],"sec-Fetch-Site":["cross-site"],"sec-Fetch-Mode":["navigate"],"sec-Fetch-User":["?1"],"sec-Fetch-Dest":["document"]}】【QueryStrings=】【Body=】==== Response:==== TimeCost:0 Milliseconds
+}
+{
+  "time": "2024-06-27 16:50:21.049",
+  "level": "ERROR",
+  "message": 日志入库发生异常! log:{"userId":0,"platform":"","requestType":"get","apiRoute":"//api/system/gettime","requestUrl":"http://localhost:5000//api/system/gettime","requestHeader":"{\"accept\":[\"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7\"],\"connection\":[\"keep-alive\"],\"host\":[\"localhost:5000\"],\"user-Agent\":[\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36\"],\"accept-Encoding\":[\"gzip, deflate, br, zstd\"],\"accept-Language\":[\"zh-CN,zh;q=0.9\"],\"cache-Control\":[\"max-age=0\"],\"upgrade-Insecure-Requests\":[\"1\"],\"sec-ch-ua\":[\"\\\"Not/A)Brand\\\";v=\\\"8\\\", \\\"Chromium\\\";v=\\\"126\\\", \\\"Google Chrome\\\";v=\\\"126\\\"\"],\"sec-ch-ua-mobile\":[\"?0\"],\"sec-ch-ua-platform\":[\"\\\"Windows\\\"\"],\"sec-Fetch-Site\":[\"cross-site\"],\"sec-Fetch-Mode\":[\"navigate\"],\"sec-Fetch-User\":[\"?1\"],\"sec-Fetch-Dest\":[\"document\"]}","requestQuery":"","requestBody":"","traceId":"0HN4MGJTSJOAV:00000002","requestTime":"2024-06-27 16:50:21","response":"","timeConsumption":0,"id":0,"createTime":"2024-06-27 16:50:21"}
+}
+{
+  "time": "2024-06-27 16:50:43.192",
+  "traceIdentifier": "0HN4MGJTSJOAV:00000003",
+  "ip": "::1",
+  "level": "INFO",
+  "message": AuthenticationScheme: ResponseAuthenticationHandler was challenged.
+}
+{
+  "time": "2024-06-27 16:50:43.192",
+  "traceIdentifier": "0HN4MGJTSJOAV:00000003",
+  "ip": "::1",
+  "level": "INFO",
+  "message": Request:【UserId=0】【platform=】【 Method=get】【RequestUrl:http://localhost:5000/api/system/gettime】【RequestHeader:{"accept":["text/plain"],"connection":["keep-alive"],"host":["localhost:5000"],"user-Agent":["Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"],"accept-Encoding":["gzip, deflate, br, zstd"],"accept-Language":["zh-CN,zh;q=0.9"],"content-Type":["application/x-www-form-urlencoded"],"referer":["http://localhost:5000/index.html"],"sec-ch-ua":["\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Google Chrome\";v=\"126\""],"sec-ch-ua-platform":["\"Windows\""],"sec-ch-ua-mobile":["?0"],"request-Origion":["Knife4j"],"sec-Fetch-Site":["same-origin"],"sec-Fetch-Mode":["cors"],"sec-Fetch-Dest":["empty"]}】【QueryStrings=】【Body=文件，图片或模板类操作，数据过大，不做记录】==== Response:{"code":41,"status":false,"message":"用户未登录或登录状态已过期","data":{}}==== TimeCost:6 Milliseconds
+}
+{
+  "time": "2024-06-27 16:50:43.205",
+  "level": "ERROR",
+  "message": 日志入库发生异常! log:{"userId":0,"platform":"","requestType":"get","apiRoute":"/api/system/gettime","requestUrl":"http://localhost:5000/api/system/gettime","requestHeader":"{\"accept\":[\"text/plain\"],\"connection\":[\"keep-alive\"],\"host\":[\"localhost:5000\"],\"user-Agent\":[\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36\"],\"accept-Encoding\":[\"gzip, deflate, br, zstd\"],\"accept-Language\":[\"zh-CN,zh;q=0.9\"],\"content-Type\":[\"application/x-www-form-urlencoded\"],\"referer\":[\"http://localhost:5000/index.html\"],\"sec-ch-ua\":[\"\\\"Not/A)Brand\\\";v=\\\"8\\\", \\\"Chromium\\\";v=\\\"126\\\", \\\"Google Chrome\\\";v=\\\"126\\\"\"],\"sec-ch-ua-platform\":[\"\\\"Windows\\\"\"],\"sec-ch-ua-mobile\":[\"?0\"],\"request-Origion\":[\"Knife4j\"],\"sec-Fetch-Site\":[\"same-origin\"],\"sec-Fetch-Mode\":[\"cors\"],\"sec-Fetch-Dest\":[\"empty\"]}","requestQuery":"","requestBody":"文件，图片或模板类操作，数据过大，不做记录","traceId":"0HN4MGJTSJOAV:00000003","requestTime":"2024-06-27 16:50:43","response":"{\"code\":41,\"status\":false,\"message\":\"用户未登录或登录状态已过期\",\"data\":{}}","timeConsumption":6,"id":0,"createTime":"2024-06-27 16:50:43"}
+}

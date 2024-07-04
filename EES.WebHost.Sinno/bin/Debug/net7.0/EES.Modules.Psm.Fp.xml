@@ -1,0 +1,3879 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EES.Modules.Psm.Fp</name>
+    </assembly>
+    <members>
+        <member name="T:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler">
+            <summary>
+            批次工单执行
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.#ctor(AutoMapper.IMapper,EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpBatchProcessRecords},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpBatchExecute},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumption},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpBatchPleaseCheckProcessRecord},EES.Infrastructure.Service.ISystemParamsService,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+             构造函数
+            </summary>
+            <param name="mapper"></param>
+            <param name="processRepository"></param>
+            <param name="fpWorkOrderExecuteRepository"></param>
+            <param name="batchRepository"></param>
+            <param name="materialConsumptionrepository"></param>
+            <param name="systemParams"></param>
+            <param name="mediatorHandler"></param>
+            <param name="pleaseCheckProcessRecordRepository"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.Handle(EES.Modules.Share.Commands.Psm.Fp.GetMaterialConsumptionsCmd,System.Threading.CancellationToken)">
+            <summary>
+            获取批次工单下的消耗信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.Handle(EES.Modules.Share.Commands.Psm.Fp.GetFpBatchCmd,System.Threading.CancellationToken)">
+            <summary>
+            根据工单ID查询批次工单
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.Handle(EES.Modules.Share.Commands.Psm.Fp.GetFpBatchExecuteCmd,System.Threading.CancellationToken)">
+            <summary>
+            根据工单ID查询批次工单记录信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpBatchExecute.VerifyBatchExecuteCmd,System.Threading.CancellationToken)">
+            <summary>
+            验证工单下的批次执行状态
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpBatchExecute.FpBatchFirstPieceConfirmationCmd,System.Threading.CancellationToken)">
+            <summary>
+            首件确认
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpBatchExecute.StartBatchWorkOrderCmd,System.Threading.CancellationToken)">
+            <summary>
+            批次工单启动
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpBatchExecute.PauseBatchWorkOrderCmd,System.Threading.CancellationToken)">
+            <summary>
+            批次工单暂停
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd,System.Threading.CancellationToken)">
+            <summary>
+            创建批次工单
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpBatchExecute.FinishBatchWorkOrderCmd,System.Threading.CancellationToken)">
+            <summary>
+            完成批次工单，需要修改灌包工单的数量
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpBatchExecute.ModifyBatchWorkOrderCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改批次工单信息，需要修改灌包工单的数量
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpBatchExecute.RestartBatchWorkOrderCmd,System.Threading.CancellationToken)">
+            <summary>
+            重启批次工单信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpBatchExecute.DeleteBatchWorkOrderCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除批次工单信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpBatchExecute.ChangeBatchNumCmd,System.Threading.CancellationToken)">
+            <summary>
+            换批
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpBatchExecute.StopBatchWorkOrderCmd,System.Threading.CancellationToken)">
+            <summary>
+            停止生产
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpBatchExecute.GetBatchQuantityByWorkOrderCmd,System.Threading.CancellationToken)">
+            <summary>
+            获取工单下的批次工单数量
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.Handle(EES.Modules.Share.Commands.Psm.Fp.VerifyFpBatchWorkOrderToRunCmd,System.Threading.CancellationToken)">
+            <summary>
+            验证批次工单是否已启动
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.Handle(EES.Modules.Share.Commands.Psm.Fp.BatchDeleteFpBatchWorkOrderCmd,System.Threading.CancellationToken)">
+            <summary>
+            批量删除工单下的批次工单信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateFpBatchExecutePleaseCheckCmd,System.Threading.CancellationToken)">
+            <summary>
+            灌包发起请检
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchExecuteCommandHandler.CreateFpBatchProcess(System.Int64,System.Int64,System.String,System.String,System.String,EES.Modules.Psm.Fp.Enum.StartupType,System.String)">
+            <summary>
+            创建批次过程记录
+            </summary>
+            <param name="Id">批次工单ID</param>
+            <param name="WorkOrderId">工单ID</param>
+            <param name="NewValue">新修改的值</param>
+            <param name="OldValue">未修改的原来值</param>
+            <param name="BatchNum">批次号</param>
+            <param name="startupType">记录类型</param>
+            <param name="reason">原因</param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchMaterialConsumptionCommandHandler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumption},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumptionItem},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="consumptionRepository"></param>
+            <param name="mediatorHandler"></param>
+            <param name="itemRepository"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchMaterialConsumptionCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpBatchMaterialConsumption.CreateFpBatchMaterialConsumptionCmd,System.Threading.CancellationToken)">
+            <summary>
+            添加批次工单物料消耗信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchMaterialConsumptionCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionActualQuantityCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改实际使用量
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchMaterialConsumptionCommandHandler.Handle(EES.Modules.Share.Commands.Psm.Fp.GetMaterialConsumptionbyBatchCmd,System.Threading.CancellationToken)">
+            <summary>
+            根据批次信息获取物料消耗
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.CommandHandlers.FpBatchMaterialConsumptionItemCommandHandler">
+            <summary>
+            批次工单的物料消耗详细信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchMaterialConsumptionItemCommandHandler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumptionItem},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="itemRepository"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchMaterialConsumptionItemCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpBatchMaterialConsumptionItem.CreateFpBatchMaterialConsumptionItemCmd,System.Threading.CancellationToken)">
+            <summary>
+            保存批次工单的物料消耗详细信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchProcessRecordsCommandHandler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpBatchExecute},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpBatchProcessRecords},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="fpWorkOrderExecuteRepository"></param>
+            <param name="batchRepository"></param>
+            <param name="processRepository"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBatchProcessRecordsCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpBatchProcessRecords.CreateFpBatchProcessRecordCmd,System.Threading.CancellationToken)">
+            <summary>
+            创建批次工单过程记录
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.CommandHandlers.FpBindingRelationshipsCommandHandler">
+            <summary>
+            灌包一体关系
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBindingRelationshipsCommandHandler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpBindingRelationships},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="bindRepository"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBindingRelationshipsCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpBindingRelationships.CreateFpBindingRelationshipsCmd,System.Threading.CancellationToken)">
+            <summary>
+            创建灌包一体绑定关系
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBindingRelationshipsCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpBindingRelationships.DeleteFpBindingRelationshipsCmd,System.Threading.CancellationToken)">
+            <summary>
+            解除绑定
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpBindingRelationshipsCommandHandler.isExistAsync(System.Int64,System.Collections.Generic.IEnumerable{System.Int64},EES.Infrastructure.Enums.TrType)">
+            <summary>
+            排除已关联的ID
+            </summary>
+            <param name="PrimaryBindingId"></param>
+            <param name="BoundIds"></param>
+            <param name="trType">工艺类型</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.CommandHandlers.FpMaterialRequisitionRecordCommandHandler">
+            <summary>
+            领退补料
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpMaterialRequisitionRecordCommandHandler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpMaterialRequisitionRecord},EES.Infrastructure.Service.ISystemParamsService,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="materialRequisitionRepository"></param>
+            <param name="mediatorHandler"></param>
+            <param name="systemParams"></param>
+            <param name="fpWorkOrderExecuteRepository"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpMaterialRequisitionRecordCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpMaterialRequisitionRecordCmd,System.Threading.CancellationToken)">
+            <summary>
+            创建退补料任务
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpMaterialRequisitionRecordCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpProductionLineMaterialRequisitionCmd,System.Threading.CancellationToken)">
+            <summary>
+            产线领料
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpMaterialRequisitionRecordCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateMaterialRequistionToWMSTaskCmd,System.Threading.CancellationToken)">
+            <summary>
+            灌包工单发起仓库到车间调拨发料任务
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpMaterialRequisitionRecordCommandHandler.CompareWhetherItExceedsTheDemandAsync(System.String,System.Decimal,System.Collections.Generic.List{EES.Modules.Psm.Fp.Entities.FpMaterialRequisitionRecord})">
+            <summary>
+            对比任务数量是否超出需求数量
+            </summary>
+            <param name="MaterialCode">物料编码</param>
+            <param name="Quantity">需求量</param>
+            <param name="fpMaterials">灌包仓库发料记录</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpPutawayRecordCommandHandler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpBatchPleaseCheckProcessRecord},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpPutawayRecord},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="putawayRecordRepository"></param>
+            <param name="mediatorHandler"></param>
+            <param name="fpBatchPleaseCheckRepository"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpPutawayRecordCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpPutawayRecord.CreateFpPutawayRecordCmd,System.Threading.CancellationToken)">
+            <summary>
+            创建上架入库任务
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.CommandHandlers.FpWorkOrderExecuteCommandHandler">
+            <summary>
+            灌包工单执行记录
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpWorkOrderExecuteCommandHandler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="fpWorkOrderExecuteRepository"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpWorkOrderExecuteCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.StartFpWorkOrderCmd,System.Threading.CancellationToken)">
+            <summary>
+            灌包工单启动
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpWorkOrderExecuteCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.ModifyFpWorkOrderExecuteStateCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改灌包执行状态
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpWorkOrderExecuteCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.FinishFpWorkOrderCmd,System.Threading.CancellationToken)">
+            <summary>
+            灌包工单完成
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpWorkOrderExecuteCommandHandler.Handle(EES.Modules.Share.Commands.Psm.Fp.GetFpWorkOrderExecuteCmd,System.Threading.CancellationToken)">
+            <summary>
+            获取灌包工单执行记录信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpWorkOrderExecuteCommandHandler.Handle(EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.ModifyFpWorkOrderExecuteMaterialRequisitionStateCmd,System.Threading.CancellationToken)">
+            <summary>
+            标记灌包汇总领料状态
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpWorkOrderExecuteCommandHandler.Handle(EES.Modules.Share.Commands.Psm.Fp.GetWorkExecuteProgressCmd,System.Threading.CancellationToken)">
+            <summary>
+            获取工单进度
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.CommandHandlers.FpWorkOrderExecuteCommandHandler.Handle(EES.Modules.Share.Commands.Psm.Fp.ModifyWorkExecuteStockPreParationStateCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改工单执行的仓库领料状态
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpBatchExecute.ChangeBatchNumCmd">
+            <summary>
+            换批
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpBatchExecute.ChangeBatchNumCmd.#ctor">
+            <summary>
+            （构造函数）换批
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.ChangeBatchNumCmd.Id">
+            <summary>
+            批次工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.ChangeBatchNumCmd.NewBatchNum">
+            <summary>
+            新批次信息
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.ChangeBatchNumCmd.OldBatchNum">
+            <summary>
+            原批次信息
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd">
+            <summary>
+            创建批次工单记录
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd.PlatFormId">
+            <summary>
+            设备ID（机台号ID）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd.WorkOrderId">
+            <summary>
+            生产工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd.BatchNum">
+            <summary>
+            生产批号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd.LineCode">
+            <summary>
+            生产产线编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd.LineName">
+            <summary>
+            生产产线名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd.LineId">
+            <summary>
+            生产产线id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd.TeamCode">
+            <summary>
+            班组编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd.TeamName">
+            <summary>
+            班组名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd.TeamId">
+            <summary>
+            班组id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd.BulkBatch">
+            <summary>
+            当前批次信息所使用的膏体半成品批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd.WorkOrderType">
+            <summary>
+            工单类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd.ExecuteState">
+            <summary>
+            执行状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd.ProduceDate">
+            <summary>
+            报工时上传生产日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd.PlatformNumber">
+            <summary>
+            当前批次所使用机台号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd.PlanQuantity">
+            <summary>
+            当前批次计划生产数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd.Unit">
+             <summary>
+            单位
+             </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateFpBatchExecutePleaseCheckCmd">
+            <summary>
+            灌包发起质检
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateFpBatchExecutePleaseCheckCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateFpBatchExecutePleaseCheckCmd.fpBatchId">
+            <summary>
+            批次工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateFpBatchExecutePleaseCheckCmd.SampleNumber">
+            <summary>
+            取样数量
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpBatchExecute.DeleteBatchWorkOrderCmd">
+            <summary>
+            删除批次工单信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpBatchExecute.DeleteBatchWorkOrderCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.DeleteBatchWorkOrderCmd.Id">
+            <summary>
+            批次工单ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpBatchExecute.FinishBatchWorkOrderCmd">
+            <summary>
+            完成批次工单信息
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.FinishBatchWorkOrderCmd.Id">
+            <summary>
+            批次工单的ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpBatchExecute.FpBatchFirstPieceConfirmationCmd">
+            <summary>
+            首件确认
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.FpBatchFirstPieceConfirmationCmd.batchId">
+            <summary>
+            批次工单ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpBatchExecute.GetBatchQuantityByWorkOrderCmd">
+            <summary>
+            查询工单下的批次工单数量
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpBatchExecute.GetBatchQuantityByWorkOrderCmd.#ctor(System.Int64)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="workOrderId">工单ID</param>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.GetBatchQuantityByWorkOrderCmd.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpBatchExecute.ModifyBatchWorkOrderCmd">
+            <summary>
+            修改批次工单信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpBatchExecute.ModifyBatchWorkOrderCmd.#ctor">
+            <summary>
+            修改批次工单信息
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.ModifyBatchWorkOrderCmd.Id">
+            <summary>
+            批次工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.ModifyBatchWorkOrderCmd.LineCode">
+            <summary>
+            生产产线编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.ModifyBatchWorkOrderCmd.LineName">
+            <summary>
+            生产产线名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.ModifyBatchWorkOrderCmd.LineId">
+            <summary>
+            生产产线id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.ModifyBatchWorkOrderCmd.TeamCode">
+            <summary>
+            班组编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.ModifyBatchWorkOrderCmd.TeamName">
+            <summary>
+            班组名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.ModifyBatchWorkOrderCmd.TeamId">
+            <summary>
+            班组id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.ModifyBatchWorkOrderCmd.ActualQuantity">
+            <summary>
+            实际产量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.ModifyBatchWorkOrderCmd.PlatformNumber">
+            <summary>
+            当前批次所使用机台号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.ModifyBatchWorkOrderCmd.PlanQuantity">
+            <summary>
+            当前批次计划生产数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.ModifyBatchWorkOrderCmd.WorkingHours">
+            <summary>
+            工时
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.ModifyBatchWorkOrderCmd.MaterialConsumptions">
+            <summary>
+            批次工单消耗信息
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpBatchExecute.PauseBatchWorkOrderCmd">
+            <summary>
+            暂停批次工单
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpBatchExecute.PauseBatchWorkOrderCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.PauseBatchWorkOrderCmd.Id">
+            <summary>
+            批次工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.PauseBatchWorkOrderCmd.Reason">
+            <summary>
+            原因
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpBatchExecute.RestartBatchWorkOrderCmd">
+            <summary>
+            重启批次工单信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpBatchExecute.RestartBatchWorkOrderCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.RestartBatchWorkOrderCmd.Id">
+            <summary>
+            批次工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.RestartBatchWorkOrderCmd.Reason">
+            <summary>
+            原因
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.RestartBatchWorkOrderCmd.FirstPieceConfirmation">
+            <summary>
+            是否需要首件确认，0=否，1=是，默认0
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpBatchExecute.StartBatchWorkOrderCmd">
+            <summary>
+            启动批次工单
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpBatchExecute.StartBatchWorkOrderCmd.#ctor">
+            <summary>
+            启动批次工单
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.StartBatchWorkOrderCmd.Id">
+            <summary>
+            批次工单ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpBatchExecute.StopBatchWorkOrderCmd">
+            <summary>
+            停止生产
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpBatchExecute.StopBatchWorkOrderCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.StopBatchWorkOrderCmd.Id">
+            <summary>
+            批次工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.StopBatchWorkOrderCmd.Reason">
+            <summary>
+            原因
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpBatchExecute.VerifyBatchExecuteCmd">
+            <summary>
+             验证工单下的批次执行状态
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpBatchExecute.VerifyBatchExecuteCmd.#ctor(System.Int64,EES.Modules.Psm.Fp.Enum.BatchNumExecuteState,System.Boolean)">
+            <summary>
+             验证工单下的批次执行状态
+            </summary>
+            <param name="workOrderId">工单ID</param>
+            <param name="batchNumExecuteState">验证的批次执行状态</param>
+            <param name="isVerifyAll">验证是否都是当前验证的批次执行状态，true:是，false：验证是否有当前状态数据</param>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.VerifyBatchExecuteCmd.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.VerifyBatchExecuteCmd.IsVerifyAll">
+            <summary>
+            验证是否都是当前验证的批次执行状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchExecute.VerifyBatchExecuteCmd.BatchNumExecuteState">
+            <summary>
+            批次执行状态
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpBatchMaterialConsumptionItem.CreateFpBatchMaterialConsumptionItemCmd">
+            <summary>
+            保存批次工单物料消耗详细信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpBatchMaterialConsumptionItem.CreateFpBatchMaterialConsumptionItemCmd.#ctor(System.Int64,System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionItemDto},System.String,System.String)">
+            <summary>
+            创建批次工单消耗详细
+            </summary>
+            <param name="workOrderId">工单ID</param>
+            <param name="parentId">父级ID</param>
+            <param name="fpBatchMaterialItems">批次工单消耗详细信息</param>
+            <param name="materialCode">物料编码</param>
+            <param name="materialName">物料名称</param>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchMaterialConsumptionItem.CreateFpBatchMaterialConsumptionItemCmd.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchMaterialConsumptionItem.CreateFpBatchMaterialConsumptionItemCmd.ParentId">
+            <summary>
+            父级ID，批次工单的消耗ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchMaterialConsumptionItem.CreateFpBatchMaterialConsumptionItemCmd.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchMaterialConsumptionItem.CreateFpBatchMaterialConsumptionItemCmd.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchMaterialConsumptionItem.CreateFpBatchMaterialConsumptionItemCmd.FpBatchMaterialItems">
+            <summary>
+            批次工单物料消耗详细信息
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpBatchMaterialConsumption.CreateFpBatchMaterialConsumptionCmd">
+            <summary>
+            创建批次工单消耗信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpBatchMaterialConsumption.CreateFpBatchMaterialConsumptionCmd.#ctor(System.Int64,System.Int64,System.Decimal)">
+            <summary>
+            创建批次工单消耗信息
+            </summary>
+            <param name="workOrderId">工单ID</param>
+            <param name="batchId">批次工单ID</param>
+            <param name="quantity">批次工单生产数量</param>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchMaterialConsumption.CreateFpBatchMaterialConsumptionCmd.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchMaterialConsumption.CreateFpBatchMaterialConsumptionCmd.BatchId">
+            <summary>
+            批次工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchMaterialConsumption.CreateFpBatchMaterialConsumptionCmd.Quantity">
+            <summary>
+            批次工单生产数量
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionActualQuantityCmd">
+            <summary>
+            修改批次工单消耗信息的实际数量
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionActualQuantityCmd.#ctor(System.Int64)">
+            <summary>
+            修改实际使用量信息
+            </summary>
+            <param name="id">消耗信息的ID</param>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionActualQuantityCmd.Id">
+            <summary>
+            批次工单消耗信息ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpBatchProcessRecords.CreateFpBatchProcessRecordCmd">
+            <summary>
+            创建批次过程记录信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpBatchProcessRecords.CreateFpBatchProcessRecordCmd.#ctor(System.Int64,EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.CreateFpBatchProcessRecordsDto)">
+            <summary>
+            创建批次过程记录信息
+            </summary>
+            <param name="iFId">批次工单ID</param>
+            <param name="processRecordsDto">批次过程记录</param>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchProcessRecords.CreateFpBatchProcessRecordCmd.iFId">
+            <summary>
+            批次工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBatchProcessRecords.CreateFpBatchProcessRecordCmd.ProcessRecordsDto">
+            <summary>
+            批次过程记录
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpBindingRelationships.CreateFpBindingRelationshipsCmd">
+            <summary>
+            创建灌包一体关系数据
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpBindingRelationships.CreateFpBindingRelationshipsCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBindingRelationships.CreateFpBindingRelationshipsCmd.trType">
+            <summary>
+            工艺类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBindingRelationships.CreateFpBindingRelationshipsCmd.PrimaryBindingId">
+            <summary>
+            主数据ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBindingRelationships.CreateFpBindingRelationshipsCmd.BoundIds">
+            <summary>
+            被绑定ID集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpBindingRelationships.DeleteFpBindingRelationshipsCmd">
+            <summary>
+            解除绑定
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBindingRelationships.DeleteFpBindingRelationshipsCmd.Id">
+            <summary>
+            数据唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBindingRelationships.DeleteFpBindingRelationshipsCmd.WorkOrderId">
+            <summary>
+            工单id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpBindingRelationships.DeleteFpBindingRelationshipsCmd.trType">
+            <summary>
+            工艺类型
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpMaterialRequisitionRecordCmd">
+            <summary>
+            创建退补料记录
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpMaterialRequisitionRecordCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpMaterialRequisitionRecordCmd.OperationType">
+            <summary>
+            操作类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpMaterialRequisitionRecordCmd.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpMaterialRequisitionRecordCmd.TaskNum">
+            <summary>
+            领退补料单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpMaterialRequisitionRecordCmd.StoreCode">
+            <summary>
+            领退补料仓库编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpMaterialRequisitionRecordCmd.StoreName">
+            <summary>
+            领退补料仓库名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpMaterialRequisitionRecordCmd.StoreId">
+            <summary>
+            领退补料仓库id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpMaterialRequisitionRecordCmd.FactoryCode">
+            <summary>
+            领退补料工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpMaterialRequisitionRecordCmd.FactoryName">
+            <summary>
+            领退补料工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpMaterialRequisitionRecordCmd.FactoryId">
+            <summary>
+            领退补料工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpMaterialRequisitionRecordCmd.description">
+            <summary>
+            领退补料描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpMaterialRequisitionRecordCmd.TaskTime">
+            <summary>
+            作业日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpMaterialRequisitionRecordCmd.itemsDtos">
+            <summary>
+            领退补料物料明细集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpProductionLineMaterialRequisitionCmd">
+            <summary>
+            产线领料
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpProductionLineMaterialRequisitionCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpProductionLineMaterialRequisitionCmd.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateMaterialRequistionToWMSTaskCmd">
+            <summary>
+            灌包工单发起仓库到车间调拨发料任务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateMaterialRequistionToWMSTaskCmd.#ctor">
+            <summary>
+            灌包工单发起仓库到车间调拨发料任务
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateMaterialRequistionToWMSTaskCmd.Id">
+            <summary>
+            灌包工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateMaterialRequistionToWMSTaskCmd.materials">
+            <summary>
+            物料清单集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpPutawayRecord.CreateFpPutawayRecordCmd">
+            <summary>
+            批次上架
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpPutawayRecord.CreateFpPutawayRecordCmd.PutawayNum">
+            <summary>
+            上架单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpPutawayRecord.CreateFpPutawayRecordCmd.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpPutawayRecord.CreateFpPutawayRecordCmd.StoreId">
+            <summary>
+            仓库ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpPutawayRecord.CreateFpPutawayRecordCmd.StoreCode">
+            <summary>
+            仓库编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpPutawayRecord.CreateFpPutawayRecordCmd.StoreName">
+            <summary>
+            仓库名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpPutawayRecord.CreateFpPutawayRecordCmd.FactoryId">
+            <summary>
+            工厂ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpPutawayRecord.CreateFpPutawayRecordCmd.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpPutawayRecord.CreateFpPutawayRecordCmd.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpPutawayRecord.CreateFpPutawayRecordCmd.PutawayDescription">
+            <summary>
+            入库描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpPutawayRecord.CreateFpPutawayRecordCmd.PutawayDate">
+            <summary>
+            作业日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpPutawayRecord.CreateFpPutawayRecordCmd.fpPutawayMaterials">
+            <summary>
+            物料列表
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.FinishFpWorkOrderCmd">
+            <summary>
+            完成工单
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.FinishFpWorkOrderCmd.#ctor(System.Int64,System.DateTime)">
+            <summary>
+            工单完成
+            </summary>
+            <param name="workOrderId">工单ID</param>
+            <param name="endTime">完成生产时间</param>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.FinishFpWorkOrderCmd.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.FinishFpWorkOrderCmd.EndTime">
+            <summary>
+            完成生产时间
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.ModifyFpWorkOrderExecuteMaterialRequisitionStateCmd">
+            <summary>
+            标记灌包汇总领料状态
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.ModifyFpWorkOrderExecuteMaterialRequisitionStateCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.ModifyFpWorkOrderExecuteMaterialRequisitionStateCmd.Ids">
+            <summary>
+            已选择的工单ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.ModifyFpWorkOrderExecuteStateCmd">
+            <summary>
+             修改灌包工单运行状态
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.ModifyFpWorkOrderExecuteStateCmd.#ctor(System.Int64,System.String)">
+            <summary>
+            修改灌包工单运行状态
+            </summary>
+            <param name="workOrderId"></param>
+            <param name="batchOperatedState">批次工单操作状态</param>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.ModifyFpWorkOrderExecuteStateCmd.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.ModifyFpWorkOrderExecuteStateCmd.BatchOperatedState">
+            <summary>
+            批次操作状态
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.StartFpWorkOrderCmd">
+            <summary>
+            灌包工单启动
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.StartFpWorkOrderCmd.#ctor(System.Int64,System.DateTime)">
+            <summary>
+            灌包工单启动
+            </summary>
+            <param name="workOrderId">工单ID</param>
+            <param name="startTime">开始时间</param>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.StartFpWorkOrderCmd.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.StartFpWorkOrderCmd.StartTime">
+            <summary>
+            开始生产时间
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Controllers.FpBatchExecuteController">
+            <summary>
+            批次工单执行
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBatchExecuteController.#ctor(EES.Modules.Psm.Fp.Services.IFpBatchExecuteService,Microsoft.Extensions.Logging.ILogger{EES.Modules.Psm.Fp.Controllers.FpBatchExecuteController},MediatR.IMediator)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="fpBatchExecuteService"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBatchExecuteController.FirstPieceConfirmationAsync(EES.Modules.Psm.Fp.Commands.FpBatchExecute.FpBatchFirstPieceConfirmationCmd)">
+            <summary>
+            批次工单首件确认信息
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBatchExecuteController.CreateAsync(EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateBatchWorkOrderCmd)">
+            <summary>
+            创建批次工单信息
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBatchExecuteController.ModifyBatchNumWorkOrderAsync(EES.Modules.Psm.Fp.Commands.FpBatchExecute.ModifyBatchWorkOrderCmd)">
+            <summary>
+            修改批次工单信息
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBatchExecuteController.DeleteBatchNumWorkOrderAsync(EES.Modules.Psm.Fp.Commands.FpBatchExecute.DeleteBatchWorkOrderCmd)">
+            <summary>
+            删除批次工单信息
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBatchExecuteController.StartBatchNumWorkOrderAsync(EES.Modules.Psm.Fp.Commands.FpBatchExecute.StartBatchWorkOrderCmd)">
+            <summary>
+            开启批次工单信息
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBatchExecuteController.PauseBatchNumWorkOrderAsync(EES.Modules.Psm.Fp.Commands.FpBatchExecute.PauseBatchWorkOrderCmd)">
+            <summary>
+            暂停批次工单信息
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBatchExecuteController.RestartBatchNumWorkOrderAsync(EES.Modules.Psm.Fp.Commands.FpBatchExecute.RestartBatchWorkOrderCmd)">
+            <summary>
+            重启批次工单信息
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBatchExecuteController.StopBatchNumWorkOrderAsync(EES.Modules.Psm.Fp.Commands.FpBatchExecute.StopBatchWorkOrderCmd)">
+            <summary>
+            停止批次工单信息
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBatchExecuteController.FinishBatchNumWorkOrderAsync(EES.Modules.Psm.Fp.Commands.FpBatchExecute.FinishBatchWorkOrderCmd)">
+            <summary>
+            完成批次工单信息
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBatchExecuteController.ChangeBatchNumAsync(EES.Modules.Psm.Fp.Commands.FpBatchExecute.ChangeBatchNumCmd)">
+            <summary>
+            换批
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBatchExecuteController.GetBatchExecutesByParentAsync(System.Int64,System.Boolean)">
+            <summary>
+            根据父级ID查询批次信息
+            </summary>
+            <param name="ParentId">父级ID</param>
+            <param name="isQueryItems">是否查询子项消耗信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBatchExecuteController.CreateFpPleaseCheckAsync(EES.Modules.Psm.Fp.Commands.FpBatchExecute.CreateFpBatchExecutePleaseCheckCmd)">
+            <summary>
+            灌包发起请检
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Controllers.FpBatchMaterialConsumptionController">
+            <summary>
+            批次工单消耗信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBatchMaterialConsumptionController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Psm.Fp.Controllers.FpBatchMaterialConsumptionController},MediatR.IMediator,EES.Modules.Psm.Fp.Services.IFpBatchMaterialConsumptionService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+            <param name="fpBatchMaterialConsumptionService"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBatchMaterialConsumptionController.getMaterialConsumptionsAsync(System.Int64)">
+            <summary>
+            根据父级ID查询批次工单消耗信息
+            </summary>
+            <param name="ParentId">父级ID</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Controllers.FpBatchProcessRecordsController">
+            <summary>
+            灌包批次执行记录
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBatchProcessRecordsController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Psm.Fp.Controllers.FpBatchProcessRecordsController},MediatR.IMediator,EES.Modules.Psm.Fp.Services.IFpBatchProcessRecordsService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+            <param name="fpBatchProcessRecordsService"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBatchProcessRecordsController.GetFpBatchProcessRecordsAsync(System.Int64)">
+            <summary>
+            根据批次工单ID查询批次执行记录
+            </summary>
+            <param name="BatchId">批次工单ID</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Controllers.FpBindingRelationshipsController">
+            <summary>
+            灌包一体工单绑定
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBindingRelationshipsController.#ctor(EES.Modules.Psm.Fp.Services.IFpBindingRelationshipsService,Microsoft.Extensions.Logging.ILogger{EES.Modules.Psm.Fp.Controllers.FpBindingRelationshipsController},MediatR.IMediator)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBindingRelationshipsController.CreateAsync(EES.Modules.Psm.Fp.Commands.FpBindingRelationships.CreateFpBindingRelationshipsCmd)">
+             <summary>
+            灌包一体工单 绑定
+             </summary>
+             <param name="cmd"></param>
+             <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBindingRelationshipsController.DeleteAsync(EES.Modules.Psm.Fp.Commands.FpBindingRelationships.DeleteFpBindingRelationshipsCmd)">
+            <summary>
+            灌包一体工单 解绑
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpBindingRelationshipsController.GetBindingRelationshipAsync(System.Int64,EES.Infrastructure.Enums.TrType)">
+            <summary>
+            根据工单ID灌包一体绑定关系列表
+            </summary>
+            <param name="WorkOrderId">工单ID</param>
+            <param name="trType">工艺类型</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Controllers.FpMaterialRequisitionRecordController">
+            <summary>
+            领退补料
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpMaterialRequisitionRecordController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Psm.Fp.Controllers.FpMaterialRequisitionRecordController},MediatR.IMediator,EES.Modules.Psm.Fp.Services.IFpMaterialRequisitionRecordService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+            <param name="fpMaterialService"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpMaterialRequisitionRecordController.CreateMaterialRequistionToWMSTaskAsync(EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateMaterialRequistionToWMSTaskCmd)">
+            <summary>
+            灌包工单发起仓库到车间调拨发料任务
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpMaterialRequisitionRecordController.CreateAsync(EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpMaterialRequisitionRecordCmd)">
+            <summary>
+            创建退补料记录
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpMaterialRequisitionRecordController.LineMaterialRequisitionAsync(EES.Modules.Psm.Fp.Commands.FpMaterialRequisitionRecord.CreateFpProductionLineMaterialRequisitionCmd)">
+            <summary>
+            产线领料
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpMaterialRequisitionRecordController.GetMaterialRequisitionRecordsAsync(System.Int64)">
+            <summary>
+            查询领退料记录
+            </summary>
+            <param name="WorkOrderId">工单ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpMaterialRequisitionRecordController.GetMaterialAnalysisAsync(System.Int64)">
+            <summary>
+            退料数量分析列表
+            </summary>
+            <param name="WorkOrderId">工单ID</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Controllers.FpPutawayRecordController">
+            <summary>
+            灌包上架记录
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpPutawayRecordController.#ctor(EES.Modules.Psm.Fp.Services.IFpPutawayRecordService,Microsoft.Extensions.Logging.ILogger{EES.Modules.Psm.Fp.Controllers.FpPutawayRecordController},MediatR.IMediator)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+            <param name="fpPutawayRecordService"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpPutawayRecordController.CreateAsync(EES.Modules.Psm.Fp.Commands.FpPutawayRecord.CreateFpPutawayRecordCmd)">
+            <summary>
+            创建任务上架记录
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpPutawayRecordController.GetPutawayMaterialsAsync(System.Int64)">
+            <summary>
+            根据父级ID查询批次信息
+            </summary>
+            <param name="WorkorderId">工单ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpPutawayRecordController.GetPutawayRecordsAsync(System.Int64)">
+            <summary>
+            根据父级ID查询上架任务信息
+            </summary>
+            <param name="WorkorderId">工单ID</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Controllers.FpWorkOrderExecuteController">
+            <summary>
+            灌包工单执行
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpWorkOrderExecuteController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Psm.Fp.Controllers.FpWorkOrderExecuteController},MediatR.IMediator,EES.Modules.Psm.Fp.Services.IFpWorkOrderExecuteService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+            <param name="fpWorkOrderExecuteService"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpWorkOrderExecuteController.GetSummaryMaterialRequisitionsAsync(EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialRequisitionsQueryParamDto)">
+            <summary>
+            灌包汇总领料需求列表
+            </summary>
+            <param name="paramDto">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpWorkOrderExecuteController.GetSummaryMaterialAnalysisAsync(EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialAnalysisQueryParamDto)">
+            <summary>
+            灌包汇总领料分析
+            </summary>
+            <param name="paramDto">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpWorkOrderExecuteController.SummaryMaterialRequisitionAsync(EES.Modules.Psm.Fp.Commands.FpWorkOrderExecute.ModifyFpWorkOrderExecuteMaterialRequisitionStateCmd)">
+            <summary>
+            标记灌包汇总领料
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.FpWorkOrderExecuteController.GetReprotForWorksAsync(System.Int64,System.Decimal)">
+            <summary>
+            报工列表查询
+            </summary>
+            <param name="WorkOrderId">工单ID</param>
+            <param name="PlanQuantity">计划数量</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Controllers.UpdateLogControllers">
+            <summary>
+            工单管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Controllers.UpdateLogControllers.GetPsmFpUpdateLogAsync(EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto.PagedataAppoint)">
+            <summary>
+            查询Psm（工单更新日志）
+            </summary>
+            <param name="PageData">分页查询数据</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Data.AutoMapperConfig">
+            <summary>
+            automapper配置
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Data.AutoMapperConfig.#ctor">
+            <summary>
+            配置
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Data.FpModelBuilder">
+            <summary>
+            称量模块的模型构建
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Data.FpModelBuilder.Build(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            模型绑定
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Data.ModuleInitializer">
+            <summary>
+            模块初始化
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Data.ModuleInitializer.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            配置
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Data.ModuleInitializer.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置服务
+            </summary>
+            <param name="serviceCollection"></param>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto">
+            <summary>
+            批次工单Dto
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.Id">
+            <summary>
+            数据唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.WorkOrderId">
+            <summary>
+            生产工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.BatchNum">
+            <summary>
+            生产批号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.OrderNum">
+            <summary>
+            工单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.ProductCode">
+            <summary>
+            产品编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.ProductName">
+            <summary>
+            产品名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.FactoryId">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.LineCode">
+            <summary>
+            生产产线编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.LineName">
+            <summary>
+            生产产线名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.LineId">
+            <summary>
+            生产产线id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.TeamCode">
+            <summary>
+            班组编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.TeamName">
+            <summary>
+            班组名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.TeamId">
+            <summary>
+            班组id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.BatchStartTime">
+            <summary>
+            批次开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.BatchEndTime">
+            <summary>
+            批次结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.ActualQuantity">
+            <summary>
+            实际产量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.CurrentQuantity">
+            <summary>
+            当前数量(数采数量)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.PutawayQuantity">
+            <summary>
+            上架数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.PutawayTaskQuantity">
+            <summary>
+            上架任务数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.InspectionQuantity">
+            <summary>
+            送检数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.ActualLossQuantity">
+            <summary>
+            实际损耗量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.ScrapQuantity">
+            <summary>
+            报废数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.BulkBatch">
+            <summary>
+            当前批次信息所使用的膏体半成品批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.WorkOrderType">
+            <summary>
+            工单类型(后台写入)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.ExecuteState">
+            <summary>
+            执行状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.ProduceDate">
+            <summary>
+            报工时上传生产日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.PlatformNumber">
+            <summary>
+            当前批次所使用机台号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.PlanQuantity">
+            <summary>
+            当前批次计划生产数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.NumericalSampling">
+            <summary>
+            数采ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.IsDeleted">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.WorkingHours">
+            <summary>
+            工时
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.Unit">
+             <summary>
+            单位
+             </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.ConfirmedNum">
+            <summary>
+            确认次数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.ConfirmDescription">
+            <summary>
+            当前次/总次数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.FirstPieceConfirmationState">
+            <summary>
+            首件确认状态，1=未确认，2=确认中，4=已确认，默认1
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchExecute.FpBatchExecuteDto.MaterialConsumptions">
+            <summary>
+            批次工单消耗信息
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.CreateFpBatchMaterialConsumptionItemDto">
+            <summary>
+            创建批次工单消耗详细信息
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.CreateFpBatchMaterialConsumptionItemDto.Id">
+            <summary>
+            数据的唯一id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.CreateFpBatchMaterialConsumptionItemDto.ParentId">
+            <summary>
+            父级ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.CreateFpBatchMaterialConsumptionItemDto.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.CreateFpBatchMaterialConsumptionItemDto.ActualQuantity">
+            <summary>
+            实际使用量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.CreateFpBatchMaterialConsumptionItemDto.BatchNum">
+            <summary>
+            批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.CreateFpBatchMaterialConsumptionItemDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionDto">
+            <summary>
+            批次工单消耗记录信息
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionDto.Id">
+            <summary>
+            数据的唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionDto.ParentId">
+            <summary>
+            父级ID，批次工单的唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionDto.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionDto.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionDto.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionDto.ActualQuantity">
+            <summary>
+            实际使用量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionDto.StandardQuantity">
+            <summary>
+            标准数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionDto.Unit">
+            <summary>
+            单位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionDto.LossQuantity">
+            <summary>
+            损耗数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionDto.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionDto.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionDto.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionDto.UpdateTime">
+            <summary>
+            最后一次修时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionDto.MaterialConsumptionItems">
+            <summary>
+            批次工单消耗详细信息
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionItemDto">
+            <summary>
+            批次工单消耗详细信息
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionItemDto.Id">
+            <summary>
+            数据的唯一id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionItemDto.ParentId">
+            <summary>
+            父级ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionItemDto.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionItemDto.ActualQuantity">
+            <summary>
+            实际使用量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionItemDto.BatchNum">
+            <summary>
+            批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionItemDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionItemDto.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionItemDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionItemDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionItemDto.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionItemDto.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.FpBatchMaterialConsumptionItemDto.UpdateTime">
+            <summary>
+            最后一次修时间
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionDto">
+            <summary>
+            修改物料消耗信息
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionDto.Id">
+            <summary>
+            数据的唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionDto.ParentId">
+            <summary>
+            父级ID，批次工单的唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionDto.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionDto.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionDto.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionDto.ActualQuantity">
+            <summary>
+            实际使用量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionDto.StandardQuantity">
+            <summary>
+            标准数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionDto.Unit">
+            <summary>
+            单位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionDto.LossQuantity">
+            <summary>
+            损耗数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionDto.MaterialConsumptionItems">
+            <summary>
+            物料消耗详细信息
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionItemDto">
+            <summary>
+            修改物料消耗详细信息
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionItemDto.Id">
+            <summary>
+            数据的唯一id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionItemDto.ParentId">
+            <summary>
+            父级ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionItemDto.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionItemDto.ActualQuantity">
+            <summary>
+            实际使用量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionItemDto.BatchNum">
+            <summary>
+            批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionItemDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.CreateFpBatchProcessRecordsDto">
+            <summary>
+            灌包装批次过程记录
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.CreateFpBatchProcessRecordsDto.WorkOrderId">
+            <summary>
+            生产工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.CreateFpBatchProcessRecordsDto.IFid">
+            <summary>
+            批次记录表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.CreateFpBatchProcessRecordsDto.BatchNum">
+            <summary>
+            生产批号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.CreateFpBatchProcessRecordsDto.StartupType">
+            <summary>
+            启动类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.CreateFpBatchProcessRecordsDto.Reason">
+            <summary>
+            原因
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.CreateFpBatchProcessRecordsDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.FpBatchProcessRecordsDto.Id">
+            <summary>
+            数据库的唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.FpBatchProcessRecordsDto.WorkOrderId">
+            <summary>
+            生产工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.FpBatchProcessRecordsDto.IFid">
+            <summary>
+            批次记录表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.FpBatchProcessRecordsDto.BatchNum">
+            <summary>
+            生产批号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.FpBatchProcessRecordsDto.StartupType">
+            <summary>
+            启动类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.FpBatchProcessRecordsDto.Reason">
+            <summary>
+            原因
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.FpBatchProcessRecordsDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.FpBatchProcessRecordsDto.CreateUserId">
+            <summary>
+            创建者Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.FpBatchProcessRecordsDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.FpBatchProcessRecordsDto.UpdateTime">
+            <summary>
+            最后一次更新时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.FpBatchProcessRecordsDto.UpdateUserId">
+            <summary>
+            最后一次更新数据的用户Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpBatchProcessRecords.FpBatchProcessRecordsDto.UpdateUserName">
+            <summary>
+            最后一次更新用户的名称
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.CreateFpMaterialItemsDto">
+            <summary>
+            领退补料物料明细
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.CreateFpMaterialItemsDto.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.CreateFpMaterialItemsDto.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.CreateFpMaterialItemsDto.Batch">
+            <summary>
+            批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.CreateFpMaterialItemsDto.Quantity">
+            <summary>
+            任务数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.CreateFpMaterialItemsDto.UpperLimit">
+            <summary>
+            上限
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.CreateFpMaterialItemsDto.LowerLimit">
+            <summary>
+            下限
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.CreateFpMaterialItemsDto.Unit">
+            <summary>
+            单位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.CreateFpMaterialItemsDto.VerificationLevel">
+            <summary>
+            校验级别（校验级别校验数量和批次= 1；只校验数量= 2；只校验批次= 4；不校验数量和批次= 8）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.CreateFpMaterialItemsDto.SpecificationNumerical">
+            <summary>
+            规格
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.CreateFpMaterialItemsDto.SpecificationUnit">
+            <summary>
+            规格单位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.CreateFpMaterialItemsDto.NumberOfPieces">
+            <summary>
+            整件数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.CreateFpMaterialItemsDto.Mantissa">
+            <summary>
+            尾数
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.FpMaterialRequisitionRecordDto">
+            <summary>
+            领退补料记录
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.FpMaterialRequisitionRecordDto.Id">
+            <summary>
+            数据唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.FpMaterialRequisitionRecordDto.TaskId">
+            <summary>
+            仓库任务表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.FpMaterialRequisitionRecordDto.TaskNum">
+            <summary>
+            仓库任务单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.FpMaterialRequisitionRecordDto.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.FpMaterialRequisitionRecordDto.OperationType">
+            <summary>
+            操作类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.FpMaterialRequisitionRecordDto.TaskState">
+            <summary>
+            任务状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.FpMaterialRequisitionRecordDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.MaterialItemsDto">
+            <summary>
+            物料退料分析列表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.MaterialItemsDto.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.MaterialItemsDto.MaterialBatch">
+            <summary>
+            物料批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.MaterialItemsDto.ReceivedQuantity">
+            <summary>
+            已领料数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.MaterialItemsDto.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.MaterialRequistionListDto">
+            <summary>
+            物料领料清单Dto
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.MaterialRequistionListDto.SourceOrderNum">
+            <summary>
+            来源单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.MaterialRequistionListDto.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.MaterialRequistionListDto.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.MaterialRequistionListDto.MaterialBatch">
+            <summary>
+            物料批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.MaterialRequistionListDto.TaskQuantity">
+            <summary>
+            任务数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpMaterialRequisitionRecord.MaterialRequistionListDto.Unit">
+            <summary>
+            单位
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayMaterialListDto">
+            <summary>
+            上架物料列表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayMaterialListDto.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayMaterialListDto.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayMaterialListDto.PutawayQuantity">
+            <summary>
+            上架任务数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayMaterialListDto.BatchNum">
+            <summary>
+            批号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayMaterialListDto.Unit">
+            <summary>
+            单位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayMaterialListDto.ProductDate">
+            <summary>
+            生产日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayMaterialListDto.ExpirationDate">
+            <summary>
+            过期日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayMaterialListDto.SpecificationNumerical">
+            <summary>
+            规格
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayMaterialListDto.SpecificationUnit">
+            <summary>
+            规格单位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayMaterialListDto.NumberOfPieces">
+            <summary>
+            整件数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayMaterialListDto.Mantissa">
+            <summary>
+            尾数
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayRecordDto">
+            <summary>
+            上架任务记录
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayRecordDto.Id">
+            <summary>
+            唯一数据ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayRecordDto.PutawayId">
+            <summary>
+            入库任务ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayRecordDto.PutawayNum">
+            <summary>
+            上架单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayRecordDto.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayRecordDto.OperationTime">
+            <summary>
+            发起时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayRecordDto.State">
+            <summary>
+            入库单状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpPutawayRecord.FpPutawayRecordDto.ERPInspectionState">
+            <summary>
+            ERP送检状态
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.ReportForWorkDto">
+            <summary>
+            报工列表查询DTO
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.ReportForWorkDto.ExecuteStartTime">
+            <summary>
+            执行开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.ReportForWorkDto.ExecuteEndTime">
+            <summary>
+            执行结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.ReportForWorkDto.ActualQuantity">
+            <summary>
+            实际产量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.ReportForWorkDto.Manhour">
+            <summary>
+            工时
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.ReportForWorkDto.Quantity">
+            <summary>
+            计划生产数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.ReportForWorkDto.summaryMaterialConsumptionDtos">
+            <summary>
+            消耗信息集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialConsumptionDto">
+            <summary>
+            物料消耗信息汇总
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialConsumptionDto.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialConsumptionDto.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialConsumptionDto.ActualQuantity">
+            <summary>
+            实际使用量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialConsumptionDto.LossQuantity">
+            <summary>
+            损耗数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialConsumptionDto.StandardQuantity">
+            <summary>
+            标准数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialConsumptionDto.Unit">
+            <summary>
+            单位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialConsumptionDto.summaryMaterialConsumptionItemDtos">
+            <summary>
+            消耗详细信息集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialConsumptionItemDto">
+            <summary>
+            物料消耗详细信息汇总
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialConsumptionItemDto.ActualQuantity">
+            <summary>
+            实际使用量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialConsumptionItemDto.BatchNum">
+            <summary>
+            批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialConsumptionItemDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialAnalysisDto">
+            <summary>
+            汇总领料分析
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialAnalysisDto.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialAnalysisDto.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialAnalysisDto.MaterialType">
+            <summary>
+            物料类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialAnalysisDto.middleTypeName">
+            <summary>
+            中类
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialAnalysisDto.QuantityToBePicked">
+            <summary>
+            理论应领料数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialAnalysisDto.MaterialUnit">
+            <summary>
+            单位
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialAnalysisQueryParamDto">
+            <summary>
+            领料分析汇总查询参数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialAnalysisQueryParamDto.materialType">
+            <summary>
+            物料类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialAnalysisQueryParamDto.middleType">
+            <summary>
+            中类
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialAnalysisQueryParamDto.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialAnalysisQueryParamDto.Ids">
+            <summary>
+            选中的分析集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialRequisitionsDto">
+            <summary>
+            汇总领料列表数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialRequisitionsDto.Id">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialRequisitionsDto.OrderNum">
+            <summary>
+            灌装任务单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialRequisitionsDto.ProductName">
+            <summary>
+            产品名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialRequisitionsDto.PlanTime">
+            <summary>
+            计划作业日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialRequisitionsDto.StockPreparationState">
+            <summary>
+            仓库领料状态
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialRequisitionsQueryParamDto">
+            <summary>
+            汇总领料查询条件
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialRequisitionsQueryParamDto.StartTime">
+            <summary>
+            开始日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialRequisitionsQueryParamDto.EndTime">
+            <summary>
+            结束日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialRequisitionsQueryParamDto.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialRequisitionsQueryParamDto.WorkShopCode">
+            <summary>
+            车间编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialRequisitionsQueryParamDto.trType">
+            <summary>
+            工艺类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialRequisitionsQueryParamDto.StockPreparationState">
+            <summary>
+            备料状态
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto">
+            <summary>
+            Psm.Fp模块更新日志
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto.UpdateLog">
+            <summary>
+            Psm.Fp模块更新日志
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto.UpdateLog.dUpDateDateTime">
+            <summary>
+            更新日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto.UpdateLog.UpdateContents">
+            <summary>
+            更新内容
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto.UpdateContent">
+            <summary>
+            更新内容详细
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto.UpdateContent.iNumber">
+            <summary>
+            序号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto.UpdateContent.cContent">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto.UpdateContent.cUserName">
+            <summary>
+            更新人
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto.UpdateLogList">
+            <summary>
+            Psm.Fp模块更新日志数据集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto.ReturnUpdateLogList">
+            <summary>
+            PSM模块返回更新日志数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto.ReturnUpdateLogList.iNumber">
+            <summary>
+            总条数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto.ReturnUpdateLogList.LogList">
+            <summary>
+            日志数据
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto.PagedataAppoint">
+            <summary>
+            分页数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.PageState">
+            <summary>
+            是否启用分页(默认不启用)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.SetPage">
+            <summary>
+            查询第几页数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.Number">
+            <summary>
+            每页显示条数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.dStarTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.dEndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.cUserName">
+            <summary>
+            更新人
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Entities.FpBatchExecute">
+            <summary>
+            工单执行批次生产信息(灌包装)
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBatchExecute.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBatchExecute.#ctor(System.Int64,System.String,System.String,System.String,System.Int64,System.String,System.String,System.Int64,System.String,EES.Infrastructure.Enums.TrType,System.String,System.Decimal,System.Int64,System.String,System.Int64,System.String,System.String,System.String,System.Int64,System.String,System.String,System.String)">
+            <summary>
+            创建批次记录
+            </summary>
+            <param name="workOrderId">生产工单ID</param>
+            <param name="batchNum">生产批号</param>
+            <param name="lineCode">产线编码</param>
+            <param name="lineName">产线名称</param>
+            <param name="lineId">产线id</param>
+            <param name="teamCode">班组编码</param>
+            <param name="teamName">班组名称</param>
+            <param name="teamId">班组id</param>
+            <param name="bulkBatch">半成品批次</param>
+            <param name="workOrderType">工单类型</param>
+            <param name="platformNumber">当前批次所使用机台号</param>
+            <param name="planQuantity">当前批次计划生产量</param>
+            <param name="createUserId">创建者ID</param>
+            <param name="createUserName">创建者名称</param>
+            <param name="platFormId">设备ID</param>
+            <param name="unit">单位</param>
+            <param name="factoryCode">工厂编码</param>
+            <param name="factoryName">工厂名称</param>
+            <param name="factoryId">工厂id</param>
+            <param name="productCode">产品编码</param>
+            <param name="productName">产品名称</param>
+            <param name="orderNum">工单号</param>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.WorkOrderId">
+            <summary>
+            生产工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.OrderNum">
+            <summary>
+            工单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.ProductCode">
+            <summary>
+            产品编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.ProductName">
+            <summary>
+            产品名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.BatchNum">
+            <summary>
+            生产批号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.FactoryId">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.LineCode">
+            <summary>
+            生产产线编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.LineName">
+            <summary>
+            生产产线名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.LineId">
+            <summary>
+            生产产线id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.TeamCode">
+            <summary>
+            班组编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.TeamName">
+            <summary>
+            班组名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.TeamId">
+            <summary>
+            班组id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.BatchStartTime">
+            <summary>
+            批次开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.BatchEndTime">
+            <summary>
+            批次结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.ActualQuantity">
+            <summary>
+            实际产量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.CurrentQuantity">
+            <summary>
+            当前数量(数采数量)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.PutawayQuantity">
+            <summary>
+            上架数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.PutawayTaskQuantity">
+            <summary>
+            上架任务数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.InspectionQuantity">
+            <summary>
+            送检数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.ActualLossQuantity">
+            <summary>
+            实际损耗量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.ScrapQuantity">
+            <summary>
+            报废数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.BulkBatch">
+            <summary>
+            当前批次信息所使用的膏体半成品批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.Unit">
+             <summary>
+            单位
+             </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.WorkOrderType">
+            <summary>
+            工单类型(后台写入)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.ExecuteState">
+            <summary>
+            执行状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.ProduceDate">
+            <summary>
+            报工时上传生产日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.PlatformNumber">
+            <summary>
+            设备名称（机台号名称）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.PlatFormId">
+            <summary>
+            设备ID（机台号ID）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.PlanQuantity">
+            <summary>
+            当前批次计划生产数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.NumericalSampling">
+            <summary>
+            数采ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.WorkingHours">
+            <summary>
+            工时
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.ConfirmedNum">
+            <summary>
+            确认次数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.IsDeleted">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.FirstPieceConfirmationState">
+            <summary>
+            首件确认状态，1=未确认，2=确认中，4=已确认，默认1
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchExecute.MaterialConsumptions">
+            <summary>
+            批次工单消耗信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBatchExecute.Modify(System.String,System.String,System.Int64,System.String,System.String,System.Int64,System.String,System.Decimal,System.Decimal,System.Decimal,System.Int64,System.String)">
+            <summary>
+            修改批次记录
+            </summary>
+            <param name="lineCode">产线编码</param>
+            <param name="lineName">产线名称</param>
+            <param name="lineId">产线id</param>
+            <param name="teamCode">班组编码</param>
+            <param name="teamName">班组名称</param>
+            <param name="teamId">班组id</param>
+            <param name="actualQuantity">工单类型</param>
+            <param name="platformNumber">当前批次所使用机台号</param>
+            <param name="planQuantity">当前批次计划生产量</param>
+            <param name="updateUserId">修改者Id</param>
+            <param name="updateUserName">修改者名称</param>
+            <param name="workingHours">工时</param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBatchExecute.ModifyConfirmedNum(System.Int32,System.Int64,System.String,EES.Infrastructure.Enums.Psm_fp.FirstPieceConfirmationState)">
+            <summary>
+            修改确认次数
+            </summary>
+            <param name="confirmedNum">确认次数</param>
+            <param name="updateUserId">修改者ID</param>
+            <param name="updateUserName">修改者名称</param>
+            <param name="firstPieceConfirmationState">首件确认状态</param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBatchExecute.Start(EES.Modules.Psm.Fp.Enum.BatchNumExecuteState,System.DateTime,System.Int64,System.String)">
+            <summary>
+            批次工单启动
+            </summary>
+            <param name="batchNumExecuteState">批次启动状态</param>
+            <param name="batchStartTime">批次开始时间</param>
+            <param name="updateUserId">修改者Id</param>
+            <param name="updateUserName">修改者名称</param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBatchExecute.Pause(EES.Modules.Psm.Fp.Enum.BatchNumExecuteState,System.Int64,System.String)">
+            <summary>
+            批次工单暂停
+            </summary>
+            <param name="batchNumExecuteState">批次运行状态</param>
+            <param name="updateUserId">修改者Id</param>
+            <param name="updateUserName">修改者名称</param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBatchExecute.Stop(EES.Modules.Psm.Fp.Enum.BatchNumExecuteState,System.Int64,System.String)">
+            <summary>
+            批次工单停止
+            </summary>
+            <param name="batchNumExecuteState">批次运行状态</param>
+            <param name="updateUserId">修改者Id</param>
+            <param name="updateUserName">修改者名称</param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBatchExecute.Finish(EES.Modules.Psm.Fp.Enum.BatchNumExecuteState,System.DateTime,System.Int64,System.String)">
+            <summary>
+            批次工单完成
+            </summary>
+            <param name="batchNumExecuteState">批次启动状态</param>
+            <param name="batchEndTime">批次结束时间</param>
+            <param name="updateUserId">修改者Id</param>
+            <param name="updateUserName">修改者名称</param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBatchExecute.Restart(EES.Modules.Psm.Fp.Enum.BatchNumExecuteState,System.Int64,System.String,System.Int32)">
+            <summary>
+            重启批次工单
+            </summary>
+            <param name="batchNumExecuteState">批次执行状态</param>
+            <param name="updateUserId">修改者Id</param>
+            <param name="updateUserName">修改者名称</param>
+            <param name="FirstPieceConfirmation"> 是否需要首件确认，0=否，1=是，默认0</param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBatchExecute.ChangeBatch(System.String,System.Int64,System.String)">
+            <summary>
+            换批
+            </summary>
+            <param name="batchNum">批次好</param>
+            <param name="updateUserId">修改者Id</param>
+            <param name="updateUserName">修改者名称</param>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumption">
+            <summary>
+            批次消耗记录信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumption.#ctor(System.Int64,System.Int64,System.String,System.String,System.Decimal,System.Decimal,System.String,System.Decimal)">
+            <summary>
+            新增批次消耗信息
+            </summary>
+            <param name="parentId"></param>
+            <param name="workOrderId"></param>
+            <param name="materialCode"></param>
+            <param name="materialName"></param>
+            <param name="actualQuantity"></param>
+            <param name="standardQuantity"></param>
+            <param name="unit"></param>
+            <param name="lossQuantity"></param>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumption.ParentId">
+            <summary>
+            父级ID，批次工单的唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumption.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumption.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumption.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumption.ActualQuantity">
+            <summary>
+            实际使用量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumption.StandardQuantity">
+            <summary>
+            标准数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumption.Unit">
+            <summary>
+            单位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumption.LossQuantity">
+            <summary>
+            损耗数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumption.BatchExecute">
+            <summary>
+            批次工单信息
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumption.MaterialConsumptionItems">
+            <summary>
+            批次工单消耗详细信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumption.ModifyActualQuantity(System.Decimal,System.Int64,System.String)">
+            <summary>
+            修改消耗实际使用量
+            </summary>
+            <param name="actualQuantity"></param>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumptionItem">
+            <summary>
+            批次消耗记录详细信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumptionItem.modify(System.Decimal,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            修改消耗信息
+            </summary>
+            <param name="actualQuantity">实际使用量</param>
+            <param name="batchNum">批号</param>
+            <param name="description">描述</param>
+            <param name="updateUserId">修改者ID</param>
+            <param name="updateUserName">修改者名称</param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumptionItem.#ctor(System.Int64,System.Int64,System.Decimal,System.String,System.String,System.Int64,System.String,System.String,System.String)">
+            <summary>
+            生成实体
+            </summary>
+            <param name="parentId">父级ID，批次消耗记录ID</param>
+            <param name="workOrderId">工单ID</param>
+            <param name="actualQuantity">实际使用量</param>
+            <param name="batchNum">批号</param>
+            <param name="description">描述</param>
+            <param name="createUserId">创建者ID</param>
+            <param name="createUserName">创建者名称</param>
+            <param name="materialCode">物料编码</param>
+            <param name="materialName">物料名称</param>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumptionItem.ParentId">
+            <summary>
+            父级ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumptionItem.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumptionItem.ActualQuantity">
+            <summary>
+            实际使用量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumptionItem.BatchNum">
+            <summary>
+            批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumptionItem.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumptionItem.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumptionItem.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumptionItem.MaterialConsumption">
+            <summary>
+            批次工单消耗记录信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumptionItem.GenerateFpBatchMaterialConsumptionItem(System.Collections.Generic.IEnumerable{EES.Modules.Psm.Fp.Dto.FpBatchMaterialConsumption.ModifyFpBatchMaterialConsumptionItemDto},System.Int64,System.Int64,System.Int64,System.String,System.String,System.String)">
+            <summary>
+            生成实体
+            </summary>
+            <param name="materialConsumptionItemDtos">物料消耗详细信息集合</param>
+            <param name="parentId">父级ID，消耗记录ID</param>
+            <param name="workOrderId">工单ID</param>
+            <param name="createUserId">创建者ID</param>
+            <param name="createUserName">创建者名称</param>
+            <param name="materialCode">物料编码</param>
+            <param name="materialName">物料名称</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Entities.FpBatchPleaseCheckProcessRecord">
+            <summary>
+            灌包批次工单请检过程记录
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBatchPleaseCheckProcessRecord.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBatchPleaseCheckProcessRecord.#ctor(System.String,System.String,System.Int64,System.Int64,System.DateTime,System.Int64,System.String,System.Int64)">
+            <summary>
+            创建请检过程记录
+            </summary>
+            <param name="pleaseCheckNumber">请检单号</param>
+            <param name="batchNum">批次号</param>
+            <param name="batchId">批次工单ID</param>
+            <param name="workOrderId">工单ID</param>
+            <param name="pleaseCheckTime">发起请检时间</param>
+            <param name="createUserId">创建者ID</param>
+            <param name="createUserName">创建者名称</param>
+            <param name="pleaseCheckId">请检单ID</param>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchPleaseCheckProcessRecord.PleaseCheckId">
+            <summary>
+            请检单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchPleaseCheckProcessRecord.PleaseCheckNumber">
+            <summary>
+            请检单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchPleaseCheckProcessRecord.BatchNum">
+            <summary>
+            批次号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchPleaseCheckProcessRecord.BatchId">
+            <summary>
+            批次工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchPleaseCheckProcessRecord.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchPleaseCheckProcessRecord.PleaseCheckTime">
+            <summary>
+            发起请检时间
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Entities.FpBatchProcessRecords">
+            <summary>
+            灌包工单批次启动、暂停记录表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBatchProcessRecords.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBatchProcessRecords.#ctor(System.Int64,System.Int64,System.String,EES.Modules.Psm.Fp.Enum.StartupType,System.String,System.Int64,System.String,System.String)">
+            <summary>
+            创建灌包装批次过程记录
+            </summary>
+            <param name="workOrderId">生产工单ID</param>
+            <param name="iFid">批次记录表ID</param>
+            <param name="batchNum">生产批号</param>
+            <param name="startupType">启动类型</param>
+            <param name="reason">问题描述</param>
+            <param name="createUserId">创建者ID</param>
+            <param name="createUserName">创建者名称</param>
+            <param name="description">描述</param>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchProcessRecords.WorkOrderId">
+            <summary>
+            生产工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchProcessRecords.IFid">
+            <summary>
+            批次记录表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchProcessRecords.BatchNum">
+            <summary>
+            生产批号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchProcessRecords.StartupType">
+            <summary>
+            启动类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchProcessRecords.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBatchProcessRecords.Reason">
+            <summary>
+            原因
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Entities.FpBindingRelationships">
+            <summary>
+            灌包一体绑定关系表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBindingRelationships.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBindingRelationships.#ctor(System.Int64,System.Int64,System.Int64,System.String)">
+            <summary>
+            创建灌包一体关系绑定
+            </summary>
+            <param name="fillingId">灌装id</param>
+            <param name="packagingId">包装id</param>
+            <param name="createUserId">创建者ID</param>
+            <param name="createUserName">创建者名称</param>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBindingRelationships.FillingId">
+            <summary>
+            灌装id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpBindingRelationships.PackagingId">
+            <summary>
+            包装id
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpBindingRelationships.GenerateBinding(EES.Infrastructure.Enums.TrType,System.Int64,System.Collections.Generic.IEnumerable{System.Int64},System.Int64,System.String)">
+            <summary>
+            生成实体
+            </summary>
+            <param name="trType">工艺类型</param>
+            <param name="primaryBindingId">主绑定ID</param>
+            <param name="boundIds">子绑定ID</param>
+            <param name="createUserId">创建者ID</param>
+            <param name="createUserName">创建者名称</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Entities.FpMaterialRequisitionRecord">
+            <summary>
+            灌包领退补料记录
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpMaterialRequisitionRecord.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpMaterialRequisitionRecord.#ctor(System.Int64,System.String,System.Int64,EES.Modules.Psm.Fp.Enum.OperationType,System.Int64,System.String)">
+            <summary>
+            创建领退料记录
+            </summary>
+            <param name="taskId"></param>
+            <param name="taskNum"></param>
+            <param name="workOrderId"></param>
+            <param name="operationType">操作类型</param>
+            <param name="createUserId">创建者id</param>
+            <param name="createUserName">创建者名称</param>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpMaterialRequisitionRecord.TaskId">
+            <summary>
+            仓库任务表ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpMaterialRequisitionRecord.TaskNum">
+            <summary>
+            仓库任务单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpMaterialRequisitionRecord.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpMaterialRequisitionRecord.OperationType">
+            <summary>
+            操作类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpMaterialRequisitionRecord.TaskState">
+            <summary>
+            任务状态
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Entities.FpPutawayRecord">
+            <summary>
+            上架记录表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpPutawayRecord.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpPutawayRecord.#ctor(System.String,System.Int64,System.Int64,System.Int64,System.String)">
+            <summary>
+            创建上架记录信息
+            </summary>
+            <param name="putawayNum">入库任务单号</param>
+            <param name="workOrderId">工单ID</param>
+            <param name="putawayId">入库任务ID</param>
+            <param name="createUserId">创建者ID</param>
+            <param name="createUserName">创建者名称</param>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpPutawayRecord.PutawayId">
+            <summary>
+            入库任务ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpPutawayRecord.PutawayNum">
+            <summary>
+            上架单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpPutawayRecord.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpPutawayRecord.ERPInspectionState">
+            <summary>
+            ERP送检状态
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpPutawayRecord.ModifyERPInspectionState(EES.Infrastructure.Enums.Psm_fp.ERPInspectionState,System.Int64,System.String)">
+            <summary>
+            修改ERP送检状态
+            </summary>
+            <param name="state">ERP送检状态</param>
+            <param name="updateUserId">修改者id</param>
+            <param name="updateUserName">修改者名称</param>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute">
+            <summary>
+            工单执行记录
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute.#ctor(System.Int64,System.Int64,System.String)">
+            <summary>
+            创建执行记录信息
+            </summary>
+            <param name="parentId">父级ID</param>
+            <param name="createUserId">创建者ID</param>
+            <param name="createUserName">创建者名称</param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute.Start(EES.Modules.Psm.Fp.Enum.ExecuteState,System.DateTime,System.Int64,System.String)">
+            <summary>
+            开始生产
+            </summary>
+            <param name="executeState">生产执行状态</param>
+            <param name="executeStartTime">执行开始时间</param>
+            <param name="updateUserId">修改者Id</param>
+            <param name="updateUserName">修改者名称</param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute.ModifyState(EES.Modules.Psm.Fp.Enum.ExecuteState,System.Int64,System.String)">
+            <summary>
+            修改工单执行状态
+            </summary>
+            <param name="executeState">执行状态</param>
+            <param name="updateUserId">修改者Id</param>
+            <param name="updateUserName">修改者名称</param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute.ModifyStopState(System.String,System.Int64,System.String)">
+            <summary>
+            批次工单停止时，修改工单执行状态
+            </summary>
+            <param name="modifyType">修改类型</param>
+            <param name="updateUserId">修改者Id</param>
+            <param name="updateUserName">修改者名称</param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute.ModifyLinePreparationState(EES.Modules.Psm.Fp.Enum.StockPreparationState,System.Int64,System.String)">
+            <summary>
+            修改产线领料状态
+            </summary>
+            <param name="linePreparationState">产线领料状态</param>
+            <param name="updateUserId">修改者Id</param>
+            <param name="updateUserName">修改者名称</param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute.ModifyStockPreparationState(EES.Modules.Psm.Fp.Enum.StockPreparationState,System.Int64,System.String)">
+            <summary>
+            修改仓库领料状态
+            </summary>
+            <param name="stockPreparationState">仓库领料状态</param>
+            <param name="updateUserId">修改者Id</param>
+            <param name="updateUserName">修改者名称</param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute.Finish(EES.Modules.Psm.Fp.Enum.ExecuteState,System.DateTime,System.Int64,System.String)">
+            <summary>
+            完成生产
+            </summary>
+            <param name="executeState">生产执行状态</param>
+            <param name="executeEndTime">执行结束时间</param>
+            <param name="updateUserId">修改者Id</param>
+            <param name="updateUserName">修改者名称</param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute.modifyActualQtyandProgress(System.Decimal,System.Decimal,System.Int64,System.String)">
+            <summary>
+            修改实际数量和执行进度
+            </summary>
+            <param name="actualQty">实际完成数量</param>
+            <param name="executeProgress">执行进度</param>
+            <param name="updateUserId">修改者ID</param>
+            <param name="updateUserName">修改者名称</param>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute.ParentId">
+            <summary>
+            父级id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute.ExecuteState">
+            <summary>
+            执行状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute.ExecuteStartTime">
+            <summary>
+            执行开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute.ExecuteEndTime">
+            <summary>
+            执行结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute.StockPreparationState">
+            <summary>
+            备料状态(仓库汇总领料状态)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute.LinePreparationState">
+            <summary>
+            备料状态(产线领料状态)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute.ExecuteProgress">
+            <summary>
+            生产进度(0-100)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute.ActualQuantity">
+            <summary>
+            实际产量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute.Manhour">
+            <summary>
+            工时
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute.ReportWorkState">
+            <summary>
+            报工状态
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Enum.BatchNumExecuteState">
+            <summary>
+            执行状态
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Enum.BatchNumOperationType">
+            <summary>
+            批次操作类型
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Enum.ExecuteState">
+            <summary>
+            生产执行状态
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Enum.OperationType">
+            <summary>
+            领退补料类型
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Enum.ReportWorkState">
+            <summary>
+            报工状态
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Enum.ResolutionState">
+            <summary>
+            解决状态
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Enum.StartupType">
+            <summary>
+            执行类型
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Enum.StockPreparationState">
+            <summary>
+            备料状态（仓库领料状态）
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.EventHandlers.BatchEventHandler">
+            <summary>
+            批次事件处理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.EventHandlers.BatchEventHandler.#ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger{EES.Modules.Psm.Fp.EventHandlers.BatchEventHandler},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            批次事件处理
+            </summary>
+            <param name="provider"></param>
+            <param name="logger"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.EventHandlers.BatchEventHandler.Handle(EES.Modules.Share.Events.WorkOrderAuditedEvent,System.Threading.CancellationToken)">
+            <summary>
+            工单审核事件
+            </summary>
+            <param name="notification"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.EventHandlers.FpWorkOrderEventHandler">
+            <summary>
+            灌包工单执行事件处理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.EventHandlers.FpWorkOrderEventHandler.#ctor(System.IServiceProvider,EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute},Microsoft.Extensions.Logging.ILogger{EES.Modules.Psm.Fp.EventHandlers.FpWorkOrderEventHandler},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="provider"></param>
+            <param name="executeRepository"></param>
+            <param name="logger"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.EventHandlers.FpWorkOrderEventHandler.Handle(EES.Modules.Share.Events.WorkOrderAuditedEvent,System.Threading.CancellationToken)">
+            <summary>
+            工单审核后事件
+            </summary>
+            <param name="notification"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Services.FpBatchExecuteService">
+            <summary>
+            批次工单查询服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.FpBatchExecuteService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpBatchExecute},AutoMapper.IMapper,EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumption},EES.Infrastructure.Service.ISystemParamsService,Microsoft.Extensions.Logging.ILogger{EES.Modules.Psm.Fp.Services.FpBatchExecuteService},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="batchRepository"></param>
+            <param name="mapper"></param>
+            <param name="materialConsumptionrepository"></param>
+            <param name="systemParams"></param>
+            <param name="logger"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.FpBatchExecuteService.GetBatchExecutesByParentAsync(System.Int64,System.Boolean)">
+            <summary>
+            根据父级ID查询批次工单信息
+            </summary>
+            <param name="ParentId">父级ID</param>
+            <param name="isQueryItems">是否查询子项消耗信息</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Services.FpBatchMaterialConsumptionService">
+            <summary>
+            批次工单物料消耗信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.FpBatchMaterialConsumptionService.getMaterialConsumptionsAsync(System.Int64)">
+            <summary>
+            查询批次工单下的消耗信息
+            </summary>
+            <param name="BatchWorkId">批次工单ID</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Services.FpBatchProcessRecordsService">
+            <summary>
+            执行记录查询服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.FpBatchProcessRecordsService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpBatchProcessRecords},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="batchProcessRepository"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.FpBatchProcessRecordsService.getFpBatchProcessRecordsAsync(System.Int64)">
+            <summary>
+            根据批次工单ID查询对应执行记录
+            </summary>
+            <param name="BatchId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Services.FpBindingRelationshipsService">
+            <summary>
+            灌包一体绑定查询服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.FpBindingRelationshipsService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpBindingRelationships},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="bindRepository"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.FpBindingRelationshipsService.GetBindingRelationshipAsync(System.Int64,EES.Infrastructure.Enums.TrType)">
+            <summary>
+            根据工单ID灌包一体关系信息
+            </summary>
+            <param name="WorkOrderId">工单ID</param>
+            <param name="trType">工艺类型</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Services.FpMaterialRequisitionRecordService">
+            <summary>
+            领退料查询服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.FpMaterialRequisitionRecordService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpMaterialRequisitionRecord},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="materialRequisitionRepository"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.FpMaterialRequisitionRecordService.GetMaterialRequisitionRecordsAsync(System.Int64)">
+            <summary>
+            查询领退料记录
+            </summary>
+            <param name="WorkOrderId">工单ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.FpMaterialRequisitionRecordService.GetMaterialAnalysisAsync(System.Int64)">
+            <summary>
+            退料数量分析
+            </summary>
+            <param name="WorkOrderId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Services.FpPutawayRecordService">
+            <summary>
+            灌包上架查询服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.FpPutawayRecordService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpBatchExecute},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpPutawayRecord},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="batchRepository"></param>
+            <param name="putawayRepository"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.FpPutawayRecordService.GetPutawayMaterialsAsync(System.Int64)">
+            <summary>
+            根据父级ID查询批次工单信息,上架时的列表显示
+            </summary>
+            <param name="WorkOrderId">工单ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.FpPutawayRecordService.GetPutawayRecordsAsync(System.Int64)">
+            <summary>
+            查询上架记录
+            </summary>
+            <param name="WorkOrderId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Services.FpWorkOrderExecuteService">
+            <summary>
+            灌包工单执行查询服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.FpWorkOrderExecuteService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpBatchExecute},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumption},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpBatchMaterialConsumptionItem},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="fpBatchExecuteRepository"></param>
+            <param name="fpMaterialConsumptionRepository"></param>
+            <param name="fpMaterialConsumptionItemRepository"></param>
+            <param name="fpWorkOrderExecuteRepository"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.FpWorkOrderExecuteService.GetSummaryMaterialRequisitionsAsync(EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialRequisitionsQueryParamDto)">
+            <summary>
+            查询领料汇总领料需求列表
+            </summary>
+            <param name="paramDto">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.FpWorkOrderExecuteService.GetSummaryMaterialAnalysisAsync(EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialAnalysisQueryParamDto)">
+            <summary>
+            汇总领料分析
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.FpWorkOrderExecuteService.GetReprotForWorksAsync(System.Int64,System.Decimal)">
+            <summary>
+            根据工单ID查询报工信息
+            </summary>
+            <param name="WorkOrderId">工单ID</param>
+            <param name="PlanQuantity">计划产量</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Services.IFpBatchExecuteService">
+            <summary>
+            批次工单查询服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.IFpBatchExecuteService.GetBatchExecutesByParentAsync(System.Int64,System.Boolean)">
+            <summary>
+            根据父级ID查询批次工单信息
+            </summary>
+            <param name="ParentId">父级ID</param>
+            <param name="isQueryItems">是否查询子项消耗信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.IFpBatchMaterialConsumptionService.getMaterialConsumptionsAsync(System.Int64)">
+            <summary>
+            查询批次工单下的消耗信息
+            </summary>
+            <param name="BatchWorkId">批次工单ID</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Services.IFpBatchProcessRecordsService">
+            <summary>
+            灌包执行记录查询接口
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.IFpBatchProcessRecordsService.getFpBatchProcessRecordsAsync(System.Int64)">
+            <summary>
+            根据批次工单ID查询对应执行记录
+            </summary>
+            <param name="BatchId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Services.IFpBindingRelationshipsService">
+            <summary>
+            灌包一体绑定查询接口服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.IFpBindingRelationshipsService.GetBindingRelationshipAsync(System.Int64,EES.Infrastructure.Enums.TrType)">
+            <summary>
+            根据工单ID灌包一体关系信息
+            </summary>
+            <param name="WorkOrderId">工单ID</param>
+            <param name="trType">工艺类型</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Services.IFpMaterialRequisitionRecordService">
+            <summary>
+            领退补料查询接口服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.IFpMaterialRequisitionRecordService.GetMaterialRequisitionRecordsAsync(System.Int64)">
+            <summary>
+            查询领退料记录
+            </summary>
+            <param name="WorkOrderId">工单ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.IFpMaterialRequisitionRecordService.GetMaterialAnalysisAsync(System.Int64)">
+            <summary>
+            退料数量分析
+            </summary>
+            <param name="WorkOrderId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Fp.Services.IFpPutawayRecordService">
+            <summary>
+            上架任务查询接口
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.IFpPutawayRecordService.GetPutawayMaterialsAsync(System.Int64)">
+            <summary>
+            根据父级ID查询批次工单信息
+            </summary>
+            <param name="WorkOrderId">工单ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.IFpPutawayRecordService.GetPutawayRecordsAsync(System.Int64)">
+            <summary>
+            查询上架记录
+            </summary>
+            <param name="WorkOrderId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.IFpWorkOrderExecuteService.GetSummaryMaterialRequisitionsAsync(EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialRequisitionsQueryParamDto)">
+            <summary>
+            查询领料汇总列表
+            </summary>
+            <param name="paramDto">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.IFpWorkOrderExecuteService.GetSummaryMaterialAnalysisAsync(EES.Modules.Psm.Fp.Dto.FpWorkOrderExecute.SummaryMaterialAnalysisQueryParamDto)">
+            <summary>
+            汇总领料分析
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Psm.Fp.Services.IFpWorkOrderExecuteService.GetReprotForWorksAsync(System.Int64,System.Decimal)">
+            <summary>
+            根据工单ID查询报工信息
+            </summary>
+            <param name="WorkOrderId">工单ID</param>
+            <param name="PlanQuantity">计划产量</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

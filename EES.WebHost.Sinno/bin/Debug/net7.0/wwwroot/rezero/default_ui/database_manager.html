@@ -1,0 +1,347 @@
+﻿@@master_page.html
+<link href="css/page_table_list.css" rel="stylesheet" />
+<div id="apibox" class="card">
+    <div class="search-bar">
+
+        <form id="frmSearach" action="lyear_forms_elements.html" method="post" onsubmit="return false;">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-1"><label class="form-control" t>库备注:</label></div>
+                    <div class="col-md-3"><input class="form-control" type="text" id="txtSearch" name="example-text-input" placeholder="数据库备注"></div>
+                    <div class="col-md-3">
+                        <button @click="onSearch()" class="btn btn-secondary"><i class="mdi mdi-magnify"></i>搜索</button>
+                        <button onclick="frmSearach.reset()" id="btnSearch" class="btn btn-close" type="submit">清空</button>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+            </div>
+        </form>
+
+        <div class="toolbar-btn-action">
+            <button @click="openAddDiv()" class="btn  btn-primary m-r-5" data-toggle="modal" data-target="#gridSystemModal"><i class="mdi mdi-plus"></i> 新增</button>
+            <button @click="openSynchronousDataDiv()" class="btn btn-success m-r-5" data-toggle="modal" data-target="#btnSynchronousData"><i class="mdi mdi-redo-variant"></i> 同步接口</button>
+        </div>
+    </div>
+    <div class="card-body">
+
+        <h5> </h5>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr v-if="data && data.Columns && data.Columns.length > 0">
+                        <th class="mi-w-100" v-for="column in data.Columns">{{column.ColumnDescription}}</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody v-if="data &&data.Data">
+                    <tr v-if="data.Columns && data.Columns.length > 0" v-for="item in data.Data">
+
+                        <td v-for="(column,index) in data.Columns" class="word-all">
+                            <div v-if="index == 0" class="mi-w-150">
+                                {{ item[column.PropertyName] }}
+                            </div>
+                            <div v-else>
+                                {{ item[column.PropertyName] }}
+                            </div>
+                        </td>
+
+                        <td class="table_opt3">
+                            <button data-toggle="modal" @click="testDatabase(item)" class="btn btn-link" type="button">
+                                <i class="mdi mdi-test-tube"></i> 测试
+                            </button>
+                            <button data-toggle="modal" @click="createDatabase(item)" class="btn btn-link" type="button">
+                                <i class="mdi mdi-cube"></i> 建库
+                            </button>
+                            <button data-toggle="modal" @click="openEditDiv(item)" data-target="#gridSystemModal" class="btn btn-link" type="button">
+                                <i class="mdi mdi-lead-pencil"></i> 修改
+                            </button>
+                            <button data-toggle="modal" @click="deleteAndConfirm(item)" data-target="#divDelBox" class="btn btn-link" type="button">
+                                <i class="mdi mdi-do-not-disturb"></i> 删除
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    @@page_control.html
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" id="gridSystemModal" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">{{title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="frmEdit">
+                        <input type="hidden" v-model="formData.Id" name="Id" />
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">库备注：</label>
+                            <input type="text" v-model="formData.Name" name="Name" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">数据库类型：</label>
+                            <select class="form-control" v-model="formData.DbType" name="DbType">
+                                <option v-for="item in dbTypeList" v-bind:value="item.Value"> {{item.Name}} </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">字符串：</label>
+                            <textarea class="form-control" v-model="formData.Connection" name="Connection" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnCloseEdit" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" @click="addOrUpdate()" class="btn btn-primary">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" id="btnSynchronousData" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">同步数据</h4>
+                </div>
+
+                <div class="card-body">
+                    <p class="alert alert-success">
+                        注意：这儿只同步四张配置表，业务表需要在【菜单：实体表维护】选实体点同步<br />
+                        1、接口数据 : [zero_interface_list]
+                        [zero_interface_category]<br />
+                        2、实体数据 : [zero_entity_info]
+                        [zero_entity_column_info]
+                    </p>
+                    <form class="form-horizontal">
+                        <div class="form-group has-success">
+                            <label class="col-xs-12 text-align-left" for="example-text-input-success">基准库</label>
+                            <div class="col-xs-12">
+                                <select v-model="od_originaldb" class="form-control" type="text" id="example-text-input-success" name="example-text-input-success" placeholder="成功状态..">
+                                    <option value="1">启动库Rezro</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group has-success">
+                            <label class="col-xs-12  text-align-left" for="example-text-input-success">更新库</label>
+                            <div class="col-xs-12">
+                                <select v-model="od_targetdb" class="form-control" type="text" id="example-text-input-success" name="example-text-input-success" placeholder="成功状态..">
+                                    <option :value="item.Id" v-if="item.Id!=1" v-for="item in dataAll">{{item.Name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group has-success">
+                            <label class="col-xs-12  text-align-left" for="example-text-input-success">备份表</label>
+                            <div class="col-xs-12">
+                                <label class="lyear-checkbox checkbox-primary text-align-left">
+                                    <input v-model="od_isbak" type="checkbox" class="checkbox-parent checkbox-child" dataid="id-1-6" value="true">
+                                    <span class="m-l-15"> 表名+时间HHmmss</span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" @click="synchronousData" class="btn btn-primary">同步</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var vueObj = new Vue({
+        el: '#apibox',
+        data: {
+            data: null,
+            dataAll: null,
+            error: null,
+            addTitle: "添加数据库配置",
+            editTitle: "修改数据库配置",
+            title: "",
+            dbTypeList: [],
+            formData: {
+
+            },
+            od_isbak: false,
+            od_originaldb: null,
+            od_targetdb: null,
+            lock: false
+        },
+        mounted() {
+            this.fetchData("");
+        },
+        methods: {
+            fetchData(append) {
+                var url = "/PrivateReZeroRoute/100003/GetDatabaseInfoList?ParentId=200" + append;
+                axios.get(url, jwHeader)
+                    .then(response => {
+                        this.data = response.data;
+                        this.error = null;
+                    })
+                    .catch(error => {
+                        this.error = error.message;
+                        this.data = null;
+                    });
+
+
+                axios.get("/PrivateReZeroRoute/100004/GetDbTypeList", jwHeader)
+                    .then(response => {
+                        this.dbTypeList = response.data;
+                        this.error = null;
+                    })
+                    .catch(error => {
+                        this.error = error.message;
+                        this.data = null;
+                    });
+
+                axios.get("/PrivateReZeroRoute/100004/GetDatabaseInfoAllList", jwHeader)
+                    .then(response => {
+                        this.dataAll = response.data;
+                    })
+                    .catch(error => {
+                        this.error = error.message;
+                        this.data = null;
+                    });
+            },
+            onSearch: function (page) {
+
+                var urlParameters = "&" + tools.objectToQueryString({
+                    Name: txtSearch.value,
+                    PageNumber: page
+                });
+
+                this.fetchData(urlParameters);
+            },
+            deleteAndConfirm: function (item) {
+                if (item == null) {
+                    var url = "/PrivateReZeroRoute/100003/DeleteDataBaseInfo?IsDeleted=true&Id=" + localStorage.delId;
+                    axios.get(url, jwHeader)
+                        .then(response => {
+                            if (response.data.message) {
+                                tools.alert(response.data.message);
+                            }
+                            this.error = null;
+                            this.onSearch();
+                            btnDelClose.click();
+                        })
+                        .catch(error => {
+                            this.error = error.message;
+                            this.data = null;
+                        });
+                } else {
+                    localStorage.delId = item.Id;
+                }
+            },
+            openEditDiv: function (item) {
+                var urlById = "/PrivateReZeroRoute/100003/GetDataBaseInfoById?id=" + item.Id;
+                if (item.Id) {
+                    this.title = this.editTitle;
+                    axios.get(urlById, jwHeader)
+                        .then(response => {
+                            this.formData = response.data;
+                        })
+                        .catch(error => {
+                            this.error = error.message;
+                            this.data = null;
+                        });
+                }
+            },
+            openAddDiv: function (item) {
+                this.formData = {};
+                this.title = this.addTitle;
+            },
+            addOrUpdate: function () {
+                var th = this;
+                var frmId = "frmEdit";
+                var json = this.formData;
+                var url = json.Id ?
+                    "/PrivateReZeroRoute/100003/UpdateDatabaseInfo" :
+                    "/PrivateReZeroRoute/100003/AddDatabaseInfo";
+                this.addOrUpdateSubmit(url, json);
+            },
+            addOrUpdateSubmit: function (url, json) {
+                var th = this;
+                axios.post(url, json, jwHeader)
+                    .then(response => {
+                        this.error = null;
+                        this.onSearch();
+                        if (response.data == true) {
+                            frmEdit.reset();
+                            btnCloseEdit.click();
+                        }
+                        else {
+                            tools.highlightErrorFields(response.data)
+                        }
+                    })
+                    .catch(error => {
+                        this.error = error.message;
+                        this.data = null;
+                    });
+            },
+            testDatabase: function (item) {
+                axios.post("/PrivateReZeroRoute/100003/TestDatabaseInfo", { Id: item.Id }, jwHeader)
+                    .then(response => {
+                        this.error = null;
+                        tools.alert(response.data + "");
+                    })
+                    .catch(error => {
+                        this.error = error.message;
+
+                    });
+            },
+            createDatabase: function (item) {
+                axios.post("/PrivateReZeroRoute/100003/CreateDatabaseInfo", { Connection: item.Connection, DbType: item.DbType }, jwHeader)
+                    .then(response => {
+                        this.error = null;
+                        tools.alert(response.data + "");
+                    })
+                    .catch(error => {
+                        this.error = error.message;
+                    });
+            },
+            openSynchronousDataDiv: function () {
+            },
+            synchronousData: function () {
+                if (!this.od_originaldb) {
+                    tools.alert("请选择基准库");
+                    return;
+                }
+                if (!this.od_targetdb) {
+                    tools.alert("请选择更新库");
+                    return;
+                }
+                if (this.od_targetdb == this.od_originaldb) {
+                    tools.alert("相同库不需要同步");
+                    return;
+                }
+                if (this.lock == true)
+                {
+                    return;
+                }
+                this.lock = true;
+                axios.post("/PrivateReZeroRoute/100003/SynchronousData",
+                    {
+                        OriginalDb: this.od_originaldb,
+                        TargetDb: this.od_targetdb,
+                        IsBak: this.od_isbak
+                    }, jwHeader)
+                    .then(response => {
+                        this.lock = false;
+                        this.error = null;
+                        if (response.data == true) {
+                            tools.alert("同步成功");
+                        } else {
+                            tools.alert(response.data.message);
+                        }
+                    })
+                    .catch(error => {
+                        this.error = error.message;
+                    });
+            }
+        }
+    });</script>

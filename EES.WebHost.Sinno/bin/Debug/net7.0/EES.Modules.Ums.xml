@@ -1,0 +1,5136 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EES.Modules.Ums</name>
+    </assembly>
+    <members>
+        <member name="T:EES.Modules.Ums.CommandHandlers.DataCommandHandler">
+            <summary>
+            数据权限处理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.DataCommandHandler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Data},Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.CommandHandlers.DataCommandHandler},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="dataRepository"></param>
+            <param name="logger"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.DataCommandHandler.Handle(EES.Modules.Share.Commands.CreateStoreDataCmd,System.Threading.CancellationToken)">
+            <summary>
+            添加仓库数据权限
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.DataCommandHandler.Handle(EES.Modules.Share.Commands.CreateWorkshopDataCmd,System.Threading.CancellationToken)">
+            <summary>
+            添加车间数据权限
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.DataCommandHandler.Handle(EES.Modules.Share.Commands.CreateFacoryDataCmd,System.Threading.CancellationToken)">
+            <summary>
+            添加工厂数据权限
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.DataCommandHandler.Handle(EES.Modules.Ums.Commands.Data.CreateMaterialDataCmd,System.Threading.CancellationToken)">
+            <summary>
+            创建物料类型数据
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.DataCommandHandler.Handle(EES.Modules.Ums.Commands.Data.ModifyMaterialDataCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改物料类型数据
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.DataCommandHandler.Handle(EES.Modules.Ums.Commands.Data.DeleteMaterialDataCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除物料类型数据
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.CommandHandlers.DepartmentCommandHandler">
+            <summary>
+            部门管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.DepartmentCommandHandler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Department},Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.CommandHandlers.DepartmentCommandHandler},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.User},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="departmentRepository"></param>
+            <param name="logger"></param>
+            <param name="userRepository"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.DepartmentCommandHandler.Handle(EES.Modules.Ums.Commands.Department.CreateDepartmentCmd,System.Threading.CancellationToken)">
+            <summary>
+            新建部门
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.DepartmentCommandHandler.Handle(EES.Modules.Ums.Commands.Department.ModifyDepartmentCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改部门信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.DepartmentCommandHandler.Handle(EES.Modules.Ums.Commands.Department.DeleteDepartmentCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除部门
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.DepartmentCommandHandler.CheckParentDepartmentExistAsync(System.Int64)">
+            <summary>
+            检查上级部门是否存在
+            </summary>
+            <param name="parentDepartmentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.DepartmentCommandHandler.CheckCodeExistAsync(System.String,System.Int64)">
+            <summary>
+            检查编码是否存在
+            </summary>
+            <param name="code">编码</param>
+            <param name="excludedDepartmentId">被排除，不参与检查的部门的id</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.CommandHandlers.FunctionCommandHandler">
+            <summary>
+            功能权限处理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.FunctionCommandHandler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Function},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.RoleFunctions},Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.CommandHandlers.FunctionCommandHandler},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="functionRepository"></param>
+            <param name="roleFunctionsrepository"></param>
+            <param name="logger"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.FunctionCommandHandler.Handle(EES.Modules.Ums.Commands.Funtion.CreateFuntionCmd,System.Threading.CancellationToken)">
+            <summary>
+            新建功能权限数据
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.FunctionCommandHandler.Handle(EES.Modules.Ums.Commands.Funtion.ModifyFunctionCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.FunctionCommandHandler.Handle(EES.Modules.Ums.Commands.Funtion.DeleteFunctionCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除数据权限
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.FunctionCommandHandler.CheckParentFunctionExistsAsync(System.Int64)">
+            <summary>
+            检查上级是否存在
+            </summary>
+            <param name="parentId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.CommandHandlers.MenuCommandHandler">
+            <summary>
+            菜单资源处理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.MenuCommandHandler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Menu},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.RoleMenus},Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.CommandHandlers.MenuCommandHandler},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="menuRepository"></param>
+            <param name="roleMenusRepository"></param>
+            <param name="logger"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.MenuCommandHandler.Handle(EES.Modules.Ums.Commands.Menu.CreateMenuCmd,System.Threading.CancellationToken)">
+            <summary>
+            新增资源
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.MenuCommandHandler.Handle(EES.Modules.Ums.Commands.Menu.ModifyMenuCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改资源信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.MenuCommandHandler.Handle(EES.Modules.Ums.Commands.Menu.DeleteMenuCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.MenuCommandHandler.CheckParentMenuExistsAsync(System.Int64)">
+            <summary>
+            检查上级资源是否存在
+            </summary>
+            <param name="parentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.MenuCommandHandler.CheckRouteExistsAsync(System.String,EES.Infrastructure.Enums.MenuType,System.Int64)">
+            <summary>
+            检查路由是否存在
+            </summary>
+            <param name="route"></param>
+            <param name="type"></param>
+            <param name="excludedMenuId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.CommandHandlers.RoleCommandHandler">
+            <summary>
+            角色处理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.RoleCommandHandler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Role},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Data},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Menu},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Function},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.UserRoles},Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.CommandHandlers.RoleCommandHandler},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="roleRepository"></param>
+            <param name="dataRepository"></param>
+            <param name="menuRepository"></param>
+            <param name="functionRepository"></param>
+            <param name="userRolesRepository"></param>
+            <param name="logger"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.RoleCommandHandler.Handle(EES.Modules.Ums.Commands.Role.CheckRoleIdsCmd,System.Threading.CancellationToken)">
+            <summary>
+            检查角色id
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.RoleCommandHandler.Handle(EES.Modules.Ums.Commands.Role.CreateRoleCmd,System.Threading.CancellationToken)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.RoleCommandHandler.Handle(EES.Modules.Ums.Commands.Role.ModifyRoleCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改角色信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.RoleCommandHandler.Handle(EES.Modules.Ums.Commands.Role.DeleteRoleCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除角色
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.RoleCommandHandler.CheckRoleNameExistsAsync(System.String,System.Int64)">
+            <summary>
+            检查角色名是否存在
+            </summary>
+            <param name="roleName"></param>
+            <param name="excludedRoleId">被排除，不参与检查的角色的id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.RoleCommandHandler.CheckMenuAsync(System.Collections.Generic.IEnumerable{System.Int64},EES.Infrastructure.Enums.MenuType)">
+            <summary>
+            校验菜单id
+            </summary>
+            <param name="menuIds"></param>
+            <param name="menuType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.RoleCommandHandler.CheckDataAsync(System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            校验数据权限id
+            </summary>
+            <param name="dataIds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.RoleCommandHandler.CheckFunctionAsync(System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            校验功能数据id
+            </summary>
+            <param name="functionIds"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.CommandHandlers.SystemParamCommandHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.SystemParamCommandHandler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.SystemParam},Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.CommandHandlers.SystemParamCommandHandler},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="repository"></param>
+            <param name="logger"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.SystemParamCommandHandler.Handle(EES.Modules.Ums.Commands.SystemParams.CreateSystemParamCmd,System.Threading.CancellationToken)">
+            <summary>
+            新增系统参数
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.SystemParamCommandHandler.Handle(EES.Modules.Ums.Commands.SystemParams.ModifySystemParamCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改系统参数
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.SystemParamCommandHandler.Handle(EES.Modules.Ums.Commands.SystemParams.DeleteSystemParamCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除系统参数
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.CommandHandlers.TeamCommandHandler">
+            <summary>
+            工作组处理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.TeamCommandHandler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Team},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.TeamMembers},Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.CommandHandlers.TeamCommandHandler},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="teamRepository"></param>
+            <param name="membersRepository"></param>
+            <param name="logger"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.TeamCommandHandler.Handle(EES.Modules.Ums.Commands.Team.CreateTeamCmd,System.Threading.CancellationToken)">
+            <summary>
+            新增工作组
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.TeamCommandHandler.Handle(EES.Modules.Ums.Commands.Team.ModifyTeamCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改工作组
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.TeamCommandHandler.Handle(EES.Modules.Ums.Commands.Team.DeleteTeamCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除工作组
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.TeamCommandHandler.CheckCodeExistAsync(System.String,System.Int64)">
+            <summary>
+            检查编码是否存在
+            </summary>
+            <param name="code">编码</param>
+            <param name="excludedDepartmentId">被排除，不参与检查的部门的id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.TeamCommandHandler.CheckNameExistAsync(System.String,System.Int64)">
+            <summary>
+            检查工作组名称是否存在
+            </summary>
+            <param name="name">工作组名称</param>
+            <param name="excludedDepartmentId">被排除，不参与检查的部门的id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.TeamCommandHandler.ClearTeamMembersAsync(System.Int64)">
+            <summary>
+            删除所有组员
+            </summary>
+            <param name="teamId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.TeamCommandHandler.DealTeamMembersAsync(System.Int64,System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            组员处理
+            </summary>
+            <param name="teamId"></param>
+            <param name="userIds"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.CommandHandlers.UserCommandHadler">
+            <summary>
+            用户管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.UserCommandHadler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.User},Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.CommandHandlers.UserCommandHadler},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Department},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Role},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="userRepository"></param>
+            <param name="logger"></param>
+            <param name="departmentRepository"></param>
+            <param name="roleRepository"></param>
+            <param name="handler"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.UserCommandHadler.Handle(EES.Modules.Ums.Commands.User.CreateUserCmd,System.Threading.CancellationToken)">
+            <summary>
+            创建用户
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.UserCommandHadler.CheckDepartmentExist(System.Int64)">
+            <summary>
+            检查部门是否存在
+            </summary>
+            <param name="departmentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.UserCommandHadler.Handle(EES.Modules.Ums.Commands.User.ModifyPasswordCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改密码
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.UserCommandHadler.Handle(EES.Modules.Ums.Commands.User.ModifyUserCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改用户信息
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.UserCommandHadler.Handle(EES.Modules.Ums.Commands.User.DeleteUserCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除用户
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.UserCommandHadler.Handle(EES.Modules.Ums.Commands.User.CheckUserIdsCmd,System.Threading.CancellationToken)">
+            <summary>
+            检查用户ID
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.UserCommandHadler.Handle(EES.Modules.Ums.Commands.User.ResetPasswordCmd,System.Threading.CancellationToken)">
+            <summary>
+            重置密码
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.CommandHandlers.UserParamCommandHandler">
+            <summary>
+            用户参数处理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.UserParamCommandHandler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.UserParam},Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.CommandHandlers.UserParamCommandHandler},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="repository"></param>
+            <param name="logger"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.UserParamCommandHandler.Handle(EES.Modules.Ums.Commands.UserParams.CreateUserParamCmd,System.Threading.CancellationToken)">
+            <summary>
+            新增用户参数
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.UserParamCommandHandler.Handle(EES.Modules.Ums.Commands.UserParams.ModifyUserParamCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.UserParamCommandHandler.Handle(EES.Modules.Ums.Commands.UserParams.DeleteUserParamCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除用户参数
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.CommandHandlers.UserRolesCommandHandler">
+            <summary>
+            用户-角色绑定关系
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.UserRolesCommandHandler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.UserRoles},Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.CommandHandlers.UserCommandHadler},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="userRolesRepository"></param>
+            <param name="logger"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.UserRolesCommandHandler.Handle(EES.Modules.Ums.Commands.UserRoles.CreateUserRolesCmd,System.Threading.CancellationToken)">
+            <summary>
+            添加用户-角色绑定关系
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.CommandHandlers.UserRolesCommandHandler.Handle(EES.Modules.Ums.Commands.UserRoles.DeleteUserRolesCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除用户的全部角色绑定关系
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.Data.CreateMaterialDataCmd">
+            <summary>
+            创建物料类型数据
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Data.CreateMaterialDataCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Data.CreateMaterialDataCmd.MaterialType">
+            <summary>
+            物料类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Data.CreateMaterialDataCmd.Code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Data.CreateMaterialDataCmd.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.Data.DeleteMaterialDataCmd">
+            <summary>
+            删除物料类型数据
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Data.DeleteMaterialDataCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Data.DeleteMaterialDataCmd.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.Data.ModifyMaterialDataCmd">
+            <summary>
+            修改物料类型数据
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Data.ModifyMaterialDataCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Data.ModifyMaterialDataCmd.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Data.ModifyMaterialDataCmd.MaterialType">
+            <summary>
+            物料类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Data.ModifyMaterialDataCmd.Code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Data.ModifyMaterialDataCmd.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.Department.CreateDepartmentCmd">
+            <summary>
+            新建部门
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Department.CreateDepartmentCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Department.CreateDepartmentCmd.ParentId">
+            <summary>
+            上级部门ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Department.CreateDepartmentCmd.SortNumber">
+            <summary>
+            序号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Department.CreateDepartmentCmd.Code">
+            <summary>
+            代码编码(通常由用户指定，以关联到其他系统)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Department.CreateDepartmentCmd.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Department.CreateDepartmentCmd.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Department.CreateDepartmentCmd.ImageUrl">
+            <summary>
+            图标的url
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.Department.DeleteDepartmentCmd">
+            <summary>
+            删除组织
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Department.DeleteDepartmentCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Department.DeleteDepartmentCmd.DepartmentId">
+            <summary>
+            部门id
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.Department.ModifyDepartmentCmd">
+            <summary>
+            修改部门信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Department.ModifyDepartmentCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Department.ModifyDepartmentCmd.DepartmentId">
+            <summary>
+            部门id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Department.ModifyDepartmentCmd.ParentId">
+            <summary>
+            上级部门ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Department.ModifyDepartmentCmd.SortNumber">
+            <summary>
+            序号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Department.ModifyDepartmentCmd.Code">
+            <summary>
+            代码编码(通常由用户指定，以关联到其他系统)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Department.ModifyDepartmentCmd.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Department.ModifyDepartmentCmd.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Department.ModifyDepartmentCmd.ImageUrl">
+            <summary>
+            图标的url
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.Funtion.CreateFuntionCmd">
+            <summary>
+            创建功能权限数据
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Funtion.CreateFuntionCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Funtion.CreateFuntionCmd.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Funtion.CreateFuntionCmd.Type">
+            <summary>
+            标识 1: 分类标识   2：功能
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Funtion.CreateFuntionCmd.ParentId">
+            <summary>
+            父级id 没有父级默认为0
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Funtion.CreateFuntionCmd.Description">
+            <summary>
+            功能说明
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Funtion.CreateFuntionCmd.Identifier">
+            <summary>
+            功能权限标识符
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.Funtion.DeleteFunctionCmd">
+            <summary>
+            删除功能资源
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Funtion.DeleteFunctionCmd.#ctor">
+            <summary>
+            删除功能资源
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Funtion.DeleteFunctionCmd.Id">
+            <summary>
+            Ids
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.Funtion.ModifyFunctionCmd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Funtion.ModifyFunctionCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Funtion.ModifyFunctionCmd.Id">
+            <summary>
+            Ids
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Funtion.ModifyFunctionCmd.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Funtion.ModifyFunctionCmd.Type">
+            <summary>
+            标识 1: 分类标识   2：功能
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Funtion.ModifyFunctionCmd.ParentId">
+            <summary>
+            父级id 没有父级默认为0
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Funtion.ModifyFunctionCmd.Description">
+            <summary>
+            功能说明
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Funtion.ModifyFunctionCmd.Identifier">
+            <summary>
+            功能权限标识符
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.Menu.CreateMenuCmd">
+            <summary>
+            创建菜单资源
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Menu.CreateMenuCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.CreateMenuCmd.Name">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.CreateMenuCmd.ParentId">
+            <summary>
+            上级菜单
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.CreateMenuCmd.SortNumber">
+            <summary>
+            同级别下显示排序
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.CreateMenuCmd.Route">
+            <summary>
+            菜单路由
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.CreateMenuCmd.Type">
+            <summary>
+            菜单类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.CreateMenuCmd.Category">
+            <summary>
+            菜单的类别(导航分类 or 具体的页面)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.CreateMenuCmd.Description">
+            <summary>
+            备注说明
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.CreateMenuCmd.Icon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.CreateMenuCmd.EnglishName">
+            <summary>
+            菜单的英文名称
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.Menu.DeleteMenuCmd">
+            <summary>
+            删除资源
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Menu.DeleteMenuCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Menu.DeleteMenuCmd.#ctor(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.DeleteMenuCmd.Id">
+            <summary>
+            资源id
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.Menu.ModifyMenuCmd">
+            <summary>
+            修改
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Menu.ModifyMenuCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.ModifyMenuCmd.Id">
+            <summary>
+            菜单id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.ModifyMenuCmd.Name">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.ModifyMenuCmd.ParentId">
+            <summary>
+            上级菜单
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.ModifyMenuCmd.SortNumber">
+            <summary>
+            同级别下显示排序
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.ModifyMenuCmd.Route">
+            <summary>
+            菜单路由
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.ModifyMenuCmd.Type">
+            <summary>
+            菜单类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.ModifyMenuCmd.Category">
+            <summary>
+            菜单的类别(导航分类 or 具体的页面)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.ModifyMenuCmd.Description">
+            <summary>
+            备注说明
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.ModifyMenuCmd.Icon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Menu.ModifyMenuCmd.EnglishName">
+            <summary>
+            菜单的英文名称
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.Role.CheckRoleIdsCmd">
+            <summary>
+            检查角色Id的合法性
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Role.CheckRoleIdsCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Role.CheckRoleIdsCmd.RoleIds">
+            <summary>
+            角色Id集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.Role.CreateRoleCmd">
+            <summary>
+            创建角色
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Role.CreateRoleCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Role.CreateRoleCmd.Name">
+            <summary>
+            角色名
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Role.CreateRoleCmd.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Role.CreateRoleCmd.PcMenus">
+            <summary>
+            角色的PC菜单权限列表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Role.CreateRoleCmd.PdaMenus">
+            <summary>
+            角色的Pda菜单权限列表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Role.CreateRoleCmd.MfsMenus">
+            <summary>
+            角色的Mfs菜单权限列表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Role.CreateRoleCmd.Functions">
+            <summary>
+            功能权限列表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Role.CreateRoleCmd.Datas">
+            <summary>
+            数据权限列表
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.Role.DeleteRoleCmd">
+            <summary>
+            删除角色
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Role.DeleteRoleCmd.Id">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.Role.ModifyRoleCmd">
+            <summary>
+            修改角色
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Role.ModifyRoleCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Role.ModifyRoleCmd.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Role.ModifyRoleCmd.Name">
+            <summary>
+            角色名
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Role.ModifyRoleCmd.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Role.ModifyRoleCmd.PcMenus">
+            <summary>
+            角色的PC菜单权限列表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Role.ModifyRoleCmd.PdaMenus">
+            <summary>
+            角色的Pda菜单权限列表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Role.ModifyRoleCmd.MfsMenus">
+            <summary>
+            角色的Mfs菜单权限列表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Role.ModifyRoleCmd.Functions">
+            <summary>
+            功能权限列表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Role.ModifyRoleCmd.Datas">
+            <summary>
+            数据权限列表
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.SystemParams.CreateSystemParamCmd">
+            <summary>
+            新增系统参数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.SystemParams.CreateSystemParamCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.SystemParams.CreateSystemParamCmd.Module">
+            <summary>
+            参数类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.SystemParams.CreateSystemParamCmd.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.SystemParams.CreateSystemParamCmd.Code">
+            <summary>
+            参数编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.SystemParams.CreateSystemParamCmd.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.SystemParams.CreateSystemParamCmd.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.SystemParams.CreateSystemParamCmd.DefalutValue">
+            <summary>
+            默认值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.SystemParams.CreateSystemParamCmd.SetValue">
+            <summary>
+            设定值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.SystemParams.CreateSystemParamCmd.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.SystemParams.DeleteSystemParamCmd">
+            <summary>
+            删除系统参数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.SystemParams.DeleteSystemParamCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.SystemParams.DeleteSystemParamCmd.Id">
+            <summary>
+            Ids
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.SystemParams.ModifySystemParamCmd">
+            <summary>
+            修改系统参数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.SystemParams.ModifySystemParamCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.SystemParams.ModifySystemParamCmd.Id">
+            <summary>
+            Ids
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.SystemParams.ModifySystemParamCmd.Module">
+            <summary>
+            参数类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.SystemParams.ModifySystemParamCmd.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.SystemParams.ModifySystemParamCmd.Code">
+            <summary>
+            参数编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.SystemParams.ModifySystemParamCmd.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.SystemParams.ModifySystemParamCmd.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.SystemParams.ModifySystemParamCmd.DefalutValue">
+            <summary>
+            默认值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.SystemParams.ModifySystemParamCmd.SetValue">
+            <summary>
+            设定值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.SystemParams.ModifySystemParamCmd.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.Team.CreateTeamCmd">
+            <summary>
+            新增工作组
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Team.CreateTeamCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.CreateTeamCmd.Code">
+            <summary>
+            工作组编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.CreateTeamCmd.Name">
+            <summary>
+            工作组名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.CreateTeamCmd.Type">
+            <summary>
+            班组类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.CreateTeamCmd.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.CreateTeamCmd.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.CreateTeamCmd.FactoryId">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.CreateTeamCmd.AreaCode">
+            <summary>
+            工作区域编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.CreateTeamCmd.AreaName">
+            <summary>
+            工作区域名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.CreateTeamCmd.AreaId">
+            <summary>
+            工作区域id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.CreateTeamCmd.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.CreateTeamCmd.UserIds">
+            <summary>
+            工作组成员
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.Team.DeleteTeamCmd">
+            <summary>
+            删除工作组
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Team.DeleteTeamCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Team.DeleteTeamCmd.#ctor(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.DeleteTeamCmd.Id">
+            <summary>
+            Team Ids
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.Team.ModifyTeamCmd">
+            <summary>
+            修改工作组信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Team.ModifyTeamCmd.#ctor">
+            <summary>
+            修改工作组信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.Team.ModifyTeamCmd.#ctor(System.Int64,System.String,System.String,EES.Modules.Ums.Enums.TeamType,System.String,System.String,System.Int64,System.String,System.String,System.Int64,System.String,System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            修改工作组信息
+            </summary>
+            <param name="id"></param>
+            <param name="code"></param>
+            <param name="name"></param>
+            <param name="type"></param>
+            <param name="factoryCode"></param>
+            <param name="factoryName"></param>
+            <param name="factoryId"></param>
+            <param name="areaCode"></param>
+            <param name="areaName"></param>
+            <param name="areaId"></param>
+            <param name="description"></param>
+            <param name="userIds"></param>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.ModifyTeamCmd.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.ModifyTeamCmd.Code">
+            <summary>
+            工作组编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.ModifyTeamCmd.Name">
+            <summary>
+            工作组名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.ModifyTeamCmd.Type">
+            <summary>
+            班组类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.ModifyTeamCmd.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.ModifyTeamCmd.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.ModifyTeamCmd.FactoryId">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.ModifyTeamCmd.AreaCode">
+            <summary>
+            工作区域编码
+            </summary>      
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.ModifyTeamCmd.AreaName">
+            <summary>
+            工作区域名称
+            </summary>    
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.ModifyTeamCmd.AreaId">
+            <summary>
+            工作区域id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.ModifyTeamCmd.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.Team.ModifyTeamCmd.UserIds">
+            <summary>
+            工作组成员
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.UserParams.CreateUserParamCmd">
+            <summary>
+            创建用户参数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.UserParams.CreateUserParamCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.CreateUserParamCmd.Type">
+            <summary>
+            参数类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.CreateUserParamCmd.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.CreateUserParamCmd.Code">
+            <summary>
+            参数编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.CreateUserParamCmd.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.CreateUserParamCmd.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.CreateUserParamCmd.Unit">
+            <summary>
+            参数单位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.CreateUserParamCmd.ValueType">
+            <summary>
+            值类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.CreateUserParamCmd.DefalutValue">
+            <summary>
+            默认值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.CreateUserParamCmd.SetValue">
+            <summary>
+            设定值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.CreateUserParamCmd.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.UserParams.DeleteUserParamCmd">
+            <summary>
+            删除用户参数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.UserParams.DeleteUserParamCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.DeleteUserParamCmd.Id">
+            <summary>
+            Ids
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.UserParams.ModifyUserParamCmd">
+            <summary>
+            修改用户参数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.UserParams.ModifyUserParamCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.ModifyUserParamCmd.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.ModifyUserParamCmd.Type">
+            <summary>
+            参数类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.ModifyUserParamCmd.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.ModifyUserParamCmd.Code">
+            <summary>
+            参数编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.ModifyUserParamCmd.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.ModifyUserParamCmd.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.ModifyUserParamCmd.Unit">
+            <summary>
+            参数单位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.ModifyUserParamCmd.ValueType">
+            <summary>
+            值类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.ModifyUserParamCmd.DefalutValue">
+            <summary>
+            默认值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.ModifyUserParamCmd.SetValue">
+            <summary>
+            设定值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserParams.ModifyUserParamCmd.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.UserRoles.CreateUserRolesCmd">
+            <summary>
+            创建用户-角色绑定关系
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.UserRoles.CreateUserRolesCmd.#ctor(System.Int64,System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            
+            </summary>
+            <param name="userId"></param>
+            <param name="roleIds"></param>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserRoles.CreateUserRolesCmd.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserRoles.CreateUserRolesCmd.RoleIds">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.UserRoles.DeleteUserRolesCmd">
+            <summary>
+            删除用户，清空其绑定关系
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.UserRoles.DeleteUserRolesCmd.#ctor">
+            <summary>
+            删除用户，清空其绑定关系
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.UserRoles.DeleteUserRolesCmd.#ctor(System.Int64)">
+            <summary>
+            删除用户，清空其绑定关系
+            </summary>
+            <param name="userId"></param>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.UserRoles.DeleteUserRolesCmd.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.User.CheckUserIdsCmd">
+            <summary>
+            检查用户id
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.User.CheckUserIdsCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.User.CheckUserIdsCmd.#ctor(System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            
+            </summary>
+            <param name="userIds"></param>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.User.CreateUserCmd">
+            <summary>
+            创建用户
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.User.CreateUserCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.CreateUserCmd.Account">
+            <summary>
+            用户账户
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.CreateUserCmd.Password">
+            <summary>
+            用户密码密文
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.CreateUserCmd.Name">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.CreateUserCmd.Mail">
+            <summary>
+            用户邮箱
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.CreateUserCmd.Phone">
+            <summary>
+            用户电话
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.CreateUserCmd.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.CreateUserCmd.ImageUrl">
+            <summary>
+            用户照片的url
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.CreateUserCmd.SignatureUrl">
+            <summary>
+            签名url
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.CreateUserCmd.DepartmenId">
+            <summary>
+            部门ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.CreateUserCmd.Language">
+            <summary>
+            用户系统语言标识
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.CreateUserCmd.RoleIds">
+            <summary>
+            分配给用户的角色列表
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.User.DeleteUserCmd">
+            <summary>
+            删除用户
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.User.DeleteUserCmd.#ctor">
+            <summary>
+            删除用户
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.User.DeleteUserCmd.#ctor(System.Int64)">
+            <summary>
+            删除用户
+            </summary>
+            <param name="userId"></param>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.DeleteUserCmd.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.User.ModifyPasswordCmd">
+            <summary>
+            修改密码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.ModifyPasswordCmd.OldPassword">
+            <summary>
+            旧密码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.ModifyPasswordCmd.NewPassword">
+            <summary>
+            新密码
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.User.ModifyUserCmd">
+            <summary>
+            修改用户信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.User.ModifyUserCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.ModifyUserCmd.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.ModifyUserCmd.Name">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.ModifyUserCmd.Mail">
+            <summary>
+            用户邮箱
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.ModifyUserCmd.Phone">
+            <summary>
+            用户电话
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.ModifyUserCmd.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.ModifyUserCmd.ImageUrl">
+            <summary>
+            用户照片的url
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.ModifyUserCmd.SignatureUrl">
+            <summary>
+            签名url
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.ModifyUserCmd.DepartmenId">
+            <summary>
+            部门ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.ModifyUserCmd.Language">
+            <summary>
+            用户系统语言标识
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.ModifyUserCmd.State">
+            <summary>
+            用户状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.ModifyUserCmd.RoleIds">
+            <summary>
+            分配角色
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Commands.User.ResetPasswordCmd">
+            <summary>
+            重置用户密码
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Commands.User.ResetPasswordCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.ResetPasswordCmd.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Commands.User.ResetPasswordCmd.Password">
+            <summary>
+            新密码
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Controllers.AuthController">
+            <summary>
+            UMS-授权中心
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.AuthController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.Controllers.AuthController},EES.Modules.Ums.Services.IAuthService)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="authService"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.AuthController.PcLoginAsync(EES.Modules.Ums.Dto.LoginParamDto)">
+            <summary>
+            Pc端登录
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.AuthController.MfsLoginAsync(EES.Modules.Ums.Dto.LoginParamDto)">
+            <summary>
+            MFS端登录
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.AuthController.PdaLoginAsync(EES.Modules.Ums.Dto.LoginParamDto)">
+            <summary>
+            pda端登录
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.AuthController.PseLoginAsync(EES.Modules.Ums.Dto.LoginParamDto)">
+            <summary>
+            pse端登录
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.AuthController.PadLoginAsync(EES.Modules.Ums.Dto.LoginParamDto)">
+            <summary>
+            pad端登录
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.AuthController.GetAuthAsync">
+            <summary>
+            获取登录用户的资源信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Controllers.DepartmentController">
+            <summary>
+            UMS-组织部门管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.DepartmentController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.Controllers.DepartmentController},EES.Modules.Ums.Services.IDepartmentService,MediatR.IMediator)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="departmentService"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.DepartmentController.CreateAsync(EES.Modules.Ums.Commands.Department.CreateDepartmentCmd)">
+            <summary>
+            创建组织部门
+            </summary>
+            <param name="cmd">组织部门参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.DepartmentController.ModifyAsync(EES.Modules.Ums.Commands.Department.ModifyDepartmentCmd)">
+            <summary>
+            修改组织部门信息
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.DepartmentController.DeleteAsync(EES.Modules.Ums.Commands.Department.DeleteDepartmentCmd)">
+            <summary>
+            删除部门
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.DepartmentController.GetDepartmentAsync(System.Int64)">
+            <summary>
+            获取部门详情
+            </summary>
+            <param name="id">部门id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.DepartmentController.GetDepartmentTreeAsync(System.Int64)">
+             <summary>
+            以树状结构返回指定组织部门以及其全部子部门信息
+             </summary>
+             <param name="rootId">根节点(部门)id，获取全部则写0</param>
+             <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Controllers.ResourceController">
+            <summary>
+            UMS-资源管理(菜单，功能权限，数据权限)
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.ResourceController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.Controllers.ResourceController},MediatR.IMediator,EES.Modules.Ums.Services.IResourceService)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+            <param name="resourceService"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.ResourceController.CreateMenuAsync(EES.Modules.Ums.Commands.Menu.CreateMenuCmd)">
+            <summary>
+            添加菜单资源
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.ResourceController.ModifyMenuAsync(EES.Modules.Ums.Commands.Menu.ModifyMenuCmd)">
+            <summary>
+            修改菜单资源信息
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.ResourceController.DeleteMenuAsync(EES.Modules.Ums.Commands.Menu.DeleteMenuCmd)">
+            <summary>
+            删除菜单资源
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.ResourceController.GetMenuAsync(System.Int64)">
+            <summary>
+            获取资源详情
+            </summary>
+            <param name="id">资源id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.ResourceController.GetMenuTreeAsync(EES.Infrastructure.Enums.MenuType,System.Int64)">
+            <summary>
+            以树状结构返回指定资源以及其全部子资源信息
+            </summary>
+            <param name="rootId">根节点(菜单)id，获取全部则写0</param>
+            <param name="menuType">菜单类型 1:PC  2:PDA</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.ResourceController.CreateFunctionAsync(EES.Modules.Ums.Commands.Funtion.CreateFuntionCmd)">
+            <summary>
+            创建功能权限
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.ResourceController.ModifyFunctionAsync(EES.Modules.Ums.Commands.Funtion.ModifyFunctionCmd)">
+            <summary>
+            修改功能权限数据
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.ResourceController.DeleteFunctionAsync(EES.Modules.Ums.Commands.Funtion.DeleteFunctionCmd)">
+            <summary>
+            删除功能权限
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.ResourceController.GetFunctionAsync(System.Int64)">
+            <summary>
+             获取功能权限资源详细信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.ResourceController.GetFunctionTreeAsync">
+            <summary>
+            获取功能权限资源树
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.ResourceController.CreateMaterialDataAsync(EES.Modules.Ums.Commands.Data.CreateMaterialDataCmd)">
+            <summary>
+            创建物料类型数据权限资源
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.ResourceController.ModifyMaterialDataAsync(EES.Modules.Ums.Commands.Data.ModifyMaterialDataCmd)">
+            <summary>
+            修改物料类型数据权限资源
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.ResourceController.DeleteMaterialDataAsync(EES.Modules.Ums.Commands.Data.DeleteMaterialDataCmd)">
+            <summary>
+            删除物料类型数据权限资源
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.ResourceController.GetDataAsync(System.Int64)">
+            <summary>
+            获取数据权限资源
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.ResourceController.GetDataTreeAsync">
+            <summary>
+            获取数据权限资源树
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Controllers.RoleController">
+            <summary>
+            UMS-角色管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.RoleController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.Controllers.RoleController},EES.Modules.Ums.Services.IRoleService,MediatR.IMediator)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="roleService"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.RoleController.CreateAsync(EES.Modules.Ums.Commands.Role.CreateRoleCmd)">
+            <summary>
+            创建角色
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.RoleController.ModifyAsync(EES.Modules.Ums.Commands.Role.ModifyRoleCmd)">
+            <summary>
+            修改角色信息
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.RoleController.DeleteAsync(EES.Modules.Ums.Commands.Role.DeleteRoleCmd)">
+            <summary>
+            删除角色
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.RoleController.GetDepartmentAsync(System.Int64)">
+            <summary>
+            获取角色详情
+            </summary>
+            <param name="id">角色id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.RoleController.GetUserListAsync(System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+             获取角色列表
+            </summary>
+            <param name="roleName">角色名关键字</param>
+            <param name="pageSize">每页数据大小</param>
+            <param name="pageIndex">页码</param>
+            <param name="isGetTotalCount">是否返回总数量</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Controllers.SystemParamController">
+            <summary>
+            UMS-系统参数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.SystemParamController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.Controllers.SystemParamController},EES.Modules.Ums.Services.IParamService,MediatR.IMediator)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="paramService"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.SystemParamController.CreateSystemParamAsync(EES.Modules.Ums.Commands.SystemParams.CreateSystemParamCmd)">
+            <summary>
+            创建系统参数
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.SystemParamController.ModifySystemParamAsync(EES.Modules.Ums.Commands.SystemParams.ModifySystemParamCmd)">
+            <summary>
+            修改系统参数
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.SystemParamController.DeleteSystemParamAsync(EES.Modules.Ums.Commands.SystemParams.DeleteSystemParamCmd)">
+            <summary>
+            删除系统参数
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.SystemParamController.GetSystemParamByIdAsync(System.Int64)">
+            <summary>
+            根据ID获取系统参数信息
+            </summary>
+            <param name="id">系统参数id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.SystemParamController.GetSystemParamAsync(EES.Infrastructure.Enums.SystemModule,System.String)">
+            <summary>
+            根据模块和编码获系统参数信息
+            </summary>
+            <param name="module">模块</param>
+            <param name="code">编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.SystemParamController.GetSystemParamsAsync(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            分页形式获取系统参数列表
+            </summary>
+            <param name="pageIndex">页码</param>
+            <param name="PageSize">每页的数量</param>
+            <param name="isGetTotalCount">是否返回总数量</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Controllers.TeamController">
+            <summary>
+            UMS-工作组管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.TeamController.#ctor(EES.Modules.Ums.Services.ITeamService,Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.Controllers.TeamController},MediatR.IMediator)">
+            <summary>
+            
+            </summary>
+            <param name="teamService"></param>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.TeamController.CreateAsync(EES.Modules.Ums.Commands.Team.CreateTeamCmd)">
+            <summary>
+            创建工作组
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.TeamController.ModifyAsync(EES.Modules.Ums.Commands.Team.ModifyTeamCmd)">
+            <summary>
+            修改工作组信息
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.TeamController.DeleteAsync(EES.Modules.Ums.Commands.Team.DeleteTeamCmd)">
+            <summary>
+            删除工作组
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.TeamController.GetTeamAsync(System.Int64)">
+            <summary>
+            查询工作组详情
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.TeamController.GetTeamListAsync(EES.Modules.Ums.Dto.TeamListQueryParams)">
+            <summary>
+            查询工作组列表
+            </summary>
+            <param name="queryParams"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Controllers.UserController">
+            <summary>
+            UMS-用户管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.UserController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.Controllers.UserController},MediatR.IMediator,EES.Modules.Ums.Services.IUserService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+            <param name="userService"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.UserController.GetUserAsync(System.Int64)">
+            <summary>
+            获取用户信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.UserController.GetUserListAsync(EES.Modules.Ums.Dto.UserListQueryParam)">
+            <summary>
+            获取用户列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.UserController.CreateUserAsync(EES.Modules.Ums.Commands.User.CreateUserCmd)">
+            <summary>
+            创建用户
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.UserController.ModifyPasswordAsync(EES.Modules.Ums.Commands.User.ModifyPasswordCmd)">
+            <summary>
+            修改密码
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.UserController.ModifyInformationAsync(EES.Modules.Ums.Commands.User.ModifyUserCmd)">
+            <summary>
+            修改用户信息
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.UserController.DeleteUserAsync(EES.Modules.Ums.Commands.User.DeleteUserCmd)">
+            <summary>
+            删除用户
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.UserController.ResetPasswordAsync(EES.Modules.Ums.Commands.User.ResetPasswordCmd)">
+            <summary>
+            重置密码
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Controllers.UserParamController">
+            <summary>
+            UMS-用户参数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.UserParamController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.Controllers.SystemParamController},EES.Modules.Ums.Services.IParamService,MediatR.IMediator)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="paramService"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.UserParamController.CreateUserParamAsync(EES.Modules.Ums.Commands.UserParams.CreateUserParamCmd)">
+            <summary>
+            创建用户参数
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.UserParamController.ModifySystemParamAsync(EES.Modules.Ums.Commands.UserParams.ModifyUserParamCmd)">
+            <summary>
+            修改用户参数
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.UserParamController.DeleteSystemParamAsync(EES.Modules.Ums.Commands.UserParams.DeleteUserParamCmd)">
+            <summary>
+            删除用户参数
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.UserParamController.GetUserParamAsync(System.Int64)">
+            <summary>
+            根据ID获取用户参数信息
+            </summary>
+            <param name="id">系统参数id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.UserParamController.GetUserParamAsync(System.String,System.String)">
+            <summary>
+            根据类型和编码获取当前用户的用户参数信息
+            </summary>
+            <param name="type"></param>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Controllers.UserParamController.GetUserParamsAsync(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            获取用户全部的用户参数信息
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="PageSize"></param>
+            <param name="isGetTotalCount">是否返回总数量</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Data.AutoMapperConfig">
+            <summary>
+            automapper配置
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Data.AutoMapperConfig.#ctor">
+            <summary>
+            配置
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Data.ModuleInitializer">
+            <summary>
+            模块初始化
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Data.ModuleInitializer.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            配置
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Data.ModuleInitializer.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置服务
+            </summary>
+            <param name="serviceCollection"></param>
+        </member>
+        <member name="T:EES.Modules.Ums.Data.UmsModelBuilder">
+            <summary>
+            UMS模块的模型构建
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Data.UmsModelBuilder.Build(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            模型绑定
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.TokenDto">
+            <summary>
+            jwt token 
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TokenDto.Authorization">
+            <summary>
+            授权的token
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.LoginParamDto">
+            <summary>
+            登录参数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.LoginParamDto.Account">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.LoginParamDto.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.DataDto">
+            <summary>
+            数据资源
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DataDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DataDto.Category">
+            <summary>
+            1 工厂车间  2：工厂仓库  3：物料类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DataDto.SubCategory">
+            <summary>
+            1工厂  11 车间   21 仓库   31物料类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DataDto.ObjectId">
+            <summary>
+            对应的数据id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DataDto.ObjectCode">
+            <summary>
+            对应数据的编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DataDto.ObjectName">
+            <summary>
+            数据显示名字
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DataDto.ParentId">
+            <summary>
+            所属上级的id。 对应到object_id。工厂的上级id为0，车间，仓库的上级id填写所属工厂的id。
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DataDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DataDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DataDto.UpdateTime">
+            <summary>
+            最后一次更新时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DataDto.UpdateUserName">
+            <summary>
+            最后一次更新用户的名称
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.ShortDataDto">
+            <summary>
+            数据权限资源简要模型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.ShortDataDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.ShortDataDto.Category">
+            <summary>
+            1 工厂  2：工厂仓库  3：物料类型  4车间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.ShortDataDto.ObjectId">
+            <summary>
+            对应的数据id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.ShortDataDto.ObjectCode">
+            <summary>
+            对应数据的编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.ShortDataDto.ObjectName">
+            <summary>
+            数据显示名字
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.ShortDataDto.ParentId">
+            <summary>
+            所属上级的id。 对应到object_id。工厂的上级id为0，车间，仓库的上级id填写所属工厂的id。
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.AllDataDto">
+            <summary>
+            所有的数据权限资源数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.AllDataDto.Factories">
+            <summary>
+            工厂车间数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.AllDataDto.Stores">
+            <summary>
+            仓库数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.AllDataDto.Materials">
+            <summary>
+            物料类型数据
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.DepartmentDto">
+            <summary>
+            部门信息
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DepartmentDto.Id">
+            <summary>
+            部门id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DepartmentDto.ParentId">
+            <summary>
+            上级部门ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DepartmentDto.ParentName">
+            <summary>
+            上级部门名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DepartmentDto.SortNumber">
+            <summary>
+            序号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DepartmentDto.Code">
+            <summary>
+            代码编码(通常由用户指定，以关联到其他系统)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DepartmentDto.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DepartmentDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DepartmentDto.ImageUrl">
+            <summary>
+            图标的url
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DepartmentDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DepartmentDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DepartmentDto.UpdateUserName">
+            <summary>
+            修改者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.DepartmentDto.UpdateTime">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.FunctionDto">
+            <summary>
+            功能数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.FunctionDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.FunctionDto.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.FunctionDto.Type">
+            <summary>
+            标识 1: 分类标识   2：功能
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.FunctionDto.Description">
+            <summary>
+            功能说明
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.FunctionDto.Identifier">
+            <summary>
+            功能权限标识符
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.FunctionDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.FunctionDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.FunctionDto.UpdateTime">
+            <summary>
+            最后一次更新时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.FunctionDto.UpdateUserName">
+            <summary>
+            最后一次更新用户的名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.FunctionDto.ParentId">
+            <summary>
+            上级id
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.FunctionTreeDto">
+            <summary>
+            功能权限资源树状结构
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.FunctionTreeDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.FunctionTreeDto.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.FunctionTreeDto.Type">
+            <summary>
+            标识 1: 分类标识   2：功能
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.FunctionTreeDto.Identifier">
+            <summary>
+            功能权限标识符
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.FunctionTreeDto.ParentId">
+            <summary>
+            上级id
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.MenuDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.MenuDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.MenuDto.Name">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.MenuDto.ParentId">
+            <summary>
+            上级菜单
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.MenuDto.SortNumber">
+            <summary>
+            同级别下显示排序
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.MenuDto.Route">
+            <summary>
+            菜单路由
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.MenuDto.Type">
+            <summary>
+            菜单类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.MenuDto.Category">
+            <summary>
+            菜单的类别(导航分类 or 具体的页面)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.MenuDto.Description">
+            <summary>
+            备注说明
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.MenuDto.Icon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.MenuDto.EnglishName">
+            <summary>
+            菜单的英文名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.MenuDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.MenuDto.CreateUserId">
+            <summary>
+            创建者Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.MenuDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.MenuDto.UpdateTime">
+            <summary>
+            最后一次更新时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.MenuDto.UpdateUserName">
+            <summary>
+            最后一次更新用户的名称
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.UserParamDto">
+            <summary>
+            用户参数模型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserParamDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserParamDto.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserParamDto.Type">
+            <summary>
+            参数类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserParamDto.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserParamDto.Code">
+            <summary>
+            参数编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserParamDto.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserParamDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserParamDto.Unit">
+            <summary>
+            参数单位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserParamDto.ValueType">
+            <summary>
+            值类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserParamDto.DefalutValue">
+            <summary>
+            默认值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserParamDto.SetValue">
+            <summary>
+            设定值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserParamDto.BeforeValue">
+            <summary>
+            修改前的值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserParamDto.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserParamDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserParamDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserParamDto.UpdateTime">
+            <summary>
+            最后一次更新时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserParamDto.UpdateUserName">
+            <summary>
+            最后一次更新用户的名称
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.SystemParamDto">
+            <summary>
+            系统参数模型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.SystemParamDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.SystemParamDto.Module">
+            <summary>
+            参数类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.SystemParamDto.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.SystemParamDto.Code">
+            <summary>
+            参数编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.SystemParamDto.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.SystemParamDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.SystemParamDto.DefalutValue">
+            <summary>
+            默认值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.SystemParamDto.SetValue">
+            <summary>
+            设定值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.SystemParamDto.BeforeValue">
+            <summary>
+            修改前的值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.SystemParamDto.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.SystemParamDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.SystemParamDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.SystemParamDto.UpdateTime">
+            <summary>
+            最后一次更新时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.SystemParamDto.UpdateUserName">
+            <summary>
+            最后一次更新用户的名称
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.ShortRoleInfoDto">
+            <summary>
+            角色模型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.ShortRoleInfoDto.Id">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.ShortRoleInfoDto.Name">
+            <summary>
+            角色名
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.ShortRoleInfoDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.RoleListDto">
+            <summary>
+            角色列表Dto
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.RoleListDto.Id">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.RoleListDto.Name">
+            <summary>
+            角色名
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.RoleListDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.RoleListDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.RoleListDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.RoleListDto.UpdateTime">
+            <summary>
+            最后一次更新时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.RoleListDto.UpdateUserName">
+            <summary>
+            最后一次更新用户的名称
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.RoleDto">
+            <summary>
+            角色详情Dto
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.RoleDto.Id">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.RoleDto.Name">
+            <summary>
+            角色名
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.RoleDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.RoleDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.RoleDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.RoleDto.UpdateTime">
+            <summary>
+            最后一次更新时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.RoleDto.UpdateUserName">
+            <summary>
+            最后一次更新用户的名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.RoleDto.PcMenus">
+            <summary>
+            角色的PC菜单权限列表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.RoleDto.PdaMenus">
+            <summary>
+            角色的Pda菜单权限列表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.RoleDto.MfsMenus">
+            <summary>
+            角色的Mfs菜单权限列表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.RoleDto.Functions">
+            <summary>
+            功能权限列表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.RoleDto.Datas">
+            <summary>
+            数据权限列表
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.TeamDto">
+            <summary>
+            工作组模型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamDto.Id">
+            <summary>
+            Ids
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamDto.Code">
+            <summary>
+            工作组编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamDto.Name">
+            <summary>
+            工作组名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamDto.Type">
+            <summary>
+            班组类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamDto.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamDto.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamDto.FactoryId">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamDto.AreaCode">
+            <summary>
+            工作区域编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamDto.AreaName">
+            <summary>
+            工作区域名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamDto.AreaId">
+            <summary>
+            工作区域id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamDto.UpdateTime">
+            <summary>
+            最后一次更新时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamDto.UpdateUserName">
+            <summary>
+            最后一次更新用户的名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamDto.Users">
+            <summary>
+            组员
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.TeamListDto">
+            <summary>
+            工作组列表数据模型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListDto.Id">
+            <summary>
+            Ids
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListDto.Code">
+            <summary>
+            工作组编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListDto.Name">
+            <summary>
+            工作组名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListDto.Type">
+            <summary>
+            班组类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListDto.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListDto.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListDto.FactoryId">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListDto.AreaCode">
+            <summary>
+            工作区域编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListDto.AreaName">
+            <summary>
+            工作区域名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListDto.AreaId">
+            <summary>
+            工作区域id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListDto.UpdateTime">
+            <summary>
+            最后一次更新时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListDto.UpdateUserName">
+            <summary>
+            最后一次更新用户的名称
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.TeamUserDto">
+            <summary>
+            工作组的用户模型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamUserDto.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamUserDto.Account">
+            <summary>
+            用户账户
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:EES.Modules.Ums.Dto.TeamUserDto.Name" -->
+        <member name="P:EES.Modules.Ums.Dto.TeamUserDto.DepartmentName">
+            <summary>
+            部门名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamUserDto.RoleNames">
+            <summary>
+            角色名(角色1,角色2)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamUserDto.State">
+            <summary>
+            用户状态
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.TeamListQueryParams">
+            <summary>
+            工作组列表查询参数模型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListQueryParams.FactoryIds">
+            <summary>
+            所属工厂
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListQueryParams.AreaCode">
+            <summary>
+            区域编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListQueryParams.TeamName">
+            <summary>
+            工作组名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListQueryParams.PageSize">
+            <summary>
+            每页数据量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListQueryParams.PageIndex">
+            <summary>
+            页码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.TeamListQueryParams.IsGetTotalCount">
+            <summary>
+            是否需要返回总数量
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.UserDto">
+            <summary>
+            用户信息
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserDto.Id">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserDto.Account">
+            <summary>
+            用户账户
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserDto.Name">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserDto.Mail">
+            <summary>
+            用户邮箱
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserDto.Phone">
+            <summary>
+            用户电话
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserDto.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserDto.ImageUrl">
+            <summary>
+            用户照片的url
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserDto.SignatureUrl">
+            <summary>
+            签名url
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserDto.DepartmenId">
+            <summary>
+            部门ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserDto.State">
+            <summary>
+            用户状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserDto.Roles">
+            <summary>
+            角色名(角色1,角色2,角色3)
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.UserListDto">
+            <summary>
+            用户列表信息
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserListDto.Id">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserListDto.Account">
+            <summary>
+            用户账户
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserListDto.Name">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserListDto.DepartmenId">
+            <summary>
+            部门ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserListDto.DepartmentName">
+            <summary>
+            部门名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserListDto.DepartmentCode">
+            <summary>
+            部门编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserListDto.State">
+            <summary>
+            用户状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserListDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserListDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserListDto.UpdateTime">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserListDto.UpdateUserName">
+            <summary>
+            修改者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserListDto.RoleNames">
+            <summary>
+            角色名(角色1,角色2,角色3)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserListDto.QRCode">
+            <summary>
+            二维码内容
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Dto.UserListQueryParam">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserListQueryParam.Account">
+            <summary>
+            用户账号关键字
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserListQueryParam.Name">
+            <summary>
+            用户名称关键字
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserListQueryParam.PageIndex">
+            <summary>
+            页码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserListQueryParam.PageSize">
+            <summary>
+            每页数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Dto.UserListQueryParam.IsGetTotalCount">
+            <summary>
+            是否包含总数量
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Entities.Data">
+            <summary>
+            数据权限
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Data.#ctor(EES.Modules.Ums.Enums.DataCategory,System.Int64,System.String,System.String,System.Int64,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="category"></param>
+            <param name="objectId"></param>
+            <param name="objectCode"></param>
+            <param name="objectName"></param>
+            <param name="parentId"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Data.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Data.Category">
+            <summary>
+            1工厂  2仓库  3 物料类型  4 车间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Data.ObjectId">
+            <summary>
+            对应的数据id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Data.ObjectCode">
+            <summary>
+            对应数据的编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Data.ObjectName">
+            <summary>
+            数据显示名字
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Data.ParentId">
+            <summary>
+            所属上级的id。 对应到object_id。工厂的上级id为0，车间，仓库的上级id填写所属工厂的id。
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Data.RoleDatas">
+            <summary>
+            数据和角色绑定关系
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Data.Modify(System.Int64,System.String,System.String,System.Int64,System.Int64,System.String)">
+            <summary>
+            数据修改
+            </summary>
+            <param name="objectId">对应的数据id</param>
+            <param name="objectCode">对应数据的编码</param>
+            <param name="objectName">数据显示名字</param>
+            <param name="parentId">所属上级的id。</param>
+            <param name="updateUserId">修改者id</param>
+            <param name="updateUserName">修改者名字</param>
+        </member>
+        <member name="T:EES.Modules.Ums.Entities.Department">
+            <summary>
+            部门信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Department.#ctor(System.Int64,System.Int32,System.String,System.String,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            实例化部门实体
+            </summary>
+            <param name="parentId">上级部门id，没有默认为0</param>
+            <param name="sortNumber">排序(同级别下)</param>
+            <param name="code">编码，代号</param>
+            <param name="name">部门名称</param>
+            <param name="description">描述</param>
+            <param name="imageUrl">部门图片</param>
+            <param name="createUserId">创建者id</param>
+            <param name="createUserName">创建者名称</param>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Department.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Department.ParentId">
+            <summary>
+            数据的父级ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Department.SortNumber">
+            <summary>
+            序号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Department.Code">
+            <summary>
+            代码编码(通常由用户指定，以关联到其他系统)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Department.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Department.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Department.ImageUrl">
+            <summary>
+            图标的url
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Department.Users">
+            <summary>
+            部门内用户集合
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Department.Modify(System.Int64,System.Int32,System.String,System.String,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            修改信息
+            </summary>
+            <param name="parentId">修改信息</param>
+            <param name="sortNumber">序号</param>
+            <param name="code">编码</param>
+            <param name="name">部门名称</param>
+            <param name="description">描述</param>
+            <param name="imageUrl">图片url</param>
+            <param name="updateUserId">修改者id</param>
+            <param name="createUserName">修改者名称</param>
+        </member>
+        <member name="T:EES.Modules.Ums.Entities.Function">
+            <summary>
+            功能资源表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Function.#ctor(System.String,EES.Infrastructure.Enums.FunctionType,System.Int64,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="type"></param>
+            <param name="parentId"></param>
+            <param name="description"></param>
+            <param name="identifier"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Function.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Function.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Function.Type">
+            <summary>
+            标识 1: 分类标识   2：功能
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Function.ParentId">
+            <summary>
+            父级id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Function.Description">
+            <summary>
+            功能说明
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Function.Identifier">
+            <summary>
+            功能权限标识符
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Function.Modify(System.String,EES.Infrastructure.Enums.FunctionType,System.Int64,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="type"></param>
+            <param name="parentId"></param>
+            <param name="description"></param>
+            <param name="identifier"></param>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="T:EES.Modules.Ums.Entities.Menu">
+            <summary>
+            系统菜单资源表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Menu.#ctor(System.String,System.Int64,System.Int32,System.String,EES.Infrastructure.Enums.MenuType,EES.Infrastructure.Enums.MenuCategory,System.String,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            系统菜单
+            </summary>
+            <param name="name">菜单名字</param>
+            <param name="parentId">上级菜单id</param>
+            <param name="sortNumber">排序</param>
+            <param name="route">路由</param>
+            <param name="type">菜单类型</param>
+            <param name="category"></param>
+            <param name="description">说明</param>
+            <param name="icon">图标</param>
+            <param name="englishName">菜单英文名称</param>
+            <param name="createUserId">创建者id</param>
+            <param name="createUserName">创建者名称</param>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Menu.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Menu.Name">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Menu.ParentId">
+            <summary>
+            上级菜单
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Menu.SortNumber">
+            <summary>
+            同级别下显示排序
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Menu.Route">
+            <summary>
+            菜单路由
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Menu.Type">
+            <summary>
+            菜单分类(Pc菜单 or Pda 菜单 or Mfs 菜单)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Menu.Category">
+            <summary>
+            菜单的类别(导航分类 or 具体的页面)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Menu.Description">
+            <summary>
+            备注说明
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Menu.Icon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Menu.EnglishName">
+            <summary>
+            菜单的英文名称
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Menu.Modify(System.String,System.Int64,System.Int32,System.String,System.String,System.String,System.String,EES.Infrastructure.Enums.MenuType,EES.Infrastructure.Enums.MenuCategory,System.Int64,System.String)">
+            <summary>
+            修改
+            </summary>
+            <param name="name"></param>
+            <param name="parentId"></param>
+            <param name="sortNumber"></param>
+            <param name="route"></param>
+            <param name="description"></param>
+            <param name="icon"></param>
+            <param name="englishName"></param>
+            <param name="type"></param>
+            <param name="category"></param>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="T:EES.Modules.Ums.Entities.Role">
+            <summary>
+            角色的对象集合
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Role.#ctor(System.String,System.String,System.Collections.Generic.IEnumerable{System.Int64},System.Collections.Generic.IEnumerable{System.Int64},System.Collections.Generic.IEnumerable{System.Int64},System.Collections.Generic.IEnumerable{System.Int64},System.Collections.Generic.IEnumerable{System.Int64},System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="description"></param>
+            <param name="dataIds"></param>
+            <param name="functionIds"></param>
+            <param name="pcMenuIds"></param>
+            <param name="pdaMenuIds"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Role.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Role.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Role.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Role.Users">
+            <summary>
+            用户集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Role.RoleDatas">
+            <summary>
+            角色数据权限
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Role.RoleFunctions">
+            <summary>
+            角色功能权限
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Role.RoleMenus">
+            <summary>
+            角色菜单权限
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Role.Modify(System.String,System.String,System.Collections.Generic.IEnumerable{System.Int64},System.Collections.Generic.IEnumerable{System.Int64},System.Collections.Generic.IEnumerable{System.Int64},System.Collections.Generic.IEnumerable{System.Int64},System.Collections.Generic.IEnumerable{System.Int64},System.Int64,System.String)">
+            <summary>
+            角色修改
+            </summary>
+            <param name="name"></param>
+            <param name="description"></param>
+            <param name="dataIds"></param>
+            <param name="functionIds"></param>
+            <param name="pcMenuIds"></param>
+            <param name="pdaMenuIds"></param>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Role.ExcuteDelete">
+            <summary>
+            执行删除操作
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Role.AddRoleDatas(System.Collections.Generic.IEnumerable{System.Int64},System.Int64,System.String)">
+            <summary>
+            添加角色数据权限
+            </summary>
+            <param name="dataIds"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Role.AddRoleFunctions(System.Collections.Generic.IEnumerable{System.Int64},System.Int64,System.String)">
+            <summary>
+            添加角色功能权限
+            </summary>
+            <param name="functionIds"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Role.AddRoleMenus(System.Collections.Generic.IEnumerable{System.Int64},System.Collections.Generic.IEnumerable{System.Int64},System.Collections.Generic.IEnumerable{System.Int64},System.Int64,System.String)">
+            <summary>
+            添加角色菜单权限
+            </summary>
+            <param name="pcMenuIds"></param>
+            <param name="pdaMenuIds"></param>
+            <param name="mfsMenuIds"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="T:EES.Modules.Ums.Entities.RoleDatas">
+            <summary>
+            角色数据权限
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.RoleDatas.#ctor(System.Int64,System.Int64,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="roleId"></param>
+            <param name="dataId"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.RoleDatas.RoleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.RoleDatas.DataId">
+            <summary>
+            数据权限id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.RoleDatas.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.RoleDatas.Role">
+            <summary>
+            角色
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.RoleDatas.GenerateRoleDatas(System.Int64,System.Collections.Generic.IEnumerable{System.Int64},System.Int64,System.String)">
+            <summary>
+            创建角色数据权限
+            </summary>
+            <param name="roleId">角色id</param>
+            <param name="dataIds">数据id集合</param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Entities.RoleFunctions">
+            <summary>
+            角色功能权限表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.RoleFunctions.#ctor(System.Int64,System.Int64,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="roleId"></param>
+            <param name="functionId"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.RoleFunctions.RoleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.RoleFunctions.FunctionId">
+            <summary>
+            功能id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.RoleFunctions.Role">
+            <summary>
+            角色
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.RoleFunctions.GenerateRoleFunctions(System.Int64,System.Collections.Generic.IEnumerable{System.Int64},System.Int64,System.String)">
+            <summary>
+            创建角色功能权限
+            </summary>
+            <param name="roleId">角色id</param>
+            <param name="functionIds">功能id集合</param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Entities.RoleMenus">
+            <summary>
+            角色菜单权限表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.RoleMenus.#ctor(System.Int64,System.Int64,EES.Infrastructure.Enums.MenuType,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="roleId"></param>
+            <param name="menuId"></param>
+            <param name="menuType"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.RoleMenus.RoleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.RoleMenus.MenuId">
+            <summary>
+            菜单id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.RoleMenus.MenuType">
+            <summary>
+            菜单类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.RoleMenus.Role">
+            <summary>
+            角色
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.RoleMenus.GenerateRoleMenus(System.Int64,System.Collections.Generic.IEnumerable{System.Int64},EES.Infrastructure.Enums.MenuType,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="roleId"></param>
+            <param name="menuIds"></param>
+            <param name="type"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Entities.SystemParam">
+            <summary>
+            系统参数信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.SystemParam.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.SystemParam.#ctor(EES.Infrastructure.Enums.SystemModule,System.Boolean,System.String,System.String,System.String,System.String,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="module"></param>
+            <param name="isEnable"></param>
+            <param name="code"></param>
+            <param name="name"></param>
+            <param name="description"></param>
+            <param name="defalutValue"></param>
+            <param name="setValue"></param>
+            <param name="remark"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.SystemParam.Module">
+            <summary>
+            参数类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.SystemParam.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.SystemParam.Code">
+            <summary>
+            参数编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.SystemParam.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.SystemParam.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.SystemParam.DefalutValue">
+            <summary>
+            默认值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.SystemParam.SetValue">
+            <summary>
+            设定值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.SystemParam.BeforeValue">
+            <summary>
+            修改前的值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.SystemParam.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.SystemParam.Modify(EES.Infrastructure.Enums.SystemModule,System.Boolean,System.String,System.String,System.String,System.String,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="module"></param>
+            <param name="isEnable"></param>
+            <param name="code"></param>
+            <param name="name"></param>
+            <param name="description"></param>
+            <param name="defalutValue"></param>
+            <param name="setValue"></param>
+            <param name="remark"></param>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="T:EES.Modules.Ums.Entities.Team">
+            <summary>
+            工作组信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Team.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Team.#ctor(System.String,System.String,EES.Modules.Ums.Enums.TeamType,System.String,System.String,System.Int64,System.String,System.String,System.Int64,System.String,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="code"></param>
+            <param name="name"></param>
+            <param name="type"></param>
+            <param name="factoryCode"></param>
+            <param name="factoryName"></param>
+            <param name="factoryId"></param>
+            <param name="areaCode"></param>
+            <param name="areaName"></param>
+            <param name="areaId"></param>
+            <param name="description"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Team.Code">
+            <summary>
+            工作组编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Team.Name">
+            <summary>
+            工作组名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Team.Type">
+            <summary>
+            班组类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Team.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Team.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Team.FactoryId">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Team.AreaCode">
+            <summary>
+            工作区域编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Team.AreaName">
+            <summary>
+            工作区域名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Team.AreaId">
+            <summary>
+            工作区域id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.Team.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Team.Modify(System.String,System.String,EES.Modules.Ums.Enums.TeamType,System.String,System.String,System.Int64,System.String,System.String,System.Int64,System.String,System.Int64,System.String)">
+            <summary>
+            修改信息
+            </summary>
+            <param name="code"></param>
+            <param name="name"></param>
+            <param name="type"></param>
+            <param name="factoryCode"></param>
+            <param name="factoryName"></param>
+            <param name="factoryId"></param>
+            <param name="areaCode"></param>
+            <param name="areaName"></param>
+            <param name="areaId"></param>
+            <param name="description"></param>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Team.ModifyFactoryInfo(System.String,System.String)">
+            <summary>
+            修改工厂名称或者编码
+            </summary>
+            <param name="factoryCode"></param>
+            <param name="factoryName"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.Team.ModifiyAreaInfo(System.String,System.String)">
+            <summary>
+            修改工作区域的名称或者编码
+            </summary>
+            <param name="areaCode"></param>
+            <param name="areaName"></param>
+        </member>
+        <member name="T:EES.Modules.Ums.Entities.TeamMembers">
+            <summary>
+            组员
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.TeamMembers.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.TeamMembers.#ctor(System.Int64,System.Int64,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="teamId"></param>
+            <param name="userId"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.TeamMembers.TeamId">
+            <summary>
+            所属班组id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.TeamMembers.UserId">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.TeamMembers.GenerateUserRoles(System.Int64,System.Collections.Generic.IEnumerable{System.Int64},System.Int64,System.String)">
+            <summary>
+            生成实体
+            </summary>
+            <param name="teamId"></param>
+            <param name="userIds"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Entities.User">
+            <summary>
+            用户信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.User.#ctor">
+            <summary>
+            构造函数
+            <see cref="!:https://learn.microsoft.com/zh-cn/ef/core/modeling/constructors"/>
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.User.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int64,System.Int64,System.String,EES.Infrastructure.Enums.Language)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="account">登录账号</param>
+            <param name="password">登录密码</param>
+            <param name="name">姓名</param>
+            <param name="mail">邮箱</param>
+            <param name="phone">联系电话</param>
+            <param name="remark">备注</param>
+            <param name="imageUrl">头像</param>
+            <param name="signatureUrl">签名</param>
+            <param name="departmenId">部门Id</param>
+            <param name="createUserId">创建者id</param>
+            <param name="createUserName">创建者名称</param>
+            <param name="language">默认语言</param>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.User.Account">
+            <summary>
+            用户账户
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.User.Password">
+            <summary>
+            用户密码密文
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.User.Salt">
+            <summary>
+            密码盐
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.User.Name">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.User.Mail">
+            <summary>
+            用户邮箱
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.User.Phone">
+            <summary>
+            用户电话
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.User.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.User.ImageUrl">
+            <summary>
+            用户照片的url
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.User.SignatureUrl">
+            <summary>
+            签名url
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.User.DepartmenId">
+            <summary>
+            部门ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.User.State">
+            <summary>
+            用户状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.User.Language">
+            <summary>
+            用户系统语言标识
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.User.Department">
+            <summary>
+            所属部门
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.User.Roles">
+            <summary>
+            用户角色集合
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.User.GenerateSalt">
+            <summary>
+            随机生成盐
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.User.GeneratePassword(System.String)">
+            <summary>
+            密码混淆
+            </summary>
+            <param name="userPassword">用户密码的32位MD5加密的密文</param>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.User.MixPassword(System.String)">
+            <summary>
+            混淆密码，得到加盐密文
+            </summary>
+            <param name="userPassword"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.User.VerifyPassword(System.String)">
+            <summary>
+            校验密码是否正确
+            </summary>
+            <param name="userPassword"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.User.ModifyPassword(System.String)">
+            <summary>
+            修改密码
+            </summary>
+            <param name="newPassword"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.User.ModifyBaseInfo(System.String,System.String,System.String,System.String,System.String,System.String,System.Int64,EES.Infrastructure.Enums.Language,EES.Infrastructure.Enums.UserState,System.Int64,System.String)">
+            <summary>
+            修改用户基础信息
+            </summary>
+            <param name="name">昵称</param>
+            <param name="mail">邮箱</param>
+            <param name="phone">电话</param>
+            <param name="remark">备注</param>
+            <param name="imageUrl">图像</param>
+            <param name="signatureUrl">签名</param>
+            <param name="departmenId">部门id</param>
+            <param name="language">语言</param>
+            <param name="state">员工状态</param>
+            <param name="updateUserId">修改者id</param>
+            <param name="updateUserName">修改者名称</param>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.User.IsAvailable">
+            <summary>
+            账号是否是可使用的
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.User.ResetPassword(System.String,System.Int64,System.String)">
+            <summary>
+            重置密码
+            </summary>
+            <param name="newPassword"></param>
+            <param name="updateUserId"></param>
+            <param name="UpdateUserName"></param>
+        </member>
+        <member name="T:EES.Modules.Ums.Entities.UserParam">
+            <summary>
+            用户参数信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.UserParam.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.UserParam.#ctor(System.Int64,System.String,System.Boolean,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="userId"></param>
+            <param name="type"></param>
+            <param name="isEnable"></param>
+            <param name="code"></param>
+            <param name="name"></param>
+            <param name="description"></param>
+            <param name="unit"></param>
+            <param name="valueType"></param>
+            <param name="defalutValue"></param>
+            <param name="setValue"></param>
+            <param name="remark"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.UserParam.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.UserParam.Type">
+            <summary>
+            参数类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.UserParam.IsEnable">
+            <summary>
+            是否启用
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.UserParam.Code">
+            <summary>
+            参数编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.UserParam.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.UserParam.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.UserParam.Unit">
+            <summary>
+            参数单位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.UserParam.ValueType">
+            <summary>
+            值类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.UserParam.DefalutValue">
+            <summary>
+            默认值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.UserParam.SetValue">
+            <summary>
+            设定值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.UserParam.BeforeValue">
+            <summary>
+            修改前的值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.UserParam.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.UserParam.Modify(System.String,System.Boolean,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+            <param name="isEnable"></param>
+            <param name="code"></param>
+            <param name="name"></param>
+            <param name="description"></param>
+            <param name="unit"></param>
+            <param name="valueType"></param>
+            <param name="defalutValue"></param>
+            <param name="setValue"></param>
+            <param name="remark"></param>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="T:EES.Modules.Ums.Entities.UserRoles">
+            <summary>
+            用户 - 角色关系表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.UserRoles.#ctor(System.Int64,System.Int64,System.Int64,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="userId">用户id</param>
+            <param name="roleId">角色id</param>
+            <param name="createUserId">创建者id</param>
+            <param name="createUserName">创建这名字</param>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.UserRoles.UserId">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.UserRoles.RoleId">
+            <summary>
+            角色id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.UserRoles.User">
+            <summary>
+            用户
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ums.Entities.UserRoles.Role">
+            <summary>
+            角色
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Entities.UserRoles.GenerateUserRoles(System.Int64,System.Collections.Generic.IEnumerable{System.Int64},System.Int64,System.String)">
+            <summary>
+            生成实体
+            </summary>
+            <param name="userId"></param>
+            <param name="roleIds"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Enums.DataCategory">
+            <summary>
+            数据大类
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Ums.Enums.DataCategory.工厂">
+            <summary>
+            工厂
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Ums.Enums.DataCategory.仓库">
+            <summary>
+            仓库数据
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Ums.Enums.DataCategory.物料类型">
+            <summary>
+            物料类型
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Ums.Enums.DataCategory.车间">
+            <summary>
+            车间
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Enums.DataSubCategory">
+            <summary>
+            数据子类
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Ums.Enums.DataSubCategory.工厂">
+            <summary>
+            工厂
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Ums.Enums.DataSubCategory.车间">
+            <summary>
+            车间
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Ums.Enums.DataSubCategory.仓库">
+            <summary>
+            仓库
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Ums.Enums.DataSubCategory.物料类型">
+            <summary>
+            物料类型
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.Enums.TeamType">
+            <summary>
+            工作组类型
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Ums.Enums.TeamType.车间">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Ums.Enums.TeamType.仓库">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Ums.Enums.TeamType.质量">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:EES.Modules.Ums.Enums.TeamType.其他">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ums.EventHandlers.DataEventHandler">
+            <summary>
+            权限数据事件处理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.EventHandlers.DataEventHandler.#ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.EventHandlers.DataEventHandler},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            权限数据事件处理
+            </summary>
+            <param name="provider"></param>
+            <param name="logger"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.EventHandlers.DataEventHandler.Handle(EES.Modules.Share.Events.FactoryModifiedEvent,System.Threading.CancellationToken)">
+            <summary>
+            工厂数据修改事件
+            </summary>
+            <param name="notification"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.EventHandlers.DataEventHandler.Handle(EES.Modules.Share.Events.FactoryDeletedEvent,System.Threading.CancellationToken)">
+            <summary>
+            工厂删除事件
+            </summary>
+            <param name="notification"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.EventHandlers.DataEventHandler.Handle(EES.Modules.Share.Events.StoreDeletedEvent,System.Threading.CancellationToken)">
+            <summary>
+            仓库删除事件
+            </summary>
+            <param name="notification"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.EventHandlers.DataEventHandler.Handle(EES.Modules.Share.Events.StoreModifiedEvent,System.Threading.CancellationToken)">
+            <summary>
+            仓库修改事件
+            </summary>
+            <param name="notification"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.EventHandlers.DataEventHandler.Handle(EES.Modules.Share.Events.WorkShopDeletedEvent,System.Threading.CancellationToken)">
+            <summary>
+            车间删除事件
+            </summary>
+            <param name="notification"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.EventHandlers.DataEventHandler.Handle(EES.Modules.Share.Events.WorkShopModifiedEvent,System.Threading.CancellationToken)">
+            <summary>
+            车间信息修改事件
+            </summary>
+            <param name="notification"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:EES.Modules.Ums.EventHandlers.TeamEventHandler">
+            <summary>
+            工作组的事件处理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.EventHandlers.TeamEventHandler.#ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.EventHandlers.TeamEventHandler},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="provider"></param>
+            <param name="logger"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.EventHandlers.TeamEventHandler.Handle(EES.Modules.Share.Events.FactoryModifiedEvent,System.Threading.CancellationToken)">
+            <summary>
+            修改工作组的工厂数据
+            </summary>
+            <param name="notification"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.EventHandlers.TeamEventHandler.Handle(EES.Modules.Share.Events.StoreModifiedEvent,System.Threading.CancellationToken)">
+            <summary>
+            修改工作组内的车间信息
+            </summary>
+            <param name="notification"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.EventHandlers.TeamEventHandler.Handle(EES.Modules.Share.Events.WorkShopModifiedEvent,System.Threading.CancellationToken)">
+            <summary>
+            修改工作组的车间信息
+            </summary>
+            <param name="notification"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.EventHandlers.UserEventHandler">
+            <summary>
+            用户事件处理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.EventHandlers.UserEventHandler.#ctor(FreeRedis.RedisClient,Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.EventHandlers.UserEventHandler})">
+            <summary>
+            
+            </summary>
+            <param name="redisClient"></param>
+            <param name="logger"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.EventHandlers.UserEventHandler.Handle(EES.Modules.Share.Events.AccountDisabledEvent,System.Threading.CancellationToken)">
+            <summary>
+            用户封禁处理
+            </summary>
+            <param name="notification"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:EES.Modules.Ums.Services.AuthService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.AuthService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.User},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Role},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Menu},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Data},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Function},Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.Services.AuthService},FreeRedis.RedisClient,AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="userRepository"></param>
+            <param name="roleRepository"></param>
+            <param name="menuRepository"></param>
+            <param name="dataRepository"></param>
+            <param name="functionRepository"></param>
+            <param name="logger"></param>
+            <param name="redisClient"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.AuthService.GetAuthAsync">
+            <summary>
+            获取权限
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.AuthService.LoginAsync(System.String,System.String,System.String)">
+            <summary>
+            登录
+            </summary>
+            <param name="account"></param>
+            <param name="password"></param>
+            <param name="platform"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.AuthService.GetUserAuth(System.Collections.Generic.IEnumerable{System.Int64},EES.Infrastructure.Auth.AuthInfo@)">
+            <summary>
+            获取用户已被授权的资源
+            </summary>
+            <param name="roleIds"></param>
+            <param name="auth"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.AuthService.GetAuthedMenus(System.Collections.Generic.IEnumerable{System.Int64},EES.Infrastructure.Auth.AuthInfo@)">
+            <summary>
+            获取授权的菜单资源
+            </summary>
+            <param name="authedMenuIds"></param>
+            <param name="auth"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.AuthService.GetAuthedDatas(System.Collections.Generic.IEnumerable{System.Int64},EES.Infrastructure.Auth.AuthInfo@)">
+            <summary>
+            获取授权的数据资源
+            </summary>
+            <param name="authedDataIds"></param>
+            <param name="auth"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.AuthService.GetAuthedFunctions(System.Collections.Generic.IEnumerable{System.Int64},EES.Infrastructure.Auth.AuthInfo@)">
+            <summary>
+            获取授权的功能资源
+            </summary>
+            <param name="authedFunctionIds"></param>
+            <param name="auth"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.AuthService.LoginPwdAsync(System.String,System.String,System.String)">
+            <summary>
+            加密登录
+            </summary>
+            <param name="account"></param>
+            <param name="password"></param>
+            <param name="platform"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Services.DepartmentService">
+            <summary>
+            部门查询服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.DepartmentService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Department},Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.Services.DepartmentService},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="departmentRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.DepartmentService.GetDepartmentAsync(System.Int64)">
+            <summary>
+            查询部门详细信息
+            </summary>
+            <param name="departmentId">组织部门id</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.DepartmentService.GetDepartmentTreeAsync(System.Int64)">
+            <summary>
+            以树状结构返回指定组织部门以及其全部子部门信息
+            </summary>
+            <param name="rootId">根节点(部门)id，获取全部则写0</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Services.IAuthService">
+            <summary>
+            授权服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IAuthService.LoginAsync(System.String,System.String,System.String)">
+            <summary>
+            用户登录
+            </summary>
+            <param name="account">用户账号</param>
+            <param name="password">密码</param>
+            <param name="platform">平台</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IAuthService.LoginPwdAsync(System.String,System.String,System.String)">
+            <summary>
+            用户登录加密
+            </summary>
+            <param name="account">用户账号</param>
+            <param name="password">密码</param>
+            <param name="platform">平台</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IAuthService.GetAuthAsync">
+            <summary>
+            获取当前用户的资源
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Services.IDepartmentService">
+            <summary>
+            组织部门查询接口
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IDepartmentService.GetDepartmentAsync(System.Int64)">
+            <summary>
+            获取部门信息
+            </summary>
+            <param name="departmentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IDepartmentService.GetDepartmentTreeAsync(System.Int64)">
+            <summary>
+            以树状结构返回指定组织部门以及其全部子部门信息
+            </summary>
+            <param name="rootId">部门Id</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Services.IParamService">
+            <summary>
+            系统参数和用户参数查询接口
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IParamService.GetUserParamAsync(System.Int64)">
+            <summary>
+            根据ID获取当前用户的用户参数信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IParamService.GetUserParamAsync(System.String,System.String)">
+            <summary>
+            根据类型和编码获取当前用户的用户参数信息
+            </summary>
+            <param name="type"></param>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IParamService.GetUserParamsAsync(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            获取用户全部的用户参数信息
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="PageSize"></param>
+            <param name="isGetTotalCount">是否返回总数量的信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IParamService.GetSystemParamAsync(System.Int64)">
+            <summary>
+            根据ID获取系统参数信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IParamService.GetSystemParamAsync(EES.Infrastructure.Enums.SystemModule,System.String)">
+            <summary>
+            根据模块和编码获系统参数信息
+            </summary>
+            <param name="module"></param>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IParamService.GetSystemParamsAsync(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            获取全部的系统参数(分页)
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="PageSize"></param>
+            <param name="isGetTotalCount">是否返回总数量的信息</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Services.IResourceService">
+            <summary>
+            权限资源查询服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IResourceService.GetMenuAsync(System.Int64)">
+            <summary>
+            获取菜单详细信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IResourceService.GetMenuTreeAsync(EES.Infrastructure.Enums.MenuType,System.Int64)">
+            <summary>
+            以树状结构返回指定资源以及其全部子资源信息
+            </summary>
+            <param name="menuType"></param>
+            <param name="rootId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IResourceService.GetFunctionAsync(System.Int64)">
+            <summary>
+            获取功能权限资源详细信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IResourceService.GetFunctionTreeAsync">
+            <summary>
+            获取功能权限资源树
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IResourceService.GetDataAsync(System.Int64)">
+            <summary>
+            获取数据权限资源
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IResourceService.GetDataTreeAsync">
+            <summary>
+            获取功能权限资源树
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Services.IRoleService">
+            <summary>
+            角色查询服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IRoleService.GetRoleAsync(System.Int64)">
+            <summary>
+            获取角色详细信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IRoleService.GetRolesAsync(System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            分页获取角色列表
+            </summary>
+            <param name="roleName"></param>
+            <param name="pageSize"></param>
+            <param name="pageIndex"></param>
+            <param name="isGetTotalCount"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Services.ITeamService">
+            <summary>
+            工作组查询服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.ITeamService.GetTeamAsync(System.Int64)">
+            <summary>
+            查询工作组详细数据
+            </summary>
+            <param name="id">工作组id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.ITeamService.GetTeamsAsync(EES.Modules.Ums.Dto.TeamListQueryParams)">
+            <summary>
+            工作组列表查询
+            </summary>
+            <param name="queryParams">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Services.IUserService">
+            <summary>
+            用户服务接口
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IUserService.GetUserAsync(System.Int64)">
+            <summary>
+            获取用户信息
+            </summary>
+            <param name="userId">用户id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.IUserService.GetUsersAsync(EES.Modules.Ums.Dto.UserListQueryParam)">
+            <summary>
+            用户列表查询
+            </summary>
+            <param name="queryParam"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Services.ParamService">
+            <summary>
+            系统参数和用户参数查询服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.ParamService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.UserParam},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.SystemParam},Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.Services.ParamService},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="userParamRepository"></param>
+            <param name="systemParamRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.ParamService.GetSystemParamAsync(System.Int64)">
+            <summary>
+            根据ID获取系统参数信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.ParamService.GetSystemParamAsync(EES.Infrastructure.Enums.SystemModule,System.String)">
+            <summary>
+            根据模块和编码获系统参数信息
+            </summary>
+            <param name="module"></param>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.ParamService.GetSystemParamsAsync(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            获取全部的系统参数(分页)
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="PageSize"></param>
+            <param name="isGetTotalCount">是否返回总数量的信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.ParamService.GetUserParamAsync(System.Int64)">
+            <summary>
+            根据ID获取当前用户的用户参数信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.ParamService.GetUserParamAsync(System.String,System.String)">
+            <summary>
+            根据类型和编码获取当前用户的用户参数信息
+            </summary>
+            <param name="type"></param>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.ParamService.GetUserParamsAsync(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            获取用户全部的用户参数信息
+            </summary>
+            <param name="pageIndex"></param>
+            <param name="PageSize"></param>
+            <param name="isGetTotalCount"></param>
+            <returns></returns>    
+        </member>
+        <member name="T:EES.Modules.Ums.Services.ResourceService">
+            <summary>
+            资源服务(菜单，数据权限资源，功能权限资源)
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.ResourceService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Menu},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Function},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Data},Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.Services.ResourceService},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="menuRepository"></param>
+            <param name="functionRepository"></param>
+            <param name="dataRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.ResourceService.GetDataAsync(System.Int64)">
+            <summary>
+            获取数据权限资源
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.ResourceService.GetDataTreeAsync">
+            <summary>
+            获取功能权限资源树
+            </summary>
+            <returns></returns>        
+        </member>
+        <member name="M:EES.Modules.Ums.Services.ResourceService.GetFunctionAsync(System.Int64)">
+            <summary>
+            获取功能权限资源详细信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.ResourceService.GetFunctionTreeAsync">
+            <summary>
+            获取功能权限资源树
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.ResourceService.GetMenuAsync(System.Int64)">
+            <summary>
+            获取菜单详细信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.ResourceService.GetMenuTreeAsync(EES.Infrastructure.Enums.MenuType,System.Int64)">
+            <summary>
+            以树状结构返回指定资源以及其全部子资源信息
+            </summary>
+            <param name="menuType"></param>
+            <param name="rootId"></param>
+            <returns></returns>f
+        </member>
+        <member name="T:EES.Modules.Ums.Services.RoleService">
+            <summary>
+            角色查询服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.RoleService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Role},Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.Services.RoleService},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Menu},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Data},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Function},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="roleRepository"></param>
+            <param name="logger"></param>
+            <param name="menuRepository"></param>
+            <param name="dataRepository"></param>
+            <param name="functionRepository"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.RoleService.GetRoleAsync(System.Int64)">
+            <summary>
+            查询角色详细信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.RoleService.GetRolesAsync(System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            获取角色列表
+            </summary>
+            <param name="roleName"></param>
+            <param name="pageSize"></param>
+            <param name="pageIndex"></param>
+            <param name="isGetTotalCount"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Services.SystemParamsService">
+            <summary>
+            系统参数服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.SystemParamsService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.SystemParam},Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.Services.ParamService},AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="systemParamRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.SystemParamsService.GetSystemParamModelAsync(EES.Infrastructure.Enums.SystemModule,System.String)">
+            <summary>
+            查询模块下特定的配置信息
+            </summary>
+            <param name="module">模块</param>
+            <param name="code">编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.SystemParamsService.GetSystemParamModelsAsync(EES.Infrastructure.Enums.SystemModule,System.Boolean)">
+            <summary>
+            获取模块下的全部配置
+            </summary>
+            <param name="module">模块</param>
+            <param name="isIncludeDisabled">是否包含已经被禁用的</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Services.TeamService">
+            <summary>
+            工作组服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.TeamService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Team},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.User},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.TeamMembers},AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.Services.TeamService},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="teamRepository"></param>
+            <param name="userRepository"></param>
+            <param name="teamMembersRepository"></param>
+            <param name="mapper"></param>
+            <param name="logger"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.TeamService.GetTeamAsync(System.Int64)">
+            <summary>
+            查询工作组详细数据
+            </summary>
+            <param name="id">工作组id</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.TeamService.GetTeamsAsync(EES.Modules.Ums.Dto.TeamListQueryParams)">
+            <summary>
+            
+            </summary>
+            <param name="queryParams"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ums.Services.UserService">
+            <summary>
+            用户服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.UserService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.User},Microsoft.Extensions.Logging.ILogger{EES.Modules.Ums.Services.UserService},AutoMapper.IMapper,EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Department},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.Role},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Ums.Entities.UserRoles},EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            
+            </summary>
+            <param name="userRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+            <param name="departmenRepository"></param>
+            <param name="roleRepository"></param>
+            <param name="userRolesRepository"></param>
+            <param name="handler"></param>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.UserService.GetUserAsync(System.Int64)">
+            <summary>
+            获取用户信息
+            </summary>
+            <param name="userId">用户id</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ums.Services.UserService.GetUsersAsync(EES.Modules.Ums.Dto.UserListQueryParam)">
+            <summary>
+            获取用户列表
+            </summary>
+            <param name="queryParam"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,884 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EES.Modules.Btr</name>
+    </assembly>
+    <members>
+        <member name="T:EES.Modules.Btr.CommandHandlers.ReportReviewRecordCommandHandler">
+            <summary>
+            报表审核记录
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Btr.CommandHandlers.ReportReviewRecordCommandHandler.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Btr.Entities.ReportReviewRecord},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="reportReviewRecordRepository"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Btr.CommandHandlers.ReportReviewRecordCommandHandler.Handle(EES.Modules.Btr.Commands.CreateReportReviewRecordCmd,System.Threading.CancellationToken)">
+            <summary>
+            创建报表审核记录
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Btr.CommandHandlers.ReportReviewRecordCommandHandler.Handle(EES.Modules.Btr.Commands.ModifyReportReviewRecordCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改报表审核记录
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Btr.CommandHandlers.ReportReviewRecordCommandHandler.Handle(EES.Modules.Btr.Commands.AuditReportReviewRecordCmd,System.Threading.CancellationToken)">
+            <summary>
+            报表审核
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Btr.CommandHandlers.ReportReviewRecordCommandHandler.Handle(EES.Modules.Btr.Commands.CancelAuditReportReviewRecordCmd,System.Threading.CancellationToken)">
+            <summary>
+             报表反审核
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Btr.CommandHandlers.ReportReviewRecordCommandHandler.Handle(EES.Modules.Btr.Commands.DeleteReportReviewRecordCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除报表审核记录
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:EES.Modules.Btr.Commands.AuditReportReviewRecordCmd">
+            <summary>
+            审核报表记录
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Btr.Commands.AuditReportReviewRecordCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.AuditReportReviewRecordCmd.Id">
+            <summary>
+            审核Id
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Btr.Commands.CancelAuditReportReviewRecordCmd">
+            <summary>
+            反审报表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Btr.Commands.CancelAuditReportReviewRecordCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.CancelAuditReportReviewRecordCmd.Id">
+            <summary>
+            审核Id
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Btr.Commands.CreateReportReviewRecordCmd">
+            <summary>
+            创建报表审核记录
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Btr.Commands.CreateReportReviewRecordCmd.#ctor">
+            <summary>
+            创建报表审核记录构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.CreateReportReviewRecordCmd.ReportName">
+            <summary>
+            报表名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.CreateReportReviewRecordCmd.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.CreateReportReviewRecordCmd.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.CreateReportReviewRecordCmd.MaterialBatch">
+            <summary>
+            物料批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.CreateReportReviewRecordCmd.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.CreateReportReviewRecordCmd.FactoryId">
+            <summary>
+            工厂ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.CreateReportReviewRecordCmd.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.CreateReportReviewRecordCmd.FileName">
+            <summary>
+            文件地址
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Btr.Commands.DeleteReportReviewRecordCmd">
+            <summary>
+            审核报表删除
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Btr.Commands.DeleteReportReviewRecordCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.DeleteReportReviewRecordCmd.Id">
+            <summary>
+            审核Id
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Btr.Commands.ModifyReportReviewRecordCmd">
+            <summary>
+            修改报表审核信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Btr.Commands.ModifyReportReviewRecordCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.ModifyReportReviewRecordCmd.ID">
+            <summary>
+            数据唯一id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.ModifyReportReviewRecordCmd.ReportName">
+            <summary>
+            报表名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.ModifyReportReviewRecordCmd.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.ModifyReportReviewRecordCmd.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.ModifyReportReviewRecordCmd.MaterialBatch">
+            <summary>
+            物料批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.ModifyReportReviewRecordCmd.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.ModifyReportReviewRecordCmd.FactoryId">
+            <summary>
+            工厂ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.ModifyReportReviewRecordCmd.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Commands.ModifyReportReviewRecordCmd.FileName">
+            <summary>
+            文件地址
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Btr.Controllers.BatchTraceabilityController">
+            <summary>
+            批次追溯
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Btr.Controllers.BatchTraceabilityController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Btr.Controllers.BatchTraceabilityController},EES.Modules.Btr.Services.IBatchTraceabilityService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+            <param name="batchTraceabilityService"></param>
+        </member>
+        <member name="M:EES.Modules.Btr.Controllers.BatchTraceabilityController.GetForwardTankTranceabilitysAsync(EES.Modules.Btr.Dto.ForwardBatchTracingQueryParamDto)">
+            <summary>
+            储罐追溯
+            </summary>
+            <param name="paramDto">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Btr.Controllers.BatchTraceabilityController.GetForwardBatchTranceabilitysAsync(EES.Modules.Btr.Dto.ForwardBatchTracingQueryParamDto)">
+            <summary>
+            正向追溯
+            </summary>
+            <param name="paramDto">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Btr.Controllers.BatchTraceabilityController.GetReverseTracingAsync(EES.Modules.Btr.Dto.ForwardBatchTracingQueryParamDto)">
+            <summary>
+            反向跟踪
+            </summary>
+            <param name="paramDto">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Btr.Controllers.BatchTraceabilityReportController">
+            <summary>
+            报表审核
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Btr.Controllers.BatchTraceabilityReportController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Btr.Controllers.BatchTraceabilityReportController},EES.Modules.Btr.Services.IBatchTraceabilityReportService,MediatR.IMediator)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+            <param name="batchTraceabilityReportService"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:EES.Modules.Btr.Controllers.BatchTraceabilityReportController.GetReportReviewRecordsAsync(EES.Modules.Btr.Dto.ReportReviewRecordQueryParamDto)">
+            <summary>
+            查询报表审核记录
+            </summary>
+            <param name="paramDto">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Btr.Controllers.BatchTraceabilityReportController.CreateReportReviewRecordAsync(EES.Modules.Btr.Commands.CreateReportReviewRecordCmd)">
+            <summary>
+            创建报表审核记录
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Btr.Controllers.BatchTraceabilityReportController.ModifyReportReviewRecordAsync(EES.Modules.Btr.Commands.ModifyReportReviewRecordCmd)">
+            <summary>
+            修改报表审核记录
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Btr.Controllers.BatchTraceabilityReportController.AuditReportReviewRecordAsync(EES.Modules.Btr.Commands.AuditReportReviewRecordCmd)">
+            <summary>
+            审核报表审核记录
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Btr.Controllers.BatchTraceabilityReportController.CancelAuditReportReviewRecordAsync(EES.Modules.Btr.Commands.CancelAuditReportReviewRecordCmd)">
+            <summary>
+            反审报表审核记录
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Btr.Controllers.BatchTraceabilityReportController.DeleteReportReviewRecordAsync(EES.Modules.Btr.Commands.CancelAuditReportReviewRecordCmd)">
+            <summary>
+            删除报表审核记录
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Btr.Data.AutoMapperConfig">
+            <summary>
+            automapper配置
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Btr.Data.AutoMapperConfig.#ctor">
+            <summary>
+            配置
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Btr.Data.BtrModelBuilder">
+            <summary>
+            称量模块的模型构建
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Btr.Data.BtrModelBuilder.Build(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            模型绑定
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+        <member name="T:EES.Modules.Btr.Data.ModuleInitializer">
+            <summary>
+            模块初始化
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Btr.Data.ModuleInitializer.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            配置
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="M:EES.Modules.Btr.Data.ModuleInitializer.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置服务
+            </summary>
+            <param name="serviceCollection"></param>
+        </member>
+        <member name="T:EES.Modules.Btr.Dto.ForwardBatchTraceabilityListDto">
+            <summary>
+            正向追溯返回列表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ForwardBatchTraceabilityListDto.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ForwardBatchTraceabilityListDto.BatchId">
+            <summary>
+            批次工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ForwardBatchTraceabilityListDto.OrderNum">
+            <summary>
+            生产单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ForwardBatchTraceabilityListDto.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ForwardBatchTraceabilityListDto.MaterialBatch">
+            <summary>
+            物料批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ForwardBatchTraceabilityListDto.Quantity">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ForwardBatchTraceabilityListDto.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ForwardBatchTraceabilityListDto.MaterialType">
+            <summary>
+            物料类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ForwardBatchTraceabilityListDto.TrType">
+            <summary>
+            工艺类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ForwardBatchTraceabilityListDto.Childs">
+            <summary>
+            子项数据
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Btr.Dto.ForwardBatchTracingQueryParamDto">
+            <summary>
+            追溯查询条件
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ForwardBatchTracingQueryParamDto.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ForwardBatchTracingQueryParamDto.FactoryId">
+            <summary>
+            工厂ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ForwardBatchTracingQueryParamDto.BatchNum">
+            <summary>
+            批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ForwardBatchTracingQueryParamDto.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ForwardBatchTracingQueryParamDto.MaterialId">
+            <summary>
+            物料ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ForwardBatchTracingQueryParamDto.TankCode">
+            <summary>
+            储罐编码(储罐追溯查询时填写)
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Btr.Dto.ReportReviewRecordDto">
+            <summary>
+            报表审核DTO
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.ReportName">
+            <summary>
+            报表名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.AuditState">
+            <summary>
+            审核状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.AuditTime">
+            <summary>
+            审核时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.AuditorName">
+            <summary>
+            审核人名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.AuditorId">
+            <summary>
+            审核ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.MaterialBatch">
+            <summary>
+            物料批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.FactoryId">
+            <summary>
+            工厂ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.CancelAuditTime">
+            <summary>
+            最后反审时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.CancelAuditorName">
+            <summary>
+            最后反审人员
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.CancelAuditorId">
+            <summary>
+            最后反审人ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.FileName">
+            <summary>
+            文件地址
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.CreateUserId">
+            <summary>
+            创建者Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.UpdateTime">
+            <summary>
+            最后一次更新时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.UpdateUserId">
+            <summary>
+            最后一次更新数据的用户Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordDto.UpdateUserName">
+            <summary>
+            最后一次更新用户的名称
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Btr.Dto.ReportReviewRecordQueryParamDto">
+            <summary>
+            报表审核记录查询参数DTO
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordQueryParamDto.strDate">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordQueryParamDto.endDate">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordQueryParamDto.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordQueryParamDto.FactoryId">
+            <summary>
+            工厂ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordQueryParamDto.BatchNum">
+            <summary>
+            批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordQueryParamDto.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordQueryParamDto.ReportName">
+            <summary>
+            报表名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordQueryParamDto.AuditState">
+            <summary>
+            审核状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordQueryParamDto.PageSize">
+             <summary>
+            每页大小(10-100)
+             </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordQueryParamDto.PageIndex">
+            <summary>
+            页码,最小为1
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Dto.ReportReviewRecordQueryParamDto.isGetTotalCount">
+            <summary>
+            是否返回总条数
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Btr.Entities.ReportReviewRecord">
+            <summary>
+            报表审核记录表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Btr.Entities.ReportReviewRecord.#ctor(System.String,System.String,System.String,System.String,System.String,System.Int64,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            创建审核记录
+            </summary>
+            <param name="reportName">报表名称</param>
+            <param name="materialCode">物料编码</param>
+            <param name="materialName">物料名称</param>
+            <param name="materialBatch">物料批次</param>
+            <param name="factoryCode">工厂编码</param>
+            <param name="factoryId">工厂ID</param>
+            <param name="factoryName">工厂名称</param>
+            <param name="fileName">文件地址</param>
+            <param name="createUserId">创建者id</param>
+            <param name="createUserName">创建者名称</param>
+        </member>
+        <member name="M:EES.Modules.Btr.Entities.ReportReviewRecord.Modify(System.String,System.String,System.String,System.String,System.String,System.Int64,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            修改
+            </summary>
+            <param name="reportName">报表名称</param>
+            <param name="materialCode">物料编码</param>
+            <param name="materialName">物料名称</param>
+            <param name="materialBatch">物料批次</param>
+            <param name="factoryCode">工厂编码</param>
+            <param name="factoryId">工厂ID</param>
+            <param name="factoryName">工厂名称</param>
+            <param name="fileName">文件地址</param>
+            <param name="updateUserId">修改者id</param>
+            <param name="updateUserName">修改者名称</param>
+        </member>
+        <member name="M:EES.Modules.Btr.Entities.ReportReviewRecord.Aduit(System.String,System.Int64)">
+            <summary>
+            审核
+            </summary>
+            <param name="auditorName">审核人</param>
+            <param name="auditorId">审核id</param>
+        </member>
+        <member name="M:EES.Modules.Btr.Entities.ReportReviewRecord.CancelAduit(System.String,System.Int64)">
+            <summary>
+            反审
+            </summary>
+            <param name="cancelAuditorName">反审人名称</param>
+            <param name="cancelAuditorId">反审人id</param>
+        </member>
+        <member name="M:EES.Modules.Btr.Entities.ReportReviewRecord.Delete(System.String,System.Int64)">
+            <summary>
+            删除报表审核记录
+            </summary>
+            <param name="deleteUserName">删除用户名称</param>
+            <param name="deleteUserId">删除用户ID</param>
+        </member>
+        <member name="P:EES.Modules.Btr.Entities.ReportReviewRecord.ReportName">
+            <summary>
+            报表名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Entities.ReportReviewRecord.AuditState">
+            <summary>
+            审核状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Entities.ReportReviewRecord.AuditTime">
+            <summary>
+            审核时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Entities.ReportReviewRecord.AuditorName">
+            <summary>
+            审核人名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Entities.ReportReviewRecord.AuditorId">
+            <summary>
+            审核ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Entities.ReportReviewRecord.MaterialCode">
+            <summary>
+            物料编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Entities.ReportReviewRecord.MaterialName">
+            <summary>
+            物料名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Entities.ReportReviewRecord.MaterialBatch">
+            <summary>
+            物料批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Entities.ReportReviewRecord.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Entities.ReportReviewRecord.FactoryId">
+            <summary>
+            工厂ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Entities.ReportReviewRecord.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Entities.ReportReviewRecord.CancelAuditTime">
+            <summary>
+            最后反审时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Entities.ReportReviewRecord.CancelAuditorName">
+            <summary>
+            最后反审人员
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Entities.ReportReviewRecord.CancelAuditorId">
+            <summary>
+            最后反审人ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Entities.ReportReviewRecord.FileName">
+            <summary>
+            文件地址
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Btr.Entities.ReportReviewRecord.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Btr.Enums.ReportAuditState">
+            <summary>
+            审核状态
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Btr.Services.BatchTraceabilityReportService">
+            <summary>
+            批次追溯报表查询
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Btr.Services.BatchTraceabilityReportService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Btr.Entities.ReportReviewRecord},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="reportReviewRecordRepository"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Btr.Services.BatchTraceabilityReportService.GetReportReviewRecordsAsync(EES.Modules.Btr.Dto.ReportReviewRecordQueryParamDto)">
+            <summary>
+            查询报表审核记录
+            </summary>
+            <param name="paramDto">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Btr.Services.BatchTraceabilityService">
+            <summary>
+            批次追溯查询服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Btr.Services.BatchTraceabilityService.#ctor(EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Btr.Services.BatchTraceabilityService.GetForwardTankTranceabilitysAsync(EES.Modules.Btr.Dto.ForwardBatchTracingQueryParamDto)">
+            <summary>
+            储罐追溯查询
+            </summary>
+            <param name="paramDto">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Btr.Services.BatchTraceabilityService.GetForwardBatchTranceabilitysAsync(EES.Modules.Btr.Dto.ForwardBatchTracingQueryParamDto)">
+            <summary>
+            正向追溯查询
+            </summary>
+            <param name="paramDto">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Btr.Services.BatchTraceabilityService.GetReverseTracingAsync(EES.Modules.Btr.Dto.ForwardBatchTracingQueryParamDto)">
+            <summary>
+            反向追溯查询
+            </summary>
+            <param name="paramDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Btr.Services.BatchTraceabilityService.GetReverseTracingWorkOrderAsync(System.Collections.Generic.List{System.Int64},System.String)">
+            <summary>
+            根据工单ID和工厂匹配工厂数据
+            </summary>
+            <param name="WorkIds"></param>
+            <param name="factoryCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Btr.Services.BatchTraceabilityService.getPackConsumptionAsync(System.Int64,System.String,EES.Infrastructure.Enums.TrType,System.String,System.Int64,System.Int64)">
+            <summary>
+            根据包装单ID获取消耗执行信息
+            </summary>
+            <param name="WorkOrderId">工单ID</param>
+            <param name="OrderNum">工单号</param>
+            <param name="trType">工艺类型</param>
+            <param name="factoryCode">工厂编码</param>
+            <param name="BatchId">批次工单ID</param>
+            <param name="factoryId">工厂ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Btr.Services.BatchTraceabilityService.getFillConsumptionAsync(System.Int64,System.String,EES.Infrastructure.Enums.TrType,System.String,System.Int64)">
+            <summary>
+            根据灌装单ID获取消耗执行信息
+            </summary>
+            <param name="WorkOrderId">工单ID</param>
+            <param name="OrderNum">工单号</param>
+            <param name="trType">工艺类型</param>
+            <param name="factoryCode">工厂编码</param>
+            <param name="BatchId">批次工单ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Btr.Services.BatchTraceabilityService.getBulkConsumptionAsync(System.Int64,System.String,EES.Infrastructure.Enums.TrType,System.String)">
+            <summary>
+            根据乳化单ID获取乳化执行信息
+            </summary>
+            <param name="WorkOrderId">工单ID</param>
+            <param name="OrderNum">工单号</param>
+            <param name="trType">工艺类型</param>
+            <param name="factoryCode">工厂编码</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Btr.Services.IBatchTraceabilityReportService">
+            <summary>
+            批次报表审核查询接口服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Btr.Services.IBatchTraceabilityReportService.GetReportReviewRecordsAsync(EES.Modules.Btr.Dto.ReportReviewRecordQueryParamDto)">
+            <summary>
+            查询报表审核记录
+            </summary>
+            <param name="paramDto">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Btr.Services.IBatchTraceabilityService">
+            <summary>
+            批次追溯查询服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Btr.Services.IBatchTraceabilityService.GetForwardTankTranceabilitysAsync(EES.Modules.Btr.Dto.ForwardBatchTracingQueryParamDto)">
+            <summary>
+            储罐追溯查询
+            </summary>
+            <param name="paramDto">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Btr.Services.IBatchTraceabilityService.GetForwardBatchTranceabilitysAsync(EES.Modules.Btr.Dto.ForwardBatchTracingQueryParamDto)">
+            <summary>
+            正向追溯查询
+            </summary>
+            <param name="paramDto">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Btr.Services.IBatchTraceabilityService.GetReverseTracingAsync(EES.Modules.Btr.Dto.ForwardBatchTracingQueryParamDto)">
+            <summary>
+            反向追溯查询
+            </summary>
+            <param name="paramDto"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

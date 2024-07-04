@@ -1,0 +1,158 @@
+﻿ .border3CCC {
+    border: 3px solid #ccc !important;
+}
+.pointer {
+    cursor: pointer
+}
+
+.red {
+    color: red;
+    margin-left: 2px;
+}
+.width1200 {
+    width: 1200px !important
+}
+.width1000 {
+    width: 1000px !important
+}
+.width950 {
+    width: 950px !important
+}
+.width800 {
+    width: 800px !important
+}
+.width500 {
+    width: 500px !important
+}
+.width200 {
+    width: 200px !important
+}
+
+.width250 {
+    width: 250px !important
+}
+
+.width100 {
+    width: 100px !important
+}
+
+.width50 {
+    width: 50px !important
+}
+
+.width30 {
+    width: 30px !important
+}
+.t_a_r {
+    text-align: right !important
+}
+.t_a_l {
+    text-align: left !important
+}
+.mi-w-100 {
+  min-width:100px !important;
+}
+.mi-w-150 {
+    min-width:150px !important;
+}
+.mi-w-200 {
+    min-width: 200px !important;
+}
+.text-align-left {
+ text-align:left !important
+}
+#loadingOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+#loadingMessage {
+    font-size: 24px;
+    color: white;
+    text-align: center;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    animation: dot 1.4s infinite;
+}
+
+    .dot:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    .dot:nth-child(2) {
+        animation-delay: 0.5s;
+    }
+
+    .dot:nth-child(3) {
+        animation-delay: 1s;
+    }
+
+@keyframes dot {
+    0% {
+        transform: scale(0.7);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.7);
+        opacity: 0.7;
+    }
+}
+.caret-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.sort-desc .descending {
+    color: #666
+}
+.sort-asc .ascending {
+    color: #666
+}
+.sort-caret{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-left: 10px;
+    color: #ccc
+}
+
+    .sort-caret.ascending {
+        bottom: 0; /* 调整位置 */
+        cursor:pointer
+    }
+
+    .sort-caret.descending {
+        top: -10px; /* 调整位置 */
+        cursor:pointer
+    }
+
+    .sort-caret i {
+        font-size: 1rem; /* 可以根据需要调整图标大小 */
+        color: #333; /* 调整图标颜色 */
+    }
+
+
+.word-all {
+    word-wrap: break-word;
+    word-break: break-all;
+}

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\EES.WebHost.Sinno.props" />
+</Project>

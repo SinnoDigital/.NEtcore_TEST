@@ -1,0 +1,1775 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EES.Modules.Ppd</name>
+    </assembly>
+    <members>
+        <member name="T:EES.Modules.Ppd.CommandHandlers.PsmWeighingCommandHandler">
+            <summary>
+            称量看板数据
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ppd.CommandHandlers.PsmWeighingCommandHandler.#ctor(EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            称量看板
+            </summary>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="T:EES.Modules.Ppd.Controllers.PsmBulkController">
+            <summary>
+            乳化看板
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ppd.Controllers.PsmBulkController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Ppd.Controllers.PsmWeighingController},EES.Modules.Ppd.Services.IPsmBulkService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+            <param name="psmBulkService"></param>
+        </member>
+        <member name="M:EES.Modules.Ppd.Controllers.PsmBulkController.GetWorkOrdersAsync(EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto)">
+            <summary>
+            查询乳化工单列表看板
+            </summary>
+            <param workOrderDto="">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ppd.Controllers.PsmBulkController.GetBulkWorkOrderOutPutTrendAsync(EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendQueryParamDto)">
+            <summary>
+            查询乳化产出趋势
+            </summary>
+            <param paramDto="">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ppd.Controllers.PsmBulkController.GetBulkWorkOrderOutPutNumberAsync(EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendQueryParamDto)">
+            <summary>
+            查询乳化出锅数量
+            </summary>
+            <param paramDto="">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ppd.Controllers.PsmBulkController.GetBulkWorkOrderPutMatlProgressAsync(EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendQueryParamDto)">
+            <summary>
+            查询乳化投料进度和投料完成比
+            </summary>
+            <param paramDto="">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ppd.Controllers.PsmBulkController.GetBulkWorkOrderOutputProportionAsync(EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendQueryParamDto)">
+            <summary>
+            查询乳化工单生产产出比
+            </summary>
+            <param paramDto="">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ppd.Controllers.PsmFpController">
+            <summary>
+            灌包看板
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ppd.Controllers.PsmFpController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Ppd.Controllers.PsmFpController},EES.Modules.Ppd.Services.IPsmFpService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+            <param name="psmFpService"></param>
+        </member>
+        <member name="M:EES.Modules.Ppd.Controllers.PsmFpController.GetFpWorkOrderBoardAsync(EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardQueryParamDto)">
+            <summary>
+            查询灌包看板列表
+            </summary>
+            <param name="paramDto">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ppd.Controllers.PsmWeighingController">
+            <summary>
+            称量看板
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ppd.Controllers.PsmWeighingController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Ppd.Controllers.PsmWeighingController},EES.Modules.Ppd.Services.IPsmWeighingService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+            <param name="psmWeighingService"></param>
+        </member>
+        <member name="M:EES.Modules.Ppd.Controllers.PsmWeighingController.GetWeighingWorkOrderBoardAsync(EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto)">
+            <summary>
+            查询称量看板信息
+            </summary>
+            <param name="paramDto">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ppd.Controllers.PsmWeighingController.getWeighingCompletionStatusBoardAsync">
+            <summary>
+            称量完成情况列表--默认查询当天记录
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ppd.Controllers.PsmWeighingController.getWeighingTaskNumBerBoardAsync(System.String,System.String)">
+            <summary>
+            称料任务数统计接口
+            </summary>
+            <param name="startTime">开始时间，如果为空则默认当前开始前十天</param>
+            <param name="endTime">结束时间，，如果为空则默认当前时间</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ppd.Controllers.PsmWeighingController.getWeighingDeviceRecordBoardAsync">
+            <summary>
+            电子秤作业情况
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ppd.Data.AutoMapperConfig">
+            <summary>
+            automapper配置
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ppd.Data.AutoMapperConfig.#ctor">
+            <summary>
+            配置
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Data.EdiModelBuilder">
+            <summary>
+            Psm的模型构建绑定
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ppd.Data.EdiModelBuilder.Build(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            模型构建绑定
+            </summary>
+            <param name="modelBuilder"></param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:EES.Modules.Ppd.Data.ModuleInitializer">
+            <summary>
+            模块初始化
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ppd.Data.ModuleInitializer.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            配置
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="M:EES.Modules.Ppd.Data.ModuleInitializer.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置服务
+            </summary>
+            <param name="serviceCollection"></param>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto">
+            <summary>
+            乳化工单看板列表返回数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.Id">
+            <summary>
+            数据的唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.ParentType">
+            <summary>
+            父级的类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.ParentId">
+            <summary>
+            父级的唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.Source">
+            <summary>
+            工单来源
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.MaterialType">
+            <summary>
+            物料类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.TrType">
+            <summary>
+            工艺类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.TrId">
+            <summary>
+            工艺ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.OrderNum">
+            <summary>
+            工单单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.ProductCode">
+            <summary>
+            产品编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.ProductName">
+            <summary>
+            产品名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.ProductId">
+            <summary>
+            产品id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.ProductFileVersion">
+            <summary>
+            产品文件版本
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.ProductUnits">
+            <summary>
+            产品单位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.WorkshopCode">
+            <summary>
+            生产车间编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.WorkshopName">
+            <summary>
+            生产车间名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.WorkshopId">
+            <summary>
+            生产车间ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.LineCode">
+            <summary>
+            生产产线编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.LineName">
+            <summary>
+            生产产线名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.LineId">
+            <summary>
+            生产产线ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.BatchNum">
+            <summary>
+            生产批号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.PlanStartTime">
+            <summary>
+            计划生产日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.PlanEndTime">
+            <summary>
+            计划完工日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.Quantity">
+            <summary>
+            生产数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.Priority">
+            <summary>
+            生产优先级
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.AuditorName">
+            <summary>
+            审核人员名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.AuditTime">
+            <summary>
+            审核日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.AuditState">
+            <summary>
+            审核状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.ProductionNote">
+            <summary>
+            生产备注
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.ExecutorCode">
+            <summary>
+            乳化人编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.ExecutorName">
+            <summary>
+            乳化人名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.TeamCode">
+            <summary>
+            班组编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.TeamName">
+            <summary>
+            班组名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.TeamId">
+            <summary>
+            班组ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.FactoryCode">
+            <summary>
+            工厂编号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.FactoryId">
+            <summary>
+            工厂ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.BackhaulState">
+            <summary>
+            工单回传状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.IsRepetitionBatch">
+            <summary>
+            是否允许生产重复批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.CheckResult">
+            <summary>
+            请检结果
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.ParentNum">
+            <summary>
+            父级单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.MergeIds">
+            <summary>
+            合并单号的集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.MergeNos">
+            <summary>
+            合并单号的集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.CustomerName">
+            <summary>
+            客户
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.DeviceCode">
+            <summary>
+            设备编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.DeviceName">
+            <summary>
+            设备名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.DeviceId">
+            <summary>
+            设备ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.IsDeleted">
+            <summary>
+            是否被删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.ProductionClassification">
+            <summary>
+            生产分类
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardDto.BulkWorkOrderExecute">
+            <summary>
+            制作工单执行信息
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto">
+            <summary>
+            筛选条件数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto.WorkShopCodes">
+            <summary>
+            车间编码集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto.LineCodes">
+            <summary>
+            产线编码集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto.StartTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto.OrderNum">
+            <summary>
+            工单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto.ProductCode">
+            <summary>
+            产品编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto.ProductName">
+            <summary>
+            产品名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto.BatchNum">
+            <summary>
+            生产批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto.TrType">
+            <summary>
+            工艺类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto.Source">
+            <summary>
+            来源
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto.AuditState">
+            <summary>
+            审核状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto.ExecuteState">
+            <summary>
+            执行状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto.isGetTotalCount">
+            <summary>
+            是否返回总条数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto.isQueryExecute">
+            <summary>
+            是否查询执行记录信息，默认false
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto.BindingTrcp">
+            <summary>
+            是否绑定工艺，1查询绑定工艺的数据，2查询不绑定工艺的数据
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutNumberDto">
+            <summary>
+            生产产出趋势返回数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutNumberDto.Date">
+            <summary>
+            日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutNumberDto.OutPutPotNumber">
+            <summary>
+            数量(锅)
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutputProportionDto">
+            <summary>
+            查询乳化工单生产产出比返回信息
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutputProportionDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutputProportionDto.OrderNum">
+            <summary>
+            工单单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutputProportionDto.ProductName">
+            <summary>
+            产品名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutputProportionDto.ProductCode">
+            <summary>
+            产品编号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutputProportionDto.EstimatedOutput">
+            <summary>
+            预计产量(KG)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutputProportionDto.ActualOutput">
+            <summary>
+            实际产量(KG)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutputProportionDto.OutputProportion">
+            <summary>
+            产出比(%)
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendDto">
+            <summary>
+            生产产出趋势返回数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendDto.Date">
+            <summary>
+            日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendDto.OutPutQty">
+            <summary>
+            产出(KG)
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendQueryParamDto">
+            <summary>
+            查询乳化生产趋势筛选条件
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendQueryParamDto.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendQueryParamDto.WorkShopCodes">
+            <summary>
+            车间编码集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendQueryParamDto.LineCodes">
+            <summary>
+            产线编码集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendQueryParamDto.StartTime">
+            <summary>
+            开始日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendQueryParamDto.EndTime">
+            <summary>
+            结束日期
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderPutMatlProgressDto">
+            <summary>
+            化投料进度和投料完成比返回数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderPutMatlProgressDto.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderPutMatlProgressDto.LineName">
+            <summary>
+            产线名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderPutMatlProgressDto.ProductCode">
+            <summary>
+            产品编号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderPutMatlProgressDto.SumNumber">
+            <summary>
+            总数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderPutMatlProgressDto.AlreadyPutNumber">
+            <summary>
+            已投
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderPutMatlProgressDto.NotPutNumber">
+            <summary>
+            未投
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderPutMatlProgressDto.PercentComplete">
+            <summary>
+            完成比
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto">
+            <summary>
+            灌包看板返回数据DTO
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.Id">
+            <summary>
+            数据的唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.ParentType">
+            <summary>
+            父级的类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.ParentId">
+            <summary>
+            父级的唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.Source">
+            <summary>
+            工单来源
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.MaterialType">
+            <summary>
+            物料类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.TrType">
+            <summary>
+            工艺类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.TrId">
+            <summary>
+            工艺ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.OrderNum">
+            <summary>
+            工单单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.ProductCode">
+            <summary>
+            产品编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.ProductName">
+            <summary>
+            产品名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.ProductId">
+            <summary>
+            产品id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.ProductFileVersion">
+            <summary>
+            产品文件版本
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.ProductUnits">
+            <summary>
+            产品单位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.WorkshopCode">
+            <summary>
+            生产车间编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.WorkshopName">
+            <summary>
+            生产车间名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.WorkshopId">
+            <summary>
+            生产车间ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.LineCode">
+            <summary>
+            生产产线编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.LineName">
+            <summary>
+            生产产线名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.LineId">
+            <summary>
+            生产产线ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.BatchNum">
+            <summary>
+            生产批号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.PlanStartTime">
+            <summary>
+            计划生产日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.PlanEndTime">
+            <summary>
+            计划完工日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.Quantity">
+            <summary>
+            生产数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.Priority">
+            <summary>
+            生产优先级
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.AuditorName">
+            <summary>
+            审核人员名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.AuditTime">
+            <summary>
+            审核日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.AuditState">
+            <summary>
+            审核状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.ProductionNote">
+            <summary>
+            生产备注
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.ExecutorCode">
+            <summary>
+            乳化人编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.ExecutorName">
+            <summary>
+            乳化人名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.TeamCode">
+            <summary>
+            班组编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.TeamName">
+            <summary>
+            班组名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.TeamId">
+            <summary>
+            班组ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.FactoryCode">
+            <summary>
+            工厂编号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.FactoryId">
+            <summary>
+            工厂ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.BackhaulState">
+            <summary>
+            工单回传状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.IsRepetitionBatch">
+            <summary>
+            是否允许生产重复批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.CheckResult">
+            <summary>
+            请检结果
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.ParentNum">
+            <summary>
+            父级单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.MergeIds">
+            <summary>
+            合并单号的集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.MergeNos">
+            <summary>
+            合并单号的集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.CustomerName">
+            <summary>
+            客户
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.DeviceCode">
+            <summary>
+            设备编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.DeviceName">
+            <summary>
+            设备名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.DeviceId">
+            <summary>
+            设备ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.IsDeleted">
+            <summary>
+            是否被删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.ProductionClassification">
+            <summary>
+            生产分类
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.ExecuteState">
+            <summary>
+            执行状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.ExecuteStartTime">
+            <summary>
+            执行开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.ExecuteEndTime">
+            <summary>
+            执行结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.StockPreparationState">
+            <summary>
+            备料状态(仓库汇总领料状态)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardDto.LinePreparationState">
+            <summary>
+            备料状态(产线领料状态)
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardQueryParamDto">
+            <summary>
+            灌包看板查询参数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardQueryParamDto.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardQueryParamDto.WorkShopCode">
+            <summary>
+            车间编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardQueryParamDto.StartTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardQueryParamDto.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardQueryParamDto.PageSize">
+             <summary>
+            每页大小(10-100)
+             </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardQueryParamDto.PageIndex">
+            <summary>
+            页码,最小为1
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardQueryParamDto.TrType">
+            <summary>
+            工艺类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardQueryParamDto.isGetTotalCount">
+            <summary>
+            是否返回总条数
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto">
+            <summary>
+            称量看板返回列表
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.Id">
+            <summary>
+            数据的唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.ParentType">
+            <summary>
+            父级的类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.ParentId">
+            <summary>
+            父级的唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.Source">
+            <summary>
+            工单来源
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.MaterialType">
+            <summary>
+            物料类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.TrType">
+            <summary>
+            工艺类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.TrId">
+            <summary>
+            工艺ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.OrderNum">
+            <summary>
+            工单单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.ProductCode">
+            <summary>
+            产品编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.ProductName">
+            <summary>
+            产品名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.ProductId">
+            <summary>
+            产品id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.ProductFileVersion">
+            <summary>
+            产品文件版本
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.ProductUnits">
+            <summary>
+            产品单位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.WorkshopCode">
+            <summary>
+            生产车间编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.WorkshopName">
+            <summary>
+            生产车间名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.WorkshopId">
+            <summary>
+            生产车间ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.LineCode">
+            <summary>
+            生产产线编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.LineName">
+            <summary>
+            生产产线名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.LineId">
+            <summary>
+            生产产线ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.BatchNum">
+            <summary>
+            生产批号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.PlanStartTime">
+            <summary>
+            计划生产日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.PlanEndTime">
+            <summary>
+            计划完工日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.Quantity">
+            <summary>
+            生产数量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.Priority">
+            <summary>
+            生产优先级
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.AuditorName">
+            <summary>
+            审核人员名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.AuditTime">
+            <summary>
+            审核日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.AuditState">
+            <summary>
+            审核状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.ProductionNote">
+            <summary>
+            生产备注
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.ExecutorCode">
+            <summary>
+            乳化人编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.ExecutorName">
+            <summary>
+            乳化人名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.TeamCode">
+            <summary>
+            班组编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.TeamName">
+            <summary>
+            班组名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.TeamId">
+            <summary>
+            班组ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.FactoryCode">
+            <summary>
+            工厂编号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.FactoryId">
+            <summary>
+            工厂ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.BackhaulState">
+            <summary>
+            工单回传状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.IsRepetitionBatch">
+            <summary>
+            是否允许生产重复批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.CheckResult">
+            <summary>
+            请检结果
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.ParentNum">
+            <summary>
+            父级单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.MergeIds">
+            <summary>
+            合并单号的集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.MergeNos">
+            <summary>
+            合并单号的集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.CustomerName">
+            <summary>
+            客户
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.DeviceCode">
+            <summary>
+            设备编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.DeviceName">
+            <summary>
+            设备名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.DeviceId">
+            <summary>
+            设备ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.IsDeleted">
+            <summary>
+            是否被删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.ProductionClassification">
+            <summary>
+            生产分类
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardDto.WeighingWorkOrderExecute">
+            <summary>
+            称量工单执行信息
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto">
+            <summary>
+            称量列表查询参数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto.FactoryCode">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto.WorkShopCode">
+            <summary>
+            车间编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto.StartTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto.PageSize">
+             <summary>
+            每页大小(10-100)
+             </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto.PageIndex">
+            <summary>
+            页码,最小为1
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto.OrderNum">
+            <summary>
+            工单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto.ProductCode">
+            <summary>
+            产品编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto.ProductName">
+            <summary>
+            产品名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto.BatchNum">
+            <summary>
+            生产批次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto.TrType">
+            <summary>
+            工艺类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto.Source">
+            <summary>
+            来源
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto.AuditState">
+            <summary>
+            审核状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto.ExecuteState">
+            <summary>
+            执行状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto.isGetTotalCount">
+            <summary>
+            是否返回总条数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto.isQueryExecute">
+            <summary>
+            是否查询执行记录信息，默认false
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto.BindingTrcp">
+            <summary>
+            是否绑定工艺，1查询绑定工艺的数据，2查询不绑定工艺的数据
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.Psm.Weighing.TotalWeighingListDto">
+            <summary>
+            总称量看板集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.TotalWeighingListDto.WorkOrderId">
+            <summary>
+            工单ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.TotalWeighingListDto.PlanDateTime">
+            <summary>
+            计划日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.TotalWeighingListDto.OrderNum">
+            <summary>
+            工单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.TotalWeighingListDto.ProductCode">
+            <summary>
+            产品编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.TotalWeighingListDto.ProductName">
+            <summary>
+            产品名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.TotalWeighingListDto.Quantity">
+            <summary>
+            订单量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.TotalWeighingListDto.State">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.TotalWeighingListDto.ExecuteDateTime">
+            <summary>
+            执行时间（开始--结束）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.TotalWeighingListDto.QuantityRatio">
+            <summary>
+            完成数/任务数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.TotalWeighingListDto.CompletionRate">
+            <summary>
+            完成率
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.TotalWeighingListDto.CompletedNum">
+            <summary>
+            完成数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.TotalWeighingListDto.TaskNum">
+            <summary>
+            任务数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.TotalWeighingListDto.IncompleteNum">
+            <summary>
+            未完成数
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.Psm.Weighing.WeighingDeviceRecordListDto">
+            <summary>
+            称量设备记录Dto
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.WeighingDeviceRecordListDto.OrderNum">
+            <summary>
+            工单号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.WeighingDeviceRecordListDto.DeviceId">
+            <summary>
+            称量设备id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.WeighingDeviceRecordListDto.DeviceCode">
+            <summary>
+            称量设备编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.WeighingDeviceRecordListDto.DeviceName">
+            <summary>
+            称量设备名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.WeighingDeviceRecordListDto.State">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.WeighingDeviceRecordListDto.ProductName">
+            <summary>
+            产品名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.WeighingDeviceRecordListDto.ProductCode">
+            <summary>
+            产品编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.WeighingDeviceRecordListDto.MaterialCode">
+            <summary>
+            当前称重物料
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.WeighingDeviceRecordListDto.Quantity">
+            <summary>
+            需求量
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.WeighingDeviceRecordListDto.CreateUserName">
+            <summary>
+            称量人
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.Psm.Weighing.WeighingTaskCountStatisticsDto">
+            <summary>
+            称料任务数统计
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.WeighingTaskCountStatisticsDto.GetDay">
+            <summary>
+            日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.Psm.Weighing.WeighingTaskCountStatisticsDto.TaskNumber">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.UpdateLog.UpdateLogDto">
+            <summary>
+            PSM.weigh模块更新日志
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.UpdateLog.UpdateLogDto.UpdateLog">
+            <summary>
+            PSM.weigh模块更新日志
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.UpdateLog.UpdateLogDto.UpdateLog.dUpDateDateTime">
+            <summary>
+            更新日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.UpdateLog.UpdateLogDto.UpdateLog.UpdateContents">
+            <summary>
+            更新内容
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.UpdateLog.UpdateLogDto.UpdateContent">
+            <summary>
+            更新内容详细
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.UpdateLog.UpdateLogDto.UpdateContent.iNumber">
+            <summary>
+            序号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.UpdateLog.UpdateLogDto.UpdateContent.cContent">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.UpdateLog.UpdateLogDto.UpdateContent.cUserName">
+            <summary>
+            更新人
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.UpdateLog.UpdateLogDto.UpdateLogList">
+            <summary>
+            PSM.weigh模块更新日志数据集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.UpdateLog.UpdateLogDto.ReturnUpdateLogList">
+            <summary>
+            PSM模块返回更新日志数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.UpdateLog.UpdateLogDto.ReturnUpdateLogList.iNumber">
+            <summary>
+            总条数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.UpdateLog.UpdateLogDto.ReturnUpdateLogList.LogList">
+            <summary>
+            日志数据
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Dto.UpdateLog.UpdateLogDto.PagedataAppoint">
+            <summary>
+            分页数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.PageState">
+            <summary>
+            是否启用分页(默认不启用)
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.SetPage">
+            <summary>
+            查询第几页数据
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.Number">
+            <summary>
+            每页显示条数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.dStarTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.dEndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Ppd.Dto.UpdateLog.UpdateLogDto.PagedataAppoint.cUserName">
+            <summary>
+            更新人
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Ppd.Services.IPsmBulkService">
+            <summary>
+            乳化看板接口
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.IPsmBulkService.GetBulkWorkOrderBoardAsync(EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto)">
+            <summary>
+            乳化工单列表
+            </summary>
+            <param name="paramDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.IPsmBulkService.GetBulkWorkOrderOutPutTrendAsync(EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendQueryParamDto)">
+            <summary>
+            查询乳化产出趋势
+            </summary>
+            <param name="paramDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.IPsmBulkService.GetBulkWorkOrderOutPutNumberAsync(EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendQueryParamDto)">
+            <summary>
+            查询乳化出锅数量
+            </summary>
+            <param name="paramDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.IPsmBulkService.GetBulkWorkOrderPutMatlProgressAsync(EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendQueryParamDto)">
+            <summary>
+            查询乳化投料进度和投料完成比
+            </summary>
+            <param name="paramDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.IPsmBulkService.GetBulkWorkOrderOutputProportionAsync(EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendQueryParamDto)">
+            <summary>
+            查询乳化工单生产产出比
+            </summary>
+            <param name="paramDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ppd.Services.IPsmFpService">
+            <summary>
+            灌包接口服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.IPsmFpService.GetFpWorkOrderBoardAsync(EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardQueryParamDto)">
+            <summary>
+            查询灌包工单列表
+            </summary>
+            <param name="paramDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ppd.Services.IPsmWeighingService">
+            <summary>
+            称量看板接口
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.IPsmWeighingService.getWeighingDeviceRecordBoardAsync">
+            <summary>
+            电子秤作业情况
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.IPsmWeighingService.getWeighingTaskNumBerBoardAsync(System.String,System.String)">
+            <summary>
+            称料任务数统计接口
+            </summary>
+            <param name="startTime">开始时间，如果为空则默认当前开始前十天</param>
+            <param name="endTime">结束时间，，如果为空则默认当前时间</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.IPsmWeighingService.getWeighingCompletionStatusBoardAsync">
+            <summary>
+            称量完成情况列表--默认查询当天记录
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.IPsmWeighingService.GetWeighingWorkOrderBoardAsync(EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto)">
+            <summary>
+            查询称量工单列表
+            </summary>
+            <param name="paramDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ppd.Services.PsmBulkService">
+            <summary>
+            乳化看板查询服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.PsmBulkService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Entities.WorkOrder},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Bulk.Entities.BulkOutOfPotInformationItem},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Bulk.Entities.BulkOutOfPotInformation},Microsoft.Extensions.Logging.ILogger{EES.Modules.Ppd.Services.PsmBulkService},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="mediatorHandler"></param>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.PsmBulkService.GetBulkWorkOrderBoardAsync(EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderBoardQueryParamDto)">
+            <summary>
+            乳化工单列表
+            </summary>
+            <param name="paramDto"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.PsmBulkService.GetBulkWorkOrderOutPutTrendAsync(EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendQueryParamDto)">
+            <summary>
+            查询乳化产出趋势
+            </summary>
+            <param name="paramDto"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.PsmBulkService.GetBulkWorkOrderOutPutNumberAsync(EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendQueryParamDto)">
+            <summary>
+            查询乳化产出趋势
+            </summary>
+            <param name="paramDto"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.PsmBulkService.getDateTime(System.DateTime,System.Boolean)">
+            <summary>
+            时间补充
+            </summary>
+            <param name="date">补充时间参数</param>
+            <param name="amMode">true:时间为00:00:00.000,false:时间为23:59:59.999</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.PsmBulkService.GetBulkWorkOrderPutMatlProgressAsync(EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendQueryParamDto)">
+            <summary>
+            查询乳化投料进度和投料完成比
+            </summary>
+            <param name="paramDto"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.PsmBulkService.GetBulkWorkOrderOutputProportionAsync(EES.Modules.Ppd.Dto.Psm.Bulk.PsmBulkWorkOrderOutPutTrendQueryParamDto)">
+            <summary>
+            查询乳化工单生产产出比
+            </summary>
+            <param name="paramDto"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:EES.Modules.Ppd.Services.PsmFpService">
+            <summary>
+            灌包看板服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.PsmFpService.#ctor(EES.Infrastructure.Bus.IMediatorHandler,EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Entities.WorkOrder},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Fp.Entities.FpWorkOrderExecute},AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger{EES.Modules.Ppd.Services.PsmFpService})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="mediatorHandler"></param>
+            <param name="workOrderRepository"></param>
+            <param name="FpWorkOrderExecuteRepository"></param>
+            <param name="systemParams"></param>
+            <param name="mapper"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.PsmFpService.GetFpWorkOrderBoardAsync(EES.Modules.Ppd.Dto.Psm.Fp.PsmFpWorkOrderBoardQueryParamDto)">
+            <summary>
+            查询灌包工单列表
+            </summary>
+            <param name="paramDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.PsmFpService.getDateTime(System.DateTime,System.Boolean)">
+            <summary>
+            时间补充
+            </summary>
+            <param name="date">补充时间参数</param>
+            <param name="amMode">true:时间为00:00:00.000,false:时间为23:59:59.999</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Ppd.Services.PsmWeighingService">
+            <summary>
+            称量看板查询服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.PsmWeighingService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Entities.WorkOrder},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Weigh.Entities.WeighingWorkOrderExecute},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Weigh.Entities.Weighing},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Psm.Weigh.Entities.WeighingDeviceRecord},Microsoft.Extensions.Logging.ILogger{EES.Modules.Ppd.Services.PsmWeighingService},EES.Infrastructure.Service.ISystemParamsService,AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="workOrderRepository"></param>
+            <param name="WeighingWorkExecuteRepository"></param>
+            <param name="WeighingRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+            <param name="DeviceRecordRepository"></param>
+            <param name="systemParams"></param>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.PsmWeighingService.GetWeighingWorkOrderBoardAsync(EES.Modules.Ppd.Dto.Psm.Weighing.PsmWeighingWorkOrderBoardQueryParamDto)">
+            <summary>
+            查询称量工单列表
+            </summary>
+            <param name="paramDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.PsmWeighingService.getWeighingCompletionStatusBoardAsync">
+            <summary>
+            称量完成情况列表--默认查询当天记录
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.PsmWeighingService.getWeighingTaskNumBerBoardAsync(System.String,System.String)">
+            <summary>
+            称料任务数统计接口
+            </summary>
+            <param name="startTime">开始时间，如果为空则默认当前开始前十天</param>
+            <param name="endTime">结束时间，，如果为空则默认当前时间</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Ppd.Services.PsmWeighingService.getWeighingDeviceRecordBoardAsync">
+            <summary>
+            电子秤作业情况
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Psm.Weigh.Controllers.UpdateLogControllers">
+            <summary>
+            看板管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Psm.Weigh.Controllers.UpdateLogControllers.GetPsmWeighUpdateLogAsync(EES.Modules.Psm.Weigh.Dto.UpdateLog.UpdateLogDto.PagedataAppoint)">
+            <summary>
+            查询Psm（工单更新日志）
+            </summary>
+            <param name="PageData">分页查询数据</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

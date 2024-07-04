@@ -1,0 +1,3256 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EES.Modules.Sop</name>
+    </assembly>
+    <members>
+        <member name="T:EES.Modules.Sop.CommandHandlers.BindWorkOrderCommandHandlers">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.BindWorkOrderCommandHandlers.Handle(EES.Modules.Sop.Commands.CreateBindWorkOrderCmd,System.Threading.CancellationToken)">
+            <summary>
+            创建sop绑定工单
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.BindWorkOrderCommandHandlers.CheckExistAsync(System.String,System.String)">
+            <summary>
+            校验工单中的产品编码和产线编码，是否与 sop 文件一致
+            </summary>
+            <param name="ProductCode"></param>
+            <param name="LineName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.BindWorkOrderCommandHandlers.Handle(EES.Modules.Sop.Commands.UnbindCmd,System.Threading.CancellationToken)">
+            <summary>
+            解绑sop绑定工单
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:EES.Modules.Sop.CommandHandlers.ChangeHistoryCommandHandlers">
+            <summary>
+            变更历史
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.ChangeHistoryCommandHandlers.Handle(EES.Modules.Sop.Commands.CreateChangeHistoryCmd,System.Threading.CancellationToken)">
+            <summary>
+            创建变更历史
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.ChangeHistoryCommandHandlers.Handle(EES.Modules.Sop.Commands.GetChangeHistoryCmd,System.Threading.CancellationToken)">
+            <summary>
+             根据父级ID查询变更历史
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.ChangeHistoryCommandHandlers.getDateTime(System.DateTime,System.Boolean)">
+            <summary>
+            时间补充
+            </summary>
+            <param name="date">补充时间参数</param>
+            <param name="amMode">true:时间为00:00:00.000,false:时间为23:59:59.999</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sop.CommandHandlers.DeviceInformationCommandHandler">
+            <summary>
+            设备信息管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.DeviceInformationCommandHandler.Handle(EES.Modules.Sop.Commands.CreateDeviceInformationCmd,System.Threading.CancellationToken)">
+            <summary>
+            创建设备程序
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.DeviceInformationCommandHandler.Handle(EES.Modules.Sop.Commands.GetDeviceInformationCmd,System.Threading.CancellationToken)">
+            <summary>
+             根据父级ID查询设备程序
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.DeviceInformationCommandHandler.Handle(EES.Modules.Sop.Commands.ModifyDeviceInformationCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改设备
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.DeviceInformationCommandHandler.Handle(EES.Modules.Sop.Commands.DeleteDeviceCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除
+            </summary>
+            <param name="request">删除参数</param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.DeviceInformationCommandHandler.Handle(EES.Modules.Sop.Commands.BatchRevokeDeviceCmd,System.Threading.CancellationToken)">
+            <summary>
+            撤销删除
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sop.CommandHandlers.HistoricalVersionCommandHandlers">
+            <summary>
+            历史版本
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.HistoricalVersionCommandHandlers.Handle(EES.Modules.Sop.Commands.CreateHistoricalVersionCmd,System.Threading.CancellationToken)">
+            <summary>
+            创建历史版本
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.HistoricalVersionCommandHandlers.Handle(EES.Modules.Sop.Commands.GetHistoricalVersionCmd,System.Threading.CancellationToken)">
+            <summary>
+             根据父级ID查询变更历史
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.LegendVideoCommandHandlers.Handle(EES.Modules.Sop.Commands.CreateLegendVideoCmd,System.Threading.CancellationToken)">
+            <summary>
+            创建图像视频
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.LegendVideoCommandHandlers.Handle(EES.Modules.Sop.Commands.GetSopLegendVideosCmd,System.Threading.CancellationToken)">
+            <summary>
+             根据父级ID查询产线
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.LegendVideoCommandHandlers.Handle(EES.Modules.Sop.Commands.ModifyLegendVideoCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改图像视频
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.LegendVideoCommandHandlers.Handle(EES.Modules.Sop.Commands.DeleteLegendCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除
+            </summary>
+            <param name="request">删除参数</param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.LegendVideoCommandHandlers.Handle(EES.Modules.Sop.Commands.BatchRevokeLegenCmd,System.Threading.CancellationToken)">
+            <summary>
+            撤销删除
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sop.CommandHandlers.MainInformationCommandHandlers">
+            <summary>
+            sop管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.MainInformationCommandHandlers.Handle(EES.Modules.Sop.Commands.CreateMainInformationCmd,System.Threading.CancellationToken)">
+            <summary>
+            创建
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.MainInformationCommandHandlers.Handle(EES.Modules.Sop.Commands.ModifyMainInformationCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改
+            </summary>
+            <param name="request">修改参数</param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.MainInformationCommandHandlers.Handle(EES.Modules.Sop.Commands.DeleteMainInformationCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除
+            </summary>
+            <param name="request">删除参数</param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.MainInformationCommandHandlers.Handle(EES.Modules.Sop.Commands.BatchSubmitAuditCmd,System.Threading.CancellationToken)">
+            <summary>
+            批量提交
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.MainInformationCommandHandlers.Handle(EES.Modules.Sop.Commands.BatchAuditCmd,System.Threading.CancellationToken)">
+            <summary>
+            批量审核
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.MainInformationCommandHandlers.Handle(EES.Modules.Sop.Commands.BatchRejectCmd,System.Threading.CancellationToken)">
+            <summary>
+            批量驳回
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.MainInformationCommandHandlers.Handle(EES.Modules.Sop.Commands.BatchCancelAuditCmd,System.Threading.CancellationToken)">
+            <summary>
+            批量反审
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.MainInformationCommandHandlers.Handle(EES.Modules.Sop.Commands.BatchRevokeDeletCmd,System.Threading.CancellationToken)">
+            <summary>
+            批量撤销删除
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.MainInformationCommandHandlers.CheckIDExist(System.Collections.Generic.IEnumerable{EES.Modules.Sop.Dto.ReviewStatusDto})">
+            <summary>
+            判断sop主信息，返回不存在的ID
+            </summary>
+            <param name="reviewStatusDtos"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.MainInformationCommandHandlers.CheckIDSExist(System.Collections.Generic.IEnumerable{EES.Modules.Sop.Dto.ReviewStatusDto})">
+            <summary>
+            判断sop主信息，返回不存在的ID
+            </summary>
+            <param name="reviewStatusDtos"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.MainInformationCommandHandlers.CheckDocumentNumberExistAsync(System.String)">
+            <summary>
+            检查文件编号是否存在
+            </summary>
+            <param name="DocumentNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sop.CommandHandlers.ProductionLinesCommandHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.ProductionLinesCommandHandler.Handle(EES.Modules.Sop.Commands.CreateProductionLinesCmd,System.Threading.CancellationToken)">
+            <summary>
+            产线
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.ProductionLinesCommandHandler.CheckExistAsync(System.Int64,System.Int64)">
+            <summary>
+            检查同一个产品编码是否多次绑定同一个产线
+            </summary>
+            <param name="SopMainInformationId"></param>
+            <param name="ProductionLineId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.ProductionLinesCommandHandler.Handle(EES.Modules.Sop.Commands.GetProductionLinesCmd,System.Threading.CancellationToken)">
+            <summary>
+             根据父级ID查询产线
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.ProductionLinesCommandHandler.Handle(EES.Modules.Sop.Commands.ModifyProductionLinesCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改产线
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.ProductionLinesCommandHandler.Handle(EES.Modules.Sop.Commands.DeleteLineCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除
+            </summary>
+            <param name="request">删除参数</param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.ProductionLinesCommandHandler.Handle(EES.Modules.Sop.Commands.BatchRevokeLineCmd,System.Threading.CancellationToken)">
+            <summary>
+            撤销删除
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sop.CommandHandlers.WorkingProcedureCommandHandler">
+            <summary>
+            工序管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.WorkingProcedureCommandHandler.Handle(EES.Modules.Sop.Commands.CreateWorkingProcedureCmd,System.Threading.CancellationToken)">
+            <summary>
+            创建工序
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.WorkingProcedureCommandHandler.Handle(EES.Modules.Sop.Commands.GetWorkingProcedureCmd,System.Threading.CancellationToken)">
+            <summary>
+             根据父级ID查询工序
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.WorkingProcedureCommandHandler.Handle(EES.Modules.Sop.Commands.ModifyWorkingProcedureCmd,System.Threading.CancellationToken)">
+            <summary>
+            修改工序
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.WorkingProcedureCommandHandler.Handle(EES.Modules.Sop.Commands.DeleteWorkingCmd,System.Threading.CancellationToken)">
+            <summary>
+            删除
+            </summary>
+            <param name="request">删除参数</param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.CommandHandlers.WorkingProcedureCommandHandler.Handle(EES.Modules.Sop.Commands.BatchRevokeWorkCmd,System.Threading.CancellationToken)">
+            <summary>
+            撤销删除
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.BatchAuditCmd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.BatchAuditCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.BatchAuditCmd.reviewStatuses">
+            <summary>
+            主表ID集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.BatchCancelAuditCmd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.BatchCancelAuditCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.BatchCancelAuditCmd.reviewStatuses">
+            <summary>
+            主表ID集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.BatchRejectCmd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.BatchRejectCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.BatchRejectCmd.reviewStatuses">
+            <summary>
+            主表ID集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.BatchRevokeDeletCmd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.BatchRevokeDeletCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.BatchRevokeDeletCmd.reviewStatuses">
+            <summary>
+            主表ID集合
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.BatchRevokeDeviceCmd.#ctor(System.Collections.Generic.List{System.Int64})">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.BatchRevokeDeviceCmd.Ids">
+            <summary>
+            主表ID集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.BatchRevokeLegenCmd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.BatchRevokeLegenCmd.#ctor(System.Collections.Generic.List{System.Int64})">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.BatchRevokeLegenCmd.Ids">
+            <summary>
+            主表ID集合
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.BatchRevokeLineCmd.#ctor(System.Collections.Generic.List{System.Int64})">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.BatchRevokeLineCmd.Ids">
+            <summary>
+            主表ID集合
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.BatchRevokeWorkCmd.#ctor(System.Collections.Generic.List{System.Int64})">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.BatchRevokeWorkCmd.Ids">
+            <summary>
+            主表ID集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.BatchSubmitAuditCmd">
+            <summary>
+            批量提交审核
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.BatchSubmitAuditCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.BatchSubmitAuditCmd.reviewStatuses">
+            <summary>
+            主表ID集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.CreateBindWorkOrderCmd">
+            <summary>
+            创建sop绑定工单
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.CreateBindWorkOrderCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateBindWorkOrderCmd.WorkOrderId">
+            <summary>
+            工单 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateBindWorkOrderCmd.SopMainInformationId">
+            <summary>
+            sop 主信息唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateBindWorkOrderCmd.SopReviewVersion">
+             <summary>
+            sop审核版本
+             </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateChangeHistoryCmd.SopMainInformationId">
+            <summary>
+            sop 主信息唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateChangeHistoryCmd.Event">
+            <summary>
+            事件[1、
+            新增 
+            2、修改 3、
+            删除
+             4、提交
+             5、审核
+             6、驳回 7、
+            反审 8、
+            撤销删除]
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateChangeHistoryCmd.OperationResultsAndPrompts">
+            <summary>
+            操作结果及提示
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateChangeHistoryCmd.OperationTime">
+            <summary>
+            操作时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateChangeHistoryCmd.OperatingUsers">
+            <summary>
+            操作用户
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateChangeHistoryCmd.ContentBeforeChange">
+            <summary>
+            变更前内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateChangeHistoryCmd.ContentAfterChange">
+            <summary>
+            变更后内容
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.CreateDeviceInformationCmd">
+            <summary>
+            创建主要设备信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.CreateDeviceInformationCmd.#ctor(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Sop.Dto.CreateDeviceInformationDto})">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateDeviceInformationCmd.SopMainInformationId">
+            <summary>
+            主表信息id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateDeviceInformationCmd.DeviceInformation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateHistoricalVersionCmd.HisVersionList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.CreateLegendVideoCmd">
+            <summary>
+            创建 图例视频
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.CreateLegendVideoCmd.#ctor(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Sop.Dto.CreateLegendVideoDto})">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateLegendVideoCmd.SopWorkingProcedureId">
+            <summary>
+            工序ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateLegendVideoCmd.LegendVideos">
+            <summary>
+            工序信息
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.CreateMainInformationCmd">
+            <summary>
+            创建sop信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.CreateMainInformationCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateMainInformationCmd.DocumentNumber">
+            <summary>
+            文件编号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateMainInformationCmd.ProcessSpecificationNumber">
+            <summary>
+            工艺规程号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateMainInformationCmd.Version">
+            <summary>
+            版次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateMainInformationCmd.ProductCode">
+            <summary>
+            产品编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateMainInformationCmd.ProductName">
+            <summary>
+            产品名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateMainInformationCmd.Specifications">
+            <summary>
+            规格
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateMainInformationCmd.Efficiency">
+            <summary>
+            效率（pcs/H）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateMainInformationCmd.PeopleNumber">
+            <summary>
+            人数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateMainInformationCmd.EffectiveDate">
+            <summary>
+            生效日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateMainInformationCmd.PreparationDepartment">
+            <summary>
+            编制部门
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateMainInformationCmd.UsingDepartment">
+            <summary>
+            使用部门
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateMainInformationCmd.OemSuppliers">
+            <summary>
+            OEM 供应商
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateMainInformationCmd.Remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.CreateProductionLinesCmd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.CreateProductionLinesCmd.#ctor(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Sop.Dto.CreateProductionLinesDto})">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateProductionLinesCmd.SopMainInformationId">
+            <summary>
+            sop主信息id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateProductionLinesCmd.ProductionLines">
+            <summary>
+            产线信息
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.CreateWorkingProcedureCmd">
+            <summary>
+            创建工序
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.CreateWorkingProcedureCmd.#ctor(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Sop.Dto.CreateWorkingProcedureDto})">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateWorkingProcedureCmd.SopMainInformationId">
+            <summary>
+            主表信息id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.CreateWorkingProcedureCmd.WorkingProcedures">
+            <summary>
+            工序信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.DeleteDeviceCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.DeleteDeviceCmd.Id">
+            <summary>
+            唯一ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.DeleteLegendCmd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.DeleteLegendCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.DeleteLegendCmd.Id">
+            <summary>
+            唯一ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.DeleteLineCmd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.DeleteLineCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.DeleteLineCmd.lineId">
+            <summary>
+            唯一ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.DeleteMainInformationCmd">
+            <summary>
+            删除主表信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.DeleteMainInformationCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.DeleteMainInformationCmd.MainId">
+            <summary>
+            唯一ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.DeleteWorkingCmd">
+            <summary>
+            删除工序信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.DeleteWorkingCmd.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.DeleteWorkingCmd.WorkingId">
+            <summary>
+            唯一ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.GetChangeHistoryCmd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.GetChangeHistoryCmd.#ctor(System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            
+            </summary>
+            <param name="sopMainInformationIds"></param>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.GetChangeHistoryCmd.SopMainInformationIds">
+            <summary>
+            主表ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.GetDeviceInformationCmd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.GetDeviceInformationCmd.#ctor(System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            
+            </summary>
+            <param name="sopMainInformationIds"></param>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.GetDeviceInformationCmd.SopMainInformationIds">
+            <summary>
+            主表ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.GetHistoricalVersionCmd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.GetHistoricalVersionCmd.#ctor(System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            
+            </summary>
+            <param name="sopMainInformationIds"></param>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.GetHistoricalVersionCmd.SopMainInformationIds">
+            <summary>
+            主表ID
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.GetProductionLinesCmd.#ctor(System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            
+            </summary>
+            <param name="sopMainInformationIds"></param>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.GetProductionLinesCmd.SopMainInformationIds">
+            <summary>
+            主表ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.GetSopLegendVideosCmd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.GetSopLegendVideosCmd.#ctor(System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            
+            </summary>
+            <param name="sopWorkingProcedureId"></param>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.GetSopLegendVideosCmd.SopWorkingProcedureId">
+            <summary>
+            主表ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.GetWorkingProcedureCmd">
+            <summary>
+            获取工序
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.GetWorkingProcedureCmd.#ctor(System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            
+            </summary>
+            <param name="sopMainInformationIds"></param>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.GetWorkingProcedureCmd.SopMainInformationIds">
+            <summary>
+            主表ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.ModifyDeviceInformationCmd">
+            <summary>
+            修改主要设备
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.ModifyDeviceInformationCmd.#ctor(System.Int64,System.Collections.Generic.IEnumerable{System.Int64},System.Collections.Generic.IEnumerable{EES.Modules.Sop.Dto.SopDeviceInformationDto})">
+            <summary>
+            修改主要设备数据
+            </summary>
+            <param name="parentId">父级id</param>
+            <param name="oldItemIds">原来的设备id集合</param>
+            <param name="deviceInformation">修改的设备</param>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyDeviceInformationCmd.ParentId">
+            <summary>
+            父级Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyDeviceInformationCmd.OldItemIds">
+            <summary>
+            原来的设备id集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyDeviceInformationCmd.DeviceInformation">
+            <summary>
+            修改的设备
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.ModifyLegendVideoCmd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.ModifyLegendVideoCmd.#ctor(System.Int64,System.Collections.Generic.IEnumerable{System.Int64},System.Collections.Generic.IEnumerable{EES.Modules.Sop.Dto.SopLegendVideoDto})">
+            <summary>
+            修改图像视频
+            </summary>
+            <param name="parentId">父级id</param>
+            <param name="oldItemIds">原来的图像视频id集合</param>
+            <param name="deviceInformation">修改的图像视频</param>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyLegendVideoCmd.ParentId">
+            <summary>
+            父级Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyLegendVideoCmd.OldItemIds">
+            <summary>
+            原来的设备id集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyLegendVideoCmd.LegendVideo">
+            <summary>
+            修改的设备
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.ModifyMainInformationCmd">
+            <summary>
+            修改sop信息
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.ModifyMainInformationCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyMainInformationCmd.Id">
+            <summary>
+            唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyMainInformationCmd.DocumentNumber">
+            <summary>
+            文件编号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyMainInformationCmd.ProcessSpecificationNumber">
+            <summary>
+            工艺规程号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyMainInformationCmd.Version">
+            <summary>
+            版次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyMainInformationCmd.ProductCode">
+            <summary>
+            产品编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyMainInformationCmd.ProductName">
+            <summary>
+            产品名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyMainInformationCmd.Specifications">
+            <summary>
+            规格
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyMainInformationCmd.Efficiency">
+            <summary>
+            效率（pcs/H）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyMainInformationCmd.PeopleNumber">
+            <summary>
+            人数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyMainInformationCmd.EffectiveDate">
+            <summary>
+            生效日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyMainInformationCmd.PreparationDepartment">
+            <summary>
+            编制部门
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyMainInformationCmd.UsingDepartment">
+            <summary>
+            使用部门
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyMainInformationCmd.OemSuppliers">
+            <summary>
+            OEM 供应商
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyMainInformationCmd.Remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyMainInformationCmd.SopWorkingProcedures">
+            <summary>
+            工序集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyMainInformationCmd.SopProductionLines">
+            <summary>
+            产线列表集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyMainInformationCmd.SopDeviceInformations">
+            <summary>
+            主要设备信息集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.ModifyProductionLinesCmd">
+            <summary>
+            修改产线
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.ModifyProductionLinesCmd.#ctor(System.Int64,System.Collections.Generic.IEnumerable{System.Int64},System.Collections.Generic.IEnumerable{EES.Modules.Sop.Dto.SopProductionLinesDto})">
+            <summary>
+            修改产线
+            </summary>
+            <param name="parentId">父级id</param>
+            <param name="oldItemIds">原来的产线id集合</param>
+            <param name="productionLines">修改的产线</param>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyProductionLinesCmd.ParentId">
+            <summary>
+            父级Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyProductionLinesCmd.OldItemIds">
+            <summary>
+            原来的产线id集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyProductionLinesCmd.ProductionLines">
+            <summary>
+            修改的产线
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.ModifyWorkingProcedureCmd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.ModifyWorkingProcedureCmd.#ctor(System.Int64,System.Collections.Generic.IEnumerable{System.Int64},System.Collections.Generic.IEnumerable{EES.Modules.Sop.Dto.WorkingProcedureDto})">
+            <summary>
+            修改工序
+            </summary>
+            <param name="parentId">父级id</param>
+            <param name="oldItemIds">原来的工序id集合</param>
+            <param name="workingProcedures">修改的工序</param>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyWorkingProcedureCmd.ParentId">
+            <summary>
+            父级Id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyWorkingProcedureCmd.OldItemIds">
+            <summary>
+            原来的工序id集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.ModifyWorkingProcedureCmd.WorkingProcedures">
+            <summary>
+            修改的工序
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Commands.UnbindCmd">
+            <summary>
+            解绑
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Commands.UnbindCmd.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Commands.UnbindCmd.Id">
+            <summary>
+            sop绑定工单信息id
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Controllers.BindWorkOrderControllers">
+            <summary>
+            sop绑定工单管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.BindWorkOrderControllers.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Sop.Controllers.BindWorkOrderControllers},EES.Modules.Sop.Services.IBindWorkOrderService,MediatR.IMediator)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+            <param name="bindService"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.BindWorkOrderControllers.CreateBindWorkOrderAsync(EES.Modules.Sop.Commands.CreateBindWorkOrderCmd)">
+            <summary>
+            创建sop绑定工单
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.BindWorkOrderControllers.GetBindWorkOrderAsync(System.Int64)">
+            <summary>
+            查询单条sop绑定工单信息
+            </summary>
+            <param name="Id">工单ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.BindWorkOrderControllers.UnbindAuditAsync(EES.Modules.Sop.Commands.UnbindCmd)">
+            <summary>
+            解绑绑定信息
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sop.Controllers.MainInformationController">
+            <summary>
+            sop管理
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.MainInformationController.#ctor(Microsoft.Extensions.Logging.ILogger{EES.Modules.Sop.Controllers.MainInformationController},EES.Modules.Sop.Services.IMainInformationService,MediatR.IMediator)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+            <param name="mediator"></param>
+            <param name="mainInformationService"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.MainInformationController.CreateMainInformationAsync(EES.Modules.Sop.Commands.CreateMainInformationCmd)">
+            <summary>
+            创建sop
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.MainInformationController.ModifyWorkOrderAsync(EES.Modules.Sop.Commands.ModifyMainInformationCmd)">
+            <summary>
+            修改sop信息
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.MainInformationController.DeleteWorkOrderAsync(EES.Modules.Sop.Commands.DeleteMainInformationCmd)">
+            <summary>
+            删除sop表
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.MainInformationController.DeleteWorkingAsync(EES.Modules.Sop.Commands.DeleteWorkingCmd)">
+            <summary>
+            删除工序表
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.MainInformationController.DeleteLineAsync(EES.Modules.Sop.Commands.DeleteLineCmd)">
+            <summary>
+            删除产线列表
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.MainInformationController.DeleteLegendAsync(EES.Modules.Sop.Commands.DeleteLegendCmd)">
+            <summary>
+            删除图像视频
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.MainInformationController.DeleteDeviceAsync(EES.Modules.Sop.Commands.DeleteDeviceCmd)">
+            <summary>
+            删除设备信息
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.MainInformationController.GetMainInformationsAsync(EES.Modules.Sop.Dto.MainInformationQueryParamDto)">
+            <summary>
+            查询sop信息列表
+            </summary>
+            <param planDto="">查询参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.MainInformationController.GetMainInAsync(EES.Modules.Sop.Dto.MainInformationOtherQueryDto)">
+            <summary>
+            查询单条sop信息
+            </summary>
+            <param name="Id">sop信息ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.MainInformationController.GetChangeHistoryAsync(EES.Modules.Sop.Dto.ChangeHistoryQueryDto)">
+            <summary>
+            根据主信息ID和时间查询变更历史
+            </summary>
+            <param name="dto">查询条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.MainInformationController.GetMainInsAsync(System.String,System.String)">
+            <summary>
+            根据产线编码和产品编码获取sop信息
+            </summary>
+            <param name="ProductCode">产品编码</param>
+            <param name="LineCode">产线编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.MainInformationController.BatchSubmitAuditAsync(EES.Modules.Sop.Commands.BatchSubmitAuditCmd)">
+            <summary>
+            sop信息批量提交
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.MainInformationController.BatchAuditAsync(EES.Modules.Sop.Commands.BatchAuditCmd)">
+            <summary>
+            sop信息批量审核
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.MainInformationController.BatchRejectAsync(EES.Modules.Sop.Commands.BatchRejectCmd)">
+            <summary>
+            sop信息批量驳回
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.MainInformationController.BatchCancelAuditWorkOrderAsync(EES.Modules.Sop.Commands.BatchCancelAuditCmd)">
+            <summary>
+            sop信息批量反审
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Controllers.MainInformationController.BatchRevokeDeletAsync(EES.Modules.Sop.Commands.BatchRevokeDeletCmd)">
+            <summary>
+            sop信息批量撤销删除
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sop.Data.AutoMapperConfig">
+            <summary>
+            automapper配置
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Data.AutoMapperConfig.#ctor">
+            <summary>
+            配置
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Data.ModuleInitializer">
+            <summary>
+            模块初始化
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Data.ModuleInitializer.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            配置
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Data.ModuleInitializer.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置服务
+            </summary>
+            <param name="serviceCollection"></param>
+        </member>
+        <member name="T:EES.Modules.Sop.Data.SopModelBuilder">
+            <summary>
+            SOP模块的模型构建
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Data.SopModelBuilder.Build(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            模型绑定
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+        <member name="T:EES.Modules.Sop.Dto.BindWorkOrderDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.BindWorkOrderDto.Id">
+            <summary>
+            数据唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.BindWorkOrderDto.WorkOrderId">
+            <summary>
+            工单 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.BindWorkOrderDto.SopMainInformationId">
+            <summary>
+            sop 主信息唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.BindWorkOrderDto.SopReviewVersion">
+             <summary>
+            sop审核版本
+             </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.BindWorkOrderDto.BindTime">
+            <summary>
+            绑定时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.BindWorkOrderDto.Binder">
+            <summary>
+            绑定人
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.BindWorkOrderDto.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.BindWorkOrderDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.BindWorkOrderDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.BindWorkOrderDto.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.BindWorkOrderDto.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.BindWorkOrderDto.UpdateTime">
+            <summary>
+            最后修改日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.BindWorkOrderDto.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Dto.ChangeHistoryQueryDto">
+            <summary>
+            变更历史查询条件
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.ChangeHistoryQueryDto.StartTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.ChangeHistoryQueryDto.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.ChangeHistoryQueryDto.SopMainInformationId">
+            <summary>
+            主表ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Dto.CreateDeviceInformationDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateDeviceInformationDto.Number">
+            <summary>
+            序号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateDeviceInformationDto.Workstation">
+            <summary>
+            工位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateDeviceInformationDto.Equipment">
+            <summary>
+            设备
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateDeviceInformationDto.Supplier">
+            <summary>
+            供应商
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateDeviceInformationDto.EquipmentNumber">
+            <summary>
+            设备编号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateHistoricalVersionDto.SopMainInformationId">
+            <summary>
+            sop 主信息唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateHistoricalVersionDto.SopSystemReviewVersion">
+            <summary>
+            sop系统审核版本
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateHistoricalVersionDto.Reviewer">
+            <summary>
+            审核人
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateHistoricalVersionDto.ReviewTime">
+            <summary>
+            审核时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateHistoricalVersionDto.Content">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Dto.CreateLegendVideoDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateLegendVideoDto.FileAddress">
+            <summary>
+            文件地址
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Dto.CreateProductionLinesDto">
+            <summary>
+            产线列表信息
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateProductionLinesDto.ProductionLineId">
+            <summary>
+            产线唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateProductionLinesDto.ProductionLineLevel">
+            <summary>
+            产线级别
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateProductionLinesDto.WorkShopName">
+            <summary>
+            车间名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateProductionLinesDto.ProductionLineName">
+            <summary>
+            产线名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateProductionLinesDto.ProductionLineCode">
+            <summary>
+            产线编码
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Dto.CreateWorkingProcedureDto">
+            <summary>
+             工序信息
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateWorkingProcedureDto.ProcessNumber">
+            <summary>
+            工序号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateWorkingProcedureDto.ProcessName">
+            <summary>
+            工序名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateWorkingProcedureDto.PeopleNumber">
+            <summary>
+            人数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateWorkingProcedureDto.Equipment">
+            <summary>
+            设备
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateWorkingProcedureDto.Mould">
+            <summary>
+            模具
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateWorkingProcedureDto.OperationalRequirements">
+            <summary>
+            操作要求
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateWorkingProcedureDto.CriticalControlPoint">
+            <summary>
+            关键控制点
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.CreateWorkingProcedureDto.SopLegendVideos">
+            <summary>
+            图列视频集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Dto.MainInformationDto">
+            <summary>
+            sop主信息及其相关信息
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.Id">
+            <summary>
+            数据库唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.DocumentNumber">
+            <summary>
+            文件编号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.ProcessSpecificationNumber">
+            <summary>
+            工艺规程号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.ReviewStatus">
+            <summary>
+            审核状态[1、编辑中 2、审核中 3、已审核 4、已反审 5、已驳回]
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.SystemReviewVersion">
+            <summary>
+            系统审核版本
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.Version">
+            <summary>
+            版次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.ProductCode">
+            <summary>
+            产品编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.ProductName">
+            <summary>
+            产品名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.Specifications">
+            <summary>
+            规格
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.Efficiency">
+            <summary>
+            效率（pcs/H）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.EffectiveDate">
+            <summary>
+            生效日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.PreparationDepartment">
+            <summary>
+            编制部门
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.UsingDepartment">
+            <summary>
+            使用部门
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.ProcessRoute">
+            <summary>
+            工艺路线
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.OemSuppliers">
+            <summary>
+            OEM 供应商
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.Remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.DeletedState">
+            <summary>
+            删除状态[0=未删除 
+            1=标记删除]
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.UpdateTime">
+            <summary>
+            最后修改日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.PeopleNumber">
+            <summary>
+            人数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.SopWorkingProcedures">
+            <summary>
+            工序集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.SopProductionLines">
+            <summary>
+            产线列表集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.SopDeviceInformations">
+            <summary>
+            主要设备信息集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.SopHistoricalVersions">
+            <summary>
+            历史版本集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationDto.SopChangeHistories">
+            <summary>
+            变更历史集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Dto.MainInformationOtherQueryDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Dto.MainInformationQueryParamDto">
+            <summary>
+            查询参数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationQueryParamDto.DocumentNumber">
+            <summary>
+            文件编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationQueryParamDto.ProductCode">
+            <summary>
+            产品编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationQueryParamDto.ProductName">
+            <summary>
+            产品名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationQueryParamDto.PageSize">
+             <summary>
+            每页大小(10-100)
+             </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationQueryParamDto.PageIndex">
+            <summary>
+            页码,最小为1
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.MainInformationQueryParamDto.isGetTotalCount">
+            <summary>
+            是否返回总条数
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Dto.ReviewStatusDto">
+            <summary>
+            审核状态Dto
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.ReviewStatusDto.Id">
+            <summary>
+            唯一ID
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Dto.SopChangeHistoryDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopChangeHistoryDto.Id">
+            <summary>
+            数据唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopChangeHistoryDto.SopMainInformationId">
+            <summary>
+            sop 主信息唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopChangeHistoryDto.Event">
+            <summary>
+            事件[1、
+            新增 
+            2、修改 3、
+            删除
+             4、提交
+             5、审核
+             6、驳回 7、
+            反审 8、
+            撤销删除]
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopChangeHistoryDto.OperationResultsAndPrompts">
+            <summary>
+            操作结果及提示
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopChangeHistoryDto.OperationTime">
+            <summary>
+            操作时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopChangeHistoryDto.OperatingUsers">
+            <summary>
+            操作用户
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopChangeHistoryDto.ContentBeforeChange">
+            <summary>
+            变更前内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopChangeHistoryDto.ContentAfterChange">
+            <summary>
+            变更后内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopChangeHistoryDto.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopChangeHistoryDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopChangeHistoryDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopChangeHistoryDto.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopChangeHistoryDto.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopChangeHistoryDto.UpdateTime">
+            <summary>
+            最后修改日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopChangeHistoryDto.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Dto.SopDeviceInformationDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopDeviceInformationDto.Id">
+            <summary>
+            数据唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopDeviceInformationDto.SopMainInformationId">
+            <summary>
+            sop 主信息唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopDeviceInformationDto.Number">
+            <summary>
+            序号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopDeviceInformationDto.Workstation">
+            <summary>
+            工位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopDeviceInformationDto.Equipment">
+            <summary>
+            设备
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopDeviceInformationDto.Supplier">
+            <summary>
+            供应商
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopDeviceInformationDto.EquipmentNumber">
+            <summary>
+            设备编号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopDeviceInformationDto.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopDeviceInformationDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopDeviceInformationDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopDeviceInformationDto.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopDeviceInformationDto.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopDeviceInformationDto.UpdateTime">
+            <summary>
+            最后修改日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopDeviceInformationDto.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Dto.SopHistoricalVersionDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopHistoricalVersionDto.Id">
+            <summary>
+            数据唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopHistoricalVersionDto.SopMainInformationId">
+            <summary>
+            sop 主信息唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopHistoricalVersionDto.SopSystemReviewVersion">
+            <summary>
+            sop系统审核版本
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopHistoricalVersionDto.Reviewer">
+            <summary>
+            审核人
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopHistoricalVersionDto.ReviewTime">
+            <summary>
+            审核时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopHistoricalVersionDto.Content">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopHistoricalVersionDto.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopHistoricalVersionDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopHistoricalVersionDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopHistoricalVersionDto.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopHistoricalVersionDto.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopHistoricalVersionDto.UpdateTime">
+            <summary>
+            最后修改日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopHistoricalVersionDto.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Dto.SopLegendVideoDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopLegendVideoDto.Id">
+            <summary>
+            数据唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopLegendVideoDto.SopWorkingProcedureId">
+            <summary>
+            工序信息唯一id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopLegendVideoDto.FileAddress">
+            <summary>
+            文件地址
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopLegendVideoDto.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopLegendVideoDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopLegendVideoDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopLegendVideoDto.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopLegendVideoDto.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopLegendVideoDto.UpdateTime">
+            <summary>
+            最后修改日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopLegendVideoDto.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.Id">
+            <summary>
+            数据库唯一ID
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.DocumentNumber">
+            <summary>
+            文件编号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.ProcessSpecificationNumber">
+            <summary>
+            工艺规程号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.ReviewStatus">
+            <summary>
+            审核状态[1、编辑中 2、审核中 3、已审核 4、已反审 5、已驳回]
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.SystemReviewVersion">
+            <summary>
+            系统审核版本
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.Version">
+            <summary>
+            版次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.ProductCode">
+            <summary>
+            产品编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.ProductName">
+            <summary>
+            产品名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.Specifications">
+            <summary>
+            规格
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.Efficiency">
+            <summary>
+            效率（pcs/H）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.EffectiveDate">
+            <summary>
+            生效日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.PreparationDepartment">
+            <summary>
+            编制部门
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.UsingDepartment">
+            <summary>
+            使用部门
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.ProcessRoute">
+            <summary>
+            工艺路线
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.OemSuppliers">
+            <summary>
+            OEM 供应商
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.Remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.DeletedState">
+            <summary>
+            删除状态[0=未删除 
+            1=标记删除]
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.UpdateTime">
+            <summary>
+            最后修改日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopMainInformationDto.PeopleNumber">
+            <summary>
+            人数
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Dto.SopProductionLinesDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopProductionLinesDto.Id">
+            <summary>
+            数据唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopProductionLinesDto.SopMainInformationId">
+            <summary>
+            sop 主信息唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopProductionLinesDto.ProductionLineId">
+            <summary>
+            产线唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopProductionLinesDto.ProductionLineLevel">
+            <summary>
+            产线级别
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopProductionLinesDto.WorkShopName">
+            <summary>
+            车间名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopProductionLinesDto.ProductionLineName">
+            <summary>
+            产线名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopProductionLinesDto.ProductionLineCode">
+            <summary>
+            产线编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopProductionLinesDto.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopProductionLinesDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopProductionLinesDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopProductionLinesDto.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopProductionLinesDto.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopProductionLinesDto.UpdateTime">
+            <summary>
+            最后修改日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.SopProductionLinesDto.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Dto.WorkingProcedureDto">
+            <summary>
+            工序
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.WorkingProcedureDto.Id">
+            <summary>
+            数据唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.WorkingProcedureDto.SopMainInformationId">
+            <summary>
+            sop 主信息唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.WorkingProcedureDto.SortNumber">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.WorkingProcedureDto.ProcessNumber">
+            <summary>
+            工序号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.WorkingProcedureDto.ProcessName">
+            <summary>
+            工序名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.WorkingProcedureDto.PeopleNumber">
+            <summary>
+            人数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.WorkingProcedureDto.Equipment">
+            <summary>
+            设备
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.WorkingProcedureDto.Mould">
+            <summary>
+            模具
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.WorkingProcedureDto.OperationalRequirements">
+            <summary>
+            操作要求
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.WorkingProcedureDto.CriticalControlPoint">
+            <summary>
+            关键控制点
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.WorkingProcedureDto.DeletedState">
+            <summary>
+            删除状态[0=未删除 
+            1=标记删除]
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.WorkingProcedureDto.CreateUserId">
+            <summary>
+            创建者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.WorkingProcedureDto.CreateUserName">
+            <summary>
+            创建者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.WorkingProcedureDto.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.WorkingProcedureDto.UpdateUserId">
+            <summary>
+            最后一次修改者id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.WorkingProcedureDto.UpdateUserName">
+            <summary>
+            最后一次修改者名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.WorkingProcedureDto.UpdateTime">
+            <summary>
+            最后修改日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.WorkingProcedureDto.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Dto.WorkingProcedureDto.SopLegendVideos">
+            <summary>
+            图例视频集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Entities.SopBindWorkOrder">
+            <summary>
+            sop 绑定工单
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopBindWorkOrder.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopBindWorkOrder.DeleteBindWorkOrder(System.Int64,System.String)">
+            <summary>
+            删除
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopBindWorkOrder.WorkOrderId">
+            <summary>
+            工单 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopBindWorkOrder.SopMainInformationId">
+            <summary>
+            sop 主信息唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopBindWorkOrder.SopReviewVersion">
+             <summary>
+            sop审核版本
+             </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopBindWorkOrder.BindTime">
+            <summary>
+            绑定时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopBindWorkOrder.Binder">
+            <summary>
+            绑定人
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopBindWorkOrder.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Entities.SopChangeHistory">
+            <summary>
+            sop 变更历史表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopChangeHistory.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopChangeHistory.#ctor(System.Int64,EES.Infrastructure.Enums.Sop.eEvent,System.String,System.DateTime,System.String,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            新增数据
+            </summary>
+            <param name="sopMainInformationId"></param>
+            <param name="events"></param>
+            <param name="operationResultsAndPrompts"></param>
+            <param name="operationTime"></param>
+            <param name="operatingUsers"></param>
+            <param name="contentBeforeChange"></param>
+            <param name="contentAfterChange"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopChangeHistory.DeleteChangeHistory(System.Int64,System.String)">
+            <summary>
+            删除
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopChangeHistory.SopMainInformationId">
+            <summary>
+            sop 主信息唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopChangeHistory.Event">
+            <summary>
+            事件[1、
+            新增 
+            2、修改 3、
+            删除
+             4、提交
+             5、审核
+             6、驳回 7、
+            反审 8、
+            撤销删除]
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopChangeHistory.OperationResultsAndPrompts">
+            <summary>
+            操作结果及提示
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopChangeHistory.OperationTime">
+            <summary>
+            操作时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopChangeHistory.OperatingUsers">
+            <summary>
+            操作用户
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopChangeHistory.ContentBeforeChange">
+            <summary>
+            变更前内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopChangeHistory.ContentAfterChange">
+            <summary>
+            变更后内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopChangeHistory.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopChangeHistory.SopMain">
+            <summary>
+            主信息
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Entities.SopDeviceInformation">
+            <summary>
+            sop 设备主信息表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopDeviceInformation.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopDeviceInformation.UpdateDeviceInformation(System.Int64,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+            <param name="number"></param>
+            <param name="workstation"></param>
+            <param name="equipment"></param>
+            <param name="supplier"></param>
+            <param name="equipmentNumber"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopDeviceInformation.DeleteDeviceInformation(System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopDeviceInformation.RevokeDelet(System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopDeviceInformation.GenerateSopDeviceInformation(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Sop.Dto.CreateDeviceInformationDto},System.Int64,System.String)">
+            <summary>
+            生成实体
+            </summary>
+            <param name="parentId"></param>
+            <param name="materialItems"></param>
+            <param name="creatUserId"></param>
+            <param name="createUserName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopDeviceInformation.GenerateSopDeviceInformation(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Sop.Dto.SopDeviceInformationDto},System.Int64,System.String)">
+            <summary>
+            生成实体
+            </summary>
+            <param name="parentId"></param>
+            <param name="materialItems"></param>
+            <param name="creatUserId"></param>
+            <param name="createUserName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopDeviceInformation.SopMainInformationId">
+            <summary>
+            sop 主信息唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopDeviceInformation.Number">
+            <summary>
+            序号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopDeviceInformation.Workstation">
+            <summary>
+            工位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopDeviceInformation.Equipment">
+            <summary>
+            设备
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopDeviceInformation.Supplier">
+            <summary>
+            供应商
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopDeviceInformation.EquipmentNumber">
+            <summary>
+            设备编号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopDeviceInformation.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopDeviceInformation.SopMain">
+            <summary>
+            主信息
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Entities.SopHistoricalVersion">
+            <summary>
+            sop 历史版本表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopHistoricalVersion.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopHistoricalVersion.deleteHistoricalVersion(System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopHistoricalVersion.GenerateHistoricalVersion(System.Collections.Generic.IEnumerable{EES.Modules.Sop.Dto.CreateHistoricalVersionDto},System.Int64,System.String)">
+            <summary>
+            生成实体
+            </summary>
+            <param name="HistoricalVersion"></param>
+            <param name="creatUserId"></param>
+            <param name="createUserName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopHistoricalVersion.SopMainInformationId">
+            <summary>
+            sop 主信息唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopHistoricalVersion.SopSystemReviewVersion">
+            <summary>
+            sop系统审核版本
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopHistoricalVersion.Reviewer">
+            <summary>
+            审核人
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopHistoricalVersion.ReviewTime">
+            <summary>
+            审核时间
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopHistoricalVersion.Content">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopHistoricalVersion.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopHistoricalVersion.SopMain">
+            <summary>
+            主信息
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Entities.SopLegendVideo">
+            <summary>
+            sop 图例视频表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopLegendVideo.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopLegendVideo.#ctor(System.Int64,System.String,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="sopWorkingProcedureId"></param>
+            <param name="fileAddress"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopLegendVideo.DeleteLegendVideo(System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopLegendVideo.RevokeDelet(System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopLegendVideo.GenerateSopLegendVideo(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Sop.Dto.CreateLegendVideoDto},System.Int64,System.String)">
+            <summary>
+            生成实体
+            </summary>
+            <param name="parentId"></param>
+            <param name="materialItems"></param>
+            <param name="creatUserId"></param>
+            <param name="createUserName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopLegendVideo.GenerateSopLegendVideo(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Sop.Dto.SopLegendVideoDto},System.Int64,System.String)">
+            <summary>
+            生成实体
+            </summary>
+            <param name="parentId"></param>
+            <param name="materialItems"></param>
+            <param name="creatUserId"></param>
+            <param name="createUserName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopLegendVideo.SopWorkingProcedureId">
+            <summary>
+            工序信息唯一id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopLegendVideo.FileAddress">
+            <summary>
+            文件地址
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopLegendVideo.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopLegendVideo.SopWorking">
+            <summary>
+            工序信息
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Entities.SopMainInformation">
+            <summary>
+            sop 主信息表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopMainInformation.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopMainInformation.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Nullable{System.DateTime},System.String,System.String,System.String,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="documentNumber"></param>
+            <param name="processSpecificationNumber"></param>
+            <param name="version"></param>
+            <param name="productCode"></param>
+            <param name="productName"></param>
+            <param name="specifications"></param>
+            <param name="efficiency"></param>
+            <param name="peopleNumber"></param>
+            <param name="effectiveDate"></param>
+            <param name="preparationDepartment"></param>
+            <param name="usingDepartment"></param>
+            <param name="processRoute"></param>
+            <param name="oemSuppliers"></param>
+            <param name="remarks"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopMainInformation.modifyMainInformation(System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Nullable{System.DateTime},System.String,System.String,System.String,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="documentNumber"></param>
+            <param name="processSpecificationNumber"></param>
+            <param name="version"></param>
+            <param name="productCode"></param>
+            <param name="productName"></param>
+            <param name="specifications"></param>
+            <param name="efficiency"></param>
+            <param name="peopleNumber"></param>
+            <param name="effectiveDate"></param>
+            <param name="preparationDepartment"></param>
+            <param name="usingDepartment"></param>
+            <param name="oemSuppliers"></param>
+            <param name="remarks"></param>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopMainInformation.DeleteMainInformation(System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopMainInformation.UnderReview(System.Int64,System.String)">
+            <summary>
+            审核中
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopMainInformation.Approved(System.Int64,System.String)">
+            <summary>
+            已审核
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopMainInformation.Reviewed(System.Int64,System.String)">
+            <summary>
+            已反审
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopMainInformation.Rejected(System.Int64,System.String)">
+            <summary>
+            已驳回
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopMainInformation.RevokeDelet(System.Int64,System.String)">
+            <summary>
+            撤销删除
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopMainInformation.modifyVersion(System.Int32,System.Int64,System.String)">
+            <summary>
+            修改系统审核版本
+            </summary>
+            <param name="num"></param>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.DocumentNumber">
+            <summary>
+            文件编号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.ProcessSpecificationNumber">
+            <summary>
+            工艺规程号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.ReviewStatus">
+            <summary>
+            审核状态[1、编辑中 2、审核中 3、已审核 4、已反审 5、已驳回]
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.SystemReviewVersion">
+            <summary>
+            系统审核版本
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.Version">
+            <summary>
+            版次
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.ProductCode">
+            <summary>
+            产品编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.ProductName">
+            <summary>
+            产品名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.Specifications">
+            <summary>
+            规格
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.Efficiency">
+            <summary>
+            效率（pcs/H）
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.EffectiveDate">
+            <summary>
+            生效日期
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.PreparationDepartment">
+            <summary>
+            编制部门
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.UsingDepartment">
+            <summary>
+            使用部门
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.ProcessRoute">
+            <summary>
+            工艺路线
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.OemSuppliers">
+            <summary>
+            OEM 供应商
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.Remarks">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.DeletedState">
+            <summary>
+            删除状态[0=未删除 
+            1=标记删除]
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.PeopleNumber">
+            <summary>
+            人数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.SopWorkingProcedures">
+            <summary>
+            工序集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.SopProductionLines">
+            <summary>
+            产线列表集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.SopDeviceInformations">
+            <summary>
+            主要设备信息集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.SopHistoricalVersions">
+            <summary>
+            历史版本集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopMainInformation.SopChangeHistories">
+            <summary>
+            变更历史集合
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Entities.SopProductionLines">
+            <summary>
+            sop 产线列表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopProductionLines.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopProductionLines.#ctor(System.Int64,System.Int64,System.String,System.String,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="sopMainInformationId"></param>
+            <param name="productionLineId"></param>
+            <param name="productionLineLevel"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopProductionLines.Delete(System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopProductionLines.RevokeDelet(System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopProductionLines.GenerateSopProductionLines(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Sop.Dto.CreateProductionLinesDto},System.Int64,System.String)">
+            <summary>
+            生成实体
+            </summary>
+            <param name="parentId"></param>
+            <param name="materialItems"></param>
+            <param name="creatUserId"></param>
+            <param name="createUserName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopProductionLines.GenerateSopProductionLines(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Sop.Dto.SopProductionLinesDto},System.Int64,System.String)">
+            <summary>
+            生成实体
+            </summary>
+            <param name="parentId"></param>
+            <param name="materialItems"></param>
+            <param name="creatUserId"></param>
+            <param name="createUserName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopProductionLines.SopMainInformationId">
+            <summary>
+            sop 主信息唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopProductionLines.ProductionLineId">
+            <summary>
+            产线唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopProductionLines.ProductionLineLevel">
+            <summary>
+            产线级别
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopProductionLines.WorkShopName">
+            <summary>
+            车间名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopProductionLines.ProductionLineName">
+            <summary>
+            产线名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopProductionLines.ProductionLineCode">
+            <summary>
+            产线编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopProductionLines.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopProductionLines.SopMain">
+            <summary>
+            主信息
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Entities.SopWorkingProcedure">
+            <summary>
+            sop 工序表
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopWorkingProcedure.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopWorkingProcedure.#ctor(System.Int64,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String,System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="sopMainInformationId"></param>
+            <param name="processNumber"></param>
+            <param name="processName"></param>
+            <param name="peopleNumber"></param>
+            <param name="equipment"></param>
+            <param name="mould"></param>
+            <param name="operationalRequirements"></param>
+            <param name="criticalControlPoint"></param>
+            <param name="createUserId"></param>
+            <param name="createUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopWorkingProcedure.ModifyWorkingProcedure(System.Int64,System.String,System.Int32,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+            <param name="processNumber"></param>
+            <param name="processName"></param>
+            <param name="peopleNumber"></param>
+            <param name="equipment"></param>
+            <param name="mould"></param>
+            <param name="operationalRequirements"></param>
+            <param name="criticalControlPoint"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopWorkingProcedure.DeleteWorkingProcedure(System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopWorkingProcedure.RevokeDelet(System.Int64,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="updateUserId"></param>
+            <param name="updateUserName"></param>
+        </member>
+        <member name="M:EES.Modules.Sop.Entities.SopWorkingProcedure.GenerateSopWorkingProcedure(System.Int64,System.Collections.Generic.IEnumerable{EES.Modules.Sop.Dto.CreateWorkingProcedureDto},System.Int64,System.String)">
+            <summary>
+            生成实体
+            </summary>
+            <param name="parentId"></param>
+            <param name="materialItems"></param>
+            <param name="creatUserId"></param>
+            <param name="createUserName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopWorkingProcedure.SopMainInformationId">
+            <summary>
+            sop 主信息唯一 id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopWorkingProcedure.ProcessNumber">
+            <summary>
+            工序号
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopWorkingProcedure.ProcessName">
+            <summary>
+            工序名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopWorkingProcedure.PeopleNumber">
+            <summary>
+            人数
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopWorkingProcedure.SortNumber">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopWorkingProcedure.Equipment">
+            <summary>
+            设备
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopWorkingProcedure.Mould">
+            <summary>
+            模具
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopWorkingProcedure.OperationalRequirements">
+            <summary>
+            操作要求
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopWorkingProcedure.CriticalControlPoint">
+            <summary>
+            关键控制点
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopWorkingProcedure.DeletedState">
+            <summary>
+            删除状态[0=未删除 
+            1=标记删除]
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopWorkingProcedure.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopWorkingProcedure.SopLegendVideos">
+            <summary>
+            图例视频集合
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Sop.Entities.SopWorkingProcedure.SopMain">
+            <summary>
+            主信息
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Sop.Services.BindWorkOrderService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Services.BindWorkOrderService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Sop.Entities.SopBindWorkOrder},Microsoft.Extensions.Logging.ILogger{EES.Modules.Sop.Services.BindWorkOrderService},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="mainRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.Services.BindWorkOrderService.GetBindWorkOrderAsync(System.Int64)">
+            <summary>
+            获取单条sop绑定工单信息
+            </summary>
+            <param name="WorkOrderId">工单信息</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sop.Services.IBindWorkOrderService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Services.IBindWorkOrderService.GetBindWorkOrderAsync(System.Int64)">
+            <summary>
+            根据工单id获取sop信息
+            </summary>
+            <param name="WorkOrderId">工单ID</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sop.Services.IMainInformationService">
+            <summary>
+            主信息服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Services.IMainInformationService.GetMainInformationsAsync(EES.Modules.Sop.Dto.MainInformationQueryParamDto)">
+            <summary>
+            查询sop信息列表
+            </summary>
+            <param name="mainDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Services.IMainInformationService.GetMainInAsync(EES.Modules.Sop.Dto.MainInformationOtherQueryDto)">
+            <summary>
+            获取单条sop信息
+            </summary>
+            <param name="otherDto">工单ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Services.IMainInformationService.GetMainInsAsync(System.String,System.String)">
+            <summary>
+            根据产品编码和线体名称获取sop信息
+            </summary>
+            <param name="ProductCode"></param>
+            <param name="LineCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Services.IMainInformationService.GetChangeHistoryAsync(EES.Modules.Sop.Dto.ChangeHistoryQueryDto)">
+            <summary>
+            根据主信息ID和时间查询变更历史
+            </summary>
+            <param name="otherDto">查询条件</param>
+            <returns></returns>
+        </member>
+        <member name="T:EES.Modules.Sop.Services.MainInformationService">
+            <summary>
+            主信息服务
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Sop.Services.MainInformationService.#ctor(EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Sop.Entities.SopMainInformation},EES.Infrastructure.DataBase.Repository.IRepository{EES.Modules.Sop.Entities.SopChangeHistory},Microsoft.Extensions.Logging.ILogger{EES.Modules.Sop.Services.MainInformationService},AutoMapper.IMapper,EES.Infrastructure.Bus.IMediatorHandler)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="mainRepository"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+            <param name="mediatorHandler"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.Services.MainInformationService.GetMainInformationsAsync(EES.Modules.Sop.Dto.MainInformationQueryParamDto)">
+            <summary>
+            查询主信息列表
+            </summary>
+            <param name="mainDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Services.MainInformationService.GetMainInAsync(EES.Modules.Sop.Dto.MainInformationOtherQueryDto)">
+            <summary>
+            获取单条主信息
+            </summary>
+            <param name="Id">主信息ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Services.MainInformationService.GetMainInsAsync(System.String,System.String)">
+            <summary>
+            根据产品编码和线体名称获取sop信息
+            </summary>
+            <param name="ProductCode"></param>
+            <param name="LineCode"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:EES.Modules.Sop.Services.MainInformationService.GetChangeHistoryAsync(EES.Modules.Sop.Dto.ChangeHistoryQueryDto)">
+            <summary>
+            根据主信息ID和时间查询变更历史
+            </summary>
+            <param name="otherDto">查询条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:EES.Modules.Sop.Services.MainInformationService.getDateTime(System.DateTime,System.Boolean)">
+            <summary>
+            时间补充
+            </summary>
+            <param name="date">补充时间参数</param>
+            <param name="amMode">true:时间为00:00:00.000,false:时间为23:59:59.999</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,622 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EES.Modules.Share</name>
+    </assembly>
+    <members>
+        <member name="T:EES.Modules.Share.Commands.CreateFacoryDataCmd">
+            <summary>
+            创建工厂数据
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Share.Commands.CreateFacoryDataCmd.#ctor(System.Int64,System.String,System.String,System.Int64)">
+            <summary>
+            创建工厂数据
+            </summary>
+            <param name="id">工厂id</param>
+            <param name="name">工厂名字</param>
+            <param name="code">工厂编码</param>
+            <param name="parentId">上级id.工厂没有上级，则默认传0</param>
+        </member>
+        <member name="P:EES.Modules.Share.Commands.CreateFacoryDataCmd.Id">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Commands.CreateFacoryDataCmd.Name">
+            <summary>
+            工厂名字
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Commands.CreateFacoryDataCmd.Code">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Commands.CreateFacoryDataCmd.ParentId">
+            <summary>
+            上级id.工厂没有上级，则默认传0
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Share.Commands.CreateStoreDataCmd">
+            <summary>
+            仓库数据创建
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Share.Commands.CreateStoreDataCmd.#ctor(System.Int64,System.String,System.String,System.Int64)">
+            <summary>
+            仓库数据创建
+            </summary>
+            <param name="id">仓库id</param>
+            <param name="name">仓库名字</param>
+            <param name="code">仓库编码</param>
+            <param name="parentId">仓库所属工厂的id</param>
+        </member>
+        <member name="P:EES.Modules.Share.Commands.CreateStoreDataCmd.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Commands.CreateStoreDataCmd.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Commands.CreateStoreDataCmd.Code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Commands.CreateStoreDataCmd.ParentId">
+            <summary>
+            上级id. 仓库所属工厂的id
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Share.Commands.CreateWorkshopDataCmd">
+            <summary>
+            创建车间数据
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Share.Commands.CreateWorkshopDataCmd.#ctor(System.Int64,System.String,System.String,System.Int64)">
+            <summary>
+            创建车间数据
+            </summary>
+            <param name="id">车间id</param>
+            <param name="name">车间名称</param>
+            <param name="code">车间编码</param>
+            <param name="parentId">车间所属工厂id</param>
+        </member>
+        <member name="P:EES.Modules.Share.Commands.CreateWorkshopDataCmd.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Commands.CreateWorkshopDataCmd.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Commands.CreateWorkshopDataCmd.Code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Commands.CreateWorkshopDataCmd.ParentId">
+            <summary>
+            车间所属的工厂id
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Share.Dto.CustomConfigurationDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationDto.Id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationDto.Name">
+            <summary>
+            类型名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationDto.Code">
+            <summary>
+            类型代码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationDto.FactoryId">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationDto.FactoryName">
+            <summary>
+            工厂名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationDto.FactoryCode">
+            <summary>
+            工厂代码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationDto.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationDto.IsDelete">
+            <summary>
+            是否删除
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationDto.Item">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Share.Dto.CustomConfigurationItemDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationItemDto.Id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationItemDto.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationItemDto.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationItemDto.Link">
+            <summary>
+            链接
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationItemDto.DefaultValue">
+            <summary>
+            默认值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationItemDto.SettingValue">
+            <summary>
+            设定值
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationItemDto.ValueType">
+            <summary>
+            值类型
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationItemDto.EnumCode">
+            <summary>
+            枚举编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationItemDto.UpperLimit">
+            <summary>
+            设定上限
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationItemDto.LowerLimit">
+            <summary>
+            设定下限
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationItemDto.Unit">
+            <summary>
+            单位
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationItemDto.Identifying">
+            <summary>
+            标识
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Dto.CustomConfigurationItemDto.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Share.Events.AccountDisabledEvent">
+            <summary>
+            员工账号被禁用事件
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Share.Events.AccountDisabledEvent.#ctor(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="userId"></param>
+        </member>
+        <member name="P:EES.Modules.Share.Events.AccountDisabledEvent.UserId">
+            <summary>
+            被禁用的员工账号id
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Share.Events.AreaModifyEvent">
+            <summary>
+            区域修改事件
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Share.Events.AreaModifyEvent.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Share.Events.AreaModifyEvent.#ctor(System.Int64,System.String,System.Int64,System.String)">
+            <summary>
+            区域修改事件
+            </summary>
+            <param name="id"></param>
+            <param name="areaName"></param>
+            <param name="operatorId"></param>
+            <param name="operatorName"></param>
+        </member>
+        <member name="P:EES.Modules.Share.Events.AreaModifyEvent.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.AreaModifyEvent.AreaName">
+            <summary>
+            区域名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.AreaModifyEvent.OperatorId">
+            <summary>
+            操作人id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.AreaModifyEvent.OperatorName">
+            <summary>
+            操作人名字
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Share.Events.FactoryDeletedEvent">
+            <summary>
+            删除工厂事件
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Share.Events.FactoryDeletedEvent.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Share.Events.FactoryDeletedEvent.#ctor(System.Int64,System.Int64,System.String)">
+            <summary>
+             删除工厂事件
+            </summary>
+            <param name="id"></param>
+            <param name="operatorId"></param>
+            <param name="operatorName"></param>
+        </member>
+        <member name="P:EES.Modules.Share.Events.FactoryDeletedEvent.Id">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.FactoryDeletedEvent.OperatorId">
+            <summary>
+            操作人id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.FactoryDeletedEvent.OperatorName">
+            <summary>
+            操作人名字
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Share.Events.FactoryModifiedEvent">
+            <summary>
+            修改工厂信息事件
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Share.Events.FactoryModifiedEvent.#ctor(System.Int64,System.String,System.String,System.Int64,System.String,System.Int64)">
+            <summary>
+            修改工厂信息事件
+            </summary>
+            <param name="id">工厂id</param>
+            <param name="name">工厂名字</param>
+            <param name="code">工厂编码</param>
+            <param name="operatorId"></param>
+            <param name="operatorName"></param>
+            <param name="parentId">上级id.工厂没有上级，则默认传0</param>     
+        </member>
+        <member name="P:EES.Modules.Share.Events.FactoryModifiedEvent.Id">
+            <summary>
+            工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.FactoryModifiedEvent.Name">
+            <summary>
+            工厂名字
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.FactoryModifiedEvent.Code">
+            <summary>
+            工厂编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.FactoryModifiedEvent.ParentId">
+            <summary>
+            上级id.工厂没有上级，则默认传0
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.FactoryModifiedEvent.OperatorId">
+            <summary>
+            操作人id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.FactoryModifiedEvent.OperatorName">
+            <summary>
+            操作人名字
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Share.Events.ShelvesModifyEvent">
+            <summary>
+            货架修改事件
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Share.Events.ShelvesModifyEvent.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Share.Events.ShelvesModifyEvent.#ctor(System.Int64,System.String,System.Int64,System.String)">
+            <summary>
+            货架修改事件
+            </summary>
+            <param name="id"></param>
+            <param name="shelvesName"></param>
+            <param name="operatorId"></param>
+            <param name="operatorName"></param>
+        </member>
+        <member name="P:EES.Modules.Share.Events.ShelvesModifyEvent.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.ShelvesModifyEvent.ShelvesName">
+            <summary>
+            货架名称
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.ShelvesModifyEvent.OperatorId">
+            <summary>
+            操作人id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.ShelvesModifyEvent.OperatorName">
+            <summary>
+            操作人名字
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Share.Events.StoreDeletedEvent">
+            <summary>
+            仓库删除事件
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Share.Events.StoreDeletedEvent.#ctor(System.Int64,System.Int64,System.String)">
+            <summary>
+            仓库删除事件
+            </summary>
+            <param name="id"></param>
+            <param name="operatorId"></param>
+            <param name="operatorName"></param>
+        </member>
+        <member name="P:EES.Modules.Share.Events.StoreDeletedEvent.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.StoreDeletedEvent.OperatorId">
+            <summary>
+            操作人id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.StoreDeletedEvent.OperatorName">
+            <summary>
+            操作人名字
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Share.Events.StoreModifiedEvent">
+            <summary>
+            仓库信息修改事件
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Share.Events.StoreModifiedEvent.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Share.Events.StoreModifiedEvent.#ctor(System.Int64,System.String,System.String,System.Int64,System.Int64,System.String)">
+            <summary>
+            仓库信息修改事件
+            </summary>
+            <param name="id">仓库id</param>
+            <param name="name">仓库名字</param>
+            <param name="code">仓库编码</param>
+            <param name="parentId">仓库所属工厂的id</param>
+            <param name="operatorId"></param>
+            <param name="operatorName"></param>
+        </member>
+        <member name="P:EES.Modules.Share.Events.StoreModifiedEvent.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.StoreModifiedEvent.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.StoreModifiedEvent.Code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.StoreModifiedEvent.ParentId">
+            <summary>
+            上级id. 仓库所属工厂的id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.StoreModifiedEvent.OperatorId">
+            <summary>
+            操作人id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.StoreModifiedEvent.OperatorName">
+            <summary>
+            操作人名字
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Share.Events.WorkShopDeletedEvent">
+            <summary>
+            删除车间事件
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Share.Events.WorkShopDeletedEvent.#ctor(System.Int64,System.Int64,System.String)">
+            <summary>
+            删除车间事件
+            </summary>
+            <param name="id"></param>
+            <param name="operatorId"></param>
+            <param name="operatorName"></param>
+        </member>
+        <member name="P:EES.Modules.Share.Events.WorkShopDeletedEvent.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.WorkShopDeletedEvent.OperatorId">
+            <summary>
+            操作人id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.WorkShopDeletedEvent.OperatorName">
+            <summary>
+            操作人名字
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Share.Events.WorkShopModifiedEvent">
+            <summary>
+            修改车间信息事件
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Share.Events.WorkShopModifiedEvent.#ctor(System.Int64,System.String,System.String,System.Int64,System.Int64,System.String)">
+            <summary>
+            修改车间信息事件
+            </summary>
+            <param name="id">车间id</param>
+            <param name="name">车间名称</param>
+            <param name="code">车间编码</param>
+            <param name="parentId">车间所属工厂id</param>
+            <param name="operatorId"></param>
+            <param name="operatorName"></param>
+        </member>
+        <member name="P:EES.Modules.Share.Events.WorkShopModifiedEvent.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.WorkShopModifiedEvent.Name">
+            <summary>
+            名字
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.WorkShopModifiedEvent.Code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.WorkShopModifiedEvent.ParentId">
+            <summary>
+            车间所属的工厂id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.WorkShopModifiedEvent.OperatorId">
+            <summary>
+            操作人id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Share.Events.WorkShopModifiedEvent.OperatorName">
+            <summary>
+            操作人名字
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Wms.Events.AreaDeletedEvent">
+            <summary>
+            区域删除事件
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Wms.Events.AreaDeletedEvent.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Wms.Events.AreaDeletedEvent.#ctor(System.Int64,System.Int64,System.String)">
+            <summary>
+            区域删除事件
+            </summary>
+            <param name="id"></param>
+            <param name="operatorId"></param>
+            <param name="operatorName"></param>
+        </member>
+        <member name="P:EES.Modules.Wms.Events.AreaDeletedEvent.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Wms.Events.AreaDeletedEvent.OperatorId">
+            <summary>
+            操作人id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Wms.Events.AreaDeletedEvent.OperatorName">
+            <summary>
+            操作人名字
+            </summary>
+        </member>
+        <member name="T:EES.Modules.Wms.Events.ShelvesDeletedEvent">
+            <summary>
+            货架删除事件
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Wms.Events.ShelvesDeletedEvent.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EES.Modules.Wms.Events.ShelvesDeletedEvent.#ctor(System.Int64,System.Int64,System.String)">
+            <summary>
+            货架删除事件
+            </summary>
+            <param name="id"></param>
+            <param name="operatorId"></param>
+            <param name="operatorName"></param>
+        </member>
+        <member name="P:EES.Modules.Wms.Events.ShelvesDeletedEvent.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Wms.Events.ShelvesDeletedEvent.OperatorId">
+            <summary>
+            操作人id
+            </summary>
+        </member>
+        <member name="P:EES.Modules.Wms.Events.ShelvesDeletedEvent.OperatorName">
+            <summary>
+            操作人名字
+            </summary>
+        </member>
+    </members>
+</doc>
